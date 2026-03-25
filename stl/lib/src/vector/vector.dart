@@ -56,11 +56,10 @@ class Vector<T> {
     return _data.where((e) => !otherSet.contains(e)).toList();
   }
 
-  void operator []=(T index, T value) {
-    if (T != int) {
-      // Only allow int indices for assignment and throw an error for other types
-      throw ArgumentError('Index must be of type int');
+  void operator []=(int index, T value) {
+    if (index < 0 || index >= _data.length) {
+      throw RangeError.index(index, _data, 'Index out of range');
     }
-    _data[index as int] = value;
+    _data[index] = value;
   }
 }

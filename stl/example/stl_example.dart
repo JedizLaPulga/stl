@@ -1,13 +1,12 @@
 import 'package:stl/stl.dart' as stl;
 
+typedef Vec<T> = stl.Vector<T>;
+
 void main() {
-  stl.Vector<int> p = stl.Vector<int>([10, 20, 30, 40, 50]);
-  final p1 = p.list();
+  Vec<int> p = Vec<int>([10, 20, 30, 40, 50]);
+  Vec<int> q = Vec<int>([30, 40, 50, 60, 70]);
 
-  print(p[0]); // Output: 10
-
-  p[0] = 100;
-  print(p[0]); // Output: 100
-
-  print(p1[0]); // Output: 10
+  p = q;
+  p[0] = 90;
+  print(q[0]);
 }
