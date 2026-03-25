@@ -5,5 +5,9 @@ void main() {
   final p1 = p.list();
 
   print(p[0]); // Output: 10
+
+  p[0] = 100;
+  print(p[0]); // Output: 100
+
   print(p1[0]); // Output: 10
 }

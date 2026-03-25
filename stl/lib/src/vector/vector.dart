@@ -55,4 +55,11 @@ class Vector<T> {
     final otherSet = Set<T>.from(other.toList<T>());
     return _data.where((e) => !otherSet.contains(e)).toList();
   }
+
+  void operator []=(T index, T value) {
+    if (T != int) {
+      throw ArgumentError('Index must be of type int');
+    }
+    this._data[index as int] = value;
+  }
 }
