@@ -4,3 +4,4 @@
 library;
 
 export 'src/stl_base.dart';
+export 'src/vector/vector.dart';
