@@ -25,14 +25,18 @@ class Vector<T> {
   List<F> toList<F>() {
     late final List<F> result;
     if (F == T) {
+      //same type, just return a copy of the list
       return List<F>.from(_data);
     } else if (F == String) {
+      //convert each element to a string
       result = _data.map((e) => e.toString() as F).toList();
     } else if (F == bool) {
+      //convert each element to a boolean based on its truthiness
       result = _data
           .map((e) => (e != null && e.toString().isNotEmpty) as F)
           .toList();
     } else {
+      //unsupported type conversion
       throw ArgumentError('Cannot convert Vector<$T> to List<$F>');
     }
 
