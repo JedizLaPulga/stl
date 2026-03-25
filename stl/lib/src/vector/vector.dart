@@ -58,8 +58,9 @@ class Vector<T> {
 
   void operator []=(T index, T value) {
     if (T != int) {
+      // Only allow int indices for assignment and throw an error for other types
       throw ArgumentError('Index must be of type int');
     }
-    this._data[index as int] = value;
+    _data[index as int] = value;
   }
 }
