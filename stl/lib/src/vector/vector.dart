@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 class Vector<T> {
   final List<T> _data;
 
