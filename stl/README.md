@@ -1,39 +1,39 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# stl
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages). 
+[![Pub Version](https://img.shields.io/pub/v/stl?color=blue&style=flat-square)](https://pub.dev/packages/stl)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages). 
--->
+A performance-oriented implementation of Standard Template Library (STL) patterns for the Dart language. 
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+## 🧪 Project Status: In Active Development
 
-## Features
+**Note:** This package is currently in its early stages. The goal is to bring the efficiency, deterministic behavior, and familiar data structures of the C++ STL to the Dart and Flutter ecosystem, specifically focusing on systems-level logic and performance-heavy applications.
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+---
 
-## Getting started
+## 🚀 Vision
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+While Dart provides excellent high-level collections, `package:stl` aims to fill the gap for developers who need:
+* **Familiar API:** Containers and algorithms that follow the naming conventions of the C++ Standard Library.
+* **Deterministic Performance:** Predictable complexity for operations like `push_back`, `pop_front`, and sorting.
+* **Advanced Structures:** Data structures not currently found in `dart:collection`.
 
-## Usage
+## 🛠 Features (Current & Roadmap)
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+- [x] **Project Foundation:** Initial structure and naming.
+- [ ] **Sequential Containers:**
+    - `Vector<T>`: Dynamic array with $O(1)$ random access.
+    - `List<T>`: Doubly linked list for constant time insertions.
+    - `Deque<T>`: Double-ended queue.
+- [ ] **Associative Containers:**
+    - `OrderedMap<K, V>` and `Set<T>`.
+- [ ] **Algorithms:**
+    - Custom Sort, Binary Search, and Heap manipulation.
 
-```dart
-const like = 'sample';
-```
+## 📦 Installation
 
-## Additional information
+Add this to your `pubspec.yaml`:
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+```yaml
+dependencies:
+  stl: ^0.0.1
