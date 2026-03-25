@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 class Vector<T> {
   final List<T> _data;
 
@@ -41,5 +43,13 @@ class Vector<T> {
     }
 
     return result;
+  }
+
+  List<T> list() {
+    return List<T>.from(_data);
+  }
+
+  List<T> operator +(Vector<T> other) {
+    return List<T>.from(_data)..addAll(other.toList<T>());
   }
 }
