@@ -50,4 +50,9 @@ class Vector<T> {
   List<T> operator +(Vector<T> other) {
     return List<T>.from(_data)..addAll(other.toList<T>());
   }
+
+  List<T> operator -(Vector<T> other) {
+    final otherSet = Set<T>.from(other.toList<T>());
+    return _data.where((e) => !otherSet.contains(e)).toList();
+  }
 }
