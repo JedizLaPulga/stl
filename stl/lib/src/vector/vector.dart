@@ -56,6 +56,11 @@ class Vector<T> {
     return _data.where((e) => !otherSet.contains(e)).toList();
   }
 
+  List<T> operator *(Vector<T> other) {
+    final otherSet = Set<T>.from(other.toList<T>());
+    return _data.where((e) => otherSet.contains(e)).toList();
+  }
+
   void operator []=(int index, T value) {
     if (index < 0 || index >= _data.length) {
       throw RangeError.index(index, _data, 'Index out of range');
