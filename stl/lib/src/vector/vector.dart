@@ -1,7 +1,7 @@
 class Vector<T> {
   final List<T> _data;
 
-  const Vector(List<T> arguments) : _data = arguments;
+  const Vector(List<T> arguments) : _data = List<T>.from(arguments);
 
   T operator [](int index) {
     if (index < 0 || index >= _data.length) {
