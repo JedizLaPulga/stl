@@ -7,6 +7,7 @@
 
 ### Added
 - Introduced the core `Vector<T>` class.
+- Overloaded `operator ==` and `hashCode` for deep value-based equality matching instead of default reference equality.
 
 ### Changed
 - Completely rewrote `Vector<T>` to establish a clean slate and focus on strict `const` and `final` list initialization semantics.
