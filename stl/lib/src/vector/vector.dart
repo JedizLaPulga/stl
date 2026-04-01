@@ -1,5 +1,16 @@
-class Vector<T extends Comparable<dynamic>> {
+import 'dart:collection';
+
+class Vector<T extends Comparable<dynamic>> with IterableMixin<T> {
   final List<T> _data;
+
+  /// Exposes the iterator from the underlying list.
+  /// This allows the Vector to be used in standard Dart `for (var x in vec)` loops.
+  @override
+  Iterator<T> get iterator => _data.iterator;
+
+  /// Returns the number of elements in the vector (O(1) time).
+  @override
+  int get length => _data.length;
 
   /// Creates a [Vector] containing the elements of the provided list.
   ///
