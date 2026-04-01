@@ -11,6 +11,26 @@ class Vector<T extends Comparable<dynamic>> {
   /// ```
   const Vector(this._data);
 
+  /// Retrieves the element at the specified [index].
+  ///
+  /// Guarantees memory safety by throwing a [RangeError] if [index] is out of bounds.
+  T operator [](int index) {
+    if (index < 0 || index >= _data.length) {
+      throw RangeError.index(index, _data, 'Index out of bounds');
+    }
+    return _data[index];
+  }
+
+  /// Sets the element at the specified [index] to [value].
+  ///
+  /// Guarantees memory safety by throwing a [RangeError] if [index] is out of bounds.
+  void operator []=(int index, T value) {
+    if (index < 0 || index >= _data.length) {
+      throw RangeError.index(index, _data, 'Index out of bounds');
+    }
+    _data[index] = value;
+  }
+
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;

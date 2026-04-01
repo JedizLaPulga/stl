@@ -15,6 +15,11 @@ void main() {
   }else{
     print('w is equal to v');
   }
+
+  print('Element at index 0: ${v[0]}');
+  print('Element at index 1: ${w[1]}');
+  print('Element at index 2: ${v[2]}');
+  print('Element at index 3: ${w[3]}');
   
 
 }
