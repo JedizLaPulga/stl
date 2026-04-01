@@ -32,6 +32,9 @@ class Vector<T extends Comparable<dynamic>> {
   }
 
   @override
+  String toString() => _data.toString();
+
+  @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
     if (other is! Vector<T>) return false;
