@@ -31,8 +31,38 @@ class Vector<T extends Comparable<dynamic>> {
     _data[index] = value;
   }
 
-  @override
-  String toString() => _data.toString();
+  /// Adds an element to the end of the vector.
+  void push_back(T value) {
+    _data.add(value);
+  }
+
+  /// Removes the last element from the vector.
+  ///
+  /// Guarantees memory safety by throwing a [StateError] if the vector is empty.
+  void pop_back() {
+    if (_data.isEmpty) {
+      throw StateError('Cannot pop_back from an empty vector');
+    }
+    _data.removeLast();
+  }
+
+  /// Removes all elements from the vector.
+  void clear() {
+    _data.clear();
+  }
+
+  /// Inserts [value] at the specified [index].
+  ///
+  /// Guarantees memory safety by allowing [index] strictly between `0` and `length` (inclusive).
+  void insert(int index, T value) {
+    if (index < 0 || index > _data.length) {
+      throw RangeError.index(index, _data, 'Index out of bounds for insertion');
+    }
+    _data.insert(index, value);
+  }
+
+  @override String toString() => _data.toString();
+  @override int get hashCode => Object.hashAll(_data);
 
   @override
   bool operator ==(Object other) {
@@ -63,6 +93,5 @@ class Vector<T extends Comparable<dynamic>> {
   bool operator >(Vector<T> other) => compareTo(other) > 0;
   bool operator >=(Vector<T> other) => compareTo(other) >= 0;
 
-  @override
-  int get hashCode => Object.hashAll(_data);
+ 
 }

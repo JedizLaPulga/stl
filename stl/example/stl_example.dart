@@ -20,6 +20,8 @@ void main() {
   print('Element at index 1: ${w[1]}');
   print('Element at index 2: ${v[2]}');
   print('Element at index 3: ${w[3]}');
+
+  print(w);
   
 
 }
