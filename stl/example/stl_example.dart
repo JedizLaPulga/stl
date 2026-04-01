@@ -1,12 +1,14 @@
-import 'package:stl/stl.dart' as stl;
-
-typedef Vec<T> = stl.Vector<T>;
+import 'package:stl/stl.dart';
 
 void main() {
-  Vec<int> p = Vec<int>([10, 20, 30, 40, 50]);
-  Vec<int> q = Vec<int>([30, 40, 50, 60, 70]);
+  // Showcasing how to initialize a vector
+  const v = Vector<int>([1, 2, 3]);
+  final w = Vector<int>([1, 2, 3]);
 
-  p = q;
-  p[0] = 90;
-  print(q[0]);
+  print('Vector v: $v');
+  print('Vector w: $w');
+  
+  // Notice: Right now in your code, v == w will print 'false' 
+  // because we haven't implemented an 'operator ==' override in Vector yet!
+  print('Are they equal in memory? ${v == w}'); 
 }

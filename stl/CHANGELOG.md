@@ -6,15 +6,8 @@
 ## 0.1.0
 
 ### Added
-- Introduced the core `Vector<T>` class to provide a list-backed data structure with extended operations.
-- Added standard element access and mutation using `operator []` and `operator []=` with range bounds checking.
-- Added `at(int index)` method for boundary-safe element access with wrap-around (modulo) indexing.
-- Added type-conversion utility `toList<F>()` with current support for mapping elements to `String` and `bool` representations.
-- Added `list()` method to easily extract a standard Dart `List<T>` copy of the underlying vector data.
-- Added mathematical/set-like operator overloads for vectors:
-  - `operator +` for vector concatenation.
-  - `operator -` for vector difference (removing overlapping elements).
-  - `operator *` for vector intersection (keeping only overlapping elements).
+- Introduced the core `Vector<T>` class.
 
-
-
+### Changed
+- Completely rewrote `Vector<T>` to establish a clean slate and focus on strict `const` and `final` list initialization semantics.
+- Temporarily removed all extended operations (`+`, `-`, `*`, `at()`, `toList()`, etc.) for architectural redesign.
