@@ -8,7 +8,6 @@ void main() {
   print('Vector v: $v');
   print('Vector w: $w');
   
-  // Notice: Right now in your code, v == w will print 'false' 
-  // because we haven't implemented an 'operator ==' override in Vector yet!
+
   print('Are they equal in memory? ${v == w}'); 
 }

@@ -1,4 +1,4 @@
-class Vector<T> {
+class Vector<T extends Comparable<dynamic>> {
   final List<T> _data;
 
   /// Creates a [Vector] containing the elements of the provided list.
@@ -21,6 +21,9 @@ class Vector<T> {
     }
     return true;
   }
+  //Dart usually handles != by just reversing whatever your == operator returns.
+
+
 
   @override
   int get hashCode => Object.hashAll(_data);
