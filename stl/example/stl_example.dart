@@ -21,6 +21,13 @@ void main() {
   print('Element at index 2: ${v[2]}');
   print('Element at index 3: ${w[3]}');
 
+  w.push_back(6);
+  print(w); 
+  w.pop_back();
+  print(w);
+  w.insert(2, 99);
+  print(w);
+  w.clear();
   print(w);
   
 
