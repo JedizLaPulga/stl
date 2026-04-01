@@ -23,7 +23,22 @@ class Vector<T extends Comparable<dynamic>> {
   }
   //Dart usually handles != by just reversing whatever your == operator returns.
 
+  /// Lexicographically compares this vector to [other].
+  int compareTo(Vector<T> other) {
+    int len = _data.length < other._data.length ? _data.length : other._data.length;
+    for (int i = 0; i < len; i++) {
+      int comparison = _data[i].compareTo(other._data[i]);
+      if (comparison != 0) {
+        return comparison;
+      }
+    }
+    return _data.length.compareTo(other._data.length);
+  }
 
+  bool operator <(Vector<T> other) => compareTo(other) < 0;
+  bool operator <=(Vector<T> other) => compareTo(other) <= 0;
+  bool operator >(Vector<T> other) => compareTo(other) > 0;
+  bool operator >=(Vector<T> other) => compareTo(other) >= 0;
 
   @override
   int get hashCode => Object.hashAll(_data);
