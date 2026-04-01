@@ -8,6 +8,7 @@
 ### Added
 - Introduced the core `Vector<T>` class.
 - Overloaded `operator ==` and `hashCode` for deep value-based equality matching instead of default reference equality.
+- Implemented C++ STL-style lexicographical comparison operators (`<`, `<=`, `>`, `>=`) and `compareTo` by enforcing `T extends Comparable`.
 
 ### Changed
 - Completely rewrote `Vector<T>` to establish a clean slate and focus on strict `const` and `final` list initialization semantics.
