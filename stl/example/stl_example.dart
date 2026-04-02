@@ -67,6 +67,23 @@ void main() {
   print('v5: $v5');
   print('v4 + v5: $v6\n');
 
+  ///8. Multiplication
+  print('--- 8. Multiplication ---');
+  final v7 = Vector<int>([1, 2, 3]);
+  final v8 = v7 * 3;
+  print('v7: $v7');
+  print('v7 * 3: $v8\n');
+
+
+  ///9. Subtraction
+  print('--- 9. Subtraction ---');
+  final v9 = Vector<int>([1, 2, 3]);
+  final v10 = Vector<int>([1, 2, 3]);
+  final v11 = v9 - v10;
+  print('v9: $v9');
+  print('v10: $v10');
+  print('v9 - v10: $v11\n');
+
   // Using powerful Iterable methods completely for free!
   final evens = numbers.where((n) => n % 2 == 0).toList();
   print('\nUsing internal `.where()` on the vector:');

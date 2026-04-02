@@ -113,7 +113,7 @@ class Vector<T extends Comparable<dynamic>> with IterableMixin<T> {
   }
 
   ///You can overload the multiplication operator to take an int and return a new Vector repeated n times 
-  ///(similar to Python's [1, 2] * 3 == [1, 2, 1, 2, 1, 2]).
+  /// (similar to Python's [1, 2] * 3 == [1, 2, 1, 2, 1, 2]).
   Vector<T> operator *(int times) {
     if (times < 0) throw ArgumentError('Cannot multiply vector by negative number');
     final newList = <T>[];
@@ -123,6 +123,11 @@ class Vector<T extends Comparable<dynamic>> with IterableMixin<T> {
     return Vector<T>(newList);
   }
 
+  /// Removes all occurrences of elements found in [other]
+  Vector<T> operator -(Vector<T> other) {
+    final newList = _data.where((element) => !other._data.contains(element)).toList();
+    return Vector<T>(newList);
+  }
 
  
 }

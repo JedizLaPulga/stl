@@ -27,5 +27,6 @@
 
 ### Added
 - Added `operator +` for vector concatenation.
+- Added `operator *` for vector multiplication.
 
 
