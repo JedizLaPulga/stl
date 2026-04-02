@@ -17,3 +17,7 @@
 ### Changed
 - Completely rewrote `Vector<T>` to establish a clean slate and focus on strict `const` and `final` list initialization semantics.
 - Temporarily removed all extended operations (`+`, `-`, `*`, `at()`, `toList()`, etc.) for architectural redesign.
+
+
+## 0.1.1
+* Documentation update: Fixed installation instructions in README.
