@@ -21,3 +21,11 @@
 
 ## 0.1.1
 * Documentation update: Fixed installation instructions in README.
+
+
+## 0.1.2
+
+### Added
+- Added `operator +` for vector concatenation.
+
+

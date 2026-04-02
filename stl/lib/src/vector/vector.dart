@@ -104,5 +104,13 @@ class Vector<T extends Comparable<dynamic>> with IterableMixin<T> {
   bool operator >(Vector<T> other) => compareTo(other) > 0;
   bool operator >=(Vector<T> other) => compareTo(other) >= 0;
 
+
+  /// Concatenates two vectors.
+  /// Guarantees memory safety by creating a new vector with the combined elements.
+  Vector<T> operator +(Vector<T> other) {
+    final newList = List<T>.from(_data)..addAll(other._data);
+    return Vector<T>(newList);
+  }
+
  
 }

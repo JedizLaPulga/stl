@@ -58,6 +58,15 @@ void main() {
     print(' -> $n');
   }
 
+  // 7. Concatenation
+  print('--- 7. Concatenation ---');
+  final v4 = Vector<int>([1, 2, 3]);
+  final v5 = Vector<int>([4, 5, 6]);
+  final v6 = v4 + v5;
+  print('v4: $v4');
+  print('v5: $v5');
+  print('v4 + v5: $v6\n');
+
   // Using powerful Iterable methods completely for free!
   final evens = numbers.where((n) => n % 2 == 0).toList();
   print('\nUsing internal `.where()` on the vector:');
