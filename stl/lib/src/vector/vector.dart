@@ -129,5 +129,8 @@ class Vector<T extends Comparable<dynamic>> with IterableMixin<T> {
     return Vector<T>(newList);
   }
 
+  /// Converts the vector to a standard Dart list.
+  List<T> operator~() => List<T>.from(_data);
+
  
 }

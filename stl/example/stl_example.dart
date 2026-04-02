@@ -84,6 +84,13 @@ void main() {
   print('v10: $v10');
   print('v9 - v10: $v11\n');
 
+ 
+  /// 10. ~ operator
+  final v12 = Vector<int>([1, 2, 3]);
+  final v13 = ~v12;
+  print('v12: $v12');
+  print('~v12: $v13\n');
+
   // Using powerful Iterable methods completely for free!
   final evens = numbers.where((n) => n % 2 == 0).toList();
   print('\nUsing internal `.where()` on the vector:');

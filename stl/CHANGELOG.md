@@ -27,6 +27,8 @@
 
 ### Added
 - Added `operator +` for vector concatenation.
-- Added `operator *` for vector multiplication.
+- Added `operator *` for vector multiplication with an integer.
+- Added `operator -` for vector subtraction.
+- Added `~` for conversion to List.
 
 
