@@ -112,5 +112,17 @@ class Vector<T extends Comparable<dynamic>> with IterableMixin<T> {
     return Vector<T>(newList);
   }
 
+  ///You can overload the multiplication operator to take an int and return a new Vector repeated n times 
+  ///(similar to Python's [1, 2] * 3 == [1, 2, 1, 2, 1, 2]).
+  Vector<T> operator *(int times) {
+    if (times < 0) throw ArgumentError('Cannot multiply vector by negative number');
+    final newList = <T>[];
+    for (int i = 0; i < times; i++) {
+      newList.addAll(_data);
+    }
+    return Vector<T>(newList);
+  }
+
+
  
 }
