@@ -132,5 +132,50 @@ class Vector<T extends Comparable<dynamic>> with IterableMixin<T> {
   /// Converts the vector to a standard Dart list.
   List<T> operator~() => List<T>.from(_data);
 
+  /// Retrieves the element at the specified [index].
+  ///
+  /// Guarantees memory safety by throwing a [RangeError] if [index] is out of bounds.
+  T at(int index) {
+    if (index < 0 || index >= _data.length) {
+      throw RangeError.index(index, _data, 'Index out of bounds');
+    }
+    return _data[index];
+  }
+
+  /// Retrieves the first element of the vector.
+  ///
+  /// Guarantees memory safety by throwing a [StateError] if the vector is empty.
+  T front() {
+    if (_data.isEmpty) {
+      throw StateError('Cannot get front from an empty vector');
+    }
+    return _data.first;
+  }
+
+  /// Retrieves the last element of the vector.
+  ///
+  /// Guarantees memory safety by throwing a [StateError] if the vector is empty.
+  T back() {
+    if (_data.isEmpty) {
+      throw StateError('Cannot get back from an empty vector');
+    }
+    return _data.last;
+  }
+
+  bool empty() => _data.isEmpty;
+  int size() => _data.length;
+
+  void sort() => _data.sort();
+  void reverse() => _data.reversed;
+  void shuffle() => _data.shuffle();
+  bool contains(T element) => _data.contains(element);
+  int indexOf(T element) => _data.indexOf(element);
+  void remove(T element) => _data.remove(element);
+  void removeAt(int index) => _data.removeAt(index);
+  void removeLast() => _data.removeLast();
+  void removeRange(int start, int end) => _data.removeRange(start, end);
+  void removeWhere(bool Function(T element) test) => _data.removeWhere(test);
+  void retainWhere(bool Function(T element) test) => _data.retainWhere(test);
+  void clear() => _data.clear();
  
 }

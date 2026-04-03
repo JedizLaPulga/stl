@@ -91,6 +91,16 @@ void main() {
   print('v12: $v12');
   print('~v12: $v13\n');
 
+  final v14 = Vector<int>([1, 2, 3]);
+  final v15 = Vector<int>([1, 2, 3]);
+  print('v14.empty(): ${v14.empty()}');
+  print('v15.size(): ${v15.size()}');
+  print('v14.capacity(): ${v14.capacity()}');
+  v14.reserve(10);
+  print('v14.reserve(10): ${v14.capacity()}');
+  v14.shrink_to_fit();
+  print('v14.shrink_to_fit(): ${v14.capacity()}');
+
   // Using powerful Iterable methods completely for free!
   final evens = numbers.where((n) => n % 2 == 0).toList();
   print('\nUsing internal `.where()` on the vector:');

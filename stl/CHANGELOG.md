@@ -36,3 +36,17 @@
 - Added `at()` method for safe random access with bounds checking.
 - Added `front()` method for accessing the first element with bounds checking.
 - Added `back()` method for accessing the last element with bounds checking.
+- Added `empty()` method for checking if the vector is empty.
+- Added `size()` method for getting the size of the vector.
+- Added `sort()` method for sorting the vector.
+- Added `reverse()` method for reversing the vector.
+- Added `shuffle()` method for shuffling the vector.
+- Added `contains()` method for checking if the vector contains an element.
+- Added `indexOf()` method for getting the index of an element.
+- Added `remove()` method for removing an element.
+- Added `removeAt()` method for removing an element at a specific index.
+- Added `removeLast()` method for removing the last element.
+- Added `removeRange()` method for removing a range of elements.
+- Added `removeWhere()` method for removing elements that satisfy a condition.
+- Added `retainWhere()` method for retaining elements that satisfy a condition.
+- Added `clear()` method for clearing the vector.
