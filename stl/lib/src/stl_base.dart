@@ -2,4 +2,5 @@
 class Awesome {
   bool get isAwesome => true;
 }
+
 //reverse for future implementataion.

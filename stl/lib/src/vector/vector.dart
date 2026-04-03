@@ -72,8 +72,10 @@ class Vector<T extends Comparable<dynamic>> with IterableMixin<T> {
     _data.insert(index, value);
   }
 
-  @override String toString() => _data.toString();
-  @override int get hashCode => Object.hashAll(_data);
+  @override
+  String toString() => _data.toString();
+  @override
+  int get hashCode => Object.hashAll(_data);
 
   @override
   bool operator ==(Object other) {
@@ -89,7 +91,9 @@ class Vector<T extends Comparable<dynamic>> with IterableMixin<T> {
 
   /// Lexicographically compares this vector to [other].
   int compareTo(Vector<T> other) {
-    int len = _data.length < other._data.length ? _data.length : other._data.length;
+    int len = _data.length < other._data.length
+        ? _data.length
+        : other._data.length;
     for (int i = 0; i < len; i++) {
       int comparison = _data[i].compareTo(other._data[i]);
       if (comparison != 0) {
@@ -104,7 +108,6 @@ class Vector<T extends Comparable<dynamic>> with IterableMixin<T> {
   bool operator >(Vector<T> other) => compareTo(other) > 0;
   bool operator >=(Vector<T> other) => compareTo(other) >= 0;
 
-
   /// Concatenates two vectors.
   /// Guarantees memory safety by creating a new vector with the combined elements.
   Vector<T> operator +(Vector<T> other) {
@@ -112,10 +115,11 @@ class Vector<T extends Comparable<dynamic>> with IterableMixin<T> {
     return Vector<T>(newList);
   }
 
-  ///You can overload the multiplication operator to take an int and return a new Vector repeated n times 
+  ///You can overload the multiplication operator to take an int and return a new Vector repeated n times
   /// (similar to Python's [1, 2] * 3 == [1, 2, 1, 2, 1, 2]).
   Vector<T> operator *(int times) {
-    if (times < 0) throw ArgumentError('Cannot multiply vector by negative number');
+    if (times < 0)
+      throw ArgumentError('Cannot multiply vector by negative number');
     final newList = <T>[];
     for (int i = 0; i < times; i++) {
       newList.addAll(_data);
@@ -125,12 +129,14 @@ class Vector<T extends Comparable<dynamic>> with IterableMixin<T> {
 
   /// Removes all occurrences of elements found in [other]
   Vector<T> operator -(Vector<T> other) {
-    final newList = _data.where((element) => !other._data.contains(element)).toList();
+    final newList = _data
+        .where((element) => !other._data.contains(element))
+        .toList();
     return Vector<T>(newList);
   }
 
   /// Converts the vector to a standard Dart list.
-  List<T> operator~() => List<T>.from(_data);
+  List<T> operator ~() => List<T>.from(_data);
 
   /// Retrieves the element at the specified [index].
   ///
@@ -168,7 +174,8 @@ class Vector<T extends Comparable<dynamic>> with IterableMixin<T> {
   void sort() => _data.sort();
   void reverse() => _data.reversed;
   void shuffle() => _data.shuffle();
-  @override bool contains(Object? element) => _data.contains(element);
+  @override
+  bool contains(Object? element) => _data.contains(element);
   int indexOf(T element) => _data.indexOf(element);
   void remove(T element) => _data.remove(element);
   void removeAt(int index) => _data.removeAt(index);
@@ -176,5 +183,4 @@ class Vector<T extends Comparable<dynamic>> with IterableMixin<T> {
   void removeRange(int start, int end) => _data.removeRange(start, end);
   void removeWhere(bool Function(T element) test) => _data.removeWhere(test);
   void retainWhere(bool Function(T element) test) => _data.retainWhere(test);
- 
 }

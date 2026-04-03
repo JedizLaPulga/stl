@@ -10,7 +10,7 @@ void main() {
   const v1 = Vector<int>([1, 2, 3]);
   final v2 = Vector<int>([1, 2, 3]);
   final v3 = Vector<int>([1, 2, 100]);
-  
+
   print('v1 (const): $v1');
   print('v2 (final): $v2');
   print('v3 (final): $v3\n');
@@ -31,13 +31,13 @@ void main() {
   print('--- 4. Modifiers ---');
   final dynamicVec = Vector<String>(['Apple', 'Banana']);
   print('Initial Vector: $dynamicVec');
-  
+
   dynamicVec.push_back('Cherry');
   print('After push_back: $dynamicVec');
-  
+
   dynamicVec.insert(1, 'Blueberry');
   print('After insert at index 1: $dynamicVec');
-  
+
   dynamicVec.pop_back();
   print('After pop_back: $dynamicVec\n');
 
@@ -74,7 +74,6 @@ void main() {
   print('v7: $v7');
   print('v7 * 3: $v8\n');
 
-
   ///9. Subtraction
   print('--- 9. Subtraction ---');
   final v9 = Vector<int>([1, 2, 3]);
@@ -84,7 +83,6 @@ void main() {
   print('v10: $v10');
   print('v9 - v10: $v11\n');
 
- 
   /// 10. ~ operator
   final v12 = Vector<int>([1, 2, 3]);
   final v13 = ~v12;
@@ -124,7 +122,7 @@ void main() {
   final evens = numbers.where((n) => n % 2 == 0).toList();
   print('\nUsing internal `.where()` on the vector:');
   print('Filtered even numbers: $evens');
-  
+
   print('\n========================================');
   print('  🎉 Showcase Complete!');
   print('========================================\n');
