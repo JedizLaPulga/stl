@@ -2,8 +2,12 @@ import 'package:stl/stl.dart';
 
 void main() {
   print('========================================');
-  print('    📦 STL Vector for Dart - Showcase');
+  print('    📦 STL Vector & Deque - Showcase');
   print('========================================\n');
+
+  // ========================================
+  //              VECTOR SHOWCASE
+  // ========================================
 
   // 1. Initialization (const and final)
   print('--- 1. Initialization & toString() ---');
@@ -67,14 +71,14 @@ void main() {
   print('v5: $v5');
   print('v4 + v5: $v6\n');
 
-  ///8. Multiplication
+  // 8. Multiplication
   print('--- 8. Multiplication ---');
   final v7 = Vector<int>([1, 2, 3]);
   final v8 = v7 * 3;
   print('v7: $v7');
   print('v7 * 3: $v8\n');
 
-  ///9. Subtraction
+  // 9. Subtraction
   print('--- 9. Subtraction ---');
   final v9 = Vector<int>([1, 2, 3]);
   final v10 = Vector<int>([1, 2, 3]);
@@ -83,45 +87,47 @@ void main() {
   print('v10: $v10');
   print('v9 - v10: $v11\n');
 
-  /// 10. ~ operator
+  // 10. ~ operator
+  print('--- 10. ~ operator ---');
   final v12 = Vector<int>([1, 2, 3]);
   final v13 = ~v12;
   print('v12: $v12');
   print('~v12: $v13\n');
 
-  print(v12.at(1));
-  print(v12.front());
-  print(v12.back());
-  print(v12.empty());
-  print(v12.size());
-  print(v12.contains(1));
-  print(v12.indexOf(1));
-  v12.remove(1);
-  print(v12);
-  v12.removeAt(1);
-  print(v12);
-  v12.removeLast();
-  print(v12); // v12 is now empty []!
 
-  // Let's add elements back before removing a range
-  v12.push_back(10);
-  v12.push_back(20);
-  v12.push_back(30);
-  print('Repopulated to test removeRange: $v12');
+  // ========================================
+  //              DEQUE SHOWCASE
+  // ========================================
+  print('========================================');
+  print('              DEQUE SHOWCASE');
+  print('========================================\n');
 
-  v12.removeRange(0, 1);
-  print(v12);
-  v12.removeWhere((n) => n == 1);
-  print(v12);
-  v12.retainWhere((n) => n == 1);
-  print(v12);
-  v12.clear();
-  print(v12);
+  // Initialization
+  print('--- 11. Deque Initialization ---');
+  final deque = Deque<int>();
+  print('Created empty Deque. Is empty? ${deque.isEmpty}');
+  
+  // Modifiers 
+  print('\n--- 12. Deque Modifiers (insertFront / insertLast) ---');
+  deque.insertLast(10);
+  deque.insertFront(5);
+  deque.insertLast(20);
+  deque.insertFront(1);
+  print('Inserted 1, 5, 10, 20.');
+  print('Front element: ${deque.getFront()}'); 
+  print('Rear element: ${deque.getRear()}');
 
-  // Using powerful Iterable methods completely for free!
-  final evens = numbers.where((n) => n % 2 == 0).toList();
-  print('\nUsing internal `.where()` on the vector:');
-  print('Filtered even numbers: $evens');
+  // Deletion
+  print('\n--- 13. Deque Deletion (deleteFront / deleteLast) ---');
+  print('Removed from front: ${deque.deleteFront()}');
+  print('Removed from rear: ${deque.deleteLast()}');
+  print('New Front element: ${deque.getFront()}');
+  print('New Rear element: ${deque.getRear()}');
+
+  // From Iterable
+  print('\n--- 14. Deque from Iterable ---');
+  final stringDeque = Deque<String>.from(['Apple', 'Banana', 'Cherry']);
+  print('Front: ${stringDeque.getFront()}, Rear: ${stringDeque.getRear()}');
 
   print('\n========================================');
   print('  🎉 Showcase Complete!');

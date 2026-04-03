@@ -4,3 +4,4 @@
 library;
 
 export 'src/collections/vector.dart';
+export 'src/collections/deque.dart';

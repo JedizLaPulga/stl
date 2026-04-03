@@ -60,5 +60,8 @@
 
 ## 0.1.6
 - Added `Deque` collection.
+
+
+## 0.1.7
 - Added `Deque` example showcase.
 

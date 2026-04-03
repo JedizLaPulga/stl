@@ -35,5 +35,5 @@ While Dart provides excellent high-level collections, `package:stl` aims to fill
 Add this to your `pubspec.yaml`:
 
 ```yaml
-dependencies:
-  stl: ^0.1.6   
+dependencies: 
+  stl: ^0.1.7   
