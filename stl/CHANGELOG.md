@@ -33,4 +33,6 @@
 
 ## 0.1.3
 
-
+- Added `at()` method for safe random access with bounds checking.
+- Added `front()` method for accessing the first element with bounds checking.
+- Added `back()` method for accessing the last element with bounds checking.
