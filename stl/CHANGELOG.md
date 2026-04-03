@@ -54,4 +54,6 @@
 - Added `stl.collections` for more collection types.
 - Moved `Vector` to `stl.collections`.
 - Removed `stl_base.dart`.
+
+## 0.1.5
 - Cleaned up duplicate `vector.dart` source file.

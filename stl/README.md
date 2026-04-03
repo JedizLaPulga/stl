@@ -36,4 +36,4 @@ Add this to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  stl: ^0.1.4
+  stl: ^0.1.5
