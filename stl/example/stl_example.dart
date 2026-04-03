@@ -91,15 +91,27 @@ void main() {
   print('v12: $v12');
   print('~v12: $v13\n');
 
-  final v14 = Vector<int>([1, 2, 3]);
-  final v15 = Vector<int>([1, 2, 3]);
-  print('v14.empty(): ${v14.empty()}');
-  print('v15.size(): ${v15.size()}');
-  print('v14.capacity(): ${v14.capacity()}');
-  v14.reserve(10);
-  print('v14.reserve(10): ${v14.capacity()}');
-  v14.shrink_to_fit();
-  print('v14.shrink_to_fit(): ${v14.capacity()}');
+  print(v12.at(1));
+  print(v12.front());
+  print(v12.back());
+  print(v12.empty());
+  print(v12.size());
+  print(v12.contains(1));
+  print(v12.indexOf(1));
+  v12.remove(1);
+  print(v12);
+  v12.removeAt(1);
+  print(v12);
+  v12.removeLast();
+  print(v12);
+  v12.removeRange(0, 1);
+  print(v12); //exception thrown here
+  v12.removeWhere((n) => n == 1);
+  print(v12);
+  v12.retainWhere((n) => n == 1);
+  print(v12);
+  v12.clear();
+  print(v12);
 
   // Using powerful Iterable methods completely for free!
   final evens = numbers.where((n) => n % 2 == 0).toList();

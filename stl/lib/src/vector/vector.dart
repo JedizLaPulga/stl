@@ -168,7 +168,7 @@ class Vector<T extends Comparable<dynamic>> with IterableMixin<T> {
   void sort() => _data.sort();
   void reverse() => _data.reversed;
   void shuffle() => _data.shuffle();
-  bool contains(T element) => _data.contains(element);
+  @override bool contains(Object? element) => _data.contains(element);
   int indexOf(T element) => _data.indexOf(element);
   void remove(T element) => _data.remove(element);
   void removeAt(int index) => _data.removeAt(index);
@@ -176,6 +176,5 @@ class Vector<T extends Comparable<dynamic>> with IterableMixin<T> {
   void removeRange(int start, int end) => _data.removeRange(start, end);
   void removeWhere(bool Function(T element) test) => _data.removeWhere(test);
   void retainWhere(bool Function(T element) test) => _data.retainWhere(test);
-  void clear() => _data.clear();
  
 }

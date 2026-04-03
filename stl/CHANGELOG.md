@@ -49,4 +49,3 @@
 - Added `removeRange()` method for removing a range of elements.
 - Added `removeWhere()` method for removing elements that satisfy a condition.
 - Added `retainWhere()` method for retaining elements that satisfy a condition.
-- Added `clear()` method for clearing the vector.
