@@ -103,9 +103,16 @@ void main() {
   v12.removeAt(1);
   print(v12);
   v12.removeLast();
-  print(v12);
+  print(v12); // v12 is now empty []!
+
+  // Let's add elements back before removing a range
+  v12.push_back(10);
+  v12.push_back(20);
+  v12.push_back(30);
+  print('Repopulated to test removeRange: $v12');
+
   v12.removeRange(0, 1);
-  print(v12); //exception thrown here
+  print(v12);
   v12.removeWhere((n) => n == 1);
   print(v12);
   v12.retainWhere((n) => n == 1);
