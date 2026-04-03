@@ -1,0 +1,76 @@
+import 'dart:collection';
+
+/// A double-ended queue (deque) that allows for insertion and deletion of elements
+/// at both the front and the rear. 
+/// 
+/// This implementation uses [ListQueue] from `dart:collection` under the hood,
+/// which is designed to handle double-ended operations with very little friction.
+class Deque<T> {
+  final ListQueue<T> _queue;
+
+  /// Creates an empty deque.
+  Deque() : _queue = ListQueue<T>();
+
+  /// Creates a deque containing the elements of the given iterable.
+  Deque.from(Iterable<T> elements) : _queue = ListQueue<T>.from(elements);
+
+  /// Inserts an [element] at the front of the deque.
+  void insertFront(T element) {
+    _queue.addFirst(element);
+  }
+
+  /// Inserts an [element] at the last (rear) of the deque.
+  void insertLast(T element) {
+    _queue.addLast(element);
+  }
+
+  /// Removes and returns the element at the front of the deque.
+  /// Throws a [StateError] if the deque is empty.
+  T deleteFront() {
+    if (isEmpty) {
+      throw StateError('Cannot delete from an empty Deque');
+    }
+    return _queue.removeFirst();
+  }
+
+  /// Removes and returns the element at the last (rear) of the deque.
+  /// Throws a [StateError] if the deque is empty.
+  T deleteLast() {
+    if (isEmpty) {
+      throw StateError('Cannot delete from an empty Deque');
+    }
+    return _queue.removeLast();
+  }
+
+  /// Returns the element at the front of the deque without removing it.
+  /// Throws a [StateError] if the deque is empty.
+  T getFront() {
+    if (isEmpty) {
+      throw StateError('Cannot get front element from an empty Deque');
+    }
+    return _queue.first;
+  }
+
+  /// Returns the element at the rear (last) of the deque without removing it.
+  /// Throws a [StateError] if the deque is empty.
+  T getRear() {
+    if (isEmpty) {
+      throw StateError('Cannot get rear element from an empty Deque');
+    }
+    return _queue.last;
+  }
+
+  /// Returns the number of elements in the deque.
+  int get length => _queue.length;
+
+  /// Returns `true` if the deque is empty.
+  bool get isEmpty => _queue.isEmpty;
+
+  /// Returns `true` if the deque has at least one element.
+  bool get isNotEmpty => _queue.isNotEmpty;
+
+  /// Removes all elements from the deque.
+  void clear() {
+    _queue.clear();
+  }
+}

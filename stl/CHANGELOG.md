@@ -57,3 +57,6 @@
 
 ## 0.1.5
 - Cleaned up duplicate `vector.dart` source file.
+
+## 0.1.6
+- Added `Deque` collection.
