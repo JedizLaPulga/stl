@@ -60,3 +60,5 @@
 
 ## 0.1.6
 - Added `Deque` collection.
+- Added `Deque` example showcase.
+
