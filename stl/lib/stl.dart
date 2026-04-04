@@ -5,3 +5,4 @@ library;
 
 export 'src/collections/vector.dart';
 export 'src/collections/deque.dart';
+export 'src/collections/stack.dart';

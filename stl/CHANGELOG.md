@@ -65,3 +65,7 @@
 ## 0.1.7
 - Added `Deque` example showcase.
 
+## 0.1.8
+- Added `Stack` collection.
+
+

@@ -1,5 +1,6 @@
 # stl
 
+
 [![Pub Version](https://img.shields.io/pub/v/stl?color=blue&style=flat-square)](https://pub.dev/packages/stl)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -36,4 +37,4 @@ Add this to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  stl: ^0.1.7
+  stl: ^0.1.8
