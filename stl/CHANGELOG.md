@@ -67,5 +67,8 @@
 
 ## 0.1.8
 - Added `Stack` collection.
-
-
+- Added unit tests for `Stack` collection.
+- Added unit test for `Vector` collection.
+- Added unit test for `Deque` collection.
+- Removed `stl_test.dart`.
+- Added `ForwardList` collection.
