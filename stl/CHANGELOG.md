@@ -76,3 +76,5 @@
 ## 0.1.9
 - Updated `Readme.md `
 - Added test for `ForwardList` collection.
+
+## 0.2.0
