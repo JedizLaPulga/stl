@@ -76,5 +76,24 @@ void main() {
       final strings = list.map((x) => x.toString()).toList();
       expect(strings, equals(['1', '2', '3', '4', '5']));
     });
+
+    test('New 0.2.0 Methods: remove, remove_if, insert_after, erase_after, unique', () {
+      final list = ForwardList<int>.from([1, 2, 2, 3, 3, 3, 4, 1, 5]);
+      
+      list.unique();
+      expect(list.toList(), equals([1, 2, 3, 4, 1, 5]));
+
+      list.remove(1);
+      expect(list.toList(), equals([2, 3, 4, 5]));
+
+      list.remove_if((x) => x % 2 == 0);
+      expect(list.toList(), equals([3, 5]));
+
+      list.insert_after(0, 9);
+      expect(list.toList(), equals([3, 9, 5]));
+
+      list.erase_after(0);
+      expect(list.toList(), equals([3, 5]));
+    });
   });
 }

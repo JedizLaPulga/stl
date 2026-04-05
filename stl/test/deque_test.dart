@@ -54,5 +54,36 @@ void main() {
       expect(() => deque.deleteFront(), throwsStateError);
       expect(() => deque.deleteLast(), throwsStateError);
     });
+
+    test('New 0.2.0 Methods: push_back etc, operator [], swap', () {
+      final deque1 = Deque<int>.from([1, 2, 3]);
+      final deque2 = Deque<int>.from([4, 5]);
+
+      deque1.swap(deque2);
+      expect(deque1.length, equals(2));
+      expect(deque2.length, equals(3));
+      expect(deque1.front(), equals(4));
+      expect(deque2.back(), equals(3));
+
+      deque1.push_front(0);
+      deque1.push_back(6);
+      expect(deque1.front(), equals(0));
+      expect(deque1.back(), equals(6));
+
+      expect(deque1.pop_front(), equals(0));
+      expect(deque1.pop_back(), equals(6));
+
+      expect(deque1[0], equals(4));
+      expect(deque1.at(1), equals(5));
+
+      deque1[1] = 9;
+      expect(deque1[1], equals(9));
+
+      int sum = 0;
+      for (var element in deque1) {
+        sum += element;
+      }
+      expect(sum, equals(13));
+    });
   });
 }

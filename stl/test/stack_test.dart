@@ -57,5 +57,16 @@ void main() {
       expect(() => stack.top, throwsStateError);
       expect(() => stack.pop(), throwsStateError);
     });
+
+    test('New 0.2.0 Methods: swap', () {
+      final stack1 = Stack<int>.from([1, 2]);
+      final stack2 = Stack<int>.from([3, 4, 5]);
+
+      stack1.swap(stack2);
+      expect(stack1.size, equals(3));
+      expect(stack2.size, equals(2));
+      expect(stack1.top, equals(5));
+      expect(stack2.top, equals(2));
+    });
   });
 }

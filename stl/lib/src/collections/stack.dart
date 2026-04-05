@@ -51,4 +51,9 @@ class Stack<T> {
   void clear() {
     _container.clear();
   }
+
+  /// Exchanges the contents of this stack with those of [other].
+  void swap(Stack<T> other) {
+    _container.swap(other._container);
+  }
 }

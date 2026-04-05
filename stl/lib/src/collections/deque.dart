@@ -5,8 +5,11 @@ import 'dart:collection';
 /// 
 /// This implementation uses [ListQueue] from `dart:collection` under the hood,
 /// which is designed to handle double-ended operations with very little friction.
-class Deque<T> {
+class Deque<T> with IterableMixin<T> {
   final ListQueue<T> _queue;
+  
+  @override
+  Iterator<T> get iterator => _queue.iterator;
 
   /// Creates an empty deque.
   Deque() : _queue = ListQueue<T>();
@@ -72,5 +75,56 @@ class Deque<T> {
   /// Removes all elements from the deque.
   void clear() {
     _queue.clear();
+  }
+
+  /// Adds an element to the front (C++ STL naming).
+  void push_front(T element) => insertFront(element);
+
+  /// Adds an element to the back (C++ STL naming).
+  void push_back(T element) => insertLast(element);
+
+  /// Removes and returns the front element (C++ STL naming).
+  T pop_front() => deleteFront();
+
+  /// Removes and returns the back element (C++ STL naming).
+  T pop_back() => deleteLast();
+
+  /// Returns the front element without removing it (C++ STL naming).
+  T front() => getFront();
+
+  /// Returns the back element without removing it (C++ STL naming).
+  T back() => getRear();
+
+  /// Random access: retrieves the element at [index].
+  /// Note: O(N) complexity due to underlying ListQueue implementation.
+  T at(int index) {
+    if (index < 0 || index >= _queue.length) {
+      throw RangeError.index(index, this, 'Index out of bounds');
+    }
+    return _queue.elementAt(index);
+  }
+
+  /// Operator overload for random access.
+  T operator [](int index) => at(index);
+
+  /// Operator overload for setting an element at [index].
+  /// Note: O(N) complexity as it requires rebuilding parts of the queue.
+  void operator []=(int index, T value) {
+    if (index < 0 || index >= _queue.length) {
+      throw RangeError.index(index, this, 'Index out of bounds');
+    }
+    final list = _queue.toList();
+    list[index] = value;
+    _queue.clear();
+    _queue.addAll(list);
+  }
+
+  /// Exchanges the contents of this deque with those of [other].
+  void swap(Deque<T> other) {
+    final temp = _queue.toList();
+    _queue.clear();
+    _queue.addAll(other._queue);
+    other._queue.clear();
+    other._queue.addAll(temp);
   }
 }

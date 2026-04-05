@@ -122,4 +122,82 @@ class ForwardList<T> with IterableMixin<T> {
     
     _head = prev;
   }
+
+  /// Removes all elements equal to [value].
+  void remove(T value) {
+    _ForwardListNode<T>? current = _head;
+    _ForwardListNode<T>? prev = null;
+    while (current != null) {
+      if (current.value == value) {
+        if (prev == null) {
+          _head = current.next;
+        } else {
+          prev.next = current.next;
+        }
+        _length--;
+      } else {
+        prev = current;
+      }
+      current = current.next;
+    }
+  }
+
+  /// Removes all elements for which [test] returns true.
+  void remove_if(bool Function(T) test) {
+     _ForwardListNode<T>? current = _head;
+    _ForwardListNode<T>? prev = null;
+    while (current != null) {
+      if (test(current.value)) {
+        if (prev == null) {
+          _head = current.next;
+        } else {
+          prev.next = current.next;
+        }
+        _length--;
+      } else {
+        prev = current;
+      }
+      current = current.next;
+    }
+  }
+
+  /// Inserts a new element directly after the specified logical [index].
+  void insert_after(int index, T value) {
+    if (index < 0 || index >= _length) {
+      throw RangeError.index(index, this, 'Index out of bounds');
+    }
+    _ForwardListNode<T>? current = _head;
+    for (int i = 0; i < index; i++) {
+      current = current!.next;
+    }
+    current!.next = _ForwardListNode<T>(value, current.next);
+    _length++;
+  }
+
+  /// Removes the element immediately following the given [index].
+  void erase_after(int index) {
+      if (index < 0 || index >= _length - 1) {
+        throw RangeError.index(index, this, 'No element exists after index');
+      }
+      _ForwardListNode<T>? current = _head;
+      for (int i = 0; i < index; i++) {
+        current = current!.next;
+      }
+      current!.next = current.next?.next;
+      _length--;
+  }
+
+  /// Removes consecutive duplicate elements.
+  void unique() {
+    if (_head == null) return;
+    _ForwardListNode<T>? current = _head;
+    while (current != null && current.next != null) {
+       if (current.value == current.next!.value) {
+         current.next = current.next!.next;
+         _length--;
+       } else {
+         current = current.next;
+       }
+    }
+  }
 }

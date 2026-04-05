@@ -183,4 +183,44 @@ class Vector<T extends Comparable<dynamic>> with IterableMixin<T> {
   void removeRange(int start, int end) => _data.removeRange(start, end);
   void removeWhere(bool Function(T element) test) => _data.removeWhere(test);
   void retainWhere(bool Function(T element) test) => _data.retainWhere(test);
+
+  /// Replaces the contents of the vector with [count] copies of [value].
+  void assign(int count, T value) {
+    if (count < 0) throw ArgumentError('Count cannot be negative');
+    _data.clear();
+    for (var i = 0; i < count; i++) {
+      _data.add(value);
+    }
+  }
+
+  /// Resizes the vector to contain [count] elements.
+  /// If the current size is greater than [count], the container is reduced to its first [count] elements.
+  /// If the current size is less than [count], the container is expanded by inserting copies of [fill].
+  void resize(int count, T fill) {
+    if (count < 0) throw ArgumentError('Count cannot be negative');
+    if (count < _data.length) {
+      _data.length = count;
+    } else if (count > _data.length) {
+      while (_data.length < count) {
+        _data.add(fill);
+      }
+    }
+  }
+
+  /// Inserts a range of elements from [iterable] starting at [index].
+  void insertAll(int index, Iterable<T> iterable) {
+    if (index < 0 || index > _data.length) {
+      throw RangeError.index(index, _data, 'Index out of bounds for insertion');
+    }
+    _data.insertAll(index, iterable);
+  }
+
+  /// Exchanges the contents of this vector with those of [other].
+  void swap(Vector<T> other) {
+    final temp = List<T>.from(_data);
+    _data.clear();
+    _data.addAll(other._data);
+    other._data.clear();
+    other._data.addAll(temp);
+  }
 }
