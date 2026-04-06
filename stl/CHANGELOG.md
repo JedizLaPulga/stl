@@ -86,3 +86,5 @@
 - Added index-based random access array functionality (`operator []`, `operator []=`, `at()`) and `swap()` method to `Deque<T>`.
 - Greatly expanded `ForwardList<T>` singly-linked manipulation algorithms: `remove()`, `remove_if()`, `insert_after()`, `erase_after()`, and `unique()`.
 - Implemented state `swap()` adapter for `Stack<T>`.
+
+## 0.2.1

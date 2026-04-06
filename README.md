@@ -44,7 +44,7 @@ Add some magic to your `pubspec.yaml` file:
 
 ```yaml
 dependencies: 
-  stl: ^0.2.0
+  stl: ^0.2.1
 ```
 
 Then fetch the latest version:
