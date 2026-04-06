@@ -88,3 +88,9 @@
 - Implemented state `swap()` adapter for `Stack<T>`.
 
 ## 0.2.1
+
+### Added
+- Created new `ranges` sub-module for generating standard ranges.
+- Implemented `NumberLine<T extends num>` to cleanly mimic iterable sequences of numbers with customized `start`, `end`, and `step` properties.
+- `NumberLine` supports generic types, making it easy to generate ranges of both `int` and `double` seamlessly.
+- Mixed in `IterableBase<T>` giving `NumberLine` out-of-the-box support for `for-in` blocks and list extensions like `.map`, `.reduce` and `.where`.
