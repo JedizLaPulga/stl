@@ -61,4 +61,21 @@ class Stack<T> with IterableMixin<T> {
   void swap(Stack<T> other) {
     _container.swap(other._container);
   }
+
+  @override
+  int get hashCode => Object.hashAll(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! Stack<T>) return false;
+    if (size != other.size) return false;
+    
+    final it1 = iterator;
+    final it2 = other.iterator;
+    while (it1.moveNext() && it2.moveNext()) {
+      if (it1.current != it2.current) return false;
+    }
+    return true;
+  }
 }

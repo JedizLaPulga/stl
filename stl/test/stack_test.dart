@@ -82,5 +82,27 @@ void main() {
       final mapped = stack.map((x) => x * 10).toList();
       expect(mapped, equals([30, 20, 10]));
     });
+
+    test('Equality and HashCode', () {
+      final stack1 = Stack<int>.from([1, 2, 3]);
+      final stack2 = Stack<int>.from([1, 2, 3]);
+      final stack3 = Stack<int>.from([1, 2, 4]);
+      
+      expect(stack1 == stack2, isTrue);
+      expect(stack1.hashCode == stack2.hashCode, isTrue);
+      
+      expect(stack1 == stack3, isFalse);
+    });
+
+    test('Search Utilities (contains, elementAt)', () {
+      final stack = Stack<int>.from([10, 20, 30]);
+      
+      // Top is 30, index 0. Then 20 at index 1. Then 10 at index 2.
+      expect(stack.contains(20), isTrue);
+      expect(stack.contains(40), isFalse);
+      
+      expect(stack.elementAt(0), equals(30));
+      expect(stack.elementAt(2), equals(10));
+    });
   });
 }
