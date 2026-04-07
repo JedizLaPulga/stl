@@ -14,9 +14,9 @@ Originally inspired by the C++ Standard Template Library (STL), this package has
 
 ### 🎯 Why use this package?
 
-* 📦 **Massive Bank of Collections:** From `Vector` and `Deque` to `Stack`, `ForwardList`, and more!
+* 📦 **Massive Bank of Collections:** From `Vector` and `Deque` to `Stack`, `Pair`, and `ForwardList`!
 * ⚡ **Deterministic Performance:** Predictable time complexity ($O(1)$, $O(\log n)$, etc.) focusing on optimized system-level logic.
-* 🛠 **Familiar yet Dart-y API:** Intuitive interfaces that blend classic collection methodologies with Dart's modern paradigms.
+* 🛠 **Familiar yet Dart-y API:** Native `Iterable` mixins seamlessly integrated with perfectly replicated C++ architectural rules, wrapped cleanly in standard Dart `camelCase` for maximum interoperability.
 * 🎨 **Ready for Everything:** Perfect for logic-heavy Flutter apps, game engines, state management, or backend systems.
 
 ---
@@ -30,9 +30,10 @@ Here are the data structures we currently support (and what we are actively buil
 | **Linear** | 🚂 `Vector<T>` | ✅ | Dynamic array with $O(1)$ random access. |
 | | 🚅 `ForwardList<T>` | ✅ | Singly linked list for fast forward traversal. |
 | | 🚋 `List<T>` | 🚧 | Doubly linked list for constant time insertions. |
-| **Adapters** | 🥞 `Stack<T>` | ✅ | LIFO (Last-In, First-Out) data structure. |
+| **Adapters** | 🥞 `Stack<T>` | ✅ | LIFO (Last-In, First-Out) data structure over a deque. |
 | | 🚏 `Queue<T>` | 🚧 | FIFO (First-In, First-Out) data structure. |
 | | 🌭 `Deque<T>` | ✅ | Double-ended queue for fast front/back operations. |
+| **Utility** | 👯 `Pair<T1, T2>` | ✅ | Native C++ utility structure to hold heterogeneous objects, featuring deep equality, record destructuring, and map translations. |
 
 > *(Note: 🚧 = Under Construction, ✅ = Available)*
 
@@ -44,17 +45,53 @@ Add some magic to your `pubspec.yaml` file:
 
 ```yaml
 dependencies: 
-  stl: ^0.2.2
+  stl: ^0.2.3
 ```
 
-Then fetch the latest version:
+Then fetch the latest version and import it in your codebase:
 ```bash
 dart pub get
 ```
-
-Import it in your next big project:
 ```dart
 import 'package:stl/stl.dart';
+```
+
+---
+
+## 💻 Quick Usage Examples
+
+Your collections natively support `camelCase` methods mirroring strict C++ structure!
+
+### Vector Showcase
+```dart
+final vec = Vector<String>(['Apple', 'Banana']);
+vec.pushBack('Cherry');
+print(vec.back()); // "Cherry"
+```
+
+### Stack & Iterables
+```dart
+final stack = Stack<int>.from([1, 2, 3]); // Top element is 3
+var removed = stack.pop(); // Returns 3
+
+// Instantly iterable because of IterableMixin! 
+// Iterates top-to-bottom!
+for (var item in stack) {
+  print(item); // 2, 1
+}
+```
+
+### The Powerful Pair
+```dart
+// Effortless generation
+var duo = makePair(99, 'Balloons');
+
+// Native Dart 3 Tuple/Record interop!
+var (count, item) = duo.record;
+
+// Deep equality across arrays, maps, and tests!
+var sibling = makePair(99, 'Balloons');
+print(duo == sibling); // True!
 ```
 
 ---
