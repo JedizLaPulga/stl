@@ -1,11 +1,16 @@
+import 'dart:collection';
 import 'deque.dart';
 
 /// An adapter class that provides a Last-In, First-Out (LIFO) data structure.
 ///
 /// In the C++ STL, `std::stack` wraps an underlying container (by default a deque)
 /// and restricts the interface to LIFO operations.
-class Stack<T> {
+class Stack<T> with IterableMixin<T> {
   final Deque<T> _container;
+
+  /// Returns an iterator that iterates from the top of the stack to the bottom (LIFO order).
+  @override
+  Iterator<T> get iterator => _container.toList().reversed.iterator;
 
   /// Creates an empty stack using a [Deque] as the default underlying container.
   Stack() : _container = Deque<T>();
@@ -20,13 +25,13 @@ class Stack<T> {
     _container.insertLast(value);
   }
 
-  /// Removes the top element from the stack.
+  /// Removes and returns the top element from the stack.
   /// Throws a [StateError] if the stack is empty.
-  void pop() {
+  T pop() {
     if (empty) {
       throw StateError('Cannot pop from an empty Stack');
     }
-    _container.deleteLast();
+    return _container.deleteLast();
   }
 
   /// Returns the top element of the stack without removing it.

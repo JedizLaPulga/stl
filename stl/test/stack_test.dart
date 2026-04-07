@@ -32,15 +32,18 @@ void main() {
       final stack = Stack<int>.from([10, 20, 30]);
       
       expect(stack.top, equals(30));
-      stack.pop();
+      final popped1 = stack.pop();
+      expect(popped1, equals(30));
       
       expect(stack.size, equals(2));
       expect(stack.top, equals(20));
       
-      stack.pop();
+      final popped2 = stack.pop();
+      expect(popped2, equals(20));
       expect(stack.top, equals(10));
       
-      stack.pop();
+      final popped3 = stack.pop();
+      expect(popped3, equals(10));
       expect(stack.empty, isTrue);
     });
 
@@ -67,6 +70,17 @@ void main() {
       expect(stack2.size, equals(2));
       expect(stack1.top, equals(5));
       expect(stack2.top, equals(2));
+    });
+
+    test('Iterable properties (LIFO order)', () {
+      final stack = Stack<int>.from([1, 2, 3]);
+      
+      // Top element is 3. Iteration should be 3, 2, 1.
+      final asList = stack.toList();
+      expect(asList, equals([3, 2, 1]));
+      
+      final mapped = stack.map((x) => x * 10).toList();
+      expect(mapped, equals([30, 20, 10]));
     });
   });
 }
