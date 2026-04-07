@@ -43,16 +43,16 @@ class Vector<T extends Comparable<dynamic>> with IterableMixin<T> {
   }
 
   /// Adds an element to the end of the vector.
-  void push_back(T value) {
+  void pushBack(T value) {
     _data.add(value);
   }
 
   /// Removes the last element from the vector.
   ///
   /// Guarantees memory safety by throwing a [StateError] if the vector is empty.
-  void pop_back() {
+  void popBack() {
     if (_data.isEmpty) {
-      throw StateError('Cannot pop_back from an empty vector');
+      throw StateError('Cannot popBack from an empty vector');
     }
     _data.removeLast();
   }

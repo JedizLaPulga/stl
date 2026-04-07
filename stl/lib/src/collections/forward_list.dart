@@ -85,14 +85,14 @@ class ForwardList<T> with IterableMixin<T> {
   }
 
   /// Adds an element to the front of the list.
-  void push_front(T value) {
+  void pushFront(T value) {
     _head = _ForwardListNode<T>(value, _head);
     _length++;
   }
 
   /// Removes the first element from the list.
   /// Throws a [StateError] if the list is empty.
-  void pop_front() {
+  void popFront() {
     if (_head == null) {
       throw StateError('Cannot pop from an empty ForwardList');
     }
@@ -143,7 +143,7 @@ class ForwardList<T> with IterableMixin<T> {
   }
 
   /// Removes all elements for which [test] returns true.
-  void remove_if(bool Function(T) test) {
+  void removeIf(bool Function(T) test) {
      _ForwardListNode<T>? current = _head;
     _ForwardListNode<T>? prev = null;
     while (current != null) {
@@ -162,7 +162,7 @@ class ForwardList<T> with IterableMixin<T> {
   }
 
   /// Inserts a new element directly after the specified logical [index].
-  void insert_after(int index, T value) {
+  void insertAfter(int index, T value) {
     if (index < 0 || index >= _length) {
       throw RangeError.index(index, this, 'Index out of bounds');
     }
@@ -175,7 +175,7 @@ class ForwardList<T> with IterableMixin<T> {
   }
 
   /// Removes the element immediately following the given [index].
-  void erase_after(int index) {
+  void eraseAfter(int index) {
       if (index < 0 || index >= _length - 1) {
         throw RangeError.index(index, this, 'No element exists after index');
       }

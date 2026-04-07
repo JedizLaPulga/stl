@@ -78,16 +78,16 @@ class Deque<T> with IterableMixin<T> {
   }
 
   /// Adds an element to the front (C++ STL naming).
-  void push_front(T element) => insertFront(element);
+  void pushFront(T element) => insertFront(element);
 
   /// Adds an element to the back (C++ STL naming).
-  void push_back(T element) => insertLast(element);
+  void pushBack(T element) => insertLast(element);
 
   /// Removes and returns the front element (C++ STL naming).
-  T pop_front() => deleteFront();
+  T popFront() => deleteFront();
 
   /// Removes and returns the back element (C++ STL naming).
-  T pop_back() => deleteLast();
+  T popBack() => deleteLast();
 
   /// Returns the front element without removing it (C++ STL naming).
   T front() => getFront();
