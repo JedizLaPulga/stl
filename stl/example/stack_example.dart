@@ -22,7 +22,7 @@ void main() {
   for (var item in stack1) {
     print(' - $item');
   }
-  
+
   var loudStack = stack1.map((item) => item.toUpperCase()).toList();
   print('Mapped into an uppercased List: $loudStack');
 

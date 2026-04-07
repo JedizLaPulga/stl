@@ -55,7 +55,10 @@ void main() {
     test('iterable mixin features', () {
       var range = NumberLine<double>(0.0, 2.0, step: 0.5);
       expect(range.map((e) => e * 2).toList(), equals([0.0, 1.0, 2.0, 3.0]));
-      expect(range.where((element) => element >= 1.0).toList(), equals([1.0, 1.5]));
+      expect(
+        range.where((element) => element >= 1.0).toList(),
+        equals([1.0, 1.5]),
+      );
     });
   });
 }

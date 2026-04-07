@@ -11,7 +11,7 @@ class NumberLine<T extends num> extends IterableBase<T> {
   final T step;
 
   NumberLine(this.start, this.end, {T? step})
-      : step = step ?? _defaultStep(start) {
+    : step = step ?? _defaultStep(start) {
     if (this.step == 0) {
       throw ArgumentError('Step cannot be zero.');
     }
@@ -33,10 +33,10 @@ class NumberLine<T extends num> extends IterableBase<T> {
       } else {
         if (element > start || element <= end) return false;
       }
-      
+
       num diff = element - start;
       num rem = diff % step;
-      
+
       // Handle floating point imprecision nicely
       if (rem.abs() < 1e-10 || (rem.abs() - step.abs()).abs() < 1e-10) {
         return true;
@@ -72,7 +72,7 @@ class _NumberLineIterator<T extends num> implements Iterator<T> {
     }
 
     T nextValue = (_current! + _line.step) as T;
-    
+
     // For doubles, we should handle slight precision issues
     // by comparing with a small epsilon, but standard comparison is usually fine
     // as long as step doesn't accumulate huge errors out of nowhere.
@@ -81,7 +81,7 @@ class _NumberLineIterator<T extends num> implements Iterator<T> {
     } else {
       if (nextValue <= _line.end) return false;
     }
-    
+
     _current = nextValue;
     return true;
   }

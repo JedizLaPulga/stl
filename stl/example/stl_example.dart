@@ -94,7 +94,6 @@ void main() {
   print('v12: $v12');
   print('~v12: $v13\n');
 
-
   // ========================================
   //              DEQUE SHOWCASE
   // ========================================
@@ -106,15 +105,15 @@ void main() {
   print('--- 11. Deque Initialization ---');
   final deque = Deque<int>();
   print('Created empty Deque. Is empty? ${deque.isEmpty}');
-  
-  // Modifiers 
+
+  // Modifiers
   print('\n--- 12. Deque Modifiers (insertFront / insertLast) ---');
   deque.insertLast(10);
   deque.insertFront(5);
   deque.insertLast(20);
   deque.insertFront(1);
   print('Inserted 1, 5, 10, 20.');
-  print('Front element: ${deque.getFront()}'); 
+  print('Front element: ${deque.getFront()}');
   print('Rear element: ${deque.getRear()}');
 
   // Deletion

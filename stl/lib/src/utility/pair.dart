@@ -8,6 +8,27 @@ class Pair<T1, T2> {
 
   Pair(this.first, this.second);
 
+  /// Creates a Pair from a modern Dart 3 Record.
+  Pair.fromRecord((T1, T2) record) : first = record.$1, second = record.$2;
+
+  /// Returns the pair as a modern Dart 3 Record for easy destructuring.
+  /// Example: `var (a, b) = myPair.record;`
+  (T1, T2) get record => (first, second);
+
+  /// Creates a Pair from a [MapEntry].
+  Pair.fromMapEntry(MapEntry<T1, T2> entry)
+    : first = entry.key,
+      second = entry.value;
+
+  /// Returns the pair as a [MapEntry], making it perfectly compatible with Dart Maps.
+  MapEntry<T1, T2> toMapEntry() => MapEntry(first, second);
+
+  /// Returns the elements as a standard Dart List.
+  List<dynamic> toList() => [first, second];
+
+  /// Creates a shallow clone of the Pair.
+  Pair<T1, T2> clone() => Pair<T1, T2>(first, second);
+
   /// Exchanges the contents of this pair with those of [other].
   void swap(Pair<T1, T2> other) {
     final tempFirst = first;
@@ -33,4 +54,25 @@ class Pair<T1, T2> {
 }
 
 /// A convenience function to create a [Pair], mimicking C++ `std::make_pair`.
-Pair<T1, T2> makePair<T1, T2>(T1 first, T2 second) => Pair<T1, T2>(first, second);
+Pair<T1, T2> makePair<T1, T2>(T1 first, T2 second) =>
+    Pair<T1, T2>(first, second);
+
+/// Adds C++ `<utility>` relational operators securely without sacrificing generic safety.
+/// These operators (`<`, `<=`, `>`, `>=`, `compareTo`) automatically unlock
+/// when both `T1` and `T2` happen to extend `Comparable`.
+extension ComparablePair<
+  T1 extends Comparable<dynamic>,
+  T2 extends Comparable<dynamic>
+>
+    on Pair<T1, T2> {
+  int compareTo(Pair<T1, T2> other) {
+    int firstComparison = first.compareTo(other.first);
+    if (firstComparison != 0) return firstComparison;
+    return second.compareTo(other.second);
+  }
+
+  bool operator <(Pair<T1, T2> other) => compareTo(other) < 0;
+  bool operator <=(Pair<T1, T2> other) => compareTo(other) <= 0;
+  bool operator >(Pair<T1, T2> other) => compareTo(other) > 0;
+  bool operator >=(Pair<T1, T2> other) => compareTo(other) >= 0;
+}

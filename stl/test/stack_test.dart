@@ -22,7 +22,7 @@ void main() {
       stack.push('a');
       expect(stack.top, equals('a'));
       expect(stack.size, equals(1));
-      
+
       stack.push('b');
       expect(stack.top, equals('b'));
       expect(stack.size, equals(2));
@@ -30,18 +30,18 @@ void main() {
 
     test('Pop', () {
       final stack = Stack<int>.from([10, 20, 30]);
-      
+
       expect(stack.top, equals(30));
       final popped1 = stack.pop();
       expect(popped1, equals(30));
-      
+
       expect(stack.size, equals(2));
       expect(stack.top, equals(20));
-      
+
       final popped2 = stack.pop();
       expect(popped2, equals(20));
       expect(stack.top, equals(10));
-      
+
       final popped3 = stack.pop();
       expect(popped3, equals(10));
       expect(stack.empty, isTrue);
@@ -56,7 +56,7 @@ void main() {
 
     test('Throws StateError on empty pop or top', () {
       final stack = Stack<int>();
-      
+
       expect(() => stack.top, throwsStateError);
       expect(() => stack.pop(), throwsStateError);
     });
@@ -74,11 +74,11 @@ void main() {
 
     test('Iterable properties (LIFO order)', () {
       final stack = Stack<int>.from([1, 2, 3]);
-      
+
       // Top element is 3. Iteration should be 3, 2, 1.
       final asList = stack.toList();
       expect(asList, equals([3, 2, 1]));
-      
+
       final mapped = stack.map((x) => x * 10).toList();
       expect(mapped, equals([30, 20, 10]));
     });
@@ -87,20 +87,20 @@ void main() {
       final stack1 = Stack<int>.from([1, 2, 3]);
       final stack2 = Stack<int>.from([1, 2, 3]);
       final stack3 = Stack<int>.from([1, 2, 4]);
-      
+
       expect(stack1 == stack2, isTrue);
       expect(stack1.hashCode == stack2.hashCode, isTrue);
-      
+
       expect(stack1 == stack3, isFalse);
     });
 
     test('Search Utilities (contains, elementAt)', () {
       final stack = Stack<int>.from([10, 20, 30]);
-      
+
       // Top is 30, index 0. Then 20 at index 1. Then 10 at index 2.
       expect(stack.contains(20), isTrue);
       expect(stack.contains(40), isFalse);
-      
+
       expect(stack.elementAt(0), equals(30));
       expect(stack.elementAt(2), equals(10));
     });

@@ -20,18 +20,18 @@ void main() {
       expect(vec.at(1), equals(20));
       expect(vec.front(), equals(10));
       expect(vec.back(), equals(30));
-      
+
       vec[1] = 25;
       expect(vec[1], equals(25));
     });
 
     test('Bounds checking', () {
       final vec = Vector<int>([10]);
-      
+
       expect(() => vec[1], throwsRangeError);
       expect(() => vec[-1], throwsRangeError);
       expect(() => vec.at(1), throwsRangeError);
-      
+
       final emptyVec = Vector<int>(<int>[]);
       expect(() => emptyVec.front(), throwsStateError);
       expect(() => emptyVec.back(), throwsStateError);
@@ -39,19 +39,19 @@ void main() {
 
     test('Modifiers', () {
       final vec = Vector<int>(<int>[]);
-      
+
       vec.pushBack(10);
       expect(vec.size(), equals(1));
       expect(vec.back(), equals(10));
-      
+
       vec.insert(0, 5);
       expect(vec.front(), equals(5));
       expect(vec.size(), equals(2));
-      
+
       vec.popBack();
       expect(vec.size(), equals(1));
       expect(vec.back(), equals(5));
-      
+
       vec.clear();
       expect(vec.empty(), isTrue);
     });
@@ -60,10 +60,10 @@ void main() {
       final vec1 = Vector<int>([1, 2, 3]);
       final vec2 = Vector<int>([1, 2, 3]);
       final vec3 = Vector<int>([1, 2, 4]);
-      
+
       expect(vec1 == vec2, isTrue);
       expect(vec1 == vec3, isFalse);
-      
+
       expect(vec1 < vec3, isTrue);
       expect(vec3 > vec1, isTrue);
     });
@@ -71,15 +71,15 @@ void main() {
     test('Operators: +, -, *', () {
       final vec1 = Vector<int>([1, 2]);
       final vec2 = Vector<int>([3, 4]);
-      
+
       final added = vec1 + vec2;
       expect(added.size(), equals(4));
       expect(added[2], equals(3));
-      
+
       final multiplied = vec1 * 2;
       expect(multiplied.size(), equals(4));
       expect(multiplied[2], equals(1));
-      
+
       final vec3 = Vector<int>([1, 2, 3, 2, 4]);
       final vec4 = Vector<int>([2]);
       final subtracted = vec3 - vec4;

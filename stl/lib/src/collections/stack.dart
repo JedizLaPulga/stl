@@ -47,6 +47,7 @@ class Stack<T> with IterableMixin<T> {
   bool get empty => _container.isEmpty;
 
   /// Returns `true` if the stack has at least one element.
+  @override
   bool get isNotEmpty => _container.isNotEmpty;
 
   /// Returns the number of elements in the stack.
@@ -70,7 +71,7 @@ class Stack<T> with IterableMixin<T> {
     if (identical(this, other)) return true;
     if (other is! Stack<T>) return false;
     if (size != other.size) return false;
-    
+
     final it1 = iterator;
     final it2 = other.iterator;
     while (it1.moveNext() && it2.moveNext()) {

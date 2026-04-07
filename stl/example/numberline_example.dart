@@ -2,7 +2,7 @@ import 'package:stl/stl.dart';
 
 void main() {
   print('--- NumberLine Examples ---\n');
-  
+
   // 1. Basic Integer Range
   var basicLine = NumberLine(1, 10);
   print('1. Basic Integer Range (1 to 10):');
@@ -14,7 +14,7 @@ void main() {
   print('2. Custom Step Increment of 4 (0 to 20):');
   print(stepLine.toList());
   print('');
-  
+
   // 3. Descending Numbers
   var descendingLine = NumberLine(10, 0, step: -2);
   print('3. Descending Numbers (10 to 0) jumping -2:');
@@ -38,8 +38,12 @@ void main() {
   print('6. Powerful List methods (finding even numbers using .where()):');
   print(NumberLine(1, 10).where((x) => x % 2 == 0).toList());
   print('');
-  
+
   print('7. Fast Mathematical `.contains()` check WITHOUT generating lists:');
-  print('Does NumberLine(0, 20, step: 4) contain 12? -> ${stepLine.contains(12)}');
-  print('Does NumberLine(0, 20, step: 4) contain 13? -> ${stepLine.contains(13)}');
+  print(
+    'Does NumberLine(0, 20, step: 4) contain 12? -> ${stepLine.contains(12)}',
+  );
+  print(
+    'Does NumberLine(0, 20, step: 4) contain 13? -> ${stepLine.contains(13)}',
+  );
 }

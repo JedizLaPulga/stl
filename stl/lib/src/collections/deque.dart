@@ -1,13 +1,13 @@
 import 'dart:collection';
 
 /// A double-ended queue (deque) that allows for insertion and deletion of elements
-/// at both the front and the rear. 
-/// 
+/// at both the front and the rear.
+///
 /// This implementation uses [ListQueue] from `dart:collection` under the hood,
 /// which is designed to handle double-ended operations with very little friction.
 class Deque<T> with IterableMixin<T> {
   final ListQueue<T> _queue;
-  
+
   @override
   Iterator<T> get iterator => _queue.iterator;
 
@@ -64,12 +64,15 @@ class Deque<T> with IterableMixin<T> {
   }
 
   /// Returns the number of elements in the deque.
+  @override
   int get length => _queue.length;
 
   /// Returns `true` if the deque is empty.
+  @override
   bool get isEmpty => _queue.isEmpty;
 
   /// Returns `true` if the deque has at least one element.
+  @override
   bool get isNotEmpty => _queue.isNotEmpty;
 
   /// Removes all elements from the deque.

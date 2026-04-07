@@ -9,7 +9,7 @@ class _ForwardListNode<T> {
 
 class _ForwardListIterator<T> implements Iterator<T> {
   _ForwardListNode<T>? _current;
-  _ForwardListNode<T>? _head;
+  final _ForwardListNode<T>? _head;
   bool _started = false;
 
   _ForwardListIterator(this._head);
@@ -51,13 +51,13 @@ class ForwardList<T> with IterableMixin<T> {
   /// of the iterable will be at the front of the forward list.
   ForwardList.from(Iterable<T> elements) {
     if (elements.isEmpty) return;
-    
+
     var iter = elements.iterator;
     iter.moveNext();
-    
+
     _head = _ForwardListNode<T>(iter.current);
     _length = 1;
-    
+
     var current = _head;
     while (iter.moveNext()) {
       current!.next = _ForwardListNode<T>(iter.current);
@@ -109,7 +109,7 @@ class ForwardList<T> with IterableMixin<T> {
   /// Reverses the list in place (O(N) time complexity).
   /// This is highly efficient as it just redirects the underlying node pointers.
   void reverse() {
-    _ForwardListNode<T>? prev = null;
+    _ForwardListNode<T>? prev;
     _ForwardListNode<T>? current = _head;
     _ForwardListNode<T>? next;
 
@@ -119,14 +119,14 @@ class ForwardList<T> with IterableMixin<T> {
       prev = current;
       current = next;
     }
-    
+
     _head = prev;
   }
 
   /// Removes all elements equal to [value].
   void remove(T value) {
     _ForwardListNode<T>? current = _head;
-    _ForwardListNode<T>? prev = null;
+    _ForwardListNode<T>? prev;
     while (current != null) {
       if (current.value == value) {
         if (prev == null) {
@@ -144,8 +144,8 @@ class ForwardList<T> with IterableMixin<T> {
 
   /// Removes all elements for which [test] returns true.
   void removeIf(bool Function(T) test) {
-     _ForwardListNode<T>? current = _head;
-    _ForwardListNode<T>? prev = null;
+    _ForwardListNode<T>? current = _head;
+    _ForwardListNode<T>? prev;
     while (current != null) {
       if (test(current.value)) {
         if (prev == null) {
@@ -176,15 +176,15 @@ class ForwardList<T> with IterableMixin<T> {
 
   /// Removes the element immediately following the given [index].
   void eraseAfter(int index) {
-      if (index < 0 || index >= _length - 1) {
-        throw RangeError.index(index, this, 'No element exists after index');
-      }
-      _ForwardListNode<T>? current = _head;
-      for (int i = 0; i < index; i++) {
-        current = current!.next;
-      }
-      current!.next = current.next?.next;
-      _length--;
+    if (index < 0 || index >= _length - 1) {
+      throw RangeError.index(index, this, 'No element exists after index');
+    }
+    _ForwardListNode<T>? current = _head;
+    for (int i = 0; i < index; i++) {
+      current = current!.next;
+    }
+    current!.next = current.next?.next;
+    _length--;
   }
 
   /// Removes consecutive duplicate elements.
@@ -192,12 +192,12 @@ class ForwardList<T> with IterableMixin<T> {
     if (_head == null) return;
     _ForwardListNode<T>? current = _head;
     while (current != null && current.next != null) {
-       if (current.value == current.next!.value) {
-         current.next = current.next!.next;
-         _length--;
-       } else {
-         current = current.next;
-       }
+      if (current.value == current.next!.value) {
+        current.next = current.next!.next;
+        _length--;
+      } else {
+        current = current.next;
+      }
     }
   }
 }

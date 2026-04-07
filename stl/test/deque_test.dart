@@ -20,21 +20,21 @@ void main() {
 
     test('Insert and delete operations', () {
       final deque = Deque<String>();
-      
+
       deque.insertLast('a');
       expect(deque.getRear(), equals('a'));
       expect(deque.getFront(), equals('a'));
-      
+
       deque.insertFront('b');
       expect(deque.getFront(), equals('b'));
       expect(deque.getRear(), equals('a'));
       expect(deque.length, equals(2));
-      
+
       final back = deque.deleteLast();
       expect(back, equals('a'));
       expect(deque.length, equals(1));
       expect(deque.getFront(), equals('b'));
-      
+
       final front = deque.deleteFront();
       expect(front, equals('b'));
       expect(deque.isEmpty, isTrue);
@@ -48,7 +48,7 @@ void main() {
 
     test('Throws StateError on empty gets and deletes', () {
       final deque = Deque<int>();
-      
+
       expect(() => deque.getFront(), throwsStateError);
       expect(() => deque.getRear(), throwsStateError);
       expect(() => deque.deleteFront(), throwsStateError);

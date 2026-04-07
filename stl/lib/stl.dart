@@ -9,4 +9,3 @@ export 'src/collections/stack.dart';
 export 'src/collections/forward_list.dart';
 export 'src/ranges/numberline.dart';
 export 'src/utility/pair.dart';
-
