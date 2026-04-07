@@ -40,7 +40,7 @@ void main() {
     test('Modifiers', () {
       final vec = Vector<int>(<int>[]);
       
-      vec.push_back(10);
+      vec.pushBack(10);
       expect(vec.size(), equals(1));
       expect(vec.back(), equals(10));
       
@@ -48,7 +48,7 @@ void main() {
       expect(vec.front(), equals(5));
       expect(vec.size(), equals(2));
       
-      vec.pop_back();
+      vec.popBack();
       expect(vec.size(), equals(1));
       expect(vec.back(), equals(5));
       

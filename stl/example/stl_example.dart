@@ -31,19 +31,19 @@ void main() {
   }
   print('Is v1 <= v2? ${v1 <= v2}\n');
 
-  // 4. Modifiers (push_back, pop_back, insert, clear)
+  // 4. Modifiers (pushBack, popBack, insert, clear)
   print('--- 4. Modifiers ---');
   final dynamicVec = Vector<String>(['Apple', 'Banana']);
   print('Initial Vector: $dynamicVec');
 
-  dynamicVec.push_back('Cherry');
-  print('After push_back: $dynamicVec');
+  dynamicVec.pushBack('Cherry');
+  print('After pushBack: $dynamicVec');
 
   dynamicVec.insert(1, 'Blueberry');
   print('After insert at index 1: $dynamicVec');
 
-  dynamicVec.pop_back();
-  print('After pop_back: $dynamicVec\n');
+  dynamicVec.popBack();
+  print('After popBack: $dynamicVec\n');
 
   // 5. Memory Safety & Bounds Checking
   print('--- 5. Memory Safety & Strict Bounds ---');
