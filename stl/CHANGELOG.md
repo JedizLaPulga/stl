@@ -113,3 +113,10 @@
 
 ### Changed
 - Major documentation optimization: the API `README.md` has been completely revitalized to document the new `camelCase` infrastructure, properly highlight the new `Stack` modifiers, and beautifully showcase `Pair<T1, T2>`.
+
+
+## 0.2.4
+- Added ZipRange - Mimics C++23 `std::views::zip`.
+- Added ChunkRange - Mimics C++23 `std::views::chunk`.
+- Added RepeatRange - Mimics C++23 `std::views::repeat`.
+- Added  CartesianRange - Mimics C++23 `std::views::cartesian_product`.

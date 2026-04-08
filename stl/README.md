@@ -45,7 +45,7 @@ Add some magic to your `pubspec.yaml` file:
 
 ```yaml
 dependencies: 
-  stl: ^0.2.3
+  stl: ^0.2.4
 ```
 
 Then fetch the latest version and import it in your codebase:
