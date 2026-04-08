@@ -1,22 +1,24 @@
-import 'dart:collection';
+import 'dart:collection' as collection;
+import 'dart:collection' show IterableMixin;
 
-/// A collection that contains no duplicate elements.
+/// An unordered collection that contains no duplicate elements.
 ///
-/// In the C++ STL, `std::set` is generally a balanced binary tree. 
-/// However, this generic `Set` utilities Dart's default linked hash table for 
-/// optimized insertion-ordered uniqueness. For a pure Tree-based C++ `std::set` equivalent, 
-/// utilize [SortedSet]. For an purely unordered, fast C++ hash set, utilize [HashSet].
-class Set<T> with IterableMixin<T> {
-  final LinkedHashSet<T> _container;
+/// In the C++ STL, this matches `std::unordered_set`. 
+/// It utilizes a fast hash table under the hood and makes no guarantees 
+/// about the iteration order of the elements. 
+/// For an insertion-ordered set, use the generic [Set].
+/// For a strictly sorted set, use [SortedSet].
+class HashSet<T> with IterableMixin<T> {
+  final collection.HashSet<T> _container;
 
   @override
   Iterator<T> get iterator => _container.iterator;
 
-  /// Creates an empty Set.
-  Set() : _container = LinkedHashSet<T>();
+  /// Creates an empty HashSet.
+  HashSet() : _container = collection.HashSet<T>();
 
-  /// Creates a Set containing the elements of the given iterable.
-  Set.from(Iterable<T> elements) : _container = LinkedHashSet<T>.from(elements);
+  /// Creates a HashSet containing the elements of the given iterable.
+  HashSet.from(Iterable<T> elements) : _container = collection.HashSet<T>.from(elements);
 
   /// Inserts a new [element] into the set.
   /// 
@@ -54,7 +56,7 @@ class Set<T> with IterableMixin<T> {
   bool get isNotEmpty => _container.isNotEmpty;
 
   /// Exchanges the contents of this set with those of [other].
-  void swap(Set<T> other) {
+  void swap(HashSet<T> other) {
     final temp = _container.toSet();
     _container.clear();
     _container.addAll(other._container);
@@ -63,18 +65,18 @@ class Set<T> with IterableMixin<T> {
   }
 
   /// Returns a new set with the elements of this that are not in [other].
-  Set<T> difference(Set<T> other) {
-    return Set<T>.from(_container.difference(other._container));
+  HashSet<T> difference(HashSet<T> other) {
+    return HashSet<T>.from(_container.difference(other._container));
   }
 
   /// Returns a new set which contains all the elements of this set and [other].
-  Set<T> union(Set<T> other) {
-    return Set<T>.from(_container.union(other._container));
+  HashSet<T> union(HashSet<T> other) {
+    return HashSet<T>.from(_container.union(other._container));
   }
 
   /// Returns a new set which is the intersection between this set and [other].
-  Set<T> intersection(Set<T> other) {
-    return Set<T>.from(_container.intersection(other._container));
+  HashSet<T> intersection(HashSet<T> other) {
+    return HashSet<T>.from(_container.intersection(other._container));
   }
 
   /// Whether this set contains all the elements of [other].
@@ -88,7 +90,7 @@ class Set<T> with IterableMixin<T> {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    if (other is! Set<T>) return false;
+    if (other is! HashSet<T>) return false;
     if (size != other.size) return false;
     return containsAll(other);
   }

@@ -9,6 +9,7 @@ export 'src/collections/stack.dart';
 export 'src/collections/queue.dart';
 export 'src/collections/priority_queue.dart';
 export 'src/collections/set.dart';
+export 'src/collections/hash_set.dart';
 export 'src/collections/forward_list.dart';
 export 'src/ranges/numberline.dart';
 export 'src/ranges/zip_range.dart';
