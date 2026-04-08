@@ -143,9 +143,7 @@
 ## 0.2.7
 - Turn the stl_example.dart into a massive "Table of Contents" or complete showcase file. Import everything.
 
+
+
 ## 0.2.8
 - Added `Optional<T>`: A functional wrapper representing possibly-absent values with methods like `valueOr` and `map`.
-- Added `Variant`: A type-safe union that enforces strict alternative checking via `holdsAlternative` and `visit`.
-- Added `Expected<T, E>`: A C++23 style implementation representing either a successful value or a discrete error, encouraging functional error chaining.
-- Added `BitSet`: An array-like utility that stores boolean flags compressed into native integers with lightning-fast bitwise algorithms.
-- Added `Tuple`: A generalized C++ style representation bridging Dart 3 Records natively extending standard `Pair` logic into `Tuple3`, `Tuple4` etc.

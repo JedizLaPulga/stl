@@ -18,3 +18,5 @@ export 'src/ranges/chunk_range.dart';
 export 'src/ranges/repeat_range.dart';
 export 'src/ranges/cartesian_range.dart';
 export 'src/utility/pair.dart';
+export 'src/utility/optional.dart';
+
