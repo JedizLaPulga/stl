@@ -122,3 +122,8 @@
 - Added  CartesianRange - Mimics C++23 `std::views::cartesian_product`.
 - updated README.md
 - Removed unnecessary_non_null_assertion
+
+## 0.2.5
+
+### Changed
+- Updated `README.md` to include new ranges examples.
