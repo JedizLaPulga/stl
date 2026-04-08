@@ -52,7 +52,8 @@ Here are the traditional core data structures we currently support:
 | | 🚅 `ForwardList<T>` | ✅ | Singly linked list for extremely fast forward traversal and shifting. |
 | | 🚋 `List<T>` | 🚧 | *Doubly linked list for constant time insertions (Coming Soon).* |
 | **Adapters** | 🥞 `Stack<T>` | ✅ | LIFO (Last-In, First-Out) data structure operating flawlessly over a given sequence. |
-| | 🚏 `Queue<T>` | 🚧 | *FIFO (First-In, First-Out) data structure (Coming Soon).* |
+| | 🚏 `Queue<T>` | ✅ | FIFO (First-In, First-Out) data structure adapter. |
+| | ⏳ `PriorityQueue<T>` | 🚧 | *Max/Min heap priority structure (Coming Soon).* |
 | | 🌭 `Deque<T>` | ✅ | Double-ended queue for extremely fast front/back algorithmic operations. |
 | **Utility** | 👯 `Pair<T1, T2>` | ✅ | Native C++ utility structure to hold heterogeneous objects (Features Dart 3 Record translation). |
 
@@ -161,7 +162,7 @@ Inject some hardcore C++ styled performance logic directly into your Dart pipeli
 
 ```yaml
 dependencies: 
-  stl: ^0.2.5
+  stl: ^0.2.6
 ```
 
 Then fetch the latest version and drop it into your project:

@@ -127,3 +127,15 @@
 
 ### Changed
 - Updated `README.md` to include new ranges examples.
+
+
+## 0.2.6
+- Added Queue 
+- Added PriorityQueue
+- Added Set
+- Added HashSet
+- Added SortedSet
+- Added HashMap
+- Added SortedMap
+- Added MultiMap
+- Added MultiSet
