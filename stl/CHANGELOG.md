@@ -120,3 +120,4 @@
 - Added ChunkRange - Mimics C++23 `std::views::chunk`.
 - Added RepeatRange - Mimics C++23 `std::views::repeat`.
 - Added  CartesianRange - Mimics C++23 `std::views::cartesian_product`.
+- updated README.md
