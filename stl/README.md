@@ -220,6 +220,19 @@ for (var item in stack) {
 }
 ```
 
+### **Self-Balancing Trees (`SortedSet` & `PriorityQueue`)**
+```dart
+final queue = PriorityQueue<int>(); // Max-heap by default
+queue.push(10);
+queue.push(50);
+print(queue.pop()); // 50 (Always extracts highest priority mathematically completely O(log N))
+
+final sorted = SortedSet<String>((a, b) => b.length.compareTo(a.length));
+sorted.insert("Apple");
+sorted.insert("A"); 
+print(sorted.toList()); // ["Apple", "A"] (Inherently sorted autonomously!)
+```
+
 <br>
 
 ---
