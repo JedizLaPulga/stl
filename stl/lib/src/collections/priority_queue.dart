@@ -128,4 +128,25 @@ class PriorityQueue<T> {
       }
     }
   }
+
+  @override
+  String toString() {
+    return 'PriorityQueue(${_heap.toList()})';
+  }
+
+  @override
+  int get hashCode => Object.hashAll(_heap);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! PriorityQueue<T>) return false;
+    if (size != other.size) return false;
+    
+    // For PriorityQueue, perfect structural equality means the underlying heaps are identical.
+    for (int i = 0; i < size; i++) {
+       if (_heap[i] != other._heap[i]) return false;
+    }
+    return true;
+  }
 }

@@ -130,4 +130,26 @@ class Deque<T> with IterableMixin<T> {
     other._queue.clear();
     other._queue.addAll(temp);
   }
+
+  @override
+  String toString() {
+    return 'Deque(${_queue.toList()})';
+  }
+
+  @override
+  int get hashCode => Object.hashAll(_queue);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! Deque<T>) return false;
+    if (length != other.length) return false;
+    
+    var it1 = _queue.iterator;
+    var it2 = other._queue.iterator;
+    while (it1.moveNext() && it2.moveNext()) {
+      if (it1.current != it2.current) return false;
+    }
+    return true;
+  }
 }

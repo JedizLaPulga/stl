@@ -98,5 +98,27 @@ void main() {
         expect(list.toList(), equals([3, 5]));
       },
     );
+
+    test('swap', () {
+      final list1 = ForwardList<int>.from([1, 2]);
+      final list2 = ForwardList<int>.from([3, 4, 5]);
+
+      list1.swap(list2);
+
+      expect(list1.length, equals(3));
+      expect(list1.toList(), equals([3, 4, 5]));
+      expect(list2.length, equals(2));
+      expect(list2.toList(), equals([1, 2]));
+    });
+
+    test('Equality and formatting', () {
+      final list1 = ForwardList<int>.from([1, 2, 3]);
+      final list2 = ForwardList<int>.from([1, 2, 3]);
+      final list3 = ForwardList<int>.from([3, 2, 1]);
+
+      expect(list1, equals(list2));
+      expect(list1, isNot(equals(list3)));
+      expect(list1.toString(), equals('ForwardList([1, 2, 3])'));
+    });
   });
 }

@@ -86,5 +86,15 @@ void main() {
       expect(() => pq.pop(), throwsStateError);
       expect(() => pq.top, throwsStateError);
     });
+
+    test('Equality and formatting', () {
+      final pq1 = PriorityQueue<int>.from([10, 20, 30]);
+      final pq2 = PriorityQueue<int>.from([10, 20, 30]);
+      final pq3 = PriorityQueue<int>.from([30, 20]);
+
+      expect(pq1, equals(pq2));
+      expect(pq1, isNot(equals(pq3)));
+      expect(pq1.toString(), contains('PriorityQueue'));
+    });
   });
 }

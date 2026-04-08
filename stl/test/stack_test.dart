@@ -104,5 +104,11 @@ void main() {
       expect(stack.elementAt(0), equals(30));
       expect(stack.elementAt(2), equals(10));
     });
+
+    test('Formatting', () {
+      final stack = Stack<int>.from([1, 2, 3]);
+      // Top element is 3, so iterator sequence is 3, 2, 1
+      expect(stack.toString(), equals('Stack([3, 2, 1])'));
+    });
   });
 }

@@ -200,4 +200,38 @@ class ForwardList<T> with IterableMixin<T> {
       }
     }
   }
+
+  /// Exchanges the contents of this list with those of [other].
+  void swap(ForwardList<T> other) {
+    final tempHead = _head;
+    final tempLength = _length;
+
+    _head = other._head;
+    _length = other._length;
+
+    other._head = tempHead;
+    other._length = tempLength;
+  }
+
+  @override
+  String toString() {
+    return 'ForwardList(${toList()})';
+  }
+
+  @override
+  int get hashCode => Object.hashAll(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! ForwardList<T>) return false;
+    if (length != other.length) return false;
+
+    var it1 = iterator;
+    var it2 = other.iterator;
+    while (it1.moveNext() && it2.moveNext()) {
+      if (it1.current != it2.current) return false;
+    }
+    return true;
+  }
 }

@@ -64,6 +64,11 @@ class Stack<T> with IterableMixin<T> {
   }
 
   @override
+  String toString() {
+    return 'Stack(${toList()})';
+  }
+
+  @override
   int get hashCode => Object.hashAll(this);
 
   @override

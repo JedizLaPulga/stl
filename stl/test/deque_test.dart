@@ -85,5 +85,15 @@ void main() {
       }
       expect(sum, equals(13));
     });
+
+    test('Equality and formatting', () {
+      final deque1 = Deque<int>.from([1, 2, 3]);
+      final deque2 = Deque<int>.from([1, 2, 3]);
+      final deque3 = Deque<int>.from([3, 2, 1]);
+
+      expect(deque1, equals(deque2));
+      expect(deque1, isNot(equals(deque3)));
+      expect(deque1.toString(), equals('Deque([1, 2, 3])'));
+    });
   });
 }

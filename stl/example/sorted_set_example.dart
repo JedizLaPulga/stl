@@ -22,7 +22,7 @@ void main() {
   final stringSet = SortedSet<String>((a, b) => b.length.compareTo(a.length));
   
   stringSet.insert('A');
-  stringSet.insert('Supercal']); // wait typo
+  stringSet.insert('Supercal');
   stringSet.insert('Supercalifragilistic');
   stringSet.insert('Apple');
   stringSet.insert('Cat');

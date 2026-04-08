@@ -135,7 +135,6 @@
 - Added Set
 - Added HashSet
 - Added SortedSet
-- Added HashMap
-- Added SortedMap
-- Added MultiMap
-- Added MultiSet
+- Standardized deep-value equality matching (`operator ==` and `hashCode`) universally across older containers (`Deque`, `PriorityQueue`, `ForwardList`).
+- Overridden `toString()` reliably for all non-compliant collections to drastically improve console debugging experience and format.
+- Added missing `swap()` API specifically to `ForwardList<T>`.
