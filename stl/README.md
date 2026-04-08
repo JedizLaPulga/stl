@@ -166,7 +166,7 @@ Inject some hardcore C++ styled performance logic directly into your Dart pipeli
 
 ```yaml
 dependencies: 
-  stl: ^0.2.6
+  stl: ^0.2.7
 ```
 
 Then fetch the latest version and drop it into your project:

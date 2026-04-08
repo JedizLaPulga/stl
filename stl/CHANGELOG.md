@@ -138,3 +138,7 @@
 - Standardized deep-value equality matching (`operator ==` and `hashCode`) universally across older containers (`Deque`, `PriorityQueue`, `ForwardList`).
 - Overridden `toString()` reliably for all non-compliant collections to drastically improve console debugging experience and format.
 - Added missing `swap()` API specifically to `ForwardList<T>`.
+
+
+## 0.2.7
+- Turn your stl_example.dart into a massive "Table of Contents" or complete showcase file. Import everything,

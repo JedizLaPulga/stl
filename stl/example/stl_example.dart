@@ -1,134 +1,207 @@
 import 'package:stl/stl.dart';
 
 void main() {
-  print('========================================');
-  print('    📦 STL Vector & Deque - Showcase');
-  print('========================================\n');
+  print('====================================================');
+  print('    💎 STL MEGA SHOWCASE & ARCHITECTURE ALBUM');
+  print('====================================================\n');
 
   // ========================================
-  //              VECTOR SHOWCASE
+  // 1. DYNAMIC ARRAYS & MEMORY
   // ========================================
+  print('>>> 1. CORE ARRAYS & SINGLY-LINKED LISTS <<<\n');
+  
+  final vec = Vector<String>(['Alpha', 'Bravo', 'Charlie', 'Delta']);
+  print('• Vector initialized: ~vec evaluates to ${~vec}');
+  
+  // Appending and checking limits
+  vec.pushBack('Echo');
+  print('• Memory bounds strictly managed. Vector size is ${vec.size()}');
+  
+  // Vector advanced operations (assigning blocks of memory)
+  final secondaryVec = Vector<String>([]);
+  secondaryVec.assign(3, 'EmptySlot');
+  print('• Vectors support raw memory block assigns: $secondaryVec');
 
-  // 1. Initialization (const and final)
-  print('--- 1. Initialization & toString() ---');
-  const v1 = Vector<int>([1, 2, 3]);
-  final v2 = Vector<int>([1, 2, 3]);
-  final v3 = Vector<int>([1, 2, 100]);
+  // ForwardList excels at fast shifting and removal algorithms 
+  print('\n[Converting Vector into a ForwardList]');
+  final list = ForwardList<String>.from(vec);
+  
+  // ForwardList allows ultra-fast manipulations without resizing arrays
+  list.insertAfter(1, 'Bravo-Two');
+  list.removeIf((val) => val.startsWith('C')); // Removes "Charlie" immediately
+  list.pushFront('Zulu'); 
+  print('• ForwardList after O(1) shifts: $list');
+  
+  // ForwardList can inherently detect and crush contiguous duplicates
+  list.pushFront('Zulu');
+  list.pushFront('Zulu');
+  list.unique();
+  print('• List crushed duplicates instantly: $list\n');
 
-  print('v1 (const): $v1');
-  print('v2 (final): $v2');
-  print('v3 (final): $v3\n');
+  
+  // ========================================
+  // 2. ADAPTERS (Deque, Queue, Stack)
+  // ========================================
+  print('>>> 2. CONTAINER ADAPTERS (LIFO/FIFO) <<<\n');
 
-  // 2. Deep Equality
-  print('--- 2. Deep Equality (operator ==) ---');
-  print('Is v1 == v2? ${v1 == v2}  <-- True value-based equality!');
-  print('Is v1 == v3? ${v1 == v3}\n');
+  // Deque serves as the legendary backbone for stacks and queues
+  final deque = Deque<int>.from([10, 20, 30, 40]);
+  print('• Deque Backbone: $deque');
 
-  // 3. Lexicographical Comparison
-  print('--- 3. Lexicographical Comparison ---');
-  if (v3 > v1) {
-    print('$v3 is strictly greater than $v1');
+  // Deque supports random access AND double-ended insertions
+  deque.pushFront(5);
+  deque.pushBack(50);
+  print('• Deque after O(1) double-ended operations: $deque\n');
+
+  // 🥞 Stack natively uses Deque logic to restrict access to LIFO (Last-In, First-Out)
+  final stack1 = Stack<int>.from(deque);
+  final stack2 = Stack<int>.from([999, 888]);
+  stack1.push(99);
+  print('• Stack 1 spawned from Deque. Pushed 99.');
+  print('  Top of Stack 1 is ${stack1.top} (Ready to pop: ${stack1.pop()})');
+
+  print('\n[Swapping entire Stacks instantly!]');
+  stack1.swap(stack2); // Swaps underlying structures immediately
+  print('  Stack 1 is now strictly processing: $stack1');
+  print('  Stack 2 inherited the massive chain: $stack2\n');
+
+  // 🚏 Queue restricts access to FIFO (First-In, First-Out)
+  final queue = Queue<int>.from(deque);
+  queue.push(100);
+  print('• Queue spawned from original Deque. Pushed 100.');
+  print('  Front of Queue is ${queue.front} (Ready to strictly FIFO pop: ${queue.pop()})\n');
+
+
+  // ========================================
+  // 3. MATHEMATICAL SETS (O(1) Lookups & Trees)
+  // ========================================
+  print('>>> 3. ASSOCIATIVE SETS & TREES <<<\n');
+
+  // Creating unique arrays
+  final rawData = ['Apple', 'Banana', 'Apple', 'Cherry', 'Banana', 'Date'];
+  
+  // 1. Standard Set (Insertion Ordered)
+  final orderedSet = Set<String>.from(rawData);
+  print('• Standard Set (Preserves Insertion): $orderedSet'); // Duplicates gone
+
+  // 2. HashSet (Unordered, Hyper-Optimized O(1))
+  final hashSet = HashSet<String>.from(rawData);
+  print('• HashSet (No guaranteed order, raw speed): ${hashSet.toList()}');
+
+  // 3. SortedSet (Self-balancing Binary Search Tree)
+  // Let's sort them strictly by string length, descending!
+  final treeSet = SortedSet<String>.from(rawData, (a, b) => b.length.compareTo(a.length));
+  print('• SortedSet (Autonomous custom sorting): $treeSet');
+
+  // Set Algebra (Intersections across different sets)
+  final exoticFruits = Set<String>.from(['Cherry', 'Mango', 'Banana', 'Kiwi']);
+  final intersection = orderedSet.intersection(exoticFruits);
+  print('• Intersection of orderedSet and exoticFruits: ${intersection.toList()}');
+
+  final difference = orderedSet.difference(exoticFruits);
+  print('• Difference (Apples and Dates remain!): ${difference.toList()}\n');
+
+
+  // ========================================
+  // 4. UTILITIES (Pair & PriorityQueue)
+  // ========================================
+  print('>>> 4. UTILITIES & PRIORITY HEAPS <<<\n');
+
+  // A Pair lets us strictly bind heterogeneous types (ID: String, Priority: int)
+  final task1 = makePair('Login System Task', 2);
+  final task2 = makePair('Update UI Colors Task', 5);
+  final task3 = makePair('Critical Database Migration', 1); // 1 = highest priority
+
+  print('• Stored compound types smoothly: $task3');
+
+  // Let's create a custom PriorityQueue (Min-Heap) that reads the Pair's second value (the integer priority)
+  final pQueue = PriorityQueue<Pair<String, int>>((a, b) {
+    // Standard min-heap logic: b compared to a.
+    return b.second.compareTo(a.second);
+  });
+
+  pQueue.push(task1);
+  pQueue.push(task2);
+  pQueue.push(task3);
+
+  print('\n• Processing PriorityQueue via Heap Extraction:');
+  while (pQueue.isNotEmpty) {
+    final highestTarget = pQueue.pop();
+    print('  -> Processing (Priority ${highestTarget.second}): ${highestTarget.first}');
   }
-  print('Is v1 <= v2? ${v1 <= v2}\n');
+  print('');
 
-  // 4. Modifiers (pushBack, popBack, insert, clear)
-  print('--- 4. Modifiers ---');
-  final dynamicVec = Vector<String>(['Apple', 'Banana']);
-  print('Initial Vector: $dynamicVec');
-
-  dynamicVec.pushBack('Cherry');
-  print('After pushBack: $dynamicVec');
-
-  dynamicVec.insert(1, 'Blueberry');
-  print('After insert at index 1: $dynamicVec');
-
-  dynamicVec.popBack();
-  print('After popBack: $dynamicVec\n');
-
-  // 5. Memory Safety & Bounds Checking
-  print('--- 5. Memory Safety & Strict Bounds ---');
-  try {
-    print('Attempting to access dynamicVec[100]...');
-    final _ = dynamicVec[100]; // This will throw!
-  } catch (e) {
-    print('Caught expected memory safety guard: $e\n');
-  }
-
-  // 6. Iterable Support
-  print('--- 6. Dart Iterable Support ---');
-  final numbers = Vector<int>([10, 15, 20, 25, 30]);
-  print('Iterating through $numbers in a for-in loop:');
-  for (final n in numbers) {
-    print(' -> $n');
-  }
-
-  // 7. Concatenation
-  print('--- 7. Concatenation ---');
-  final v4 = Vector<int>([1, 2, 3]);
-  final v5 = Vector<int>([4, 5, 6]);
-  final v6 = v4 + v5;
-  print('v4: $v4');
-  print('v5: $v5');
-  print('v4 + v5: $v6\n');
-
-  // 8. Multiplication
-  print('--- 8. Multiplication ---');
-  final v7 = Vector<int>([1, 2, 3]);
-  final v8 = v7 * 3;
-  print('v7: $v7');
-  print('v7 * 3: $v8\n');
-
-  // 9. Subtraction
-  print('--- 9. Subtraction ---');
-  final v9 = Vector<int>([1, 2, 3]);
-  final v10 = Vector<int>([1, 2, 3]);
-  final v11 = v9 - v10;
-  print('v9: $v9');
-  print('v10: $v10');
-  print('v9 - v10: $v11\n');
-
-  // 10. ~ operator
-  print('--- 10. ~ operator ---');
-  final v12 = Vector<int>([1, 2, 3]);
-  final v13 = ~v12;
-  print('v12: $v12');
-  print('~v12: $v13\n');
 
   // ========================================
-  //              DEQUE SHOWCASE
+  // 5. C++23 RANGES & PIPELINING 🧬
   // ========================================
-  print('========================================');
-  print('              DEQUE SHOWCASE');
-  print('========================================\n');
+  print('>>> 5. C++23 FUNCTIONAL RANGES <<<\n');
 
-  // Initialization
-  print('--- 11. Deque Initialization ---');
-  final deque = Deque<int>();
-  print('Created empty Deque. Is empty? ${deque.isEmpty}');
+  // NumberLine: Generate integers dynamically without loading memory arrays
+  final series = NumberLine(0, 100, step: 25);
+  print('• NumberLine (0 to 100, step 25): ${series.toList()}');
 
-  // Modifiers
-  print('\n--- 12. Deque Modifiers (insertFront / insertLast) ---');
-  deque.insertLast(10);
-  deque.insertFront(5);
-  deque.insertLast(20);
-  deque.insertFront(1);
-  print('Inserted 1, 5, 10, 20.');
-  print('Front element: ${deque.getFront()}');
-  print('Rear element: ${deque.getRear()}');
+  // RepeatRange: Repeat a state machine value strictly
+  final defaultConfigs = RepeatRange('Config_v1');
+  final servers = defaultConfigs.take(3).toList();
+  print('• RepeatRange limits to 3 servers: $servers');
 
-  // Deletion
-  print('\n--- 13. Deque Deletion (deleteFront / deleteLast) ---');
-  print('Removed from front: ${deque.deleteFront()}');
-  print('Removed from rear: ${deque.deleteLast()}');
-  print('New Front element: ${deque.getFront()}');
-  print('New Rear element: ${deque.getRear()}');
+  // ZipRange: Bind two parallel arrays perfectly (Map creation)
+  final headers = Vector<String>(['id', 'status', 'token']);
+  final values = [9912, 'Active', 'xyz-888-abc'];
+  
+  final zip = ZipRange(headers, values);
+  print('\n• ZipRange merging 2 vectors strictly:');
+  for (final pair in zip) {
+    print('  ${pair.first}: ${pair.second}');
+  }
 
-  // From Iterable
-  print('\n--- 14. Deque from Iterable ---');
-  final stringDeque = Deque<String>.from(['Apple', 'Banana', 'Cherry']);
-  print('Front: ${stringDeque.getFront()}, Rear: ${stringDeque.getRear()}');
+  // ChunkRange & Stack relationship pipeline!
+  // Let's chunk a large array of numbers into batches of 3, 
+  // then push those fragmented packets into a Stack for LIFO processing!
+  print('\n[ChunkRange -> Stack Relationship Pipeline]');
+  final byteData = NumberLine(1, 10).toList(); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  final chunks = ChunkRange(byteData, 3); // [[1,2,3], [4,5,6], [7,8,9], [10]]
+  
+  final packetStack = Stack<List<int>>();
+  for (final packet in chunks) {
+    packetStack.push(packet);
+  }
 
-  print('\n========================================');
-  print('  🎉 Showcase Complete!');
-  print('========================================\n');
+  // Read them back strictly in reverse!
+  print('• Stack processing downloaded chunks strictly backwards:');
+  while (packetStack.isNotEmpty) {
+    print('  -> Decompressing Packet: ${packetStack.pop()}');
+  }
+
+  // CartesianRange: Intersect two properties
+  final suits = ['♠️', '♥️', '♣️', '♦️'];
+  final royals = ['Jack', 'Queen', 'King', 'Ace'];
+  final deckSegment = CartesianRange(royals, suits);
+  
+  print('\n• CartesianRange generates combinations (Showing 10 from 16 matrix tiles):');
+  print('  ${deckSegment.take(10).toList()}');
+
+  // One final combination: PriorityQueue pushing Zipped Ranges!
+  print('\n[ZipRange -> PriorityQueue Pipeline]');
+  final userIds = [101, 105, 102];
+  final userLevels = [80, 99, 15]; // Level 99 is highest
+  final zippedUsers = ZipRange(userIds, userLevels);
+  
+  // Custom Max-Heap
+  final levelHeap = PriorityQueue<Pair<int, int>>((a, b) => a.second.compareTo(b.second));
+  
+  for (final userRecord in zippedUsers) {
+    levelHeap.push(userRecord);
+  }
+
+  print('• Highest level user gets processed first:');
+  while (levelHeap.isNotEmpty) {
+     var usr = levelHeap.pop();
+     print('  -> Processed User ${usr.first} (Level ${usr.second})');
+  }
+  
+  print('\n====================================================');
+  print(' 🎉 END OF MEGA SHOWCASE');
+  print('====================================================\n');
 }
