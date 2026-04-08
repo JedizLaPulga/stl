@@ -7,7 +7,7 @@ class RepeatRange<T> extends IterableBase<T> {
   final int? _bound;
 
   RepeatRange(this._value, [this._bound]) {
-    if (_bound != null && _bound! < 0) {
+    if (_bound != null && _bound < 0) {
         throw ArgumentError('Bound cannot be negative.');
     }
   }
@@ -32,7 +32,7 @@ class _RepeatRangeIterator<T> implements Iterator<T> {
 
   @override
   bool moveNext() {
-    if (_bound != null && _count >= _bound!) {
+    if (_bound != null && _count >= _bound) {
       _active = false;
       return false;
     }
