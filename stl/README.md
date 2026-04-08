@@ -53,7 +53,8 @@ Here are the traditional core data structures we currently support:
 | | 🚋 `List<T>` | 🚧 | *Doubly linked list for constant time insertions (Coming Soon).* |
 | **Adapters** | 🥞 `Stack<T>` | ✅ | LIFO (Last-In, First-Out) data structure operating flawlessly over a given sequence. |
 | | 🚏 `Queue<T>` | ✅ | FIFO (First-In, First-Out) data structure adapter. |
-| | ⏳ `PriorityQueue<T>` | 🚧 | *Max/Min heap priority structure (Coming Soon).* |
+| | ⏳ `PriorityQueue<T>` | ✅ | Max/Min heap priority structure. |
+| **Associative**| 🗃️ `Set<T>` | 🚧 | *Unique element container (Coming Soon).* |
 | | 🌭 `Deque<T>` | ✅ | Double-ended queue for extremely fast front/back algorithmic operations. |
 | **Utility** | 👯 `Pair<T1, T2>` | ✅ | Native C++ utility structure to hold heterogeneous objects (Features Dart 3 Record translation). |
 

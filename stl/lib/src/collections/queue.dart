@@ -31,7 +31,7 @@ class Queue<T> with IterableMixin<T> {
     if (empty) {
       throw StateError('Cannot pop from an empty Queue');
     }
-    return _container.deleteFirst();
+    return _container.deleteFront();
   }
 
   /// Returns the front element of the queue without removing it.
