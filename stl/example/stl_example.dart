@@ -200,6 +200,17 @@ void main() {
      var usr = levelHeap.pop();
      print('  -> Processed User ${usr.first} (Level ${usr.second})');
   }
+
+  // Final interaction: Deque -> Vector -> HashSet Unique Extractor
+  print('\n[Deque -> Vector -> HashSet Pipeline]');
+  final dirtyDeque = Deque<String>.from(['Error', 'Warning', 'Log', 'Error', 'Error', 'Warning']);
+  print('• Raw Server Logs in Deque: $dirtyDeque');
+  
+  // Extract to Vector for processing
+  final logVector = Vector<String>(dirtyDeque.toList());
+  // Offload to HashSet to instantly destroy all duplicates with O(1) mathematical speed
+  final cleanSet = HashSet<String>.from(logVector);
+  print('• Extracted Unique Log Signatures instantly: ${cleanSet.toList()}');
   
   print('\n====================================================');
   print(' 🎉 END OF MEGA SHOWCASE');
