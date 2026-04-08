@@ -1,6 +1,6 @@
 name: stl
 description: A performance-oriented implementation of STL patterns (Vector, List, algorithms) for Dart.
-version: 0.2.7
+version: 0.2.8
 repository: https://github.com/jedizlapulga/stl
 
 environment:
