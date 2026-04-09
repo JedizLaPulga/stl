@@ -156,3 +156,5 @@
 - Added `Box<T>`: A mutable reference wrapper for holding and updating values.
 - Added `Any`: A type-safe wrapper for holding values of any type.
 
+## 0.3.0
+- Added `Array<T>`: A strict, fixed-size contiguous collection conceptually mapping directly to C++ `std::array`. All expanding/shrinking mutations fiercely throw errors. Integrates extremely well using overloads `operator +` and `operator ==` logically against dynamic iterables without altering boundaries natively.

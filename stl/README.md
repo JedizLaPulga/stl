@@ -1,18 +1,14 @@
-<div align="center">
-  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Diamond.png" alt="Diamond" width="80" height="80" />
-  
-  # STL (Standard Template Library... and Beyond!)
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Diamond.png" alt="Diamond" width="80" height="80" />
 
-  [![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&pause=1000&color=00B4AB&center=true&vCenter=true&width=435&lines=Dart+Collections+Reimagined;C%2B%2B+STL+Inspired+Architecture;Lightning+Fast+Data+Structures;Now+featuring+C%2B%2B23+Ranges!)](https://git.io/typing-svg)
+# STL (Standard Template Library... and Beyond!)
 
-  [![Pub Version](https://img.shields.io/pub/v/stl?color=00b4ab&style=for-the-badge&logo=dart)](https://pub.dev/packages/stl)
-  [![License: MIT](https://img.shields.io/badge/License-MIT-ff69b4.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
-  [![Dart](https://img.shields.io/badge/Dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev/)
-  <br>
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&pause=1000&color=00B4AB&center=true&vCenter=true&width=435&lines=Dart+Collections+Reimagined;C%2B%2B+STL+Inspired+Architecture;Lightning+Fast+Data+Structures;Now+featuring+C%2B%2B23+Ranges!)](https://git.io/typing-svg)
 
-  > 🚀 **A highly-versatile, performance-driven bank of data collections, structures, and algorithmic ranges for the Dart and Flutter ecosystem.**
+[![Pub Version](https://img.shields.io/pub/v/stl?color=00b4ab&style=for-the-badge&logo=dart)](https://pub.dev/packages/stl)
+[![License: MIT](https://img.shields.io/badge/License-MIT-ff69b4.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![Dart](https://img.shields.io/badge/Dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev/)
 
-</div>
+> 🚀 **A highly-versatile, performance-driven bank of data collections, structures, and algorithmic ranges for the Dart and Flutter ecosystem.**
 
 ---
 
@@ -50,6 +46,7 @@ Here are the traditional core data structures we currently support:
 | :--- | :--- | :---: | :--- |
 | **Linear** | 🚂 `Vector<T>` | ✅ | Dynamic array with $O(1)$ random access and strict bounds checking. |
 | | 🚅 `ForwardList<T>` | ✅ | Singly linked list for extremely fast forward traversal and shifting. |
+| | 🧊 `Array<T>` | ✅ | Conceptually strict fixed-size contiguous array mirroring C++ `std::array`. |
 | | 🚋 `List<T>` | 🚧 | *Doubly linked list for constant time insertions (Coming Soon).* |
 | **Adapters** | 🥞 `Stack<T>` | ✅ | LIFO (Last-In, First-Out) data structure operating flawlessly over a given sequence. |
 | | 🚏 `Queue<T>` | ✅ | FIFO (First-In, First-Out) data structure adapter. |
@@ -171,7 +168,7 @@ Inject some hardcore C++ styled performance logic directly into your Dart pipeli
 
 ```yaml
 dependencies: 
-  stl: ^0.2.9
+  stl: ^0.3.0
 ```
 
 Then fetch the latest version and drop it into your project:

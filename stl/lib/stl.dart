@@ -12,6 +12,7 @@ export 'src/collections/set.dart';
 export 'src/collections/hash_set.dart';
 export 'src/collections/sorted_set.dart';
 export 'src/collections/forward_list.dart';
+export 'src/collections/array.dart';
 export 'src/ranges/numberline.dart';
 export 'src/ranges/zip_range.dart';
 export 'src/ranges/chunk_range.dart';
