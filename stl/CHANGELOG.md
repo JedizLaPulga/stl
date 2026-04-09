@@ -149,3 +149,10 @@
 - Added `Optional<T>`: A functional wrapper representing possibly-absent values with methods like `valueOr` and `map`.
 
 ## 0.2.9
+- Added `BitSet`: A space-efficient set implementation for managing boolean flags.
+- Added `Var<T>`: A mutable variable wrapper for holding and updating values.
+- Added `Variant<T1, T2, ...>`: A type-safe discriminated union (sum type) that can hold values of multiple different types.
+- Added `Ref<T>`: A mutable reference wrapper for holding and updating values.
+- Added `Box<T>`: A mutable reference wrapper for holding and updating values.
+- Added `Any`: A type-safe wrapper for holding values of any type.
+
