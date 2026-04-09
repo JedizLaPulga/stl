@@ -60,6 +60,11 @@ Here are the traditional core data structures we currently support:
 | | 🗺️ `HashMap<K, V>` | 🚧 | *Unordered key-value associative map (Coming Soon).* |
 | | 🌭 `Deque<T>` | ✅ | Double-ended queue for extremely fast front/back algorithmic operations. |
 | **Utility** | 👯 `Pair<T1, T2>` | ✅ | Native C++ utility structure to hold heterogeneous objects (Features Dart 3 Record translation). |
+| | ✨ `Optional<T>` | ✅ | A functional wrapper representing possibly-absent values smoothly. |
+| | 🔀 `Variant<T0, T1...>` | ✅ | Type-safe discriminated union for handling distinct architectural alternatives via Sealed bounds. |
+| | 📦 `Box<T>` / `Ref<T>` | ✅ | Native wrappers unlocking primitives pass-by-reference logic, along with dynamic mathematical operator overloads. |
+| | 🔢 `BitSet` | ✅ | Hyper-efficient $O(1)$ space-optimized boolean bit flags array mimicking C++ `std::bitset`. |
+| | 👽 `Any` | ✅ | A completely generic type-safe box specifically enforcing extraction boundaries securely. |
 
 *(Note: 🚧 = Under Construction, ✅ = Available)*
 
@@ -166,7 +171,7 @@ Inject some hardcore C++ styled performance logic directly into your Dart pipeli
 
 ```yaml
 dependencies: 
-  stl: ^0.2.8
+  stl: ^0.2.9
 ```
 
 Then fetch the latest version and drop it into your project:
