@@ -23,3 +23,5 @@ export 'src/utility/variant.dart';
 export 'src/utility/bitset.dart';
 export 'src/utility/var.dart';
 export 'src/utility/ref.dart';
+export 'src/utility/box.dart';
+export 'src/utility/any.dart';
