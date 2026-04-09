@@ -147,3 +147,5 @@
 
 ## 0.2.8
 - Added `Optional<T>`: A functional wrapper representing possibly-absent values with methods like `valueOr` and `map`.
+
+## 0.2.9
