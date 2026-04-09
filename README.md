@@ -4,13 +4,18 @@
 
 [![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&pause=1000&color=00B4AB&center=true&vCenter=true&width=435&lines=Dart+Collections+Reimagined;C%2B%2B+STL+Inspired+Architecture;Lightning+Fast+Data+Structures;Now+featuring+C%2B%2B23+Ranges!)](https://git.io/typing-svg)
 
-[![Pub Version](https://img.shields.io/pub/v/stl?color=00b4ab&style=for-the-badge&logo=dart)](https://pub.dev/packages/stl)
 [![License: MIT](https://img.shields.io/badge/License-MIT-ff69b4.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 [![Dart](https://img.shields.io/badge/Dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev/)
 
 > 🚀 **A highly-versatile, performance-driven bank of data collections, structures, and algorithmic ranges for the Dart and Flutter ecosystem.**
 
 ---
+
+```yaml
+dependencies: 
+  stl: ^0.3.1
+```
+
 
 <br>
 
@@ -168,7 +173,7 @@ Inject some hardcore C++ styled performance logic directly into your Dart pipeli
 
 ```yaml
 dependencies: 
-  stl: ^0.3.0
+  stl: ^0.3.1
 ```
 
 Then fetch the latest version and drop it into your project:

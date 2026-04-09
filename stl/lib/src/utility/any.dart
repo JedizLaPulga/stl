@@ -51,6 +51,81 @@ class Any {
     return _value as T;
   }
 
+  /// Retrieves the wrapped object as `dynamic`. Throws natively if empty.
+  dynamic get() {
+    if (!_hasValue) throw StateError('Any is empty natively! Cannot randomly get.');
+    return _value;
+  }
+
+  /// Returns true if the internal state is exactly empty natively.
+  bool empty() => !_hasValue;
+
+  /// Dynamically reads an element internally via bracket notation.
+  dynamic operator [](dynamic key) {
+    if (!_hasValue) throw StateError('Any is empty!');
+    return (_value as dynamic)[key];
+  }
+
+  /// Dynamically writes an element internally via bracket notation.
+  void operator []=(dynamic key, dynamic val) {
+    if (!_hasValue) throw StateError('Any is empty!');
+    (_value as dynamic)[key] = (val is Any ? val.get() : val);
+  }
+
+  /// Dynamically adds exactly natively.
+  dynamic operator +(dynamic other) {
+    if (!_hasValue) throw StateError('Any is empty!');
+    return (_value as dynamic) + (other is Any ? other.get() : other);
+  }
+
+  /// Dynamically subtracts exactly natively.
+  dynamic operator -(dynamic other) {
+    if (!_hasValue) throw StateError('Any is empty!');
+    return (_value as dynamic) - (other is Any ? other.get() : other);
+  }
+
+  /// Dynamically multiplies exactly natively.
+  dynamic operator *(dynamic other) {
+    if (!_hasValue) throw StateError('Any is empty!');
+    return (_value as dynamic) * (other is Any ? other.get() : other);
+  }
+
+  /// Dynamically divides exactly natively.
+  dynamic operator /(dynamic other) {
+    if (!_hasValue) throw StateError('Any is empty!');
+    return (_value as dynamic) / (other is Any ? other.get() : other);
+  }
+
+  /// Dynamically modulates exactly natively.
+  dynamic operator %(dynamic other) {
+    if (!_hasValue) throw StateError('Any is empty!');
+    return (_value as dynamic) % (other is Any ? other.get() : other);
+  }
+
+  /// Dynamically resolves logically accurate less-than natively.
+  bool operator <(dynamic other) {
+    if (!_hasValue) throw StateError('Any is empty!');
+    return (_value as dynamic) < (other is Any ? other.get() : other);
+  }
+
+  /// Dynamically resolves logically accurate greater-than natively.
+  bool operator >(dynamic other) {
+    if (!_hasValue) throw StateError('Any is empty!');
+    return (_value as dynamic) > (other is Any ? other.get() : other);
+  }
+
+  /// Dynamically resolves less-than-or-equal stably natively.
+  bool operator <=(dynamic other) {
+    if (!_hasValue) throw StateError('Any is empty!');
+    return (_value as dynamic) <= (other is Any ? other.get() : other);
+  }
+
+  /// Dynamically resolves greater-than-or-equal stably natively.
+  bool operator >=(dynamic other) {
+    if (!_hasValue) throw StateError('Any is empty!');
+    return (_value as dynamic) >= (other is Any ? other.get() : other);
+  }
+
   @override
   String toString() {
     if (!_hasValue) return 'Any(Empty)';

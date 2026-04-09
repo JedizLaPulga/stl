@@ -158,3 +158,36 @@
 
 ## 0.3.0
 - Added `Array<T>`: A strict, fixed-size contiguous collection conceptually mapping directly to C++ `std::array`. All expanding/shrinking mutations fiercely throw errors. Integrates extremely well using overloads `operator +` and `operator ==` logically against dynamic iterables without altering boundaries natively.
+
+## 0.3.1
+- Added `operator ==` and `hashCode` to `Any` class.
+- Added `toString()` to `Any` class.
+- Added `reset()` method to `Any` class.
+- Added `empty()` method to `Any` class.
+- Added `hasValue()` method to `Any` class.
+- Added `type()` method to `Any` class.
+- Added `cast<T>()` method to `Any` class.
+- Added `set()` method to `Any` class.
+- Added `get()` method to `Any` class.
+- Added `operator []` to `Any` class.
+- Added `operator []=` to `Any` class.
+- Added `operator +` to `Any` class.
+- Added `operator -` to `Any` class.
+- Added `operator *` to `Any` class.
+- Added `operator /` to `Any` class.
+- Added `operator %` to `Any` class.
+- Added `operator <` to `Any` class.
+- Added `operator >` to `Any` class.
+- Added `operator <=` to `Any` class.
+- Added `operator >=` to `Any` class.
+- Added `operator ==` to `Array` class.
+- Added `operator !=` to `Array` class.
+- Added `operator +` to `Array` class.
+- Added `operator -` to `Array` class.
+- Added `operator *` to `Array` class.
+- Added `operator /` to `Array` class.
+- Added `operator %` to `Array` class.
+- Added `operator <` to `Array` class.
+- Added `operator >` to `Array` class.
+- Added `operator <=` to `Array` class.
+- Added `operator >=` to `Array` class.
