@@ -20,3 +20,4 @@ export 'src/ranges/cartesian_range.dart';
 export 'src/utility/pair.dart';
 export 'src/utility/optional.dart';
 export 'src/utility/variant.dart';
+export 'src/utility/bitset.dart';
