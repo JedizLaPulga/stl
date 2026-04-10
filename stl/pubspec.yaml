@@ -1,5 +1,5 @@
 name: stl
-description: A performance-oriented implementation of STL patterns (Vector, List, algorithms) for Dart.
+description: A high-performance C++ STL inspired library for Dart & Flutter. Unlock advanced data structures, functional wrappers, and C++23 ranges.
 version: 0.3.2
 repository: https://github.com/jedizlapulga/stl
 
