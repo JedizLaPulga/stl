@@ -26,7 +26,9 @@ void main() {
       final b2 = Box<int>(100);
 
       expect(b1 == b2, isTrue); // true internally checks box against box
+      // ignore: unrelated_type_equality_checks
       expect(b1 == 100, isTrue); // matches inner value intelligently
+      // ignore: unrelated_type_equality_checks
       expect(b1 == 99, isFalse);
     });
 

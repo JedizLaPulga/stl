@@ -65,6 +65,7 @@ class Array<T> extends ListBase<T> {
   // ==========================================
 
   /// Evaluates arithmetic array dynamically mapped returning effectively native Lists correctly unbound natively!
+  @override
   List<T> operator +(Iterable<T> other) {
     return _data + other.toList();
   }

@@ -61,7 +61,9 @@ void main() {
       bits.flip();
       
       // Let's manually set all bits to true
-      for (int i = 0; i < 35; i++) bits.set(i);
+      for (int i = 0; i < 35; i++) {
+        bits.set(i);
+      }
       expect(bits.all(), isTrue);
     });
 

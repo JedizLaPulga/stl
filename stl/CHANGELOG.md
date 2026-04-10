@@ -194,3 +194,4 @@
 
 ## 0.3.2
 - Fix upload issue to- RELATED to project
+- applied the @override annotation to the operator + method in array.dart

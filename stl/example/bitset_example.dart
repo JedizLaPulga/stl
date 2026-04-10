@@ -7,23 +7,23 @@ void main() {
   // Index 0: Execute
   // Index 1: Write
   // Index 2: Read
-  final int READ = 2;
-  final int WRITE = 1;
-  final int EXECUTE = 0;
+  const int read = 2;
+  const int write = 1;
+  const int execute = 0;
 
   final permissions = BitSet(3);
   
   // Set read and execute permissions
-  permissions.set(READ);
-  permissions.set(EXECUTE);
+  permissions.set(read);
+  permissions.set(execute);
 
   print('Current File Permissions: $permissions'); 
-  print('Can Read: ${permissions.test(READ)}');
-  print('Can Write: ${permissions.test(WRITE)}');
-  print('Can Execute: ${permissions.test(EXECUTE)}');
+  print('Can Read: ${permissions.test(read)}');
+  print('Can Write: ${permissions.test(write)}');
+  print('Can Execute: ${permissions.test(execute)}');
 
   print('\n[Adding Write Permission]');
-  permissions[WRITE] = true; // Using operator overload
+  permissions[write] = true; // Using operator overload
   print('Has full permissions? ${permissions.all()}');
   print('Permissions representation: $permissions');
 

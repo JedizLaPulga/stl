@@ -26,5 +26,6 @@ void main() {
   var idLevel2 = Box<int>(99);
   
   print('\nDoes Box(99) == Box(99)? ${idLevel1 == idLevel2}');
+  // ignore: unrelated_type_equality_checks
   print('Does Box(99) == raw 99 primitive? ${idLevel1 == 99}'); 
 }
