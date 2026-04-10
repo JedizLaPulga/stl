@@ -10,6 +10,7 @@ class CartesianRange<T1, T2> extends IterableBase<Pair<T1, T2>> {
   final Iterable<T1> _first;
   final Iterable<T2> _second;
 
+  /// Creates a [CartesianRange] combining the elements of the first and second iterable.
   CartesianRange(this._first, this._second);
 
   @override

@@ -65,14 +65,25 @@ extension ComparablePair<
   T2 extends Comparable<dynamic>
 >
     on Pair<T1, T2> {
+  /// Compares this pair lexicographically with [other].
+  /// 
+  /// It first compares the `first` elements. If they are equal, it compares
+  /// the `second` elements.
   int compareTo(Pair<T1, T2> other) {
     int firstComparison = first.compareTo(other.first);
     if (firstComparison != 0) return firstComparison;
     return second.compareTo(other.second);
   }
 
+  /// Returns whether this pair is lexicographically less than [other].
   bool operator <(Pair<T1, T2> other) => compareTo(other) < 0;
+
+  /// Returns whether this pair is lexicographically less than or equal to [other].
   bool operator <=(Pair<T1, T2> other) => compareTo(other) <= 0;
+
+  /// Returns whether this pair is lexicographically greater than [other].
   bool operator >(Pair<T1, T2> other) => compareTo(other) > 0;
+
+  /// Returns whether this pair is lexicographically greater than or equal to [other].
   bool operator >=(Pair<T1, T2> other) => compareTo(other) >= 0;
 }

@@ -8,6 +8,9 @@ class ChunkRange<T> extends IterableBase<List<T>> {
   final Iterable<T> _iterable;
   final int _chunkSize;
 
+  /// Creates a [ChunkRange] that splits the given iterable into chunks of a specific size.
+  /// 
+  /// Throws an [ArgumentError] if the chunk size is less than or equal to 0.
   ChunkRange(this._iterable, this._chunkSize) {
     if (_chunkSize <= 0) {
       throw ArgumentError('Chunk size must be strictly positive.');

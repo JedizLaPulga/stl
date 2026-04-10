@@ -32,7 +32,7 @@ sealed class Optional<T> {
       };
 
   /// Transforms the value using a function that returns an [Optional].
-  /// Prevents nested structures like Optional<Optional<T>>.
+  /// Prevents nested structures like `Optional<Optional<T>>`.
   Optional<R> flatMap<R>(Optional<R> Function(T value) mapper) => switch (this) {
         Some(:final value) => mapper(value),
         None() => None<R>(),
