@@ -5,6 +5,7 @@ import 'dart:collection';
 class JoinRange<T> extends IterableBase<T> {
   final Iterable<Iterable<T>> _iterable;
 
+  /// Creates a [JoinRange] flattening the [_iterable] of iterables.
   JoinRange(this._iterable);
 
   @override

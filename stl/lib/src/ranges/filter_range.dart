@@ -6,6 +6,7 @@ class FilterRange<T> extends IterableBase<T> {
   final Iterable<T> _iterable;
   final bool Function(T) _predicate;
 
+  /// Creates a [FilterRange] that conditionally yields elements of [_iterable] matching [_predicate].
   FilterRange(this._iterable, this._predicate);
 
   @override

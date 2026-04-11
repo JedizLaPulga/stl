@@ -6,6 +6,7 @@ class DropRange<T> extends IterableBase<T> {
   final Iterable<T> _iterable;
   final int _count;
 
+  /// Creates a [DropRange] that skips the first [_count] elements of [_iterable].
   DropRange(this._iterable, this._count) {
     if (_count < 0) {
       throw ArgumentError.value(_count, 'count', 'Must be greater than or equal to zero');

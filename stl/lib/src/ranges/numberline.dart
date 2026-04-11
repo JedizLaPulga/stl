@@ -10,6 +10,7 @@ class NumberLine<T extends num> extends IterableBase<T> {
   final T end;
   final T step;
 
+  /// Creates a memory-efficient sequence from [start] to [end] exclusive, incrementing by [step].
   NumberLine(this.start, this.end, {T? step})
     : step = step ?? _defaultStep(start) {
     if (this.step == 0) {

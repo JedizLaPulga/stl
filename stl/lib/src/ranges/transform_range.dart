@@ -6,6 +6,7 @@ class TransformRange<T, U> extends IterableBase<U> {
   final Iterable<T> _iterable;
   final U Function(T) _transform;
 
+  /// Creates a [TransformRange] lazily mapping [_iterable] via [_transform].
   TransformRange(this._iterable, this._transform);
 
   @override

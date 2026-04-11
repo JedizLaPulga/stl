@@ -57,6 +57,7 @@ final class Some<T> extends Optional<T> {
 
 /// Variant representing a missing value.
 final class None<T> extends Optional<T> {
+  /// Creates a constant [None] variant representing the absence of a value.
   const None();
 
   @override

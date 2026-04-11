@@ -203,3 +203,4 @@
 - Added FilterRange (std::views::filter)
 - Added TransformRange (std::views::transform)
 - Added JoinRange (std::views::join)
+- Added documentation to all the range classes.
