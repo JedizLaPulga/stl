@@ -1,6 +1,6 @@
 name: stl
 description: A high-performance C++ STL inspired library for Dart & Flutter. Unlock advanced data structures, functional wrappers, and C++23 ranges.
-version: 0.3.2
+version: 0.3.3
 repository: https://github.com/jedizlapulga/stl
 
 environment:

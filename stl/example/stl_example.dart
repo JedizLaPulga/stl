@@ -182,6 +182,27 @@ void main() {
   print('\n• CartesianRange generates combinations (Showing 10 from 16 matrix tiles):');
   print('  ${deckSegment.take(10).toList()}');
 
+  // New C++20/23 Functional Ranges Pipeline!
+  print('\n[Pipeline: Filter -> Transform -> Drop -> Take]');
+  final rawDataNodes = NumberLine(1, 20).toList();
+  // Filter even numbers
+  final evens = FilterRange(rawDataNodes, (int n) => n % 2 == 0);
+  // Transform them by multiplying by 10
+  final tens = TransformRange<int, int>(evens, (int n) => n * 10);
+  // Drop the first 2 (20, 40)
+  final droppedTens = DropRange(tens, 2);
+  // Take the next 3 (60, 80, 100)
+  final finalNodes = TakeRange(droppedTens, 3);
+  print('• Raw Nodes: \$rawDataNodes');
+  print('• After Pipeline (Filter evens -> x10 -> Drop 2 -> Take 3): \${finalNodes.toList()}');
+
+  // JoinRange Showcase: Flattening fragmented chunks
+  final fragmentedData = ChunkRange(NumberLine(1, 10), 3);
+  final joinedData = JoinRange(fragmentedData);
+  print('\n• JoinRange reassembling chunks back into a contiguous flow:');
+  print('  Chunks: \${fragmentedData.toList()}');
+  print('  Joined: \${joinedData.toList()}');
+
   // One final combination: PriorityQueue pushing Zipped Ranges!
   print('\n[ZipRange -> PriorityQueue Pipeline]');
   final userIds = [101, 105, 102];

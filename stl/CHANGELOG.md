@@ -196,3 +196,10 @@
 - Fix upload issue to-RELATED to project
 - applied the @override annotation to the operator + method in array.dart
 - Other minor fixes related to dart analyzer test
+
+## 0.3.3
+- Added TakeRange (std::views::take)
+- Added DropRange (std::views::drop)
+- Added FilterRange (std::views::filter)
+- Added TransformRange (std::views::transform)
+- Added JoinRange (std::views::join)

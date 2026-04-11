@@ -7,7 +7,7 @@
 
   [![License: MIT](https://img.shields.io/badge/License-MIT-ff69b4.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
   [![Dart](https://img.shields.io/badge/Dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev/)
-  [![Pub Version](https://img.shields.io/badge/pub-0.3.2-blueviolet.svg?style=for-the-badge)](https://pub.dev/packages/stl)
+  [![Pub Version](https://img.shields.io/badge/pub-0.3.3-blueviolet.svg?style=for-the-badge)](https://pub.dev/packages/stl)
 
   > 🚀 **A highly-versatile, performance-driven bank of data collections, structures, and algorithmic ranges for the Dart and Flutter ecosystem.**
 
@@ -174,6 +174,46 @@ Mimics `std::views::repeat`. Repeat specific data continuously or infinitely. Pe
 ```dart
 final zeroes = RepeatRange(0);
 print(zeroes.take(5).toList()); // [0, 0, 0, 0, 0]
+```
+</details>
+
+<details>
+<summary><b>✂️ TakeRange & DropRange (Slicing)</b></summary>
+<br>
+
+Mimics `std::views::take` and `std::views::drop`. Extract or ignore sections of an iterable pipeline iteratively without explicitly allocating memory-heavy sublists.
+
+```dart
+final data = NumberLine(1, 10).toList();
+final middle = TakeRange(DropRange(data, 3), 4);
+print(middle.toList()); // [4, 5, 6, 7]
+```
+</details>
+
+<details>
+<summary><b>🧪 FilterRange & TransformRange (Functional Hooks)</b></summary>
+<br>
+
+Mimics `std::views::filter` and `std::views::transform`. Eagerly processes data dynamically through custom conditional predicates and data type mutating hooks.
+
+```dart
+final data = [1, 2, 3, 4, 5];
+// Keep evens, then multiply by 10
+final tens = TransformRange<int, int>(FilterRange(data, (int n) => n % 2 == 0), (int n) => n * 10);
+print(tens.toList()); // [20, 40]
+```
+</details>
+
+<details>
+<summary><b>🌊 JoinRange (Stream Flattening)</b></summary>
+<br>
+
+Mimics `std::views::join`. Instantly reassembles an iterable of iterables back into a perfectly contiguous 1-dimensional functional flow without recursive allocations.
+
+```dart
+final arrays = [[1, 2], [], [3, 4, 5], [6]];
+final stream = JoinRange(arrays);
+print(stream.toList()); // [1, 2, 3, 4, 5, 6]
 ```
 </details>
 
