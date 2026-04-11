@@ -204,3 +204,4 @@
 - Added TransformRange (std::views::transform)
 - Added JoinRange (std::views::join)
 - Added documentation to all the range classes.
+- Added documentation to the ranges.
