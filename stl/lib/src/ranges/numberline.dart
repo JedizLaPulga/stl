@@ -6,8 +6,13 @@ import 'dart:collection';
 /// Can iterate over both [int] and [double], and the boundary
 /// condition for [end] is *exclusive*, meaning it stops before the exact requested ending.
 class NumberLine<T extends num> extends IterableBase<T> {
+  /// The starting inclusive boundary of the sequence.
   final T start;
+  
+  /// The ending exclusive boundary of the sequence.
   final T end;
+  
+  /// The amount or distance to step incrementally on each iteration.
   final T step;
 
   /// Creates a memory-efficient sequence from [start] to [end] exclusive, incrementing by [step].

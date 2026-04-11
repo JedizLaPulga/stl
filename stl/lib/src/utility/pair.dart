@@ -3,9 +3,13 @@
 /// In the C++ STL, `std::pair` is defined in `<utility>`.
 /// It provides a way to store two heterogeneous objects as a single unit.
 class Pair<T1, T2> {
+  /// The first element of the pair.
   T1 first;
+  
+  /// The second element of the pair.
   T2 second;
 
+  /// Creates a [Pair] grouping the [first] and [second] values dynamically.
   Pair(this.first, this.second);
 
   /// Creates a Pair from a modern Dart 3 Record.
