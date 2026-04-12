@@ -47,4 +47,3 @@ export 'src/primitives/uint8.dart';
 export 'src/primitives/uint16.dart';
 export 'src/primitives/uint32.dart';
 export 'src/primitives/uint64.dart';
-

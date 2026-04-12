@@ -3,8 +3,8 @@ import 'dart:typed_data';
 /// A robust, heap-allocated 16-bit signed integer wrapper utilizing `dart:typed_data`.
 ///
 /// Unlike the zero-cost variant, `Int16` is strictly backed by an `Int16List(1)`.
-/// This inherently bounds the variable within standard memory specifications and rigorously 
-/// guarantees that mathematical operators intuitively overflow using C++ style 
+/// This inherently bounds the variable within standard memory specifications and rigorously
+/// guarantees that mathematical operators intuitively overflow using C++ style
 /// constraints, exactly mimicking real hardware boundaries, providing complete safety!
 extension type Int16(Int16List _data) {
   /// Dynamically instantiates a [Int16] value mapped sequentially into memory.
@@ -51,6 +51,7 @@ extension type Int16(Int16List _data) {
 
   /// Right-shifts the numerical data maintaining standard sign retention.
   Int16 operator >>(int shiftAmount) => Int16.from(value >> shiftAmount);
+
   /// Returns true if this value evaluates less than [other].
   bool operator <(Int16 other) => value < other.value;
 
@@ -62,24 +63,31 @@ extension type Int16(Int16List _data) {
 
   /// Strict evaluation extending identical size bounds.
   bool operator >=(Int16 other) => value >= other.value;
+
   /// Adds [other] dynamically intercepting any numerical layout overflow triggering a Dart StateError.
   Int16 addChecked(Int16 other) {
     final result = value + other.value;
-    if (result > 32767 || result < -32768) throw StateError('Int16 addition overflow');
+    if (result > 32767 || result < -32768){
+      throw StateError('Int16 addition overflow');
+    }
     return Int16.from(result);
   }
 
   /// Subtracts [other] throwing a programmatic bounds break upon underflow.
   Int16 subChecked(Int16 other) {
     final result = value - other.value;
-    if (result > 32767 || result < -32768) throw StateError('Int16 subtraction overflow/underflow');
+    if (result > 32767 || result < -32768){
+      throw StateError('Int16 subtraction overflow/underflow');
+    }
     return Int16.from(result);
   }
 
   /// Evaluates exact strict mathematical bounding conditions without truncating natively.
   Int16 mulChecked(Int16 other) {
     final result = value * other.value;
-    if (result > 32767 || result < -32768) throw StateError('Int16 multiplication overflow');
+    if (result > 32767 || result < -32768){
+      throw StateError('Int16 multiplication overflow');
+    }
     return Int16.from(result);
   }
 }

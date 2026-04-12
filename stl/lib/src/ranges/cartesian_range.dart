@@ -32,8 +32,9 @@ class _CartesianRangeIterator<T1, T2> implements Iterator<Pair<T1, T2>> {
 
   @override
   Pair<T1, T2> get current {
-    if (_current == null)
+    if (_current == null) {
       throw StateError('Iterator not initialized or already exhausted.');
+    }
     return _current!;
   }
 

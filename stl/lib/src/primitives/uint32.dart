@@ -3,8 +3,8 @@ import 'dart:typed_data';
 /// A robust, heap-allocated 32-bit unsigned integer wrapper utilizing `dart:typed_data`.
 ///
 /// Unlike the zero-cost variant, `Uint32` is strictly backed by an `Uint32List(1)`.
-/// This inherently bounds the variable within standard memory specifications and rigorously 
-/// guarantees that mathematical operators intuitively overflow using C++ style 
+/// This inherently bounds the variable within standard memory specifications and rigorously
+/// guarantees that mathematical operators intuitively overflow using C++ style
 /// constraints, exactly mimicking real hardware boundaries, providing complete safety!
 extension type Uint32(Uint32List _data) {
   /// Dynamically instantiates a [Uint32] value mapped sequentially into memory.
@@ -51,8 +51,10 @@ extension type Uint32(Uint32List _data) {
 
   /// Right-shifts the numerical data maintaining standard sign retention.
   Uint32 operator >>(int shiftAmount) => Uint32.from(value >> shiftAmount);
+
   /// Right-shift explicitly padding zeros unconditionally.
   Uint32 operator >>>(int shiftAmount) => Uint32.from(value >>> shiftAmount);
+
   /// Returns true if this value evaluates less than [other].
   bool operator <(Uint32 other) => value < other.value;
 
@@ -64,24 +66,31 @@ extension type Uint32(Uint32List _data) {
 
   /// Strict evaluation extending identical size bounds.
   bool operator >=(Uint32 other) => value >= other.value;
+
   /// Adds [other] dynamically intercepting any numerical layout overflow triggering a Dart StateError.
   Uint32 addChecked(Uint32 other) {
     final result = value + other.value;
-    if (result > 4294967295 || result < 0) throw StateError('Uint32 addition overflow');
+    if (result > 4294967295 || result < 0) {
+      throw StateError('Uint32 addition overflow');
+    }
     return Uint32.from(result);
   }
 
   /// Subtracts [other] throwing a programmatic bounds break upon underflow.
   Uint32 subChecked(Uint32 other) {
     final result = value - other.value;
-    if (result > 4294967295 || result < 0) throw StateError('Uint32 subtraction overflow/underflow');
+    if (result > 4294967295 || result < 0) {
+      throw StateError('Uint32 subtraction overflow/underflow');
+    }
     return Uint32.from(result);
   }
 
   /// Evaluates exact strict mathematical bounding conditions without truncating natively.
   Uint32 mulChecked(Uint32 other) {
     final result = value * other.value;
-    if (result > 4294967295 || result < 0) throw StateError('Uint32 multiplication overflow');
+    if (result > 4294967295 || result < 0) {
+      throw StateError('Uint32 multiplication overflow');
+    }
     return Uint32.from(result);
   }
 }

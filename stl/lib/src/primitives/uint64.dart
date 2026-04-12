@@ -3,8 +3,8 @@ import 'dart:typed_data';
 /// A robust, heap-allocated 64-bit unsigned integer wrapper utilizing `dart:typed_data`.
 ///
 /// Unlike the zero-cost variant, `Uint64` is strictly backed by an `Uint64List(1)`.
-/// This inherently bounds the variable within standard memory specifications and rigorously 
-/// guarantees that mathematical operators intuitively overflow using C++ style 
+/// This inherently bounds the variable within standard memory specifications and rigorously
+/// guarantees that mathematical operators intuitively overflow using C++ style
 /// constraints, exactly mimicking real hardware boundaries, providing complete safety!
 extension type Uint64(Uint64List _data) {
   /// Dynamically instantiates a [Uint64] value mapped sequentially into memory.
@@ -51,29 +51,35 @@ extension type Uint64(Uint64List _data) {
 
   /// Right-shifts the numerical data maintaining standard sign retention.
   Uint64 operator >>(int shiftAmount) => Uint64.from(value >> shiftAmount);
+
   /// Right-shift explicitly padding zeros unconditionally.
   Uint64 operator >>>(int shiftAmount) => Uint64.from(value >>> shiftAmount);
+
   /// Determines structural bounds dynamically using unsigned comparison mechanisms for 64-bit limits.
-  bool operator <(Uint64 other) => (value ^ 0x8000000000000000) < (other.value ^ 0x8000000000000000);
+  bool operator <(Uint64 other) =>
+      (value ^ 0x8000000000000000) < (other.value ^ 0x8000000000000000);
 
-  bool operator <=(Uint64 other) => (value ^ 0x8000000000000000) <= (other.value ^ 0x8000000000000000);
+  bool operator <=(Uint64 other) =>
+      (value ^ 0x8000000000000000) <= (other.value ^ 0x8000000000000000);
 
-  bool operator >(Uint64 other) => (value ^ 0x8000000000000000) > (other.value ^ 0x8000000000000000);
+  bool operator >(Uint64 other) =>
+      (value ^ 0x8000000000000000) > (other.value ^ 0x8000000000000000);
 
-  bool operator >=(Uint64 other) => (value ^ 0x8000000000000000) >= (other.value ^ 0x8000000000000000);
+  bool operator >=(Uint64 other) =>
+      (value ^ 0x8000000000000000) >= (other.value ^ 0x8000000000000000);
   Uint64 addChecked(Uint64 other) {
-     final res = value + other.value;
-     if ((res ^ 0x8000000000000000) < (value ^ 0x8000000000000000)) {
-        throw StateError('Uint64 addition overflow');
-     }
-     return Uint64.from(res);
+    final res = value + other.value;
+    if ((res ^ 0x8000000000000000) < (value ^ 0x8000000000000000)) {
+      throw StateError('Uint64 addition overflow');
+    }
+    return Uint64.from(res);
   }
 
   Uint64 subChecked(Uint64 other) {
-     final res = value - other.value;     
-     if ((value ^ 0x8000000000000000) < (other.value ^ 0x8000000000000000)) {
-        throw StateError('Uint64 subtraction underflow');
-     }
-     return Uint64.from(res);
+    final res = value - other.value;
+    if ((value ^ 0x8000000000000000) < (other.value ^ 0x8000000000000000)) {
+      throw StateError('Uint64 subtraction underflow');
+    }
+    return Uint64.from(res);
   }
 }

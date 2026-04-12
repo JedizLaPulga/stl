@@ -26,8 +26,9 @@ class _RepeatRangeIterator<T> implements Iterator<T> {
 
   @override
   T get current {
-    if (!_active)
+    if (!_active) {
       throw StateError('Iterator not initialized or already exhausted.');
+    }
     return _value;
   }
 

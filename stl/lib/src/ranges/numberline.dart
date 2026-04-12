@@ -99,7 +99,9 @@ class NumberLine<T extends num> extends IterableBase<T> {
     start = newStart;
     end = newEnd;
     if (newStep != null) {
-      if (newStep == 0) throw ArgumentError('Step cannot be zero.');
+      if (newStep == 0) {
+        throw ArgumentError('Step cannot be zero.');
+      }
       step = newStep;
     }
   }
@@ -179,7 +181,9 @@ class _NumberLineIterator<T extends num> implements Iterator<T> {
 
   @override
   T get current {
-    if (!_initialized) throw StateError('Iterator not initialized');
+    if (!_initialized) {
+      throw StateError('Iterator not initialized');
+    }
     return _current as T;
   }
 

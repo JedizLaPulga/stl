@@ -3,8 +3,8 @@ import 'dart:typed_data';
 /// A robust, heap-allocated 8-bit signed integer wrapper utilizing `dart:typed_data`.
 ///
 /// Unlike the zero-cost variant, `Int8` is strictly backed by an `Int8List(1)`.
-/// This inherently bounds the variable within standard memory specifications and rigorously 
-/// guarantees that mathematical operators intuitively overflow using C++ style 
+/// This inherently bounds the variable within standard memory specifications and rigorously
+/// guarantees that mathematical operators intuitively overflow using C++ style
 /// constraints, exactly mimicking real hardware boundaries, providing complete safety!
 extension type Int8(Int8List _data) {
   /// Dynamically instantiates a [Int8] value mapped sequentially into memory.
@@ -51,6 +51,7 @@ extension type Int8(Int8List _data) {
 
   /// Right-shifts the numerical data maintaining standard sign retention.
   Int8 operator >>(int shiftAmount) => Int8.from(value >> shiftAmount);
+
   /// Returns true if this value evaluates less than [other].
   bool operator <(Int8 other) => value < other.value;
 
@@ -62,24 +63,31 @@ extension type Int8(Int8List _data) {
 
   /// Strict evaluation extending identical size bounds.
   bool operator >=(Int8 other) => value >= other.value;
+
   /// Adds [other] dynamically intercepting any numerical layout overflow triggering a Dart StateError.
   Int8 addChecked(Int8 other) {
     final result = value + other.value;
-    if (result > 127 || result < -128) throw StateError('Int8 addition overflow');
+    if (result > 127 || result < -128){
+      throw StateError('Int8 addition overflow');
+    }
     return Int8.from(result);
   }
 
   /// Subtracts [other] throwing a programmatic bounds break upon underflow.
   Int8 subChecked(Int8 other) {
     final result = value - other.value;
-    if (result > 127 || result < -128) throw StateError('Int8 subtraction overflow/underflow');
+    if (result > 127 || result < -128){
+      throw StateError('Int8 subtraction overflow/underflow');
+    }
     return Int8.from(result);
   }
 
   /// Evaluates exact strict mathematical bounding conditions without truncating natively.
   Int8 mulChecked(Int8 other) {
     final result = value * other.value;
-    if (result > 127 || result < -128) throw StateError('Int8 multiplication overflow');
+    if (result > 127 || result < -128){
+      throw StateError('Int8 multiplication overflow');
+    }
     return Int8.from(result);
   }
 }

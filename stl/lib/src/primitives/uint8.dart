@@ -3,8 +3,8 @@ import 'dart:typed_data';
 /// A robust, heap-allocated 8-bit unsigned integer wrapper utilizing `dart:typed_data`.
 ///
 /// Unlike the zero-cost variant, `Uint8` is strictly backed by an `Uint8List(1)`.
-/// This inherently bounds the variable within standard memory specifications and rigorously 
-/// guarantees that mathematical operators intuitively overflow using C++ style 
+/// This inherently bounds the variable within standard memory specifications and rigorously
+/// guarantees that mathematical operators intuitively overflow using C++ style
 /// constraints, exactly mimicking real hardware boundaries, providing complete safety!
 extension type Uint8(Uint8List _data) {
   /// Dynamically instantiates a [Uint8] value mapped sequentially into memory.
@@ -51,8 +51,10 @@ extension type Uint8(Uint8List _data) {
 
   /// Right-shifts the numerical data maintaining standard sign retention.
   Uint8 operator >>(int shiftAmount) => Uint8.from(value >> shiftAmount);
+
   /// Right-shift explicitly padding zeros unconditionally.
   Uint8 operator >>>(int shiftAmount) => Uint8.from(value >>> shiftAmount);
+
   /// Returns true if this value evaluates less than [other].
   bool operator <(Uint8 other) => value < other.value;
 
@@ -64,24 +66,31 @@ extension type Uint8(Uint8List _data) {
 
   /// Strict evaluation extending identical size bounds.
   bool operator >=(Uint8 other) => value >= other.value;
+
   /// Adds [other] dynamically intercepting any numerical layout overflow triggering a Dart StateError.
   Uint8 addChecked(Uint8 other) {
     final result = value + other.value;
-    if (result > 255 || result < 0) throw StateError('Uint8 addition overflow');
+    if (result > 255 || result < 0) {
+      throw StateError('Uint8 addition overflow');
+    }
     return Uint8.from(result);
   }
 
   /// Subtracts [other] throwing a programmatic bounds break upon underflow.
   Uint8 subChecked(Uint8 other) {
     final result = value - other.value;
-    if (result > 255 || result < 0) throw StateError('Uint8 subtraction overflow/underflow');
+    if (result > 255 || result < 0) {
+      throw StateError('Uint8 subtraction overflow/underflow');
+    }
     return Uint8.from(result);
   }
 
   /// Evaluates exact strict mathematical bounding conditions without truncating natively.
   Uint8 mulChecked(Uint8 other) {
     final result = value * other.value;
-    if (result > 255 || result < 0) throw StateError('Uint8 multiplication overflow');
+    if (result > 255 || result < 0) {
+      throw StateError('Uint8 multiplication overflow');
+    }
     return Uint8.from(result);
   }
 }

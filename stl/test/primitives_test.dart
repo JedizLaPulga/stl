@@ -17,9 +17,18 @@ void main() {
     });
 
     test('I64 operations', () {
-      expect((I64(9223372036854775807) + I64(1)).value, equals(-9223372036854775808));
-      expect(() => I64(9223372036854775807).addChecked(I64(1)), throwsStateError);
-      expect((I64(-9223372036854775808) - I64(1)).value, equals(9223372036854775807));
+      expect(
+        (I64(9223372036854775807) + I64(1)).value,
+        equals(-9223372036854775808),
+      );
+      expect(
+        () => I64(9223372036854775807).addChecked(I64(1)),
+        throwsStateError,
+      );
+      expect(
+        (I64(-9223372036854775808) - I64(1)).value,
+        equals(9223372036854775807),
+      );
     });
 
     test('U8 operations', () {
@@ -43,9 +52,12 @@ void main() {
       // Dart internally tests the max value of 64-bit safely
       expect((U64(-1) + U64(1)).value, equals(0));
       // Test comparison override
-      expect(U64(-1) > U64(0), isTrue); // In signed logic, -1 > 0 is false. U64 makes it true!
+      expect(
+        U64(-1) > U64(0),
+        isTrue,
+      ); // In signed logic, -1 > 0 is false. U64 makes it true!
       // Test Unsigned Division
-      expect((U64(-1) ~/ U64(2)).value, equals(9223372036854775807)); 
+      expect((U64(-1) ~/ U64(2)).value, equals(9223372036854775807));
     });
   });
 }

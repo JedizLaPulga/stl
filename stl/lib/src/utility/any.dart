@@ -31,8 +31,9 @@ class Any {
   /// Fetches exactly the strict runtime type of the dynamically wrapped inner memory state.
   /// Throws natively if empty.
   Type type() {
-    if (!_hasValue)
+    if (!_hasValue) {
       throw StateError('Any is empty natively! Cannot fetch type.');
+    }
     return _value.runtimeType;
   }
 
@@ -50,8 +51,9 @@ class Any {
 
   /// Retrieves the wrapped object as `dynamic`. Throws natively if empty.
   dynamic get() {
-    if (!_hasValue)
+    if (!_hasValue) {
       throw StateError('Any is empty natively! Cannot randomly get.');
+    }
     return _value;
   }
 
@@ -60,81 +62,111 @@ class Any {
 
   /// Dynamically reads an element internally via bracket notation.
   dynamic operator [](dynamic key) {
-    if (!_hasValue) throw StateError('Any is empty!');
+    if (!_hasValue) {
+      throw StateError('Any is empty!');
+    }
     return (_value as dynamic)[key];
   }
 
   /// Dynamically writes an element internally via bracket notation.
   void operator []=(dynamic key, dynamic val) {
-    if (!_hasValue) throw StateError('Any is empty!');
+    if (!_hasValue) {
+      throw StateError('Any is empty!');
+    }
     (_value as dynamic)[key] = (val is Any ? val.get() : val);
   }
 
   /// Dynamically adds exactly natively.
   dynamic operator +(dynamic other) {
-    if (!_hasValue) throw StateError('Any is empty!');
+    if (!_hasValue) {
+      throw StateError('Any is empty!');
+    }
     return (_value as dynamic) + (other is Any ? other.get() : other);
   }
 
   /// Dynamically subtracts exactly natively.
   dynamic operator -(dynamic other) {
-    if (!_hasValue) throw StateError('Any is empty!');
+    if (!_hasValue) {
+      throw StateError('Any is empty!');
+    }
     return (_value as dynamic) - (other is Any ? other.get() : other);
   }
 
   /// Dynamically multiplies exactly natively.
   dynamic operator *(dynamic other) {
-    if (!_hasValue) throw StateError('Any is empty!');
+    if (!_hasValue) {
+      throw StateError('Any is empty!');
+    }
     return (_value as dynamic) * (other is Any ? other.get() : other);
   }
 
   /// Dynamically divides exactly natively.
   dynamic operator /(dynamic other) {
-    if (!_hasValue) throw StateError('Any is empty!');
+    if (!_hasValue) {
+      throw StateError('Any is empty!');
+    }
     return (_value as dynamic) / (other is Any ? other.get() : other);
   }
 
   /// Dynamically modulates exactly natively.
   dynamic operator %(dynamic other) {
-    if (!_hasValue) throw StateError('Any is empty!');
+    if (!_hasValue) {
+      throw StateError('Any is empty!');
+    }
     return (_value as dynamic) % (other is Any ? other.get() : other);
   }
 
   /// Dynamically resolves logically accurate less-than natively.
   bool operator <(dynamic other) {
-    if (!_hasValue) throw StateError('Any is empty!');
+    if (!_hasValue) {
+      throw StateError('Any is empty!');
+    }
     return (_value as dynamic) < (other is Any ? other.get() : other);
   }
 
   /// Dynamically resolves logically accurate greater-than natively.
   bool operator >(dynamic other) {
-    if (!_hasValue) throw StateError('Any is empty!');
+    if (!_hasValue) {
+      throw StateError('Any is empty!');
+    }
     return (_value as dynamic) > (other is Any ? other.get() : other);
   }
 
   /// Dynamically resolves less-than-or-equal stably natively.
   bool operator <=(dynamic other) {
-    if (!_hasValue) throw StateError('Any is empty!');
+    if (!_hasValue) {
+      throw StateError('Any is empty!');
+    }
     return (_value as dynamic) <= (other is Any ? other.get() : other);
   }
 
   /// Dynamically resolves greater-than-or-equal stably natively.
   bool operator >=(dynamic other) {
-    if (!_hasValue) throw StateError('Any is empty!');
+    if (!_hasValue) {
+      throw StateError('Any is empty!');
+    }
     return (_value as dynamic) >= (other is Any ? other.get() : other);
   }
 
   @override
   String toString() {
-    if (!_hasValue) return 'Any(Empty)';
+    if (!_hasValue) {
+      return 'Any(Empty)';
+    }
     return 'Any($_value)';
   }
 
   @override
   bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (other is! Any || _hasValue != other._hasValue) return false;
-    if (!_hasValue && !other._hasValue) return true;
+    if (identical(this, other)) {
+      return true;
+    }
+    if (other is! Any || _hasValue != other._hasValue) {
+      return false;
+    }
+    if (!_hasValue && !other._hasValue) {
+      return true;
+    }
     return _value == other._value;
   }
 

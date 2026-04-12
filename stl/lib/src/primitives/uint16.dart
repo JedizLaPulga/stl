@@ -3,8 +3,8 @@ import 'dart:typed_data';
 /// A robust, heap-allocated 16-bit unsigned integer wrapper utilizing `dart:typed_data`.
 ///
 /// Unlike the zero-cost variant, `Uint16` is strictly backed by an `Uint16List(1)`.
-/// This inherently bounds the variable within standard memory specifications and rigorously 
-/// guarantees that mathematical operators intuitively overflow using C++ style 
+/// This inherently bounds the variable within standard memory specifications and rigorously
+/// guarantees that mathematical operators intuitively overflow using C++ style
 /// constraints, exactly mimicking real hardware boundaries, providing complete safety!
 extension type Uint16(Uint16List _data) {
   /// Dynamically instantiates a [Uint16] value mapped sequentially into memory.
@@ -51,8 +51,10 @@ extension type Uint16(Uint16List _data) {
 
   /// Right-shifts the numerical data maintaining standard sign retention.
   Uint16 operator >>(int shiftAmount) => Uint16.from(value >> shiftAmount);
+
   /// Right-shift explicitly padding zeros unconditionally.
   Uint16 operator >>>(int shiftAmount) => Uint16.from(value >>> shiftAmount);
+
   /// Returns true if this value evaluates less than [other].
   bool operator <(Uint16 other) => value < other.value;
 
@@ -64,24 +66,31 @@ extension type Uint16(Uint16List _data) {
 
   /// Strict evaluation extending identical size bounds.
   bool operator >=(Uint16 other) => value >= other.value;
+
   /// Adds [other] dynamically intercepting any numerical layout overflow triggering a Dart StateError.
   Uint16 addChecked(Uint16 other) {
     final result = value + other.value;
-    if (result > 65535 || result < 0) throw StateError('Uint16 addition overflow');
+    if (result > 65535 || result < 0) {
+      throw StateError('Uint16 addition overflow');
+    }
     return Uint16.from(result);
   }
 
   /// Subtracts [other] throwing a programmatic bounds break upon underflow.
   Uint16 subChecked(Uint16 other) {
     final result = value - other.value;
-    if (result > 65535 || result < 0) throw StateError('Uint16 subtraction overflow/underflow');
+    if (result > 65535 || result < 0) {
+      throw StateError('Uint16 subtraction overflow/underflow');
+    }
     return Uint16.from(result);
   }
 
   /// Evaluates exact strict mathematical bounding conditions without truncating natively.
   Uint16 mulChecked(Uint16 other) {
     final result = value * other.value;
-    if (result > 65535 || result < 0) throw StateError('Uint16 multiplication overflow');
+    if (result > 65535 || result < 0) {
+      throw StateError('Uint16 multiplication overflow');
+    }
     return Uint16.from(result);
   }
 }

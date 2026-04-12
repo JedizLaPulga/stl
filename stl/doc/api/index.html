@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="stl API docs, for the Dart programming language.">
+  <title>stl - Dart API docs</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="static-assets/github.css?v1">
+  <link rel="stylesheet" href="static-assets/styles.css?v1">
+  <link rel="icon" href="static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li class="self-crumb">stl package</li>
+  </ol>
+  <div class="self-name">stl</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+  <div id="dartdoc-main-content" class="main-content">
+      
+<section class="desc markdown">
+  <div align="center">
+  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Diamond.png" alt="Diamond" width="100" height="100">
+<h1 id="stl-standard-template-library-and-beyond">STL (Standard Template Library... and Beyond!)</h1>
+<p><a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&amp;weight=600&amp;size=20&amp;pause=1000&amp;color=00B4AB&amp;center=true&amp;vCenter=true&amp;width=500&amp;lines=Dart+Collections+Reimagined;C%2B%2B+STL+Inspired+Architecture;Lightning+Fast+Data+Structures;Now+featuring+C%2B%2B23+Ranges!" alt="Typing SVG"></a></p>
+<p><a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-ff69b4.svg?style=for-the-badge" alt="License: MIT"></a>
+  <a href="https://dart.dev/"><img src="https://img.shields.io/badge/Dart-%230175C2.svg?style=for-the-badge&amp;logo=dart&amp;logoColor=white" alt="Dart"></a>
+  <a href="https://pub.dev/packages/stl"><img src="https://img.shields.io/badge/pub-0.3.6-blueviolet.svg?style=for-the-badge" alt="Pub Version"></a></p>
+<blockquote>
+<p>🚀 <strong>A highly-versatile, performance-driven bank of data collections, structures, and algorithmic ranges for the Dart and Flutter ecosystem.</strong></p>
+</blockquote>
+<hr>
+  <br>
+<h3 id="-quick-install">🛠️ Quick Install</h3>
+<pre class="language-bash"><code class="language-bash">dart pub add stl
+</code></pre>
+<p><em>or for Flutter:</em></p>
+<pre class="language-bash"><code class="language-bash">flutter pub add stl
+</code></pre>
+  <br>
+  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Star-Struck.png" alt="Star-Struck" width="55" height="55">
+</div>
+<h2 id="-the-vision">🌈 The Vision</h2>
+<p>Originally inspired by the strict blueprints of the <strong>C++ Standard Template Library (STL)</strong>, this package has heavily evolved into a comprehensive <strong>bank of diverse collections</strong> for all your data structure needs. Whether you require familiar sequential containers, complex associative maps, specialized utility adapters, or bleeding-edge C++23 functional ranges, <code>stl</code> drastically supercharges your Dart architecture! ✨</p>
+<h3 id="-why-use-this-package-over-standard-dart-tools">🎯 Why use this package over standard Dart tools?</h3>
+<ul>
+<li>📦 <strong>Massive Bank of Collections:</strong> Unlock custom abilities via <code>Vector</code>, <code>Deque</code>, <code>Stack</code>, <code>ForwardList</code>, and more!</li>
+<li>🌀 <strong>Next-Gen Iteration:</strong> Introducing <strong>Ranges</strong>! Seamlessly generate subsets, zips, Cartesian products, and infinite loops on the fly without breaking your memory limit.</li>
+<li>⚡ <strong>Deterministic Performance:</strong> Predictable time complexity ($O(1)$, $O(\log n)$, etc.) with heavily optimized system-level logic.</li>
+<li>🛠 <strong>Familiar yet Dart-y API:</strong> Native <code>Iterable</code> mixins seamlessly integrated with perfectly replicated C++ architectural rules, wrapped cleanly in standard Dart <code>camelCase</code> for maximum ecosystem interoperability.</li>
+<li>🎨 <strong>Ready for Everything:</strong> Perfect for logic-heavy Flutter apps, scalable game engines, dynamic state management, or enterprise backend systems.</li>
+</ul>
+<br>
+<hr>
+<br>
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Open%20Book.png" alt="Book" width="50" height="50">
+</div>
+<h2 id="-the-collection-bank">📚 The Collection Bank</h2>
+<p>Here are the traditional core data structures currently fully supported and battle-tested:</p>
+<h3 id="-linear-containers">🚅 Linear Containers</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Data Structure</th>
+<th align="left">Description</th>
+<th align="center">Time Complexity (Access)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">🚂 <strong><code>Vector&lt;T&gt;</code></strong></td>
+<td align="left">Dynamic array with contiguous memory behavior, strict bounds checking, and powerful modifiers.</td>
+<td align="center">$O(1)$</td>
+</tr>
+<tr>
+<td align="left">🚅 <strong><code>ForwardList&lt;T&gt;</code></strong></td>
+<td align="left">Singly linked list optimized for extremely fast forward traversal, insertions, and shifting.</td>
+<td align="center">$O(N)$</td>
+</tr>
+<tr>
+<td align="left">🧊 <strong><code>Array&lt;T&gt;</code></strong></td>
+<td align="left">Conceptually strict fixed-size contiguous array mirroring C++ <code>std::array</code>.</td>
+<td align="center">$O(1)$</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-adapter-containers">🥞 Adapter Containers</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Data Structure</th>
+<th align="left">Description</th>
+<th align="center">Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">🥞 <strong><code>Stack&lt;T&gt;</code></strong></td>
+<td align="left">Custom LIFO (Last-In, First-Out) adapter. Operates flawlessly over any given sequence.</td>
+<td align="center">LIFO</td>
+</tr>
+<tr>
+<td align="left">🚏 <strong><code>Queue&lt;T&gt;</code></strong></td>
+<td align="left">Custom FIFO (First-In, First-Out) adapter for messaging and task processing.</td>
+<td align="center">FIFO</td>
+</tr>
+<tr>
+<td align="left">⏳ <strong><code>PriorityQueue&lt;T&gt;</code></strong></td>
+<td align="left">Max/Min heap priority structure. Constantly dynamically sorts elements upon insertion.</td>
+<td align="center">$O(\log N)$</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-associative-containers">🗃️ Associative Containers</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Data Structure</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">🗃️ <strong><code>Set&lt;T&gt;</code></strong></td>
+<td align="left">Unique element container ensuring no duplicates with generic equality support.</td>
+</tr>
+<tr>
+<td align="left">🌲 <strong><code>SortedSet&lt;T&gt;</code></strong></td>
+<td align="left">Tree-based strictly sorted unique container mirroring C++ <code>std::set</code>. Keeps data autonomously ordered.</td>
+</tr>
+<tr>
+<td align="left">🌭 <strong><code>Deque&lt;T&gt;</code></strong></td>
+<td align="left">Double-ended queue allowing extremely fast front/back algorithmic insertions &amp; removals without memory reallocation overhead.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-utility-structures">🛠️ Utility Structures</h3>
+<table>
+<thead>
+<tr>
+<th align="left">Utility</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">👯 <strong><code>Pair&lt;T1, T2&gt;</code></strong></td>
+<td align="left">Native C++ utility structure to hold heterogeneous objects. Features gorgeous Dart 3 Record translation.</td>
+</tr>
+<tr>
+<td align="left">✨ <strong><code>Optional&lt;T&gt;</code></strong></td>
+<td align="left">A beautifully sealed functional wrapper representing possibly-absent values smoothly without relying on raw <code>null</code> checks.</td>
+</tr>
+<tr>
+<td align="left">🔀 <strong><code>Variant&lt;T0, T1...&gt;</code></strong></td>
+<td align="left">Type-safe discriminated union handling distinct architectural alternatives elegantly via exhausted switch statements.</td>
+</tr>
+<tr>
+<td align="left">📦 <strong><code>Box&lt;T&gt;</code> / <code>Ref&lt;T&gt;</code></strong></td>
+<td align="left">Wrappers unlocking primitive pass-by-reference logic with dynamic mathematical operators.</td>
+</tr>
+<tr>
+<td align="left">🔢 <strong><code>BitSet</code></strong></td>
+<td align="left">Hyper-efficient space-optimized boolean bit flags array mimicking <code>std::bitset</code>. $O(1)$ toggles.</td>
+</tr>
+<tr>
+<td align="left">👽 <strong><code>Any</code></strong></td>
+<td align="left">Generic type-safe bounding box safely encapsulating abstract data with strictly enforced extraction boundaries.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-primitives-fixed-width-integers">🧱 Primitives (Fixed-Width Integers)</h3>
+<p><code>stl</code> provides two distinctly different architectural branches for bounded hardware-level integers.</p>
+<h4 id="1-zero-cost-primitives">1. Zero-Cost Primitives</h4>
+<p>Extremely lightweight <code>extension type</code> models scaling directly utilizing Dart Native performance bounds without allocating dynamic memory on the heap. Ideal for tight, high-performance logic loops natively!</p>
+<table>
+<thead>
+<tr>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">🔢 <strong><code>I8</code></strong>, <strong><code>I16</code></strong>, <strong><code>I32</code></strong>, <strong><code>I64</code></strong></td>
+<td align="left">Signed integer zero-cost wrappers. Provides automatic arithmetic wrap-around, checked methods (e.g. <code>addChecked</code>), and strict min/max boundaries. (<code>I64</code> deeply integrates two's complement constraints).</td>
+</tr>
+<tr>
+<td align="left">🔢 <strong><code>U8</code></strong>, <strong><code>U16</code></strong>, <strong><code>U32</code></strong>, <strong><code>U64</code></strong></td>
+<td align="left">Unsigned integer variants mathematically bounding state within their respective non-negative bit frames seamlessly.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="2-typeddata-primitives-hardware-backed">2. TypedData Primitives (Hardware Backed)</h4>
+<div class="markdown-alert markdown-alert-warning">
+<p class="markdown-alert-title">Warning</p>
+<p><strong>Architectural Difference:</strong> Unlike the zero-cost <code>I8</code>/<code>U8</code> variants above, these types dynamically allocate a <code>dart:typed_data</code> list sequentially behind the scenes (e.g., <code>Int8List(1)</code>). Memory allocations inside tight math loops inherently add garbage-collection pressure—however, these structures grant absolute native hardware limits precisely mimicking exact C++ data structures flawlessly. Furthermore, they retain perfectly strict exact 64-bit precision bounds across JavaScript/Web layout environments flawlessly!</p>
+</div>
+<table>
+<thead>
+<tr>
+<th align="left">Type</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">🔢 <strong><code>Int8</code></strong>, <strong><code>Int16</code></strong>, <strong><code>Int32</code></strong>, <strong><code>Int64</code></strong></td>
+<td align="left">Hardware-backed signed equivalents enforcing strict boundary overflow natively at the OS hardware/V8 buffer layout level.</td>
+</tr>
+<tr>
+<td align="left">🔢 <strong><code>Uint8</code></strong>, <strong><code>Uint16</code></strong>, <strong><code>Uint32</code></strong>, <strong><code>Uint64</code></strong></td>
+<td align="left">Hardware-backed unsigned integers utilizing exact standard array memory to process mathematically clean unsigned rollovers securely.</td>
+</tr>
+</tbody>
+</table>
+<br>
+<hr>
+<br>
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Symbols/Fire.png" alt="Fire" width="50" height="50">
+</div>
+<h2 id="-ranges-module-inspired-by-c23">🧬 Ranges Module (Inspired by C++23)</h2>
+<p>Welcome to functional magic! Inspired deeply by <strong>C++23 <code>std::views</code></strong>, our Ranges module allows you to cleanly manipulate, combine, generate, and stream data iteratively without aggressively eager memory consumption. Operations are performed <strong>lazily</strong>, bringing algorithmic elegance to your pipeline.</p>
+<h3 id="-spotlight-ranges">🔥 Spotlight Ranges</h3>
+<details open="">
+<summary><b>📐 NumberLine (Iota)</b></summary>
+<br>
+<p>Mimicking <code>std::views::iota</code>. Generate precise linear layouts of floating-point boundaries, or standard integer jumps, in mathematically optimized $O(1)$ operations instead of building massive explicit arrays.</p>
+<pre class="language-dart"><code class="language-dart">// Custom Step Increment of 4 (0 to 20):
+final evens = NumberLine(0, 20, step: 4);
+print(evens.toList()); // [0, 4, 8, 12, 16]
+
+// Highly mathematically optimized checks:
+print(evens.contains(12)); // True! (Does NOT iterate over memory)
+</code></pre>
+</details>
+<details open="">
+<summary><b>🔗 ZipRange (Parallel Iteration)</b></summary>
+<br>
+<p>Mimics <code>std::views::zip</code>. Dynamically clamp two different structured iterables together until the shortest one expires. Phenomenal for generating maps!</p>
+<pre class="language-dart"><code class="language-dart">final keys = ['Player1', 'Player2', 'Player3'];
+final scores = [9500, 8400]; // Uneven length!
+
+final zipped = ZipRange(keys, scores);
+final scoreMap = Map.fromEntries(zipped.map((p) =&gt; p.toMapEntry()));
+// Results: {'Player1': 9500, 'Player2': 8400}
+</code></pre>
+</details>
+<details>
+<summary><b>🔲 ChunkRange (Data Fragmentation)</b></summary>
+<br>
+<p>Mimics <code>std::views::chunk</code>. Need to batch network packets or paginate rendering blocks? <code>ChunkRange</code> divides collections precisely into requested sizing constraints.</p>
+<pre class="language-dart"><code class="language-dart">final data = [1, 2, 3, 4, 5, 6, 7];
+final pagination = ChunkRange(data, 3);
+print(pagination.toList()); 
+// Results: [[1, 2, 3], [4, 5, 6], [7]]
+</code></pre>
+</details>
+<details>
+<summary><b>🧩 CartesianRange (Combinations)</b></summary>
+<br>
+<p>Mimics <code>std::views::cartesian_product</code>. Produces flat combinatorial intersections elegantly.</p>
+<pre class="language-dart"><code class="language-dart">final suits = ['Hearts', 'Spades'];
+final ranks = ['King', 'Queen'];
+
+final deck = CartesianRange(suits, ranks);
+// Yields Pairs: (Hearts, King), (Hearts, Queen), (Spades, King), (Spades, Queen)
+</code></pre>
+</details>
+<details>
+<summary><b>♾️ RepeatRange (Infinite Streams)</b></summary>
+<br>
+<p>Mimics <code>std::views::repeat</code>. Repeat specific data continuously or infinitely. Perfect for mock data pipelines!</p>
+<pre class="language-dart"><code class="language-dart">final zeroes = RepeatRange(0);
+print(zeroes.take(5).toList()); // [0, 0, 0, 0, 0]
+</code></pre>
+</details>
+<details>
+<summary><b>✂️ TakeRange &amp; DropRange (Slicing)</b></summary>
+<br>
+<p>Mimics <code>std::views::take</code> and <code>std::views::drop</code>. Extract or ignore sections of an iterable pipeline iteratively without explicitly allocating memory-heavy sublists.</p>
+<pre class="language-dart"><code class="language-dart">final data = NumberLine(1, 10).toList();
+final middle = TakeRange(DropRange(data, 3), 4);
+print(middle.toList()); // [4, 5, 6, 7]
+</code></pre>
+</details>
+<details>
+<summary><b>🧪 FilterRange &amp; TransformRange (Functional Hooks)</b></summary>
+<br>
+<p>Mimics <code>std::views::filter</code> and <code>std::views::transform</code>. Eagerly processes data dynamically through custom conditional predicates and data type mutating hooks.</p>
+<pre class="language-dart"><code class="language-dart">final data = [1, 2, 3, 4, 5];
+// Keep evens, then multiply by 10
+final tens = TransformRange&lt;int, int&gt;(FilterRange(data, (int n) =&gt; n % 2 == 0), (int n) =&gt; n * 10);
+print(tens.toList()); // [20, 40]
+</code></pre>
+</details>
+<details>
+<summary><b>🌊 JoinRange (Stream Flattening)</b></summary>
+<br>
+<p>Mimics <code>std::views::join</code>. Instantly reassembles an iterable of iterables back into a perfectly contiguous 1-dimensional functional flow without recursive allocations.</p>
+<pre class="language-dart"><code class="language-dart">final arrays = [[1, 2], [], [3, 4, 5], [6]];
+final stream = JoinRange(arrays);
+print(stream.toList()); // [1, 2, 3, 4, 5, 6]
+</code></pre>
+</details>
+<br>
+<hr>
+<br>
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Laptop.png" alt="Laptop" width="50" height="50">
+</div>
+<h2 id="-spotlight-integrations">💻 Spotlight Integrations</h2>
+<p>By blending C++ architectures with Dart's <code>IterableMixin</code>, <code>stl</code> gives you incredible syntactical power:</p>
+<h3 id="-vector-memory-architecture">🚂 <strong>Vector Memory Architecture</strong></h3>
+<pre class="language-dart"><code class="language-dart">final vec = Vector&lt;String&gt;(['Apple', 'Banana']);
+vec.pushBack('Cherry');
+vec.popBack();
+print(vec.front()); // "Apple"
+</code></pre>
+<h3 id="-the-powerful-pair--dart-3-records">👯 <strong>The Powerful <code>Pair</code> &amp; Dart 3 Records</strong></h3>
+<pre class="language-dart"><code class="language-dart">// Effortless Pair initialization
+var duo = makePair(99, 'Balloons');
+
+// Native Dart 3 tuple/record unwrapping
+var (count, item) = duo.record;
+
+// Native deep equality
+var sibling = makePair(99, 'Balloons');
+print(duo == sibling); // True!
+</code></pre>
+<h3 id="-iterable-adapters-stack">🥞 <strong>Iterable Adapters (<code>Stack</code>)</strong></h3>
+<pre class="language-dart"><code class="language-dart">final stack = Stack&lt;int&gt;.from([1, 2, 3]); // Top element is 3
+var removed = stack.pop(); // Removes and returns 3
+
+// Instantly iterable safely from top-to-bottom! 
+for (var item in stack) {
+  print(item); // 2, then 1
+}
+</code></pre>
+<h3 id="-autonomous-self-balancing-sets-sortedset">🌲 <strong>Autonomous Self-Balancing Sets (<code>SortedSet</code>)</strong></h3>
+<pre class="language-dart"><code class="language-dart">final sorted = SortedSet&lt;String&gt;((a, b) =&gt; b.length.compareTo(a.length));
+sorted.insert("Strawberry");
+sorted.insert("Apple"); 
+sorted.insert("A");
+
+print(sorted.toList()); 
+// ["Strawberry", "Apple", "A"] (Sorting strictly maintained on insert!)
+</code></pre>
+<br>
+<hr>
+<br>
+<h2 id="-contributing">💖 Contributing</h2>
+<p>Want to see an exotic data structure, an algorithmic graph traversal, or a missing <code>std::ranges</code> feature added to the library? We emphatically welcome pull requests, bug reports, and issue tickets. Let's make this the most powerful and scalable system-level algorithms repository in the Flutter and Dart ecosystem! 🌟</p>
+<br>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Rocket.png" alt="Rocket" width="35" height="35"> <i>Engineered with passion for Dart &amp; Flutter architectures.</i> <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Rocket.png" alt="Rocket" width="35" height="35">
+</p>
+</section>
+
+
+      <section class="summary">
+          <h2>Libraries</h2>
+        <dl>
+          <dt id="stl">
+  <span class="name"><a href="stl/">stl</a></span> 
+
+</dt>
+<dd>Support for doing something awesome.
+</dd>
+
+        </dl>
+      </section>
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li class="self-crumb">stl package</li>
+</ol>
+
+    <h5 class="hidden-xs"><span class="package-name">stl</span> <span class="package-kind">package</span></h5>
+    <ol>
+      <li class="section-title">Libraries</li>
+      <li><a href="stl/">stl</a></li>
+</ol>
+
+  </div>
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div>
+</main>
+<footer>
+  <span class="no-break">
+    stl
+      0.3.6
+  </span>
+  
+</footer>
+
+
+<script src="static-assets/highlight.pack.js?v1"></script>
+<script src="static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+

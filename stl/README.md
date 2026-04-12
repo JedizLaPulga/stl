@@ -89,14 +89,25 @@ Here are the traditional core data structures currently fully supported and batt
 | 👽 **`Any`** | Generic type-safe bounding box safely encapsulating abstract data with strictly enforced extraction boundaries. |
 
 ### 🧱 Primitives (Fixed-Width Integers)
+
+`stl` provides two distinctly different architectural branches for bounded hardware-level integers. 
+
+#### 1. Zero-Cost Primitives
+Extremely lightweight `extension type` models scaling directly utilizing Dart Native performance bounds without allocating dynamic memory on the heap. Ideal for tight, high-performance logic loops natively!
+
 | Type | Description |
 | :--- | :--- |
-| 🔢 **`I8`** | 8-bit signed integer (`extension type` zero-cost wrapper). Provides automatic arithmetic wrap-around, checked methods (e.g. `addChecked`), and strict min/max boundaries. |
-| 🔢 **`I16`** | 16-bit signed integer zero-cost wrapper with auto-wrapping, checked modifiers, and bounds. |
-| 🔢 **`I32`** | 32-bit signed integer zero-cost wrapper with auto-wrapping, checked modifiers, and bounds. |
-| 🔢 **`I64`** | 64-bit signed integer wrapper utilizing strict two's complement sign management for limits and checked operations. |
-| 🔢 **`U8`**, **`U16`**, **`U32`** | Standard unsigned integer wrappers mathematically bounding state within their respective non-negative bit frames without heap allocation. |
-| 🔢 **`U64`** | Complex 64-bit unsigned integer wrapper managing Dart's signed ecosystem cleanly with precise custom binary `<` comparisons and exact operations. |
+| 🔢 **`I8`**, **`I16`**, **`I32`**, **`I64`** | Signed integer zero-cost wrappers. Provides automatic arithmetic wrap-around, checked methods (e.g. `addChecked`), and strict min/max boundaries. (`I64` deeply integrates two's complement constraints). |
+| 🔢 **`U8`**, **`U16`**, **`U32`**, **`U64`** | Unsigned integer variants mathematically bounding state within their respective non-negative bit frames seamlessly. |
+
+#### 2. TypedData Primitives (Hardware Backed)
+> [!WARNING]  
+> **Architectural Difference:** Unlike the zero-cost `I8`/`U8` variants above, these types dynamically allocate a `dart:typed_data` list sequentially behind the scenes (e.g., `Int8List(1)`). Memory allocations inside tight math loops inherently add garbage-collection pressure—however, these structures grant absolute native hardware limits precisely mimicking exact C++ data structures flawlessly. Furthermore, they retain perfectly strict exact 64-bit precision bounds across JavaScript/Web layout environments flawlessly!
+
+| Type | Description |
+| :--- | :--- |
+| 🔢 **`Int8`**, **`Int16`**, **`Int32`**, **`Int64`** | Hardware-backed signed equivalents enforcing strict boundary overflow natively at the OS hardware/V8 buffer layout level. |
+| 🔢 **`Uint8`**, **`Uint16`**, **`Uint32`**, **`Uint64`** | Hardware-backed unsigned integers utilizing exact standard array memory to process mathematically clean unsigned rollovers securely. |
 
 
 <br/>

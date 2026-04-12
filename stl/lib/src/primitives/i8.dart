@@ -2,7 +2,12 @@
 ///
 /// This provides a zero-cost abstraction for 8-bit signed math,
 /// automatically wrapping on overflow and providing C++-style boundaries.
-extension type const I8(int value) implements int {
+extension type const I8(
+  /// The strictly bounded primitive underlying value.
+  int
+  value
+)
+    implements int {
   /// The minimum value an `I8` can hold (-128).
   static const I8 min = I8(-128);
 
@@ -41,7 +46,7 @@ extension type const I8(int value) implements int {
 
   /// Right shifts by [shiftAmount] bits.
   I8 operator >>(int shiftAmount) => I8((value >> shiftAmount).toSigned(8));
-  
+
   /// Unsigned right shift.
   I8 operator >>>(int shiftAmount) => I8((value >>> shiftAmount).toSigned(8));
 

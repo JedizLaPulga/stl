@@ -2,7 +2,12 @@
 ///
 /// This provides a zero-cost abstraction for 16-bit signed math,
 /// automatically wrapping on overflow and providing C++-style boundaries.
-extension type const I16(int value) implements int {
+extension type const I16(
+  /// The strictly bounded primitive underlying value.
+  int
+  value
+)
+    implements int {
   /// The minimum value an `I16` can hold (-32768).
   static const I16 min = I16(-32768);
 
@@ -41,9 +46,10 @@ extension type const I16(int value) implements int {
 
   /// Right shifts by [shiftAmount] bits.
   I16 operator >>(int shiftAmount) => I16((value >> shiftAmount).toSigned(16));
-  
+
   /// Unsigned right shift.
-  I16 operator >>>(int shiftAmount) => I16((value >>> shiftAmount).toSigned(16));
+  I16 operator >>>(int shiftAmount) =>
+      I16((value >>> shiftAmount).toSigned(16));
 
   /// Returns the negated value.
   I16 operator -() => I16((-value).toSigned(16));

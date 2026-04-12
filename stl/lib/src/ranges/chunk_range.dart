@@ -31,8 +31,9 @@ class _ChunkRangeIterator<T> implements Iterator<List<T>> {
 
   @override
   List<T> get current {
-    if (_current == null)
+    if (_current == null) {
       throw StateError('Iterator not initialized or already exhausted.');
+    }
     return _current!;
   }
 

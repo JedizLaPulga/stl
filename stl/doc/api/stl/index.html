@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="stl library API docs, for the Dart programming language.">
+  <title>stl library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../static-assets/styles.css?v1">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">stl</a></li>
+    <li class="self-crumb">stl.dart</li>
+  </ol>
+  <div class="self-name">stl</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar=""
+    data-below-sidebar="stl&#47;stl-library-sidebar.html">
+  
+    <div>
+      
+
+      <h1>
+        <span class="kind-library">stl</span>
+        library 
+ 
+
+      </h1>
+    </div>
+
+    
+<section class="desc markdown">
+  <p>Support for doing something awesome.</p>
+<p>More dartdocs go here.</p>
+</section>
+
+
+    <section class="summary offset-anchor" id="classes">
+      <h2>Classes</h2>
+      <dl>
+          <dt id="Any">
+  <span class="name "><a href="../stl/Any-class.html">Any</a></span> 
+
+</dt>
+<dd>
+  A type-safe container for single values of literally any type.
+</dd>
+
+          <dt id="Array">
+  <span class="name "><a href="../stl/Array-class.html">Array</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A conceptually strict fixed-size contiguous sequence.
+</dd>
+
+          <dt id="BitSet">
+  <span class="name "><a href="../stl/BitSet-class.html">BitSet</a></span> 
+
+</dt>
+<dd>
+  A space-efficient set implementation for managing boolean flags.
+Mimics C++ <code>std::bitset</code> functionality.
+</dd>
+
+          <dt id="Box">
+  <span class="name "><a href="../stl/Box-class.html">Box</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A mutable wrapper designed to hold and update values.
+</dd>
+
+          <dt id="CartesianRange">
+  <span class="name "><a href="../stl/CartesianRange-class.html">CartesianRange</a><span class="signature">&lt;<wbr><span class="type-parameter">T1</span>, <span class="type-parameter">T2</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A view that generates the Cartesian product of two iterables.
+Mimics C++ <code>std::views::cartesian_product</code>.
+</dd>
+
+          <dt id="ChunkRange">
+  <span class="name "><a href="../stl/ChunkRange-class.html">ChunkRange</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A view that splits an iterable into chunks of a specific size.
+Mimics C++ <code>std::views::chunk</code>.
+The last chunk may be smaller than the requested size if the total number
+of elements is not perfectly divisible by the chunk size.
+</dd>
+
+          <dt id="Deque">
+  <span class="name "><a href="../stl/Deque-class.html">Deque</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A double-ended queue (deque) that allows for insertion and deletion of elements
+at both the front and the rear.
+</dd>
+
+          <dt id="DropRange">
+  <span class="name "><a href="../stl/DropRange-class.html">DropRange</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A view that drops the first <code>count</code> elements of an iterable.
+Mimics C++ <code>std::views::drop</code>.
+</dd>
+
+          <dt id="FilterRange">
+  <span class="name "><a href="../stl/FilterRange-class.html">FilterRange</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A view that filters elements based on a predicate.
+Mimics C++ <code>std::views::filter</code>.
+</dd>
+
+          <dt id="ForwardList">
+  <span class="name "><a href="../stl/ForwardList-class.html">ForwardList</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A singly-linked list.
+</dd>
+
+          <dt id="HashSet">
+  <span class="name "><a href="../stl/HashSet-class.html">HashSet</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  An unordered collection that contains no duplicate elements.
+</dd>
+
+          <dt id="JoinRange">
+  <span class="name "><a href="../stl/JoinRange-class.html">JoinRange</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A view that flattens an iterable of iterables into a single contiguous iterable.
+Mimics C++ <code>std::views::join</code>.
+</dd>
+
+          <dt id="None">
+  <span class="name "><a href="../stl/None-class.html">None</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  Variant representing a missing value.
+</dd>
+
+          <dt id="NumberLine">
+  <span class="name "><a href="../stl/NumberLine-class.html">NumberLine</a><span class="signature">&lt;<wbr><span class="type-parameter">T extends <a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a></span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A memory-efficient iterable sequence of numbers.
+Mimics C++ <code>std::views::iota</code> or Python's <code>range()</code>.
+</dd>
+
+          <dt id="Optional">
+  <span class="name "><a href="../stl/Optional-class.html">Optional</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A container for a value that may or may not exist.
+Using a sealed class ensures exhaustive pattern matching.
+</dd>
+
+          <dt id="Pair">
+  <span class="name "><a href="../stl/Pair-class.html">Pair</a><span class="signature">&lt;<wbr><span class="type-parameter">T1</span>, <span class="type-parameter">T2</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A class that stores a pair of values.
+</dd>
+
+          <dt id="PriorityQueue">
+  <span class="name "><a href="../stl/PriorityQueue-class.html">PriorityQueue</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  An adapter class that provides a Priority Queue (Heap) data structure.
+</dd>
+
+          <dt id="Queue">
+  <span class="name "><a href="../stl/Queue-class.html">Queue</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  An adapter class that provides a First-In, First-Out (FIFO) data structure.
+</dd>
+
+          <dt id="Ref">
+  <span class="name "><a href="../stl/Ref-class.html">Ref</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A mutable reference wrapper for binding and managing a value.
+</dd>
+
+          <dt id="RepeatRange">
+  <span class="name "><a href="../stl/RepeatRange-class.html">RepeatRange</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A view that repeats a single value either limits-free (infinitely) or a specific amount of times.
+Mimics C++ <code>std::views::repeat</code>.
+</dd>
+
+          <dt id="Set">
+  <span class="name "><a href="../stl/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A collection that contains no duplicate elements.
+</dd>
+
+          <dt id="Some">
+  <span class="name "><a href="../stl/Some-class.html">Some</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  Variant representing an existing value.
+</dd>
+
+          <dt id="SortedSet">
+  <span class="name "><a href="../stl/SortedSet-class.html">SortedSet</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A collection that contains no duplicate elements, ensuring strict sorting order.
+</dd>
+
+          <dt id="Stack">
+  <span class="name "><a href="../stl/Stack-class.html">Stack</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  An adapter class that provides a Last-In, First-Out (LIFO) data structure.
+</dd>
+
+          <dt id="TakeRange">
+  <span class="name "><a href="../stl/TakeRange-class.html">TakeRange</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A view that yields up to the first <code>count</code> elements of an iterable.
+Mimics C++ <code>std::views::take</code>.
+</dd>
+
+          <dt id="TransformRange">
+  <span class="name "><a href="../stl/TransformRange-class.html">TransformRange</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>, <span class="type-parameter">U</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A view that transforms elements from one type to another using a mapping function.
+Mimics C++ <code>std::views::transform</code>.
+</dd>
+
+          <dt id="Var">
+  <span class="name "><a href="../stl/Var-class.html">Var</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A simple mutable wrapper for holding and updating a value.
+</dd>
+
+          <dt id="Variant2">
+  <span class="name "><a href="../stl/Variant2-class.html">Variant2</a><span class="signature">&lt;<wbr><span class="type-parameter">T0</span>, <span class="type-parameter">T1</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A type-safe discriminated union holding either <code>T0</code> or <code>T1</code>.
+</dd>
+
+          <dt id="Variant2Item0">
+  <span class="name "><a href="../stl/Variant2Item0-class.html">Variant2Item0</a><span class="signature">&lt;<wbr><span class="type-parameter">T0</span>, <span class="type-parameter">T1</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  
+</dd>
+
+          <dt id="Variant2Item1">
+  <span class="name "><a href="../stl/Variant2Item1-class.html">Variant2Item1</a><span class="signature">&lt;<wbr><span class="type-parameter">T0</span>, <span class="type-parameter">T1</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  
+</dd>
+
+          <dt id="Variant3">
+  <span class="name "><a href="../stl/Variant3-class.html">Variant3</a><span class="signature">&lt;<wbr><span class="type-parameter">T0</span>, <span class="type-parameter">T1</span>, <span class="type-parameter">T2</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A type-safe discriminated union holding either <code>T0</code>, <code>T1</code>, or <code>T2</code>.
+</dd>
+
+          <dt id="Variant3Item0">
+  <span class="name "><a href="../stl/Variant3Item0-class.html">Variant3Item0</a><span class="signature">&lt;<wbr><span class="type-parameter">T0</span>, <span class="type-parameter">T1</span>, <span class="type-parameter">T2</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  
+</dd>
+
+          <dt id="Variant3Item1">
+  <span class="name "><a href="../stl/Variant3Item1-class.html">Variant3Item1</a><span class="signature">&lt;<wbr><span class="type-parameter">T0</span>, <span class="type-parameter">T1</span>, <span class="type-parameter">T2</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  
+</dd>
+
+          <dt id="Variant3Item2">
+  <span class="name "><a href="../stl/Variant3Item2-class.html">Variant3Item2</a><span class="signature">&lt;<wbr><span class="type-parameter">T0</span>, <span class="type-parameter">T1</span>, <span class="type-parameter">T2</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  
+</dd>
+
+          <dt id="Vector">
+  <span class="name "><a href="../stl/Vector-class.html">Vector</a><span class="signature">&lt;<wbr><span class="type-parameter">T extends <a href="https://api.flutter.dev/flutter/dart-core/Comparable-class.html">Comparable</a></span>&gt;</span></span> 
+
+</dt>
+<dd>
+  
+</dd>
+
+          <dt id="ZipRange">
+  <span class="name "><a href="../stl/ZipRange-class.html">ZipRange</a><span class="signature">&lt;<wbr><span class="type-parameter">T1</span>, <span class="type-parameter">T2</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A view that iterates over two iterables in parallel, yielding <a href="../stl/Pair-class.html">Pair</a>s.
+Mimics C++ <code>std::views::zip</code>.
+The iteration stops when the shortest iterable is exhausted.
+</dd>
+
+      </dl>
+    </section>
+
+
+
+    <section class="summary offset-anchor" id="extension-types">
+      <h2>Extension Types</h2>
+      <dl>
+          <dt id="I16">
+    <span class="name "><a href="../stl/I16-extension-type.html">I16</a></span> 
+
+</dt>
+<dd>
+    A 16-bit signed integer primitive.
+</dd>
+
+          <dt id="I32">
+    <span class="name "><a href="../stl/I32-extension-type.html">I32</a></span> 
+
+</dt>
+<dd>
+    A 32-bit signed integer primitive.
+</dd>
+
+          <dt id="I64">
+    <span class="name "><a href="../stl/I64-extension-type.html">I64</a></span> 
+
+</dt>
+<dd>
+    A 64-bit signed integer primitive.
+</dd>
+
+          <dt id="I8">
+    <span class="name "><a href="../stl/I8-extension-type.html">I8</a></span> 
+
+</dt>
+<dd>
+    An 8-bit signed integer primitive.
+</dd>
+
+          <dt id="Int16">
+    <span class="name "><a href="../stl/Int16-extension-type.html">Int16</a></span> 
+
+</dt>
+<dd>
+    A robust, heap-allocated 16-bit signed integer wrapper utilizing <code>dart:typed_data</code>.
+</dd>
+
+          <dt id="Int32">
+    <span class="name "><a href="../stl/Int32-extension-type.html">Int32</a></span> 
+
+</dt>
+<dd>
+    A robust, heap-allocated 32-bit signed integer wrapper utilizing <code>dart:typed_data</code>.
+</dd>
+
+          <dt id="Int64">
+    <span class="name "><a href="../stl/Int64-extension-type.html">Int64</a></span> 
+
+</dt>
+<dd>
+    A robust, heap-allocated 64-bit signed integer wrapper utilizing <code>dart:typed_data</code>.
+</dd>
+
+          <dt id="Int8">
+    <span class="name "><a href="../stl/Int8-extension-type.html">Int8</a></span> 
+
+</dt>
+<dd>
+    A robust, heap-allocated 8-bit signed integer wrapper utilizing <code>dart:typed_data</code>.
+</dd>
+
+          <dt id="U16">
+    <span class="name "><a href="../stl/U16-extension-type.html">U16</a></span> 
+
+</dt>
+<dd>
+    A 16-bit unsigned integer primitive.
+</dd>
+
+          <dt id="U32">
+    <span class="name "><a href="../stl/U32-extension-type.html">U32</a></span> 
+
+</dt>
+<dd>
+    A 32-bit unsigned integer primitive.
+</dd>
+
+          <dt id="U64">
+    <span class="name "><a href="../stl/U64-extension-type.html">U64</a></span> 
+
+</dt>
+<dd>
+    A 64-bit unsigned integer primitive.
+</dd>
+
+          <dt id="U8">
+    <span class="name "><a href="../stl/U8-extension-type.html">U8</a></span> 
+
+</dt>
+<dd>
+    An 8-bit unsigned integer primitive.
+</dd>
+
+          <dt id="Uint16">
+    <span class="name "><a href="../stl/Uint16-extension-type.html">Uint16</a></span> 
+
+</dt>
+<dd>
+    A robust, heap-allocated 16-bit unsigned integer wrapper utilizing <code>dart:typed_data</code>.
+</dd>
+
+          <dt id="Uint32">
+    <span class="name "><a href="../stl/Uint32-extension-type.html">Uint32</a></span> 
+
+</dt>
+<dd>
+    A robust, heap-allocated 32-bit unsigned integer wrapper utilizing <code>dart:typed_data</code>.
+</dd>
+
+          <dt id="Uint64">
+    <span class="name "><a href="../stl/Uint64-extension-type.html">Uint64</a></span> 
+
+</dt>
+<dd>
+    A robust, heap-allocated 64-bit unsigned integer wrapper utilizing <code>dart:typed_data</code>.
+</dd>
+
+          <dt id="Uint8">
+    <span class="name "><a href="../stl/Uint8-extension-type.html">Uint8</a></span> 
+
+</dt>
+<dd>
+    A robust, heap-allocated 8-bit unsigned integer wrapper utilizing <code>dart:typed_data</code>.
+</dd>
+
+      </dl>
+    </section>
+
+    <section class="summary offset-anchor" id="extensions">
+      <h2>Extensions</h2>
+      <dl>
+          <dt id="ComparablePair">
+  <span class="name "><a href="../stl/ComparablePair.html">ComparablePair</a></span>
+  on <a href="../stl/Pair-class.html">Pair</a><span class="signature">&lt;<wbr><span class="type-parameter">T1</span>, <span class="type-parameter">T2</span>&gt;</span>
+  
+
+</dt>
+<dd>
+  Adds C++ <code>&lt;utility&gt;</code> relational operators securely without sacrificing generic safety.
+These operators (<code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>compareTo</code>) automatically unlock
+when both <code>T1</code> and <code>T2</code> happen to extend <code>Comparable</code>.
+</dd>
+
+      </dl>
+    </section>
+
+
+
+    <section class="summary offset-anchor" id="functions">
+      <h2>Functions</h2>
+      <dl class="callables">
+          <dt id="makePair" class="callable">
+  <span class="name"><a href="../stl/makePair.html">makePair</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T1</span>, <span class="type-parameter">T2</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="makePair-param-first"><span class="type-annotation">T1</span> <span class="parameter-name">first</span>, </span><span class="parameter" id="makePair-param-second"><span class="type-annotation">T2</span> <span class="parameter-name">second</span></span>)
+    <span class="returntype parameter">&#8594; <a href="../stl/Pair-class.html">Pair</a><span class="signature">&lt;<wbr><span class="type-parameter">T1</span>, <span class="type-parameter">T2</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  A convenience function to create a <a href="../stl/Pair-class.html">Pair</a>, mimicking C++ <code>std::make_pair</code>.
+  
+
+</dd>
+
+      </dl>
+    </section>
+
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../index.html">stl</a></li>
+    <li class="self-crumb">stl.dart</li>
+</ol>
+
+    <h5><span class="package-name">stl</span> <span class="package-kind">package</span></h5>
+    <ol>
+      <li class="section-title">Libraries</li>
+      <li><a href="../stl/">stl</a></li>
+</ol>
+
+  </div>
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+    <h5>stl library</h5>
+  </div><!--/sidebar-offcanvas-right-->
+</main>
+<footer>
+  <span class="no-break">
+    stl
+      0.3.6
+  </span>
+  
+</footer>
+
+
+<script src="../static-assets/highlight.pack.js?v1"></script>
+<script src="../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+

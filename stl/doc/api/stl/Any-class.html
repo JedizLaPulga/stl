@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the Any class from the stl library, for the Dart programming language.">
+  <title>Any class - stl library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../static-assets/styles.css?v1">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">stl</a></li>
+    <li><a href="../stl/">stl.dart</a></li>
+    <li class="self-crumb">Any class</li>
+  </ol>
+  <div class="self-name">Any</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="stl&#47;stl-library-sidebar.html"
+    data-below-sidebar="stl&#47;Any-class-sidebar.html">
+    <div>
+<h1><span class="kind-class">Any</span> class 
+ 
+</h1></div>
+
+    
+<section class="desc markdown">
+  <p>A type-safe container for single values of literally any type.</p>
+<p>Designed meticulously to emulate C++ <code>std::any</code>, this structure holds an arbitrary
+object while actively enforcing strict type boundaries during extraction attempts
+via the <code>.cast&lt;T&gt;()</code> command.</p>
+</section>
+
+
+
+    
+  <section class="summary offset-anchor" id="constructors">
+    <h2>Constructors</h2>
+    <dl class="constructor-summary-list">
+        <dt id="Any.new" class="callable">
+          <span class="name"><a href="../stl/Any/Any.html">Any</a></span><span class="signature">(<span class="parameter" id="-param-value"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Object-class.html">Object</a></span> <span class="parameter-name">value</span></span>)</span>
+        </dt>
+        <dd>
+          Encapsulates a tangible <code>value</code> strictly inside the container.
+        </dd>
+        <dt id="Any.empty" class="callable">
+          <span class="name"><a href="../stl/Any/Any.empty.html">Any.empty</a></span><span class="signature">()</span>
+        </dt>
+        <dd>
+          Creates an empty container holding exactly no memory state natively.
+        </dd>
+    </dl>
+  </section>
+    
+  <section
+      class="summary offset-anchor"
+      id="instance-properties">
+    <h2>Properties</h2>
+    <dl class="properties">
+        <dt id="hashCode" class="property">
+  <span class="name"><a href="../stl/Any/hashCode.html">hashCode</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd>
+  The hash code for this object.
+  <div class="features"><span class="feature">no setter</span><span class="feature">override</span></div>
+
+</dd>
+
+        <dt id="runtimeType" class="property inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></span>
+  <span class="signature">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Type-class.html">Type</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  A representation of the runtime type of the object.
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+
+    
+  <section
+      class="summary offset-anchor"
+      id="instance-methods">
+    <h2>Methods</h2>
+    <dl class="callables">
+        <dt id="cast" class="callable">
+  <span class="name"><a href="../stl/Any/cast.html">cast</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; T</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Safely extracts the wrapped pointer back to its real object securely validating type <code>T</code>.
+Extremely robust and strictly type-safe natively.
+  
+
+</dd>
+
+        <dt id="empty" class="callable">
+  <span class="name"><a href="../stl/Any/empty.html">empty</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns true if the internal state is exactly empty natively.
+  
+
+</dd>
+
+        <dt id="get" class="callable">
+  <span class="name"><a href="../stl/Any/get.html">get</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; dynamic</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Retrieves the wrapped object as <code>dynamic</code>. Throws natively if empty.
+  
+
+</dd>
+
+        <dt id="hasValue" class="callable">
+  <span class="name"><a href="../stl/Any/hasValue.html">hasValue</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Determines whether the internal box state currently holds an active value natively.
+  
+
+</dd>
+
+        <dt id="noSuchMethod" class="callable inherited">
+  <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
+    <span class="returntype parameter">&#8594; dynamic</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Invoked when a nonexistent method or property is accessed.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="reset" class="callable">
+  <span class="name"><a href="../stl/Any/reset.html">reset</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Destroys the active internal state natively, wiping the object entirely.
+  
+
+</dd>
+
+        <dt id="set" class="callable">
+  <span class="name"><a href="../stl/Any/set.html">set</a></span><span class="signature">(<wbr><span class="parameter" id="set-param-value"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Object-class.html">Object</a></span> <span class="parameter-name">value</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Swaps its internal pointer gracefully with another value dynamically.
+  
+
+</dd>
+
+        <dt id="toString" class="callable">
+  <span class="name"><a href="../stl/Any/toString.html">toString</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  A string representation of this object.
+  <div class="features"><span class="feature">override</span></div>
+
+</dd>
+
+        <dt id="type" class="callable">
+  <span class="name"><a href="../stl/Any/type.html">type</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/Type-class.html">Type</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Fetches exactly the strict runtime type of the dynamically wrapped inner memory state.
+Throws natively if empty.
+  
+
+</dd>
+
+    </dl>
+  </section>
+    
+  <section
+      class="summary offset-anchor"
+      id="operators">
+    <h2>Operators</h2>
+    <dl class="callables">
+        <dt id="operator %" class="callable">
+  <span class="name"><a href="../stl/Any/operator_modulo.html">operator %</a></span><span class="signature">(<wbr><span class="parameter" id="%-param-other"><span class="type-annotation">dynamic</span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; dynamic</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Dynamically modulates exactly natively.
+  
+
+</dd>
+
+        <dt id="operator *" class="callable">
+  <span class="name"><a href="../stl/Any/operator_multiply.html">operator *</a></span><span class="signature">(<wbr><span class="parameter" id="*-param-other"><span class="type-annotation">dynamic</span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; dynamic</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Dynamically multiplies exactly natively.
+  
+
+</dd>
+
+        <dt id="operator +" class="callable">
+  <span class="name"><a href="../stl/Any/operator_plus.html">operator +</a></span><span class="signature">(<wbr><span class="parameter" id="+-param-other"><span class="type-annotation">dynamic</span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; dynamic</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Dynamically adds exactly natively.
+  
+
+</dd>
+
+        <dt id="operator -" class="callable">
+  <span class="name"><a href="../stl/Any/operator_minus.html">operator -</a></span><span class="signature">(<wbr><span class="parameter" id="--param-other"><span class="type-annotation">dynamic</span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; dynamic</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Dynamically subtracts exactly natively.
+  
+
+</dd>
+
+        <dt id="operator &#47;" class="callable">
+  <span class="name"><a href="../stl/Any/operator_divide.html">operator /</a></span><span class="signature">(<wbr><span class="parameter" id="/-param-other"><span class="type-annotation">dynamic</span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; dynamic</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Dynamically divides exactly natively.
+  
+
+</dd>
+
+        <dt id="operator &lt;" class="callable">
+  <span class="name"><a href="../stl/Any/operator_less.html">operator <</a></span><span class="signature">(<wbr><span class="parameter" id="<-param-other"><span class="type-annotation">dynamic</span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Dynamically resolves logically accurate less-than natively.
+  
+
+</dd>
+
+        <dt id="operator &lt;=" class="callable">
+  <span class="name"><a href="../stl/Any/operator_less_equal.html">operator <=</a></span><span class="signature">(<wbr><span class="parameter" id="<=-param-other"><span class="type-annotation">dynamic</span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Dynamically resolves less-than-or-equal stably natively.
+  
+
+</dd>
+
+        <dt id="operator ==" class="callable">
+  <span class="name"><a href="../stl/Any/operator_equals.html">operator ==</a></span><span class="signature">(<wbr><span class="parameter" id="==-param-other"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Object-class.html">Object</a></span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  The equality operator.
+  <div class="features"><span class="feature">override</span></div>
+
+</dd>
+
+        <dt id="operator &gt;" class="callable">
+  <span class="name"><a href="../stl/Any/operator_greater.html">operator ></a></span><span class="signature">(<wbr><span class="parameter" id=">-param-other"><span class="type-annotation">dynamic</span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Dynamically resolves logically accurate greater-than natively.
+  
+
+</dd>
+
+        <dt id="operator &gt;=" class="callable">
+  <span class="name"><a href="../stl/Any/operator_greater_equal.html">operator >=</a></span><span class="signature">(<wbr><span class="parameter" id=">=-param-other"><span class="type-annotation">dynamic</span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Dynamically resolves greater-than-or-equal stably natively.
+  
+
+</dd>
+
+        <dt id="operator []" class="callable">
+  <span class="name"><a href="../stl/Any/operator_get.html">operator []</a></span><span class="signature">(<wbr><span class="parameter" id="[]-param-key"><span class="type-annotation">dynamic</span> <span class="parameter-name">key</span></span>)
+    <span class="returntype parameter">&#8594; dynamic</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Dynamically reads an element internally via bracket notation.
+  
+
+</dd>
+
+        <dt id="operator []=" class="callable">
+  <span class="name"><a href="../stl/Any/operator_put.html">operator []=</a></span><span class="signature">(<wbr><span class="parameter" id="[]=-param-key"><span class="type-annotation">dynamic</span> <span class="parameter-name">key</span>, </span><span class="parameter" id="[]=-param-val"><span class="type-annotation">dynamic</span> <span class="parameter-name">val</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Dynamically writes an element internally via bracket notation.
+  
+
+</dd>
+
+    </dl>
+  </section>
+    
+    
+    
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../index.html">stl</a></li>
+    <li><a href="../stl/">stl</a></li>
+    <li class="self-crumb">Any class</li>
+</ol>
+
+    <h5>stl library</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div>
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    stl
+      0.3.6
+  </span>
+  
+</footer>
+
+
+<script src="../static-assets/highlight.pack.js?v1"></script>
+<script src="../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+

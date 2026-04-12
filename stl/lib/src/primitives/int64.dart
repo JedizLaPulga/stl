@@ -3,8 +3,8 @@ import 'dart:typed_data';
 /// A robust, heap-allocated 64-bit signed integer wrapper utilizing `dart:typed_data`.
 ///
 /// Unlike the zero-cost variant, `Int64` is strictly backed by an `Int64List(1)`.
-/// This inherently bounds the variable within standard memory specifications and rigorously 
-/// guarantees that mathematical operators intuitively overflow using C++ style 
+/// This inherently bounds the variable within standard memory specifications and rigorously
+/// guarantees that mathematical operators intuitively overflow using C++ style
 /// constraints, exactly mimicking real hardware boundaries, providing complete safety!
 extension type Int64(Int64List _data) {
   /// Dynamically instantiates a [Int64] value mapped sequentially into memory.
@@ -51,6 +51,7 @@ extension type Int64(Int64List _data) {
 
   /// Right-shifts the numerical data maintaining standard sign retention.
   Int64 operator >>(int shiftAmount) => Int64.from(value >> shiftAmount);
+
   /// Returns true if this value evaluates less than [other].
   bool operator <(Int64 other) => value < other.value;
 
@@ -66,7 +67,7 @@ extension type Int64(Int64List _data) {
     final res = value + other.value;
     if (!(((value ^ other.value) & 0x8000000000000000) != 0) &&
         (((res ^ value) & 0x8000000000000000) != 0)) {
-       throw StateError('Int64 addition overflow');
+      throw StateError('Int64 addition overflow');
     }
     return Int64.from(res);
   }
@@ -75,7 +76,7 @@ extension type Int64(Int64List _data) {
     var res = value - other.value;
     if ((((value ^ other.value) & 0x8000000000000000) != 0) &&
         (((res ^ value) & 0x8000000000000000) != 0)) {
-        throw StateError('Int64 subtraction overflow/underflow');
+      throw StateError('Int64 subtraction overflow/underflow');
     }
     return Int64.from(res);
   }
