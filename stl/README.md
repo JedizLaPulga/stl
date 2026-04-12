@@ -7,7 +7,7 @@
 
   [![License: MIT](https://img.shields.io/badge/License-MIT-ff69b4.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
   [![Dart](https://img.shields.io/badge/Dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev/)
-  [![Pub Version](https://img.shields.io/badge/pub-0.3.4-blueviolet.svg?style=for-the-badge)](https://pub.dev/packages/stl)
+  [![Pub Version](https://img.shields.io/badge/pub-0.3.6-blueviolet.svg?style=for-the-badge)](https://pub.dev/packages/stl)
 
   > 🚀 **A highly-versatile, performance-driven bank of data collections, structures, and algorithmic ranges for the Dart and Flutter ecosystem.**
 
@@ -91,12 +91,12 @@ Here are the traditional core data structures currently fully supported and batt
 ### 🧱 Primitives (Fixed-Width Integers)
 | Type | Description |
 | :--- | :--- |
-| 🔢 **`i8`** | 8-bit signed integer (`extension type` zero-cost wrapper). Provides automatic arithmetic wrap-around, checked methods (e.g. `addChecked`), and strict min/max boundaries. |
-| 🔢 **`i16`** | 16-bit signed integer zero-cost wrapper with auto-wrapping, checked modifiers, and bounds. |
-| 🔢 **`i32`** | 32-bit signed integer zero-cost wrapper with auto-wrapping, checked modifiers, and bounds. |
-| 🔢 **`i64`** | 64-bit signed integer wrapper utilizing strict two's complement sign management for limits and checked operations. |
-| 🔢 **`u8`**, **`u16`**, **`u32`** | Standard unsigned integer wrappers mathematically bounding state within their respective non-negative bit frames without heap allocation. |
-| 🔢 **`u64`** | Complex 64-bit unsigned integer wrapper managing Dart's signed ecosystem cleanly with precise custom binary `<` comparisons and exact operations. |
+| 🔢 **`I8`** | 8-bit signed integer (`extension type` zero-cost wrapper). Provides automatic arithmetic wrap-around, checked methods (e.g. `addChecked`), and strict min/max boundaries. |
+| 🔢 **`I16`** | 16-bit signed integer zero-cost wrapper with auto-wrapping, checked modifiers, and bounds. |
+| 🔢 **`I32`** | 32-bit signed integer zero-cost wrapper with auto-wrapping, checked modifiers, and bounds. |
+| 🔢 **`I64`** | 64-bit signed integer wrapper utilizing strict two's complement sign management for limits and checked operations. |
+| 🔢 **`U8`**, **`U16`**, **`U32`** | Standard unsigned integer wrappers mathematically bounding state within their respective non-negative bit frames without heap allocation. |
+| 🔢 **`U64`** | Complex 64-bit unsigned integer wrapper managing Dart's signed ecosystem cleanly with precise custom binary `<` comparisons and exact operations. |
 
 
 <br/>

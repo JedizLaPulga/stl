@@ -1,35 +1,35 @@
 /// A 32-bit signed integer primitive.
-extension type const i32(int value) implements int {
-  static const i32 min = i32(-2147483648);
-  static const i32 max = i32(2147483647);
+extension type const I32(int value) implements int {
+  static const I32 min = I32(-2147483648);
+  static const I32 max = I32(2147483647);
 
-  i32 operator +(i32 other) => i32((value + other.value).toSigned(32));
-  i32 operator -(i32 other) => i32((value - other.value).toSigned(32));
-  i32 operator *(i32 other) => i32((value * other.value).toSigned(32));
-  i32 operator ~/(i32 other) => i32((value ~/ other.value).toSigned(32));
-  i32 operator %(i32 other) => i32((value % other.value).toSigned(32));
-  i32 operator &(i32 other) => i32((value & other.value).toSigned(32));
-  i32 operator |(i32 other) => i32((value | other.value).toSigned(32));
-  i32 operator ^(i32 other) => i32((value ^ other.value).toSigned(32));
-  i32 operator ~() => i32((~value).toSigned(32));
-  i32 operator <<(int shiftAmount) => i32((value << shiftAmount).toSigned(32));
-  i32 operator >>(int shiftAmount) => i32((value >> shiftAmount).toSigned(32));
-  i32 operator >>>(int shiftAmount) => i32((value >>> shiftAmount).toSigned(32));
-  i32 operator -() => i32((-value).toSigned(32));
+  I32 operator +(I32 other) => I32((value + other.value).toSigned(32));
+  I32 operator -(I32 other) => I32((value - other.value).toSigned(32));
+  I32 operator *(I32 other) => I32((value * other.value).toSigned(32));
+  I32 operator ~/(I32 other) => I32((value ~/ other.value).toSigned(32));
+  I32 operator %(I32 other) => I32((value % other.value).toSigned(32));
+  I32 operator &(I32 other) => I32((value & other.value).toSigned(32));
+  I32 operator |(I32 other) => I32((value | other.value).toSigned(32));
+  I32 operator ^(I32 other) => I32((value ^ other.value).toSigned(32));
+  I32 operator ~() => I32((~value).toSigned(32));
+  I32 operator <<(int shiftAmount) => I32((value << shiftAmount).toSigned(32));
+  I32 operator >>(int shiftAmount) => I32((value >> shiftAmount).toSigned(32));
+  I32 operator >>>(int shiftAmount) => I32((value >>> shiftAmount).toSigned(32));
+  I32 operator -() => I32((-value).toSigned(32));
 
-  i32 addChecked(i32 other) {
+  I32 addChecked(I32 other) {
     var result = value + other.value;
-    if (result > 2147483647 || result < -2147483648) throw StateError('i32 addition overflow');
-    return i32(result);
+    if (result > 2147483647 || result < -2147483648) throw StateError('I32 addition overflow');
+    return I32(result);
   }
-  i32 subChecked(i32 other) {
+  I32 subChecked(I32 other) {
     var result = value - other.value;
-    if (result > 2147483647 || result < -2147483648) throw StateError('i32 subtraction overflow');
-    return i32(result);
+    if (result > 2147483647 || result < -2147483648) throw StateError('I32 subtraction overflow');
+    return I32(result);
   }
-  i32 mulChecked(i32 other) {
+  I32 mulChecked(I32 other) {
     var result = value * other.value;
-    if (result > 2147483647 || result < -2147483648) throw StateError('i32 multiplication overflow');
-    return i32(result);
+    if (result > 2147483647 || result < -2147483648) throw StateError('I32 multiplication overflow');
+    return I32(result);
   }
 }

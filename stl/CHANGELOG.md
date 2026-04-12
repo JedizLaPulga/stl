@@ -241,4 +241,5 @@
 - Implemented `u64` zero-cost unsigned primitive type extension utilizing native bitwise overrides and BigInt scaling for deep divisions.
 
 
-
+## 0.3.6
+- Renamed primitive type wrappers (`i8`, `i16`, `i32`, `i64`, `u8`, `u16`, `u32`, `u64`) to their capitalized equivalents (`I8`, `I16`, `I32`, `I64`, `U8`, `U16`, `U32`, `U64`) to align with Dart conventions.
