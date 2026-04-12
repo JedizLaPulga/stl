@@ -88,6 +88,17 @@ Here are the traditional core data structures currently fully supported and batt
 | 🔢 **`BitSet`** | Hyper-efficient space-optimized boolean bit flags array mimicking `std::bitset`. $O(1)$ toggles. |
 | 👽 **`Any`** | Generic type-safe bounding box safely encapsulating abstract data with strictly enforced extraction boundaries. |
 
+### 🧱 Primitives (Fixed-Width Integers)
+| Type | Description |
+| :--- | :--- |
+| 🔢 **`i8`** | 8-bit signed integer (`extension type` zero-cost wrapper). Provides automatic arithmetic wrap-around, checked methods (e.g. `addChecked`), and strict min/max boundaries. |
+| 🔢 **`i16`** | 16-bit signed integer zero-cost wrapper with auto-wrapping, checked modifiers, and bounds. |
+| 🔢 **`i32`** | 32-bit signed integer zero-cost wrapper with auto-wrapping, checked modifiers, and bounds. |
+| 🔢 **`i64`** | 64-bit signed integer wrapper utilizing strict two's complement sign management for limits and checked operations. |
+| 🔢 **`u8`**, **`u16`**, **`u32`** | Standard unsigned integer wrappers mathematically bounding state within their respective non-negative bit frames without heap allocation. |
+| 🔢 **`u64`** | Complex 64-bit unsigned integer wrapper managing Dart's signed ecosystem cleanly with precise custom binary `<` comparisons and exact operations. |
+
+
 <br/>
 
 ---

@@ -229,3 +229,16 @@
 - Added `operator >` to `NumberLine` class.
 - Added `operator <=` to `NumberLine` class.
 - Added `operator >=` to `NumberLine` class.
+
+## 0.3.5
+- Implemented `i8` zero-cost primitive type extension with auto-wrapping arithmetic and checked bounds.
+- Implemented `i16` zero-cost primitive type extension with auto-wrapping arithmetic and checked bounds.
+- Implemented `i32` zero-cost primitive type extension with auto-wrapping arithmetic and checked bounds.
+- Implemented `i64` zero-cost primitive type extension with auto-wrapping arithmetic, checked bounds, and strict two's complement sign management.
+- Implemented `u8` zero-cost unsigned primitive type extension.
+- Implemented `u16` zero-cost unsigned primitive type extension.
+- Implemented `u32` zero-cost unsigned primitive type extension.
+- Implemented `u64` zero-cost unsigned primitive type extension utilizing native bitwise overrides and BigInt scaling for deep divisions.
+
+
+

@@ -31,3 +31,12 @@ export 'src/utility/var.dart';
 export 'src/utility/ref.dart';
 export 'src/utility/box.dart';
 export 'src/utility/any.dart';
+export 'src/primitives/i8.dart';
+export 'src/primitives/i16.dart';
+export 'src/primitives/i32.dart';
+export 'src/primitives/i64.dart';
+export 'src/primitives/u8.dart';
+export 'src/primitives/u16.dart';
+export 'src/primitives/u32.dart';
+export 'src/primitives/u64.dart';
+
