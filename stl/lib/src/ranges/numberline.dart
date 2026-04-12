@@ -94,11 +94,6 @@ class NumberLine<T extends num> extends IterableBase<T> {
   /// Returns the type argument [T].
   Type type() => T;
 
-  /// Safely casts this [NumberLine] to a different numeric type.
-  NumberLine<U> cast<U extends num>() {
-    return NumberLine<U>(start as U, end as U, step: step as U);
-  }
-
   /// Modifies the boundaries of this number line sequence.
   void set(T newStart, T newEnd, [T? newStep]) {
     start = newStart;
