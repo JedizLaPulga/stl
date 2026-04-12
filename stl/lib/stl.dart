@@ -39,4 +39,12 @@ export 'src/primitives/u8.dart';
 export 'src/primitives/u16.dart';
 export 'src/primitives/u32.dart';
 export 'src/primitives/u64.dart';
+export 'src/primitives/int8.dart';
+export 'src/primitives/int16.dart';
+export 'src/primitives/int32.dart';
+export 'src/primitives/int64.dart';
+export 'src/primitives/uint8.dart';
+export 'src/primitives/uint16.dart';
+export 'src/primitives/uint32.dart';
+export 'src/primitives/uint64.dart';
 

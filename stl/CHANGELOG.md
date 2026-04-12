@@ -243,3 +243,4 @@
 
 ## 0.3.6
 - Renamed primitive type wrappers (`i8`, `i16`, `i32`, `i64`, `u8`, `u16`, `u32`, `u64`) to their capitalized equivalents (`I8`, `I16`, `I32`, `I64`, `U8`, `U16`, `U32`, `U64`) to align with Dart conventions.
+- Added `Int8`, `Int16`, `Int32`, `Int64`, `Uint8`, `Uint16`, `Uint32`, and `Uint64` structured explicitly around `dart:typed_data`. These variants guarantee deep C++ matching arithmetic wrapping natively via memory boundaries, flawlessly bridging stable 64-bit precision boundaries correctly across Javascript/Web targets dynamically.
