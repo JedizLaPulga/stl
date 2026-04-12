@@ -205,3 +205,27 @@
 - Added JoinRange (std::views::join)
 - Added documentation to all the range classes.
 - Added documentation to the ranges.
+
+
+## 0.3.4
+- Make improvement to the `NumberLine` class.
+- Added `operator ==` and `hashCode` to `NumberLine` class.
+- Added `toString()` to `NumberLine` class.
+- Added `reset()` method to `NumberLine` class.
+- Added `empty()` method to `NumberLine` class.
+- Added `hasValue()` method to `NumberLine` class.
+- Added `type()` method to `NumberLine` class.
+- Added `cast<T>()` method to `NumberLine` class.
+- Added `set()` method to `NumberLine` class.
+- Added `get()` method to `NumberLine` class.
+- Added `operator []` to `NumberLine` class.
+- Added `operator []=` to `NumberLine` class.
+- Added `operator +` to `NumberLine` class.
+- Added `operator -` to `NumberLine` class.
+- Added `operator *` to `NumberLine` class.
+- Added `operator /` to `NumberLine` class.
+- Added `operator %` to `NumberLine` class.
+- Added `operator <` to `NumberLine` class.
+- Added `operator >` to `NumberLine` class.
+- Added `operator <=` to `NumberLine` class.
+- Added `operator >=` to `NumberLine` class.
