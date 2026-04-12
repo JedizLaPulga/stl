@@ -29,7 +29,7 @@ void main() {
       a.set(100);
       expect(a.get(), 100);
       expect(a.hasValue(), isTrue);
-      
+
       a.reset();
       expect(a.empty(), isTrue);
       expect(() => a.get(), throwsStateError);
@@ -48,7 +48,7 @@ void main() {
       expect(empty1 == empty2, isTrue);
       expect(a == empty1, isFalse);
     });
-    
+
     test('type() method', () {
       final a = Any(42);
       expect(a.type(), int);
@@ -98,7 +98,7 @@ void main() {
 
       final map = Any({'key': 'value'});
       expect(map['key'], 'value');
-      
+
       map['key'] = 'new_value';
       expect(map['key'], 'new_value');
     });

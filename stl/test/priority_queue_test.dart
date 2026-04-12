@@ -14,7 +14,7 @@ void main() {
       expect(pq.size, equals(3));
       expect(pq.empty, isFalse);
 
-      expect(pq.top, equals(30)); 
+      expect(pq.top, equals(30));
       expect(pq.pop(), equals(30));
       expect(pq.pop(), equals(20));
       expect(pq.pop(), equals(10));
@@ -24,11 +24,11 @@ void main() {
     test('custom comparator (min-heap)', () {
       // Create a min-heap by reversing the comparison
       final pq = PriorityQueue<int>((a, b) => b.compareTo(a));
-      
+
       pq.push(5);
       pq.push(1);
       pq.push(10);
-      
+
       expect(pq.top, equals(1));
       expect(pq.pop(), equals(1));
       expect(pq.pop(), equals(5));
@@ -37,7 +37,7 @@ void main() {
 
     test('from iterable', () {
       final pq = PriorityQueue<int>.from([15, 5, 20, 10]);
-      
+
       expect(pq.size, equals(4));
       expect(pq.pop(), equals(20));
       expect(pq.pop(), equals(15));
@@ -49,11 +49,11 @@ void main() {
       final elements = ['apple', 'banana', 'kiwi', 'strawberry'];
       // Max-heap based on string length
       final pq = PriorityQueue<String>((a, b) => a.length.compareTo(b.length));
-      
+
       for (final e in elements) {
         pq.push(e);
       }
-      
+
       expect(pq.pop(), equals('strawberry')); // 10
       expect(pq.pop(), equals('banana')); // 6
       expect(pq.pop(), equals('apple')); // 5

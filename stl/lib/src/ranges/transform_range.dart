@@ -10,7 +10,8 @@ class TransformRange<T, U> extends IterableBase<U> {
   TransformRange(this._iterable, this._transform);
 
   @override
-  Iterator<U> get iterator => _TransformRangeIterator<T, U>(_iterable.iterator, _transform);
+  Iterator<U> get iterator =>
+      _TransformRangeIterator<T, U>(_iterable.iterator, _transform);
 }
 
 class _TransformRangeIterator<T, U> implements Iterator<U> {

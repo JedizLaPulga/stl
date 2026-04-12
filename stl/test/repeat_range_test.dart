@@ -24,7 +24,7 @@ void main() {
         if (count == 100) break;
       }
       expect(count, 100);
-      
+
       // we can also use `.take()` standard iterable method!
       final taken = repeat.take(5).toList();
       expect(taken.length, 5);

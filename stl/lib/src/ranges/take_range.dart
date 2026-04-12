@@ -9,7 +9,11 @@ class TakeRange<T> extends IterableBase<T> {
   /// Creates a [TakeRange] that limits iteration to the first [_count] elements of [_iterable].
   TakeRange(this._iterable, this._count) {
     if (_count < 0) {
-      throw ArgumentError.value(_count, 'count', 'Must be greater than or equal to zero');
+      throw ArgumentError.value(
+        _count,
+        'count',
+        'Must be greater than or equal to zero',
+      );
     }
   }
 

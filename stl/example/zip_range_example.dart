@@ -9,14 +9,14 @@ void main() {
   final zipped = ZipRange(userIds, userNames);
 
   for (final pair in zipped) {
-      print('ID: ${pair.first} -> Name: ${pair.second}');
+    print('ID: ${pair.first} -> Name: ${pair.second}');
   }
 
   // Destructure pairs powerfully because of Pair's Dart 3 mapping
   print('\n-- Zipping dynamically with Maps --');
   final roles = ['Admin', 'Editor', 'Viewer'];
   final zippedRoles = ZipRange(userNames, roles);
-  
+
   final roleMap = Map.fromEntries(zippedRoles.map((pair) => pair.toMapEntry()));
   print(roleMap);
 }

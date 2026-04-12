@@ -7,17 +7,24 @@ import 'dart:collection';
 /// condition for [end] is *exclusive*, meaning it stops before the exact requested ending.
 class NumberLine<T extends num> extends IterableBase<T> {
   /// The starting inclusive boundary of the sequence.
-  final T start;
-  
+  T start;
+
   /// The ending exclusive boundary of the sequence.
-  final T end;
-  
+  T end;
+
   /// The amount or distance to step incrementally on each iteration.
-  final T step;
+  T step;
+
+  final T _initStart;
+  final T _initEnd;
+  final T _initStep;
 
   /// Creates a memory-efficient sequence from [start] to [end] exclusive, incrementing by [step].
   NumberLine(this.start, this.end, {T? step})
-    : step = step ?? _defaultStep(start) {
+    : step = step ?? _defaultStep(start),
+      _initStart = start,
+      _initEnd = end,
+      _initStep = step ?? _defaultStep(start) {
     if (this.step == 0) {
       throw ArgumentError('Step cannot be zero.');
     }
@@ -50,6 +57,122 @@ class NumberLine<T extends num> extends IterableBase<T> {
     }
     return false;
   }
+
+  @override
+  int get length {
+    if (step > 0 && start >= end) return 0;
+    if (step < 0 && start <= end) return 0;
+    return ((end - start) / step).ceil();
+  }
+
+  @override
+  bool operator ==(Object other) =>
+      other is NumberLine &&
+      start == other.start &&
+      end == other.end &&
+      step == other.step;
+
+  @override
+  int get hashCode => Object.hash(start, end, step);
+
+  @override
+  String toString() => 'NumberLine($start, $end, step: $step)';
+
+  /// Resets the sequence to its initial state.
+  void reset() {
+    start = _initStart;
+    end = _initEnd;
+    step = _initStep;
+  }
+
+  /// Returns true if the sequence is empty.
+  bool empty() => isEmpty;
+
+  /// Returns true if the sequence has elements.
+  bool hasValue() => isNotEmpty;
+
+  /// Returns the type argument [T].
+  Type type() => T;
+
+  /// Safely casts this [NumberLine] to a different numeric type.
+  NumberLine<U> cast<U extends num>() {
+    return NumberLine<U>(start as U, end as U, step: step as U);
+  }
+
+  /// Modifies the boundaries of this number line sequence.
+  void set(T newStart, T newEnd, [T? newStep]) {
+    start = newStart;
+    end = newEnd;
+    if (newStep != null) {
+      if (newStep == 0) throw ArgumentError('Step cannot be zero.');
+      step = newStep;
+    }
+  }
+
+  /// Retrieves the element at the specified 0-based [index] in O(1) time.
+  T get(int index) {
+    if (index < 0 || index >= length) {
+      throw RangeError.index(index, this);
+    }
+    return (start + index * step) as T;
+  }
+
+  /// Retrieves the element at the specified 0-based [index] in O(1) time.
+  T operator [](int index) => get(index);
+
+  /// Unsupported. Modifying a generated mathematical sequence element by element is invalid.
+  void operator []=(int index, T value) {
+    throw UnsupportedError(
+      'Cannot modify elements of a NumberLine at a specific index.',
+    );
+  }
+
+  /// Shifts the sequence by adding [offset] consistently to boundaries.
+  NumberLine<T> operator +(num offset) =>
+      NumberLine<T>((start + offset) as T, (end + offset) as T, step: step);
+
+  /// Shifts the sequence by subtracting [offset] consistently from boundaries.
+  NumberLine<T> operator -(num offset) =>
+      NumberLine<T>((start - offset) as T, (end - offset) as T, step: step);
+
+  /// Scales the sequence proportionally by multiplying boundaries and step by [factor].
+  NumberLine<T> operator *(num factor) => NumberLine<T>(
+    (start * factor) as T,
+    (end * factor) as T,
+    step: (step * factor) as T,
+  );
+
+  /// Divides the sequence proportionally safely returning a NumberLine of doubles.
+  NumberLine<double> operator /(num divisor) =>
+      NumberLine<double>(start / divisor, end / divisor, step: step / divisor);
+
+  /// Modulo operation on sequence boundaries keeping the step intact.
+  NumberLine<T> operator %(num modulo) =>
+      NumberLine<T>((start % modulo) as T, (end % modulo) as T, step: step);
+
+  /// Safely performs lexicographical comparison against another iterable.
+  bool operator <(Iterable<T> other) {
+    Iterator<T> it1 = iterator;
+    Iterator<T> it2 = other.iterator;
+    while (it1.moveNext() && it2.moveNext()) {
+      if (it1.current < it2.current) return true;
+      if (it1.current > it2.current) return false;
+    }
+    return it2.moveNext();
+  }
+
+  bool operator >(Iterable<T> other) {
+    Iterator<T> it1 = iterator;
+    Iterator<T> it2 = other.iterator;
+    while (it1.moveNext() && it2.moveNext()) {
+      if (it1.current > it2.current) return true;
+      if (it1.current < it2.current) return false;
+    }
+    return it1.moveNext();
+  }
+
+  bool operator <=(Iterable<T> other) => !(this > other);
+  bool operator >=(Iterable<T> other) => !(this < other);
 }
 
 class _NumberLineIterator<T extends num> implements Iterator<T> {

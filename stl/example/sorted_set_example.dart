@@ -20,7 +20,7 @@ void main() {
   // 2. Custom Comparator
   print('\n--- Custom Ordering (String reversed length) ---');
   final stringSet = SortedSet<String>((a, b) => b.length.compareTo(a.length));
-  
+
   stringSet.insert('A');
   stringSet.insert('Supercal');
   stringSet.insert('Supercalifragilistic');
@@ -33,8 +33,12 @@ void main() {
   }
 
   // Set algebra works here too and preserves custom rules!
-  final anotherSet = SortedSet<String>.from(['Cat', 'Dog', 'Z'], (a, b) => b.length.compareTo(a.length));
-  
+  final anotherSet = SortedSet<String>.from([
+    'Cat',
+    'Dog',
+    'Z',
+  ], (a, b) => b.length.compareTo(a.length));
+
   final merged = stringSet.union(anotherSet);
   print('\nMerged Set maintains custom iteration:');
   print(merged.toList());

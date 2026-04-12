@@ -1,7 +1,7 @@
 /// A mutable wrapper designed to hold and update values.
 ///
-/// Unlike `Var<T>` or `Ref<T>`, `Box<T>` is intensely overloaded, mimicking 
-/// the robust flexibility of idiomatic Dart. If `Box<T>` holds a numeric type (`int` or `double`), 
+/// Unlike `Var<T>` or `Ref<T>`, `Box<T>` is intensely overloaded, mimicking
+/// the robust flexibility of idiomatic Dart. If `Box<T>` holds a numeric type (`int` or `double`),
 /// you can mathematically interact with the `Box` natively without unboxing it explicitly.
 class Box<T> {
   /// The underlying value held inside the box.
@@ -19,7 +19,7 @@ class Box<T> {
 
   dynamic _extract(dynamic other) => other is Box ? other.value : other;
 
-  /// Adds a value or another box algebraically. 
+  /// Adds a value or another box algebraically.
   dynamic operator +(dynamic other) => (value as dynamic) + _extract(other);
 
   /// Subtracts a value or another box algebraically.

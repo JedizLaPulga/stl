@@ -16,7 +16,7 @@ class Ref<T> {
   void set(T value) {
     _value = value;
   }
-  
+
   /// Rebinds this reference to point to the exact same value as [other].
   void rebind(Ref<T> other) {
     _value = other.get();

@@ -21,19 +21,20 @@ sealed class Optional<T> {
 
   /// Returns the value if present, otherwise returns [fallback].
   T valueOr(T fallback) => switch (this) {
-        Some(:final value) => value,
-        None() => fallback,
-      };
+    Some(:final value) => value,
+    None() => fallback,
+  };
 
   /// Transforms the value if present using [mapper].
   Optional<R> map<R>(R Function(T value) mapper) => switch (this) {
-        Some(:final value) => Some<R>(mapper(value)),
-        None() => None<R>(),
-      };
+    Some(:final value) => Some<R>(mapper(value)),
+    None() => None<R>(),
+  };
 
   /// Transforms the value using a function that returns an [Optional].
   /// Prevents nested structures like `Optional<Optional<T>>`.
-  Optional<R> flatMap<R>(Optional<R> Function(T value) mapper) => switch (this) {
+  Optional<R> flatMap<R>(Optional<R> Function(T value) mapper) =>
+      switch (this) {
         Some(:final value) => mapper(value),
         None() => None<R>(),
       };

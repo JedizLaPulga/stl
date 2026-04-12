@@ -8,14 +8,10 @@ class Any {
   bool _hasValue;
 
   /// Encapsulates a tangible [value] strictly inside the container.
-  Any(Object value)
-      : _value = value,
-        _hasValue = true;
+  Any(Object value) : _value = value, _hasValue = true;
 
   /// Creates an empty container holding exactly no memory state natively.
-  Any.empty()
-      : _value = null,
-        _hasValue = false;
+  Any.empty() : _value = null, _hasValue = false;
 
   /// Swaps its internal pointer gracefully with another value dynamically.
   void set(Object value) {
@@ -35,7 +31,8 @@ class Any {
   /// Fetches exactly the strict runtime type of the dynamically wrapped inner memory state.
   /// Throws natively if empty.
   Type type() {
-    if (!_hasValue) throw StateError('Any is empty natively! Cannot fetch type.');
+    if (!_hasValue)
+      throw StateError('Any is empty natively! Cannot fetch type.');
     return _value.runtimeType;
   }
 
@@ -53,7 +50,8 @@ class Any {
 
   /// Retrieves the wrapped object as `dynamic`. Throws natively if empty.
   dynamic get() {
-    if (!_hasValue) throw StateError('Any is empty natively! Cannot randomly get.');
+    if (!_hasValue)
+      throw StateError('Any is empty natively! Cannot randomly get.');
     return _value;
   }
 

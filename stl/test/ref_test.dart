@@ -18,7 +18,7 @@ void main() {
     test('rebinding one reference to another', () {
       final targetNode = Ref<int>(500);
       final pointer = Ref<int>(0);
-      
+
       pointer.rebind(targetNode);
       expect(pointer.get(), equals(500));
       expect(pointer, equals(targetNode));

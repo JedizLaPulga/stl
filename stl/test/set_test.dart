@@ -9,8 +9,8 @@ void main() {
 
       expect(s.insert(10), isTrue);
       expect(s.insert(20), isTrue);
-      
-      // Attempting to insert duplicate should return false 
+
+      // Attempting to insert duplicate should return false
       expect(s.insert(10), isFalse);
 
       expect(s.size, equals(2));
@@ -19,14 +19,14 @@ void main() {
 
     test('erase and contains', () {
       final s = Set<String>.from(['apple', 'banana']);
-      
+
       expect(s.contains('apple'), isTrue);
       expect(s.contains('kiwi'), isFalse);
 
       expect(s.erase('apple'), isTrue);
       expect(s.contains('apple'), isFalse);
       expect(s.size, equals(1));
-      
+
       // Erasing non-existent element
       expect(s.erase('kiwi'), isFalse);
     });
@@ -76,7 +76,9 @@ void main() {
 
     test('equality', () {
       final s1 = Set<int>.from([1, 2, 3]);
-      final s2 = Set<int>.from([3, 2, 1]); // Order shouldn't strictly guarantee inequality for sets natively, but we implemented based on containsAll
+      final s2 = Set<int>.from(
+        [3, 2, 1],
+      ); // Order shouldn't strictly guarantee inequality for sets natively, but we implemented based on containsAll
       final s3 = Set<int>.from([1, 2]);
 
       expect(s1, equals(s2));

@@ -12,12 +12,12 @@ void main() {
   const int execute = 0;
 
   final permissions = BitSet(3);
-  
+
   // Set read and execute permissions
   permissions.set(read);
   permissions.set(execute);
 
-  print('Current File Permissions: $permissions'); 
+  print('Current File Permissions: $permissions');
   print('Can Read: ${permissions.test(read)}');
   print('Can Write: ${permissions.test(write)}');
   print('Can Execute: ${permissions.test(execute)}');
@@ -30,14 +30,14 @@ void main() {
   print('\n[Processing User Preferences using 64 flags]');
   // Create a tight, incredibly small 64-bit array flag.
   final prefs = BitSet(64);
-  prefs.set(8); 
+  prefs.set(8);
   prefs.set(12, true);
   prefs.set(63);
 
   print('Prefs size physically mapping: ${prefs.size()} bits');
   print('Active preferences counted: ${prefs.count()} (via popcount)');
-  
-  prefs.flip(); 
+
+  prefs.flip();
   print('Flipped all bits! Active preferences: ${prefs.count()}');
   print('Are there any flags active? ${prefs.any()}');
 }

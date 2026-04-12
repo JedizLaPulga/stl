@@ -14,7 +14,7 @@ void main() {
 
   print('HashSet size: ${hashSet.size}'); // 4
 
-  // Notice that iteration order is NOT guaranteed 
+  // Notice that iteration order is NOT guaranteed
   // unlike the default Set which maintains insertion order.
   print('\nIterating HashSet (Order is arbitrary):');
   for (final animal in hashSet) {
@@ -27,7 +27,7 @@ void main() {
 
   // Set operations are still supported
   final zooAnimals = HashSet<String>.from(['Elephant', 'Lion', 'Tiger']);
-  
+
   final common = hashSet.intersection(zooAnimals);
   print('\nAnimals in both sets (Intersection): ${common.toList()}');
 }

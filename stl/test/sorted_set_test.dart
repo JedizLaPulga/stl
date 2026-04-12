@@ -10,7 +10,7 @@ void main() {
       expect(s.insert(20), isTrue);
       expect(s.insert(10), isTrue);
       expect(s.insert(30), isTrue);
-      
+
       expect(s.insert(20), isFalse);
 
       expect(s.size, equals(3));
@@ -20,7 +20,7 @@ void main() {
     test('iterator order', () {
       final s = SortedSet<int>.from([30, 10, 20]);
       final list = s.toList();
-      
+
       // Should be strictly sorted
       expect(list, equals([10, 20, 30]));
     });
@@ -38,14 +38,14 @@ void main() {
 
     test('erase and contains', () {
       final s = SortedSet<int>.from([1, 2, 3]);
-      
+
       expect(s.contains(2), isTrue);
       expect(s.contains(4), isFalse);
 
       expect(s.erase(2), isTrue);
       expect(s.contains(2), isFalse);
       expect(s.size, equals(2));
-      
+
       expect(s.erase(4), isFalse);
     });
 

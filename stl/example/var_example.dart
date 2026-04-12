@@ -24,7 +24,7 @@ void main() {
   // 4. Storing strings or booleans
   final isConnecting = Var(true);
   print('\nSystem connecting state: ${isConnecting()}');
-  
+
   // Update state functionally
   isConnecting.update((_) => false);
   print('System explicitly disconnected: ${isConnecting()}');

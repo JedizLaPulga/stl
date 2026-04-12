@@ -21,11 +21,14 @@ void main() {
       expect(range.toList(), isEmpty);
     });
 
-    test('iterator throws StateError when current is accessed before moveNext', () {
-      final list = [1, 2, 3];
-      final range = TransformRange<int, int>(list, (int x) => x * 2);
-      final it = range.iterator;
-      expect(() => it.current, throwsStateError);
-    });
+    test(
+      'iterator throws StateError when current is accessed before moveNext',
+      () {
+        final list = [1, 2, 3];
+        final range = TransformRange<int, int>(list, (int x) => x * 2);
+        final it = range.iterator;
+        expect(() => it.current, throwsStateError);
+      },
+    );
   });
 }

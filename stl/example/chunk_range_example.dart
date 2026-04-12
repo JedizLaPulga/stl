@@ -6,7 +6,7 @@ void main() {
   print('--- ChunkRange Example: Paginating elements ---');
   // Splits a flat list into multiple smaller sub-lists (e.g. for batches or pagination)
   final pagination = ChunkRange(largeDataset, 3);
-  
+
   int pageNum = 1;
   for (final page in pagination) {
     print('Page $pageNum: $page');

@@ -144,7 +144,7 @@ class Deque<T> with IterableMixin<T> {
     if (identical(this, other)) return true;
     if (other is! Deque<T>) return false;
     if (length != other.length) return false;
-    
+
     var it1 = _queue.iterator;
     var it2 = other._queue.iterator;
     while (it1.moveNext() && it2.moveNext()) {

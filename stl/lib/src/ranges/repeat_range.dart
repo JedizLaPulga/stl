@@ -8,7 +8,7 @@ class RepeatRange<T> extends IterableBase<T> {
 
   RepeatRange(this._value, [this._bound]) {
     if (_bound != null && _bound < 0) {
-        throw ArgumentError('Bound cannot be negative.');
+      throw ArgumentError('Bound cannot be negative.');
     }
   }
 
@@ -26,7 +26,8 @@ class _RepeatRangeIterator<T> implements Iterator<T> {
 
   @override
   T get current {
-    if (!_active) throw StateError('Iterator not initialized or already exhausted.');
+    if (!_active)
+      throw StateError('Iterator not initialized or already exhausted.');
     return _value;
   }
 

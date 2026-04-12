@@ -9,36 +9,35 @@ void main() {
   // 1. DYNAMIC ARRAYS & MEMORY
   // ========================================
   print('>>> 1. CORE ARRAYS & SINGLY-LINKED LISTS <<<\n');
-  
+
   final vec = Vector<String>(['Alpha', 'Bravo', 'Charlie', 'Delta']);
   print('• Vector initialized: ~vec evaluates to ${~vec}');
-  
+
   // Appending and checking limits
   vec.pushBack('Echo');
   print('• Memory bounds strictly managed. Vector size is ${vec.size()}');
-  
+
   // Vector advanced operations (assigning blocks of memory)
   final secondaryVec = Vector<String>([]);
   secondaryVec.assign(3, 'EmptySlot');
   print('• Vectors support raw memory block assigns: $secondaryVec');
 
-  // ForwardList excels at fast shifting and removal algorithms 
+  // ForwardList excels at fast shifting and removal algorithms
   print('\n[Converting Vector into a ForwardList]');
   final list = ForwardList<String>.from(vec);
-  
+
   // ForwardList allows ultra-fast manipulations without resizing arrays
   list.insertAfter(1, 'Bravo-Two');
   list.removeIf((val) => val.startsWith('C')); // Removes "Charlie" immediately
-  list.pushFront('Zulu'); 
+  list.pushFront('Zulu');
   print('• ForwardList after O(1) shifts: $list');
-  
+
   // ForwardList can inherently detect and crush contiguous duplicates
   list.pushFront('Zulu');
   list.pushFront('Zulu');
   list.unique();
   print('• List crushed duplicates instantly: $list\n');
 
-  
   // ========================================
   // 2. ADAPTERS (Deque, Queue, Stack)
   // ========================================
@@ -69,8 +68,9 @@ void main() {
   final queue = Queue<int>.from(deque);
   queue.push(100);
   print('• Queue spawned from original Deque. Pushed 100.');
-  print('  Front of Queue is ${queue.front} (Ready to strictly FIFO pop: ${queue.pop()})\n');
-
+  print(
+    '  Front of Queue is ${queue.front} (Ready to strictly FIFO pop: ${queue.pop()})\n',
+  );
 
   // ========================================
   // 3. MATHEMATICAL SETS (O(1) Lookups & Trees)
@@ -79,7 +79,7 @@ void main() {
 
   // Creating unique arrays
   final rawData = ['Apple', 'Banana', 'Apple', 'Cherry', 'Banana', 'Date'];
-  
+
   // 1. Standard Set (Insertion Ordered)
   final orderedSet = Set<String>.from(rawData);
   print('• Standard Set (Preserves Insertion): $orderedSet'); // Duplicates gone
@@ -90,17 +90,21 @@ void main() {
 
   // 3. SortedSet (Self-balancing Binary Search Tree)
   // Let's sort them strictly by string length, descending!
-  final treeSet = SortedSet<String>.from(rawData, (a, b) => b.length.compareTo(a.length));
+  final treeSet = SortedSet<String>.from(
+    rawData,
+    (a, b) => b.length.compareTo(a.length),
+  );
   print('• SortedSet (Autonomous custom sorting): $treeSet');
 
   // Set Algebra (Intersections across different sets)
   final exoticFruits = Set<String>.from(['Cherry', 'Mango', 'Banana', 'Kiwi']);
   final intersection = orderedSet.intersection(exoticFruits);
-  print('• Intersection of orderedSet and exoticFruits: ${intersection.toList()}');
+  print(
+    '• Intersection of orderedSet and exoticFruits: ${intersection.toList()}',
+  );
 
   final difference = orderedSet.difference(exoticFruits);
   print('• Difference (Apples and Dates remain!): ${difference.toList()}\n');
-
 
   // ========================================
   // 4. UTILITIES (Pair & PriorityQueue)
@@ -110,7 +114,10 @@ void main() {
   // A Pair lets us strictly bind heterogeneous types (ID: String, Priority: int)
   final task1 = makePair('Login System Task', 2);
   final task2 = makePair('Update UI Colors Task', 5);
-  final task3 = makePair('Critical Database Migration', 1); // 1 = highest priority
+  final task3 = makePair(
+    'Critical Database Migration',
+    1,
+  ); // 1 = highest priority
 
   print('• Stored compound types smoothly: $task3');
 
@@ -127,10 +134,11 @@ void main() {
   print('\n• Processing PriorityQueue via Heap Extraction:');
   while (pQueue.isNotEmpty) {
     final highestTarget = pQueue.pop();
-    print('  -> Processing (Priority ${highestTarget.second}): ${highestTarget.first}');
+    print(
+      '  -> Processing (Priority ${highestTarget.second}): ${highestTarget.first}',
+    );
   }
   print('');
-
 
   // ========================================
   // 5. C++23 RANGES & PIPELINING 🧬
@@ -149,7 +157,7 @@ void main() {
   // ZipRange: Bind two parallel arrays perfectly (Map creation)
   final headers = Vector<String>(['id', 'status', 'token']);
   final values = [9912, 'Active', 'xyz-888-abc'];
-  
+
   final zip = ZipRange(headers, values);
   print('\n• ZipRange merging 2 vectors strictly:');
   for (final pair in zip) {
@@ -157,12 +165,15 @@ void main() {
   }
 
   // ChunkRange & Stack relationship pipeline!
-  // Let's chunk a large array of numbers into batches of 3, 
+  // Let's chunk a large array of numbers into batches of 3,
   // then push those fragmented packets into a Stack for LIFO processing!
   print('\n[ChunkRange -> Stack Relationship Pipeline]');
-  final byteData = NumberLine(1, 10).toList(); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  final byteData = NumberLine(
+    1,
+    10,
+  ).toList(); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   final chunks = ChunkRange(byteData, 3); // [[1,2,3], [4,5,6], [7,8,9], [10]]
-  
+
   final packetStack = Stack<List<int>>();
   for (final packet in chunks) {
     packetStack.push(packet);
@@ -178,8 +189,10 @@ void main() {
   final suits = ['♠️', '♥️', '♣️', '♦️'];
   final royals = ['Jack', 'Queen', 'King', 'Ace'];
   final deckSegment = CartesianRange(royals, suits);
-  
-  print('\n• CartesianRange generates combinations (Showing 10 from 16 matrix tiles):');
+
+  print(
+    '\n• CartesianRange generates combinations (Showing 10 from 16 matrix tiles):',
+  );
   print('  ${deckSegment.take(10).toList()}');
 
   // New C++20/23 Functional Ranges Pipeline!
@@ -194,7 +207,9 @@ void main() {
   // Take the next 3 (60, 80, 100)
   final finalNodes = TakeRange(droppedTens, 3);
   print('• Raw Nodes: \$rawDataNodes');
-  print('• After Pipeline (Filter evens -> x10 -> Drop 2 -> Take 3): \${finalNodes.toList()}');
+  print(
+    '• After Pipeline (Filter evens -> x10 -> Drop 2 -> Take 3): \${finalNodes.toList()}',
+  );
 
   // JoinRange Showcase: Flattening fragmented chunks
   final fragmentedData = ChunkRange(NumberLine(1, 10), 3);
@@ -208,31 +223,40 @@ void main() {
   final userIds = [101, 105, 102];
   final userLevels = [80, 99, 15]; // Level 99 is highest
   final zippedUsers = ZipRange(userIds, userLevels);
-  
+
   // Custom Max-Heap
-  final levelHeap = PriorityQueue<Pair<int, int>>((a, b) => a.second.compareTo(b.second));
-  
+  final levelHeap = PriorityQueue<Pair<int, int>>(
+    (a, b) => a.second.compareTo(b.second),
+  );
+
   for (final userRecord in zippedUsers) {
     levelHeap.push(userRecord);
   }
 
   print('• Highest level user gets processed first:');
   while (levelHeap.isNotEmpty) {
-     var usr = levelHeap.pop();
-     print('  -> Processed User ${usr.first} (Level ${usr.second})');
+    var usr = levelHeap.pop();
+    print('  -> Processed User ${usr.first} (Level ${usr.second})');
   }
 
   // Final interaction: Deque -> Vector -> HashSet Unique Extractor
   print('\n[Deque -> Vector -> HashSet Pipeline]');
-  final dirtyDeque = Deque<String>.from(['Error', 'Warning', 'Log', 'Error', 'Error', 'Warning']);
+  final dirtyDeque = Deque<String>.from([
+    'Error',
+    'Warning',
+    'Log',
+    'Error',
+    'Error',
+    'Warning',
+  ]);
   print('• Raw Server Logs in Deque: $dirtyDeque');
-  
+
   // Extract to Vector for processing
   final logVector = Vector<String>(dirtyDeque.toList());
   // Offload to HashSet to instantly destroy all duplicates with O(1) mathematical speed
   final cleanSet = HashSet<String>.from(logVector);
   print('• Extracted Unique Log Signatures instantly: ${cleanSet.toList()}');
-  
+
   print('\n====================================================');
   print(' 🎉 END OF MEGA SHOWCASE');
   print('====================================================\n');

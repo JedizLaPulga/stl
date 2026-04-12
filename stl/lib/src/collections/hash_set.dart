@@ -3,9 +3,9 @@ import 'dart:collection' show IterableMixin;
 
 /// An unordered collection that contains no duplicate elements.
 ///
-/// In the C++ STL, this matches `std::unordered_set`. 
-/// It utilizes a fast hash table under the hood and makes no guarantees 
-/// about the iteration order of the elements. 
+/// In the C++ STL, this matches `std::unordered_set`.
+/// It utilizes a fast hash table under the hood and makes no guarantees
+/// about the iteration order of the elements.
 /// For an insertion-ordered set, use the generic [Set].
 /// For a strictly sorted set, use [SortedSet].
 class HashSet<T> with IterableMixin<T> {
@@ -18,17 +18,18 @@ class HashSet<T> with IterableMixin<T> {
   HashSet() : _container = collection.HashSet<T>();
 
   /// Creates a HashSet containing the elements of the given iterable.
-  HashSet.from(Iterable<T> elements) : _container = collection.HashSet<T>.from(elements);
+  HashSet.from(Iterable<T> elements)
+    : _container = collection.HashSet<T>.from(elements);
 
   /// Inserts a new [element] into the set.
-  /// 
+  ///
   /// Returns `true` if the element was added, or `false` if it was already present.
   bool insert(T element) {
     return _container.add(element);
   }
 
   /// Removes [element] from the set (C++ STL style).
-  /// 
+  ///
   /// Returns `true` if the element was removed, or `false` if it was not found.
   bool erase(T element) {
     return _container.remove(element);

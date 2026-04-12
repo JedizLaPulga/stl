@@ -9,7 +9,7 @@ class ChunkRange<T> extends IterableBase<List<T>> {
   final int _chunkSize;
 
   /// Creates a [ChunkRange] that splits the given iterable into chunks of a specific size.
-  /// 
+  ///
   /// Throws an [ArgumentError] if the chunk size is less than or equal to 0.
   ChunkRange(this._iterable, this._chunkSize) {
     if (_chunkSize <= 0) {
@@ -18,7 +18,8 @@ class ChunkRange<T> extends IterableBase<List<T>> {
   }
 
   @override
-  Iterator<List<T>> get iterator => _ChunkRangeIterator<T>(_iterable.iterator, _chunkSize);
+  Iterator<List<T>> get iterator =>
+      _ChunkRangeIterator<T>(_iterable.iterator, _chunkSize);
 }
 
 class _ChunkRangeIterator<T> implements Iterator<List<T>> {
@@ -30,7 +31,8 @@ class _ChunkRangeIterator<T> implements Iterator<List<T>> {
 
   @override
   List<T> get current {
-    if (_current == null) throw StateError('Iterator not initialized or already exhausted.');
+    if (_current == null)
+      throw StateError('Iterator not initialized or already exhausted.');
     return _current!;
   }
 

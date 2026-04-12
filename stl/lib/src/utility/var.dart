@@ -1,5 +1,5 @@
 /// A simple mutable wrapper for holding and updating a value.
-/// 
+///
 /// `Var<T>` is useful when you need to pass a primitive (like an `int` or `bool`)
 /// by reference to a callback or closure, allowing its state to be mutated cleanly.
 class Var<T> {

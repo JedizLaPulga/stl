@@ -11,16 +11,16 @@ class PriorityQueue<T> {
 
   /// Creates an empty PriorityQueue.
   ///
-  /// By default, it expects [T] to be [Comparable] to create a max-heap. 
+  /// By default, it expects [T] to be [Comparable] to create a max-heap.
   /// You can provide a custom [compare] function to define priority.
-  PriorityQueue([int Function(T, T)? compare]) 
-      : _compare = compare ?? _defaultCompare;
+  PriorityQueue([int Function(T, T)? compare])
+    : _compare = compare ?? _defaultCompare;
 
   /// Creates a PriorityQueue containing the elements of the given iterable.
   ///
   /// The elements are built into a heap queue.
   PriorityQueue.from(Iterable<T> elements, [int Function(T, T)? compare])
-      : _compare = compare ?? _defaultCompare {
+    : _compare = compare ?? _defaultCompare {
     for (final element in elements) {
       push(element);
     }
@@ -30,7 +30,9 @@ class PriorityQueue<T> {
     if (a is Comparable && b is Comparable) {
       return a.compareTo(b);
     }
-    throw ArgumentError('Elements must be Comparable if no compare function is provided.');
+    throw ArgumentError(
+      'Elements must be Comparable if no compare function is provided.',
+    );
   }
 
   /// Pushes an element into the priority queue. Time complexity: O(log N).
@@ -111,10 +113,12 @@ class PriorityQueue<T> {
       final leftChild = (index << 1) + 1;
       final rightChild = leftChild + 1;
 
-      if (leftChild < length && _compare(_heap[largest], _heap[leftChild]) < 0) {
+      if (leftChild < length &&
+          _compare(_heap[largest], _heap[leftChild]) < 0) {
         largest = leftChild;
       }
-      if (rightChild < length && _compare(_heap[largest], _heap[rightChild]) < 0) {
+      if (rightChild < length &&
+          _compare(_heap[largest], _heap[rightChild]) < 0) {
         largest = rightChild;
       }
 
@@ -142,10 +146,10 @@ class PriorityQueue<T> {
     if (identical(this, other)) return true;
     if (other is! PriorityQueue<T>) return false;
     if (size != other.size) return false;
-    
+
     // For PriorityQueue, perfect structural equality means the underlying heaps are identical.
     for (int i = 0; i < size; i++) {
-       if (_heap[i] != other._heap[i]) return false;
+      if (_heap[i] != other._heap[i]) return false;
     }
     return true;
   }

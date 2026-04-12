@@ -26,11 +26,11 @@ void main() {
       final cartesian = CartesianRange([1, 2], []).toList();
       expect(cartesian.isEmpty, isTrue);
     });
-    
+
     test('works with single element iterables', () {
-        final cartesian = CartesianRange([1], ['a']).toList();
-        expect(cartesian.length, 1);
-        expect(cartesian.first, Pair(1, 'a'));
+      final cartesian = CartesianRange([1], ['a']).toList();
+      expect(cartesian.length, 1);
+      expect(cartesian.first, Pair(1, 'a'));
     });
   });
 }

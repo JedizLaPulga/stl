@@ -9,7 +9,7 @@ void main() {
 
       expect(s.insert(10), isTrue);
       expect(s.insert(20), isTrue);
-      
+
       expect(s.insert(10), isFalse);
 
       expect(s.size, equals(2));
@@ -18,14 +18,14 @@ void main() {
 
     test('erase and contains', () {
       final s = HashSet<String>.from(['apple', 'banana']);
-      
+
       expect(s.contains('apple'), isTrue);
       expect(s.contains('kiwi'), isFalse);
 
       expect(s.erase('apple'), isTrue);
       expect(s.contains('apple'), isFalse);
       expect(s.size, equals(1));
-      
+
       expect(s.erase('kiwi'), isFalse);
     });
 
@@ -67,7 +67,7 @@ void main() {
 
     test('equality', () {
       final s1 = HashSet<int>.from([1, 2, 3]);
-      final s2 = HashSet<int>.from([3, 2, 1]); 
+      final s2 = HashSet<int>.from([3, 2, 1]);
       final s3 = HashSet<int>.from([1, 2]);
 
       expect(s1, equals(s2));

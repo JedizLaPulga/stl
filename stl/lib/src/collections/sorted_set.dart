@@ -3,8 +3,8 @@ import 'dart:collection' show IterableMixin;
 
 /// A collection that contains no duplicate elements, ensuring strict sorting order.
 ///
-/// In the C++ STL, this matches exactly the behavior, complexity, and contract of `std::set`. 
-/// It utilizes a balanced tree structure (Splay tree) under the hood. 
+/// In the C++ STL, this matches exactly the behavior, complexity, and contract of `std::set`.
+/// It utilizes a balanced tree structure (Splay tree) under the hood.
 /// Iteration yields elements in strictly mathematical or custom-comparator order.
 class SortedSet<T> with IterableMixin<T> {
   final collection.SplayTreeSet<T> _container;
@@ -14,23 +14,24 @@ class SortedSet<T> with IterableMixin<T> {
   Iterator<T> get iterator => _container.iterator;
 
   /// Creates an empty SortedSet.
-  /// 
+  ///
   /// Optionally inject a [compare] function. If null, it assumes elements are `Comparable`.
-  SortedSet([this._compare]) : _container = collection.SplayTreeSet<T>(_compare);
+  SortedSet([this._compare])
+    : _container = collection.SplayTreeSet<T>(_compare);
 
   /// Creates a SortedSet containing the elements of the given iterable.
-  SortedSet.from(Iterable<T> elements, [this._compare]) 
-      : _container = collection.SplayTreeSet<T>.from(elements, _compare);
+  SortedSet.from(Iterable<T> elements, [this._compare])
+    : _container = collection.SplayTreeSet<T>.from(elements, _compare);
 
   /// Inserts a new [element] into the set. Time complexity: O(log N).
-  /// 
+  ///
   /// Returns `true` if the element was added, or `false` if it was already present.
   bool insert(T element) {
     return _container.add(element);
   }
 
   /// Removes [element] from the set. Time complexity: O(log N).
-  /// 
+  ///
   /// Returns `true` if the element was removed, or `false` if it was not found.
   bool erase(T element) {
     return _container.remove(element);
@@ -78,7 +79,10 @@ class SortedSet<T> with IterableMixin<T> {
 
   /// Returns a new SortedSet which is the intersection between this set and [other].
   SortedSet<T> intersection(SortedSet<T> other) {
-    return SortedSet<T>.from(_container.intersection(other._container), _compare);
+    return SortedSet<T>.from(
+      _container.intersection(other._container),
+      _compare,
+    );
   }
 
   /// Whether this set contains all the elements of [other].

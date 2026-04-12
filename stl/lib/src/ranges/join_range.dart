@@ -36,7 +36,7 @@ class _JoinRangeIterator<T> implements Iterator<T> {
         _current = _innerIterator!.current;
         return true;
       }
-      
+
       if (_outerIterator.moveNext()) {
         _innerIterator = _outerIterator.current.iterator;
       } else {

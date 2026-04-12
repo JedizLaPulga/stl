@@ -2,9 +2,9 @@ import 'dart:collection';
 
 /// A collection that contains no duplicate elements.
 ///
-/// In the C++ STL, `std::set` is generally a balanced binary tree. 
-/// However, this generic `Set` utilities Dart's default linked hash table for 
-/// optimized insertion-ordered uniqueness. For a pure Tree-based C++ `std::set` equivalent, 
+/// In the C++ STL, `std::set` is generally a balanced binary tree.
+/// However, this generic `Set` utilities Dart's default linked hash table for
+/// optimized insertion-ordered uniqueness. For a pure Tree-based C++ `std::set` equivalent,
 /// utilize [SortedSet]. For an purely unordered, fast C++ hash set, utilize [HashSet].
 class Set<T> with IterableMixin<T> {
   final LinkedHashSet<T> _container;
@@ -19,14 +19,14 @@ class Set<T> with IterableMixin<T> {
   Set.from(Iterable<T> elements) : _container = LinkedHashSet<T>.from(elements);
 
   /// Inserts a new [element] into the set.
-  /// 
+  ///
   /// Returns `true` if the element was added, or `false` if it was already present.
   bool insert(T element) {
     return _container.add(element);
   }
 
   /// Removes [element] from the set (C++ STL style).
-  /// 
+  ///
   /// Returns `true` if the element was removed, or `false` if it was not found.
   bool erase(T element) {
     return _container.remove(element);

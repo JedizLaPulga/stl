@@ -6,7 +6,7 @@ void main() {
     test('chunks evenly divisible list', () {
       final list = [1, 2, 3, 4, 5, 6];
       final chunks = ChunkRange(list, 2).toList();
-      
+
       expect(chunks.length, 3);
       expect(chunks[0], [1, 2]);
       expect(chunks[1], [3, 4]);
@@ -16,7 +16,7 @@ void main() {
     test('chunks non-evenly divisible list (smaller last chunk)', () {
       final list = [1, 2, 3, 4, 5];
       final chunks = ChunkRange(list, 2).toList();
-      
+
       expect(chunks.length, 3);
       expect(chunks[0], [1, 2]);
       expect(chunks[1], [3, 4]);
@@ -26,7 +26,7 @@ void main() {
     test('chunks with size larger than list', () {
       final list = [1, 2, 3];
       final chunks = ChunkRange(list, 10).toList();
-      
+
       expect(chunks.length, 1);
       expect(chunks[0], [1, 2, 3]);
     });

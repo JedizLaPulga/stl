@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:stl/stl.dart'; 
+import 'package:stl/stl.dart';
 
 void main() {
   group('Optional Construction', () {
@@ -35,7 +35,7 @@ void main() {
     test('map transforms value in Some and ignores None', () {
       final some = Optional.of(5);
       final mappedSome = some.map((v) => v * 2);
-      
+
       final none = Optional<int>.none();
       final mappedNone = none.map((v) => v * 2);
 

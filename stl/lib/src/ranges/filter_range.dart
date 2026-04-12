@@ -10,7 +10,8 @@ class FilterRange<T> extends IterableBase<T> {
   FilterRange(this._iterable, this._predicate);
 
   @override
-  Iterator<T> get iterator => _FilterRangeIterator<T>(_iterable.iterator, _predicate);
+  Iterator<T> get iterator =>
+      _FilterRangeIterator<T>(_iterable.iterator, _predicate);
 }
 
 class _FilterRangeIterator<T> implements Iterator<T> {

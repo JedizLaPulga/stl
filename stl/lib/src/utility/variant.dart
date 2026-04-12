@@ -11,10 +11,7 @@ sealed class Variant2<T0, T1> {
   factory Variant2.withT1(T1 value) = Variant2Item1<T0, T1>;
 
   /// Visits the underlying value with exhaustive matching.
-  R visit<R>({
-    required R Function(T0) onT0,
-    required R Function(T1) onT1,
-  });
+  R visit<R>({required R Function(T0) onT0, required R Function(T1) onT1});
 
   /// Checks if the variant currently holds the specified type alternative.
   bool holdsAlternative<T>();
@@ -33,10 +30,7 @@ final class Variant2Item0<T0, T1> extends Variant2<T0, T1> {
   const Variant2Item0(this.value);
 
   @override
-  R visit<R>({
-    required R Function(T0) onT0,
-    required R Function(T1) onT1,
-  }) =>
+  R visit<R>({required R Function(T0) onT0, required R Function(T1) onT1}) =>
       onT0(value);
 
   @override
@@ -64,10 +58,7 @@ final class Variant2Item1<T0, T1> extends Variant2<T0, T1> {
   const Variant2Item1(this.value);
 
   @override
-  R visit<R>({
-    required R Function(T0) onT0,
-    required R Function(T1) onT1,
-  }) =>
+  R visit<R>({required R Function(T0) onT0, required R Function(T1) onT1}) =>
       onT1(value);
 
   @override
@@ -129,8 +120,7 @@ final class Variant3Item0<T0, T1, T2> extends Variant3<T0, T1, T2> {
     required R Function(T0) onT0,
     required R Function(T1) onT1,
     required R Function(T2) onT2,
-  }) =>
-      onT0(value);
+  }) => onT0(value);
 
   @override
   bool holdsAlternative<T>() => _typeOf<T>() == _typeOf<T0>();
@@ -161,8 +151,7 @@ final class Variant3Item1<T0, T1, T2> extends Variant3<T0, T1, T2> {
     required R Function(T0) onT0,
     required R Function(T1) onT1,
     required R Function(T2) onT2,
-  }) =>
-      onT1(value);
+  }) => onT1(value);
 
   @override
   bool holdsAlternative<T>() => _typeOf<T>() == _typeOf<T1>();
@@ -193,8 +182,7 @@ final class Variant3Item2<T0, T1, T2> extends Variant3<T0, T1, T2> {
     required R Function(T0) onT0,
     required R Function(T1) onT1,
     required R Function(T2) onT2,
-  }) =>
-      onT2(value);
+  }) => onT2(value);
 
   @override
   bool holdsAlternative<T>() => _typeOf<T>() == _typeOf<T2>();

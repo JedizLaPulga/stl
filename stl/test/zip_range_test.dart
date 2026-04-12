@@ -40,12 +40,12 @@ void main() {
     });
 
     test('re-iterable without consuming original lists strictly', () {
-        final a = [10, 20];
-        final b = [100, 200];
-        final zip = ZipRange(a, b);
-        expect(zip.length, 2);
-        // Second iteration
-        expect(zip.first.first, 10);
+      final a = [10, 20];
+      final b = [100, 200];
+      final zip = ZipRange(a, b);
+      expect(zip.length, 2);
+      // Second iteration
+      expect(zip.first.first, 10);
     });
   });
 }

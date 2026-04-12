@@ -8,7 +8,7 @@ void main() {
   var criticalMultiplier = Box<double>(1.5);
 
   print('Raw Box Damage output: $damage');
-  
+
   // Mathematical operators are intrinsically integrated!
   var totalHit = damage * criticalMultiplier;
   print('Total Critical Hit evaluated securely: $totalHit');
@@ -17,15 +17,17 @@ void main() {
   if (damage >= 40) {
     print('\nDamage is recognized elegantly as >= 40.');
   }
-  
+
   var score = Box<int>(100);
-  print('\nCalculating remainder mathematically from Box -> (100 % 3): ${score % 3}');
+  print(
+    '\nCalculating remainder mathematically from Box -> (100 % 3): ${score % 3}',
+  );
 
   // Equality checking evaluates structurally via Dart idioms
   var idLevel1 = Box<int>(99);
   var idLevel2 = Box<int>(99);
-  
+
   print('\nDoes Box(99) == Box(99)? ${idLevel1 == idLevel2}');
   // ignore: unrelated_type_equality_checks
-  print('Does Box(99) == raw 99 primitive? ${idLevel1 == 99}'); 
+  print('Does Box(99) == raw 99 primitive? ${idLevel1 == 99}');
 }

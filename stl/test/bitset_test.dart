@@ -59,7 +59,7 @@ void main() {
       expect(bits.all(), isFalse); // Wait, flip() makes all 35 bits true?
       // actually, if it was empty, and we set 1 bit, flip will make 34 true.
       bits.flip();
-      
+
       // Let's manually set all bits to true
       for (int i = 0; i < 35; i++) {
         bits.set(i);

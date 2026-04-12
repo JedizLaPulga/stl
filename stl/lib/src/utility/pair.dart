@@ -5,7 +5,7 @@
 class Pair<T1, T2> {
   /// The first element of the pair.
   T1 first;
-  
+
   /// The second element of the pair.
   T2 second;
 
@@ -70,7 +70,7 @@ extension ComparablePair<
 >
     on Pair<T1, T2> {
   /// Compares this pair lexicographically with [other].
-  /// 
+  ///
   /// It first compares the `first` elements. If they are equal, it compares
   /// the `second` elements.
   int compareTo(Pair<T1, T2> other) {

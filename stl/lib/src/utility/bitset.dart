@@ -101,7 +101,13 @@ class BitSet {
 
   void _checkBounds(int index) {
     if (index < 0 || index >= _length) {
-      throw RangeError.index(index, this, 'index', 'Index out of bounds', _length);
+      throw RangeError.index(
+        index,
+        this,
+        'index',
+        'Index out of bounds',
+        _length,
+      );
     }
   }
 

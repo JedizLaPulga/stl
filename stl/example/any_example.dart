@@ -11,7 +11,9 @@ void main() {
   mysteriousBox.set('System Configuration Vector');
   print('\n[Uploaded String Object]');
   print('Current Data Type explicitly verified: ${mysteriousBox.type()}');
-  print('Value successfully extracted cleanly: ${mysteriousBox.cast<String>()}');
+  print(
+    'Value successfully extracted cleanly: ${mysteriousBox.cast<String>()}',
+  );
 
   // Overwrite the same Any box directly with an integer
   mysteriousBox.set(9001);
@@ -24,7 +26,9 @@ void main() {
   try {
     mysteriousBox.cast<bool>();
   } catch (e) {
-    print('Strict Safety Guard Triggered! Could not blindly cast integer into boolean natively.');
+    print(
+      'Strict Safety Guard Triggered! Could not blindly cast integer into boolean natively.',
+    );
   }
 
   // Wiping the Box entirely

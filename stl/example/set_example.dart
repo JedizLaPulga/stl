@@ -10,7 +10,7 @@ void main() {
   mySet.insert('Apple');
   mySet.insert('Banana');
   mySet.insert('Cherry');
-  
+
   // Try inserting a duplicate
   final addedDuplicate = mySet.insert('Apple');
   print('Was duplicate Apple added? $addedDuplicate'); // false
@@ -34,5 +34,7 @@ void main() {
   print('\n--- Mathematical Operations ---');
   print('Union: ${primaryColors.union(flagColors).toList()}');
   print('Intersection: ${primaryColors.intersection(flagColors).toList()}');
-  print('Difference (Primary - Flag): ${primaryColors.difference(flagColors).toList()}');
+  print(
+    'Difference (Primary - Flag): ${primaryColors.difference(flagColors).toList()}',
+  );
 }
