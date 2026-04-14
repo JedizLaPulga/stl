@@ -1,3 +1,6 @@
+## 0.3.8
+- Added `math\constant` for a math lib starting with constants
+
 ## 0.3.7
 - Added small improvement to already existing features and increase documentation
 - No need feature- improve examples
