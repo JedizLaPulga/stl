@@ -1,5 +1,5 @@
 ## 0.3.8
-- Added `math\constant` for a math lib starting with constants
+- Created `lib/src/math/constant/constant.dart` with 26 constants across these groups, all named per ISO 80000-2 conventions
 
 ## 0.3.7
 - Added small improvement to already existing features and increase documentation

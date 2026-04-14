@@ -5,6 +5,11 @@ void main() {
   print('    💎 STL MEGA SHOWCASE & ARCHITECTURE ALBUM');
   print('====================================================\n');
 
+  print(eulerMascheroni);
+  print(ln2);
+  print(sqrt2);
+  print(log2e);
+
   // ========================================
   // 1. DYNAMIC ARRAYS & MEMORY
   // ========================================
