@@ -7,7 +7,12 @@
     - adjacent_difference: Computes the differences between adjacent elements.
     - partial_sum: Computes the prefix sums.
     - iota: Fills a range with successively increasing values.
-- 
+- A complete, high-performance C++-style Complex number class.
+    - Features: 
+        - Real and imaginary parts (real(), imag()).
+        - Arithmetic operator overloading (+, -, *, /).
+        - Complex functions: abs() (magnitude), arg() (phase), conj() (conjugate), norm() (squared magnitude).
+        - Polar representation constructors.
 
 ## 0.3.8
 - Created `lib/src/math/constant/constant.dart` with 26 constants across these groups, all named per ISO 80000-2 conventions
