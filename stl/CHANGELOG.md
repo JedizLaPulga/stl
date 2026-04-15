@@ -1,3 +1,14 @@
+## 0.3.9
+- Implement C++ <numeric> algorithms for collections.
+- Features: 
+    - accumulate: Sums up / folds elements.
+    - reduce: Similar to accumulate, but with potentially different semantics (parallelizable if ever needed, or just standard fold).
+    - inner_product: Computes the inner product (dot product) of two ranges.
+    - adjacent_difference: Computes the differences between adjacent elements.
+    - partial_sum: Computes the prefix sums.
+    - iota: Fills a range with successively increasing values.
+- 
+
 ## 0.3.8
 - Created `lib/src/math/constant/constant.dart` with 26 constants across these groups, all named per ISO 80000-2 conventions
 

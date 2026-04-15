@@ -48,3 +48,4 @@ export 'src/primitives/uint16.dart';
 export 'src/primitives/uint32.dart';
 export 'src/primitives/uint64.dart';
 export 'src/math/constant/constant.dart';
+export 'src/math/numeric.dart';
