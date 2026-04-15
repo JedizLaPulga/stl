@@ -50,3 +50,4 @@ export 'src/primitives/uint64.dart';
 export 'src/math/constant/constant.dart';
 export 'src/math/numeric.dart';
 export 'src/math/complex.dart';
+export 'src/math/number_theory.dart';

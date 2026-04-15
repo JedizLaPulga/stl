@@ -14,6 +14,14 @@
         - Complex functions: abs() (magnitude), arg() (phase), conj() (conjugate), norm() (squared magnitude).
         - Polar representation constructors.
 
+- Description: Common number theory algorithms.
+    - Features: 
+        - gcd: Greatest Common Divisor (highly optimized).
+        - lcm: Least Common Multiple.
+        - midpoint: Find midpoint (a + b)/2 safely without overflow.
+        - is_prime: Check if a number is prime.
+        - prime_factorization: Get the prime factors of a number.
+
 ## 0.3.8
 - Created `lib/src/math/constant/constant.dart` with 26 constants across these groups, all named per ISO 80000-2 conventions
 
