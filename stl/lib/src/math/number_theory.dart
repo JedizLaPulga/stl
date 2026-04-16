@@ -31,14 +31,15 @@ int lcm(int a, int b) {
 }
 
 /// Finds the midpoint of two numbers `(a + b) / 2` safely without overflow.
-/// 
+///
 /// Corresponds to `std::midpoint` from C++20.
 /// Properly handles the rounding direction and correctly differentiates between integer
 /// truncation and floating point division.
 T midpoint<T extends num>(T a, T b) {
   if (a is int && b is int) {
     // Integer overflow safe midpoint
-    if ((a < 0) == (b < 0)) { // Same sign
+    if ((a < 0) == (b < 0)) {
+      // Same sign
       if (a <= b) {
         return (a + ((b - a) ~/ 2)) as T;
       } else {
@@ -76,7 +77,7 @@ bool isPrime(int n) {
 List<int> primeFactorization(int n) {
   final factors = <int>[];
   if (n <= 1) return factors;
-  
+
   while (n % 2 == 0) {
     factors.add(2);
     n ~/= 2;
@@ -85,7 +86,7 @@ List<int> primeFactorization(int n) {
     factors.add(3);
     n ~/= 3;
   }
-  
+
   for (int i = 5; i * i <= n; i += 6) {
     while (n % i == 0) {
       factors.add(i);
@@ -96,7 +97,7 @@ List<int> primeFactorization(int n) {
       n ~/= (i + 2);
     }
   }
-  
+
   if (n > 3) {
     factors.add(n);
   }

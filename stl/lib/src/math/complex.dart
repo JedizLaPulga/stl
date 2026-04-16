@@ -11,8 +11,8 @@ class Complex {
   /// Creates a standard complex number.
   /// If the imaginary part is not provided, it defaults to 0.0.
   const Complex(num real, [num imag = 0.0])
-      : _real = real + 0.0,
-        _imag = imag + 0.0;
+    : _real = real + 0.0,
+      _imag = imag + 0.0;
 
   /// Creates a complex number from polar coordinates.
   /// [rho] is the magnitude, and [theta] is the phase angle in radians.

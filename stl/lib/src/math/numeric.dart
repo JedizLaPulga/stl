@@ -20,13 +20,15 @@ extension NumericIterableExtension<T> on Iterable<T> {
   ///
   /// Similar to `std::inner_product`. The default sums the products of corresponding elements.
   /// [op1] accumulates the results (default `+`), and [op2] computes the product (default `*`).
-  T innerProduct(Iterable<T> other, T init, {
+  T innerProduct(
+    Iterable<T> other,
+    T init, {
     T Function(T, T)? op1,
     T Function(T, T)? op2,
   }) {
     op1 ??= (T a, T b) => ((a as dynamic) + (b as dynamic)) as T;
     op2 ??= (T a, T b) => ((a as dynamic) * (b as dynamic)) as T;
-    
+
     var it1 = iterator;
     var it2 = other.iterator;
     T result = init;
@@ -45,7 +47,7 @@ extension NumericIterableExtension<T> on Iterable<T> {
     var result = <T>[];
     var it = iterator;
     if (!it.moveNext()) return result;
-    
+
     result.add(it.current);
     var prev = it.current;
     while (it.moveNext()) {
@@ -74,7 +76,7 @@ extension NumericIterableExtension<T> on Iterable<T> {
     }
     return result;
   }
-  
+
   /// Computes a result using an operation over the elements.
   ///
   /// Similar to `std::reduce`. The difference in C++ is that `std::reduce` can be executed out of order,
