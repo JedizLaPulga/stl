@@ -1,5 +1,12 @@
 /// Common number theory algorithms and utilities.
-/// Includes [gcd], [lcm], [midpoint], [isPrime], and [primeFactorization].
+///
+/// Provides fundamental integer math inspired by C++ `<numeric>` and mathematical
+/// conventions:
+/// - [gcd] — greatest common divisor
+/// - [lcm] — least common multiple
+/// - [midpoint] — overflow-safe midpoint
+/// - [isPrime] — primality test
+/// - [primeFactorization] — prime factor list
 
 /// Returns the greatest common divisor of [a] and [b].
 /// Uses the highly optimized Euclidean algorithm.
@@ -15,6 +22,9 @@ int gcd(int a, int b) {
 }
 
 /// Returns the least common multiple of [a] and [b].
+///
+/// Computed as `|a| / gcd(a, b) * |b|` to avoid intermediate overflow.
+/// Returns `0` if both [a] and [b] are zero.
 int lcm(int a, int b) {
   if (a == 0 && b == 0) return 0;
   return (a.abs() ~/ gcd(a, b)) * b.abs();
@@ -58,9 +68,11 @@ bool isPrime(int n) {
   return true;
 }
 
-/// Returns the prime factorization of a given number [n] as a list of prime numbers.
+/// Returns the prime factorization of [n] as a list of prime factors in ascending order.
 ///
-/// If [n] is less than or equal to 1, it returns an empty list.
+/// Uses trial division optimized with 2, 3, and then 6k ± 1 candidates.
+/// Returns an empty list if [n] is less than or equal to 1.
+/// Example: `primeFactorization(12)` returns `[2, 2, 3]`.
 List<int> primeFactorization(int n) {
   final factors = <int>[];
   if (n <= 1) return factors;
