@@ -39,14 +39,24 @@ class Complex {
   Complex conj() => Complex(_real, -_imag);
 
   // Arithmetic operators
+
+  /// Adds two complex numbers component-wise.
+  ///
+  /// Returns `(a + c) + (b + d)i` where `this = a + bi` and [other] `= c + di`.
   Complex operator +(Complex other) {
     return Complex(_real + other._real, _imag + other._imag);
   }
 
+  /// Subtracts [other] from this complex number component-wise.
+  ///
+  /// Returns `(a - c) + (b - d)i` where `this = a + bi` and [other] `= c + di`.
   Complex operator -(Complex other) {
     return Complex(_real - other._real, _imag - other._imag);
   }
 
+  /// Multiplies two complex numbers using the standard complex multiplication rule.
+  ///
+  /// Returns `(ac - bd) + (ad + bc)i` where `this = a + bi` and [other] `= c + di`.
   Complex operator *(Complex other) {
     return Complex(
       _real * other._real - _imag * other._imag,
@@ -54,6 +64,11 @@ class Complex {
     );
   }
 
+  /// Divides this complex number by [other].
+  ///
+  /// Uses the formula `(a + bi) / (c + di) = ((ac + bd) + (bc - ad)i) / (c² + d²)`.
+  ///
+  /// Throws a [StateError] if [other] has zero magnitude (division by zero).
   Complex operator /(Complex other) {
     final denominator = other.norm();
     if (denominator == 0.0) {
@@ -65,15 +80,18 @@ class Complex {
     );
   }
 
+  /// Returns `true` if both the real and imaginary parts are equal.
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
     return other is Complex && _real == other._real && _imag == other._imag;
   }
 
+  /// Returns a hash code based on both the real and imaginary parts.
   @override
   int get hashCode => Object.hash(_real, _imag);
 
+  /// Returns a human-readable string in the form `a + bi` or `a - bi`.
   @override
   String toString() {
     if (_imag >= 0) {
