@@ -1,5 +1,9 @@
-/// Dart implementations of C++ <numeric> algorithms.
-/// Provides extensions on [Iterable] and [List] for mathematical operations.
+/// Dart implementations of C++ `<numeric>` algorithms.
+///
+/// Provides two extensions:
+/// - [NumericIterableExtension] — adds [accumulate], [innerProduct],
+///   [adjacentDifference], [partialSum], and [cppReduce] to any [Iterable].
+/// - [NumericListExtension] — adds [iota] to any [List].
 
 extension NumericIterableExtension<T> on Iterable<T> {
   /// Sums up or folds the elements in the range, starting with [init].
@@ -72,10 +76,12 @@ extension NumericIterableExtension<T> on Iterable<T> {
   }
   
   /// Computes a result using an operation over the elements.
-  /// 
+  ///
   /// Similar to `std::reduce`. The difference in C++ is that `std::reduce` can be executed out of order,
-  /// but here it operates sequentially unless parallelized. It differs from Dart's `reduce` only 
+  /// but here it operates sequentially unless parallelized. It differs from Dart's `reduce` only
   /// by defaulting the [op] to addition if not provided.
+  ///
+  /// Throws a [StateError] if the iterable is empty.
   T cppReduce([T Function(T, T)? op]) {
     op ??= (T a, T b) => ((a as dynamic) + (b as dynamic)) as T;
     return reduce(op);
@@ -85,7 +91,9 @@ extension NumericIterableExtension<T> on Iterable<T> {
 extension NumericListExtension<T> on List<T> {
   /// Fills the list with successively increasing values, starting with [value].
   ///
-  /// Similar to `std::iota`. If [step] is not provided, the default is `value + 1`.
+  /// Similar to `std::iota`. Each element is produced by calling [step] on the
+  /// previous value. If [step] is not provided, it defaults to incrementing by `1`.
+  /// Example: given a list of length 3 and `value = 5`, produces `[5, 6, 7]`.
   void iota(T value, [T Function(T)? step]) {
     step ??= (T val) => ((val as dynamic) + 1) as T;
     var current = value;
