@@ -1,3 +1,6 @@
+# 0.4.0
+- Improved documentation across all math modules (`complex.dart`, `number_theory.dart`, `numeric.dart`).
+
 ## 0.3.9
 - Implement C++ <numeric> algorithms for collections.
 - Features: 
