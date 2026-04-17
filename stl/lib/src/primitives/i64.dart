@@ -5,7 +5,9 @@ extension type const I64(
   value
 )
     implements int {
+  /// The minimum representable value.
   static const I64 min = I64(-9223372036854775808);
+  /// The maximum representable value.
   static const I64 max = I64(9223372036854775807);
 
   I64 operator +(I64 other) => I64((value + other.value).toSigned(64));
@@ -25,6 +27,7 @@ extension type const I64(
 
   bool _sameSign(int a, int b) => (a >= 0 && b >= 0) || (a < 0 && b < 0);
 
+  /// Adds [other] catching overflow.
   I64 addChecked(I64 other) {
     var result = (value + other.value).toSigned(64);
     // Overflow occurs if both operands have the same sign, but the result has a different sign.
@@ -34,6 +37,7 @@ extension type const I64(
     return I64(result);
   }
 
+  /// Subtracts [other] catching overflow.
   I64 subChecked(I64 other) {
     var result = (value - other.value).toSigned(64);
     // Overflow occurs if operands have different signs, and result sign behaves unexpectedly.
@@ -43,6 +47,7 @@ extension type const I64(
     return I64(result);
   }
 
+  /// Multiplies by [other] catching overflow.
   I64 mulChecked(I64 other) {
     if (value == 0 || other.value == 0) return I64(0);
     var result = (value * other.value).toSigned(64);

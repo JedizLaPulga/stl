@@ -23,10 +23,12 @@ sealed class Variant2<T0, T1> {
   int get index;
 }
 
+/// Represents the first alternative of [Variant2].
 final class Variant2Item0<T0, T1> extends Variant2<T0, T1> {
   @override
   final T0 value;
 
+  /// Creates an instance of the first alternative.
   const Variant2Item0(this.value);
 
   @override
@@ -51,10 +53,12 @@ final class Variant2Item0<T0, T1> extends Variant2<T0, T1> {
   String toString() => 'Variant2.withT0($value)';
 }
 
+/// Represents the second alternative of [Variant2].
 final class Variant2Item1<T0, T1> extends Variant2<T0, T1> {
   @override
   final T1 value;
 
+  /// Creates an instance of the second alternative.
   const Variant2Item1(this.value);
 
   @override
@@ -109,10 +113,12 @@ sealed class Variant3<T0, T1, T2> {
   int get index;
 }
 
+/// Represents the first alternative of [Variant3].
 final class Variant3Item0<T0, T1, T2> extends Variant3<T0, T1, T2> {
   @override
   final T0 value;
 
+  /// Creates an instance of the first alternative.
   const Variant3Item0(this.value);
 
   @override
@@ -140,10 +146,12 @@ final class Variant3Item0<T0, T1, T2> extends Variant3<T0, T1, T2> {
   String toString() => 'Variant3.withT0($value)';
 }
 
+/// Represents the second alternative of [Variant3].
 final class Variant3Item1<T0, T1, T2> extends Variant3<T0, T1, T2> {
   @override
   final T1 value;
 
+  /// Creates an instance of the second alternative.
   const Variant3Item1(this.value);
 
   @override
@@ -171,10 +179,12 @@ final class Variant3Item1<T0, T1, T2> extends Variant3<T0, T1, T2> {
   String toString() => 'Variant3.withT1($value)';
 }
 
+/// Represents the third alternative of [Variant3].
 final class Variant3Item2<T0, T1, T2> extends Variant3<T0, T1, T2> {
   @override
   final T2 value;
 
+  /// Creates an instance of the third alternative.
   const Variant3Item2(this.value);
 
   @override

@@ -42,7 +42,9 @@ sealed class Optional<T> {
 
 /// Variant representing an existing value.
 final class Some<T> extends Optional<T> {
+  /// The value contained within.
   final T value;
+  /// Creates a [Some] variant with the given [value].
   const Some(this.value);
 
   @override

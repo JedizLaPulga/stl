@@ -8,6 +8,7 @@ class ZipRange<T1, T2> extends IterableBase<Pair<T1, T2>> {
   final Iterable<T1> _first;
   final Iterable<T2> _second;
 
+  /// Creates a view over two iterables.
   ZipRange(this._first, this._second);
 
   @override
