@@ -1,0 +1,106 @@
+Analyzing stl...
+
+warning - example\drop_range_example.dart:9:9 - The value of the local variable 'dropped' isn't used. Try removing the variable or using it. - unused_local_variable
+warning - example\drop_range_example.dart:15:9 - The value of the local variable 'overflow' isn't used. Try removing the variable or using it. - unused_local_variable
+warning - example\filter_range_example.dart:9:9 - The value of the local variable 'evens' isn't used. Try removing the variable or using it. - unused_local_variable
+warning - example\filter_range_example.dart:15:9 - The value of the local variable 'greaterThanFive' isn't used. Try removing the variable or using it. - unused_local_variable
+warning - example\i16_example.dart:17:26 - The exception variable 'e' isn't used, so the 'catch' clause can be removed. Try removing the catch clause. - unused_catch_clause
+warning - example\i8_example.dart:13:6 - The value of the local variable 'wrapped' isn't used. Try removing the variable or using it. - unused_local_variable
+warning - example\i8_example.dart:18:8 - The value of the local variable 'checked' isn't used. Try removing the variable or using it. - unused_local_variable
+warning - example\i8_example.dart:20:26 - The exception variable 'e' isn't used, so the 'catch' clause can be removed. Try removing the catch clause. - unused_catch_clause
+warning - example\i8_example.dart:25:6 - The value of the local variable 'c' isn't used. Try removing the variable or using it. - unused_local_variable
+warning - example\i8_example.dart:26:6 - The value of the local variable 'd' isn't used. Try removing the variable or using it. - unused_local_variable
+warning - example\join_range_example.dart:14:9 - The value of the local variable 'joined' isn't used. Try removing the variable or using it. - unused_local_variable
+warning - example\stl_example.dart:213:9 - The value of the local variable 'finalNodes' isn't used. Try removing the variable or using it. - unused_local_variable
+warning - example\stl_example.dart:221:9 - The value of the local variable 'joinedData' isn't used. Try removing the variable or using it. - unused_local_variable
+warning - example\take_range_example.dart:9:9 - The value of the local variable 'taken' isn't used. Try removing the variable or using it. - unused_local_variable
+warning - example\take_range_example.dart:15:9 - The value of the local variable 'overflow' isn't used. Try removing the variable or using it. - unused_local_variable
+warning - example\transform_range_example.dart:9:9 - The value of the local variable 'squared' isn't used. Try removing the variable or using it. - unused_local_variable
+warning - example\transform_range_example.dart:15:9 - The value of the local variable 'stringified' isn't used. Try removing the variable or using it. - unused_local_variable
+warning - test\primitives_test.dart:2:8 - Unused import: '../lib/src/primitives/i8.dart'. Try removing the import directive. - unused_import
+warning - test\primitives_test.dart:3:8 - Unused import: '../lib/src/primitives/i16.dart'. Try removing the import directive. - unused_import
+   info - example\number_theory_example.dart:13:9 - The variable name 'MAX_INT' isn't a lowerCamelCase identifier. Try changing the name to follow the lowerCamelCase style. - non_constant_identifier_names
+   info - lib\src\collections\vector.dart:3:7 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\collections\vector.dart:106:17 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\collections\vector.dart:107:17 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\collections\vector.dart:108:17 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\collections\vector.dart:109:17 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\collections\vector.dart:172:8 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\collections\vector.dart:173:7 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\collections\vector.dart:175:8 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\collections\vector.dart:176:8 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\collections\vector.dart:177:8 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\collections\vector.dart:180:7 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\collections\vector.dart:181:8 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\collections\vector.dart:182:8 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\collections\vector.dart:183:8 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\collections\vector.dart:184:8 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\collections\vector.dart:185:8 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\collections\vector.dart:186:8 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\math\number_theory.dart:9:1 - Dangling library doc comment. Add a 'library' directive after the library comment. - dangling_library_doc_comments
+   info - lib\src\math\numeric.dart:1:1 - Dangling library doc comment. Add a 'library' directive after the library comment. - dangling_library_doc_comments
+   info - lib\src\math\numeric.dart:93:11 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\primitives\i32.dart:8:20 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\primitives\i32.dart:9:20 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\primitives\i32.dart:26:7 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\primitives\i32.dart:34:7 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\primitives\i32.dart:42:7 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\primitives\i64.dart:8:20 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\primitives\i64.dart:9:20 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\primitives\i64.dart:28:7 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\primitives\i64.dart:37:7 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\primitives\i64.dart:46:7 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\primitives\int64.dart:66:9 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\primitives\int64.dart:75:9 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\primitives\u16.dart:8:20 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\primitives\u16.dart:9:20 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\primitives\u16.dart:27:7 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\primitives\u16.dart:35:7 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\primitives\u16.dart:43:7 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\primitives\u32.dart:8:20 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\primitives\u32.dart:9:20 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\primitives\u32.dart:27:7 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\primitives\u32.dart:35:7 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\primitives\u32.dart:43:7 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\primitives\u64.dart:8:20 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\primitives\u64.dart:58:7 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\primitives\u64.dart:66:7 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\primitives\u64.dart:74:7 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\primitives\u8.dart:8:19 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\primitives\u8.dart:9:19 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\primitives\u8.dart:24:6 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\primitives\u8.dart:32:6 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\primitives\u8.dart:40:6 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\primitives\uint64.dart:62:17 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\primitives\uint64.dart:65:17 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\primitives\uint64.dart:68:17 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\primitives\uint64.dart:70:10 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\primitives\uint64.dart:78:10 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\ranges\numberline.dart:161:17 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\ranges\numberline.dart:171:17 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\ranges\numberline.dart:172:17 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\ranges\repeat_range.dart:9:3 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\ranges\zip_range.dart:11:3 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\utility\optional.dart:45:11 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\utility\optional.dart:46:9 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\utility\variant.dart:26:13 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\utility\variant.dart:30:9 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\utility\variant.dart:54:13 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\utility\variant.dart:58:9 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\utility\variant.dart:112:13 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\utility\variant.dart:116:9 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\utility\variant.dart:143:13 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\utility\variant.dart:147:9 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\utility\variant.dart:174:13 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - lib\src\utility\variant.dart:178:9 - Missing documentation for a public member. Try adding documentation for the member. - public_member_api_docs
+   info - test\primitives_test.dart:2:8 - Can't use a relative path to import a library in 'lib'. Try fixing the relative path or changing the import to a 'package:' import. - avoid_relative_lib_imports
+   info - test\primitives_test.dart:3:8 - Can't use a relative path to import a library in 'lib'. Try fixing the relative path or changing the import to a 'package:' import. - avoid_relative_lib_imports
+   info - test\primitives_test.dart:4:8 - Can't use a relative path to import a library in 'lib'. Try fixing the relative path or changing the import to a 'package:' import. - avoid_relative_lib_imports
+   info - test\primitives_test.dart:5:8 - Can't use a relative path to import a library in 'lib'. Try fixing the relative path or changing the import to a 'package:' import. - avoid_relative_lib_imports
+   info - test\primitives_test.dart:6:8 - Can't use a relative path to import a library in 'lib'. Try fixing the relative path or changing the import to a 'package:' import. - avoid_relative_lib_imports
+   info - test\primitives_test.dart:7:8 - Can't use a relative path to import a library in 'lib'. Try fixing the relative path or changing the import to a 'package:' import. - avoid_relative_lib_imports
+   info - test\primitives_test.dart:8:8 - Can't use a relative path to import a library in 'lib'. Try fixing the relative path or changing the import to a 'package:' import. - avoid_relative_lib_imports
+   info - test\primitives_test.dart:9:8 - Can't use a relative path to import a library in 'lib'. Try fixing the relative path or changing the import to a 'package:' import. - avoid_relative_lib_imports
+   info - test\typed_primitives_test.dart:2:8 - Can't use a relative path to import a library in 'lib'. Try fixing the relative path or changing the import to a 'package:' import. - avoid_relative_lib_imports
+
+102 issues found.

@@ -1,5 +1,6 @@
 import 'dart:collection';
 
+/// A C++ style Vector collection backed by a Dart List.
 class Vector<T extends Comparable<dynamic>> with IterableMixin<T> {
   final List<T> _data;
 
@@ -103,9 +104,16 @@ class Vector<T extends Comparable<dynamic>> with IterableMixin<T> {
     return _data.length.compareTo(other._data.length);
   }
 
+  /// Less-than comparison for vectors.
   bool operator <(Vector<T> other) => compareTo(other) < 0;
+
+  /// Less-than-or-equal comparison for vectors.
   bool operator <=(Vector<T> other) => compareTo(other) <= 0;
+
+  /// Greater-than comparison for vectors.
   bool operator >(Vector<T> other) => compareTo(other) > 0;
+
+  /// Greater-than-or-equal comparison for vectors.
   bool operator >=(Vector<T> other) => compareTo(other) >= 0;
 
   /// Concatenates two vectors.
@@ -169,20 +177,43 @@ class Vector<T extends Comparable<dynamic>> with IterableMixin<T> {
     return _data.last;
   }
 
+  /// Returns true if the vector contains no elements.
   bool empty() => _data.isEmpty;
+
+  /// Returns the number of elements in the vector.
   int size() => _data.length;
 
+  /// Sorts the elements of the vector.
   void sort() => _data.sort();
+
+  /// Reverses the elements of the vector in place.
   void reverse() => _data.reversed;
+
+  /// Shuffles the elements of the vector randomly.
   void shuffle() => _data.shuffle();
+  
   @override
   bool contains(Object? element) => _data.contains(element);
+
+  /// Returns the first index of [element] in the vector.
   int indexOf(T element) => _data.indexOf(element);
+
+  /// Removes the first occurrence of [element] from the vector.
   void remove(T element) => _data.remove(element);
+
+  /// Removes the element at the specified [index].
   void removeAt(int index) => _data.removeAt(index);
+
+  /// Removes the last element of the vector.
   void removeLast() => _data.removeLast();
+
+  /// Removes a range of elements from [start] to [end].
   void removeRange(int start, int end) => _data.removeRange(start, end);
+
+  /// Removes all elements that satisfy the given [test].
   void removeWhere(bool Function(T element) test) => _data.removeWhere(test);
+
+  /// Retains only the elements that satisfy the given [test].
   void retainWhere(bool Function(T element) test) => _data.retainWhere(test);
 
   /// Replaces the contents of the vector with [count] copies of [value].

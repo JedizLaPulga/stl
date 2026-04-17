@@ -4,6 +4,7 @@
 /// - [NumericIterableExtension] — adds [accumulate], [innerProduct],
 ///   [adjacentDifference], [partialSum], and [cppReduce] to any [Iterable].
 /// - [NumericListExtension] — adds [iota] to any [List].
+library math_numeric;
 
 extension NumericIterableExtension<T> on Iterable<T> {
   /// Sums up or folds the elements in the range, starting with [init].
@@ -90,6 +91,7 @@ extension NumericIterableExtension<T> on Iterable<T> {
   }
 }
 
+/// Extension providing numeric operations on Lists.
 extension NumericListExtension<T> on List<T> {
   /// Fills the list with successively increasing values, starting with [value].
   ///

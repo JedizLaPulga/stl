@@ -7,6 +7,7 @@
 /// - [midpoint] — overflow-safe midpoint
 /// - [isPrime] — primality test
 /// - [primeFactorization] — prime factor list
+library math_number_theory;
 
 /// Returns the greatest common divisor of [a] and [b].
 /// Uses the highly optimized Euclidean algorithm.
