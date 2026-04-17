@@ -1,5 +1,7 @@
 /// A 16-bit unsigned integer primitive.
-extension type const U16(
+extension type const U16
+/// Instantiates a new [U16] spanning a strictly bounded 16-bit unsigned value.
+(
   /// The strictly bounded primitive underlying value.
   int
   value

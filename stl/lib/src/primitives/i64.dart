@@ -1,5 +1,7 @@
 /// A 64-bit signed integer primitive.
-extension type const I64(
+extension type const I64
+/// Instantiates a new [I64] spanning a strictly bounded 64-bit value.
+(
   /// The strictly bounded primitive underlying value.
   int
   value

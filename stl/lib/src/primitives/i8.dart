@@ -2,7 +2,9 @@
 ///
 /// This provides a zero-cost abstraction for 8-bit signed math,
 /// automatically wrapping on overflow and providing C++-style boundaries.
-extension type const I8(
+extension type const I8
+/// Instantiates a new [I8] spanning a strictly bounded 8-bit value.
+(
   /// The strictly bounded primitive underlying value.
   int
   value

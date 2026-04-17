@@ -1,5 +1,7 @@
 /// A 64-bit unsigned integer primitive.
-extension type const U64(
+extension type const U64
+/// Instantiates a new [U64] spanning a strictly bounded 64-bit unsigned value.
+(
   /// The strictly bounded primitive underlying value.
   int
   value

@@ -6,7 +6,9 @@ import 'dart:typed_data';
 /// This inherently bounds the variable within standard memory specifications and rigorously
 /// guarantees that mathematical operators intuitively overflow using C++ style
 /// constraints, exactly mimicking real hardware boundaries, providing complete safety!
-extension type Int32(Int32List _data) {
+extension type Int32
+/// Instantiates a dynamically allocated [Int32] bounds-checked element.
+(Int32List _data) {
   /// Dynamically instantiates a [Int32] value mapped sequentially into memory.
   Int32.from(int value) : _data = Int32List(1)..[0] = value;
 

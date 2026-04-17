@@ -1,5 +1,5 @@
 # 0.4.1
-- Comprehensive documentation coverage: Added missing API doc comments to iterables, numbers, mathematical variants, and heavily used primitive structures. Library now yields zero `public_member_api_docs` analyzer warnings.
+- Comprehensive documentation coverage: Added missing API doc comments to iterables, numbers, mathematical variants, and heavily used primitive structures. Library now yields zero `public_member_api_docs` analyzer warnings, over 100 issues resolved,  (98.0 %) have documentation comments
 
 # 0.4.0
 - Improved documentation across all math modules (`complex.dart`, `number_theory.dart`, `numeric.dart`).

@@ -1,5 +1,7 @@
 /// An 8-bit unsigned integer primitive.
-extension type const U8(
+extension type const U8
+/// Instantiates a new [U8] spanning a strictly bounded 8-bit unsigned value.
+(
   /// The strictly bounded primitive underlying value.
   int
   value

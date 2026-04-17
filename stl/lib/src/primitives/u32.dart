@@ -1,5 +1,7 @@
 /// A 32-bit unsigned integer primitive.
-extension type const U32(
+extension type const U32
+/// Instantiates a new [U32] spanning a strictly bounded 32-bit unsigned value.
+(
   /// The strictly bounded primitive underlying value.
   int
   value

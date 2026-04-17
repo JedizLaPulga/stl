@@ -6,7 +6,9 @@ import 'dart:typed_data';
 /// This inherently bounds the variable within standard memory specifications and rigorously
 /// guarantees that mathematical operators intuitively overflow using C++ style
 /// constraints, exactly mimicking real hardware boundaries, providing complete safety!
-extension type Uint64(Uint64List _data) {
+extension type Uint64
+/// Instantiates a dynamically allocated [Uint64] bounds-checked element.
+(Uint64List _data) {
   /// Dynamically instantiates a [Uint64] value mapped sequentially into memory.
   Uint64.from(int value) : _data = Uint64List(1)..[0] = value;
 

@@ -1,5 +1,7 @@
 /// A 32-bit signed integer primitive.
-extension type const I32(
+extension type const I32
+/// Instantiates a new [I32] spanning a strictly bounded 32-bit value.
+(
   /// The strictly bounded primitive underlying value.
   int
   value
