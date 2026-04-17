@@ -63,6 +63,7 @@ extension type Int64(Int64List _data) {
 
   /// Strict evaluation extending identical size bounds.
   bool operator >=(Int64 other) => value >= other.value;
+  /// Adds [other] catching overflow.
   Int64 addChecked(Int64 other) {
     final res = value + other.value;
     if (!(((value ^ other.value) & 0x8000000000000000) != 0) &&
@@ -72,6 +73,7 @@ extension type Int64(Int64List _data) {
     return Int64.from(res);
   }
 
+  /// Subtracts [other] catching overflow.
   Int64 subChecked(Int64 other) {
     var res = value - other.value;
     if ((((value ^ other.value) & 0x8000000000000000) != 0) &&
