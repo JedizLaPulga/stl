@@ -6,6 +6,7 @@ class RepeatRange<T> extends IterableBase<T> {
   final T _value;
   final int? _bound;
 
+  /// Creates a sequence repeating [_value], optionally limited to [_bound] times.
   RepeatRange(this._value, [this._bound]) {
     if (_bound != null && _bound < 0) {
       throw ArgumentError('Bound cannot be negative.');

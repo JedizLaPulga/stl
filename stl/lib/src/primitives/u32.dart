@@ -5,7 +5,9 @@ extension type const U32(
   value
 )
     implements int {
+  /// The minimum representable value.
   static const U32 min = U32(0);
+  /// The maximum representable value.
   static const U32 max = U32(4294967295);
 
   U32 operator +(U32 other) => U32((value + other.value).toUnsigned(32));
@@ -24,6 +26,7 @@ extension type const U32(
   U32 operator >>>(int shiftAmount) =>
       U32((value >>> shiftAmount).toUnsigned(32));
 
+  /// Adds [other] catching overflow.
   U32 addChecked(U32 other) {
     var result = value + other.value;
     if (result > 4294967295) {
@@ -32,6 +35,7 @@ extension type const U32(
     return U32(result);
   }
 
+  /// Subtracts [other] catching underflow.
   U32 subChecked(U32 other) {
     var result = value - other.value;
     if (result < 0) {
@@ -40,6 +44,7 @@ extension type const U32(
     return U32(result);
   }
 
+  /// Multiplies by [other] catching overflow.
   U32 mulChecked(U32 other) {
     var result = value * other.value;
     if (result > 4294967295) {

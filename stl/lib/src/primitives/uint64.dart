@@ -59,14 +59,18 @@ extension type Uint64(Uint64List _data) {
   bool operator <(Uint64 other) =>
       (value ^ 0x8000000000000000) < (other.value ^ 0x8000000000000000);
 
+  /// Returns true if this bounds-checked value is less than or equal to [other].
   bool operator <=(Uint64 other) =>
       (value ^ 0x8000000000000000) <= (other.value ^ 0x8000000000000000);
 
+  /// Strict evaluation if this numerical element is larger.
   bool operator >(Uint64 other) =>
       (value ^ 0x8000000000000000) > (other.value ^ 0x8000000000000000);
 
+  /// Strict evaluation extending identical size bounds.
   bool operator >=(Uint64 other) =>
       (value ^ 0x8000000000000000) >= (other.value ^ 0x8000000000000000);
+  /// Adds [other] catching overflow.
   Uint64 addChecked(Uint64 other) {
     final res = value + other.value;
     if ((res ^ 0x8000000000000000) < (value ^ 0x8000000000000000)) {
@@ -75,6 +79,7 @@ extension type Uint64(Uint64List _data) {
     return Uint64.from(res);
   }
 
+  /// Subtracts [other] catching overflow.
   Uint64 subChecked(Uint64 other) {
     final res = value - other.value;
     if ((value ^ 0x8000000000000000) < (other.value ^ 0x8000000000000000)) {

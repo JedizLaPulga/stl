@@ -158,6 +158,7 @@ class NumberLine<T extends num> extends IterableBase<T> {
     return it2.moveNext();
   }
 
+  /// Returns true if this sequence is strictly greater lexicographically.
   bool operator >(Iterable<T> other) {
     Iterator<T> it1 = iterator;
     Iterator<T> it2 = other.iterator;
@@ -168,7 +169,9 @@ class NumberLine<T extends num> extends IterableBase<T> {
     return it1.moveNext();
   }
 
+  /// Returns true if this sequence is less than or equal to [other].
   bool operator <=(Iterable<T> other) => !(this > other);
+  /// Returns true if this sequence is greater than or equal to [other].
   bool operator >=(Iterable<T> other) => !(this < other);
 }
 

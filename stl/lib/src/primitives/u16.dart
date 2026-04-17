@@ -5,7 +5,9 @@ extension type const U16(
   value
 )
     implements int {
+  /// The minimum representable value.
   static const U16 min = U16(0);
+  /// The maximum representable value.
   static const U16 max = U16(65535);
 
   U16 operator +(U16 other) => U16((value + other.value).toUnsigned(16));
@@ -24,6 +26,7 @@ extension type const U16(
   U16 operator >>>(int shiftAmount) =>
       U16((value >>> shiftAmount).toUnsigned(16));
 
+  /// Adds [other] catching overflow.
   U16 addChecked(U16 other) {
     var result = value + other.value;
     if (result > 65535) {
@@ -32,6 +35,7 @@ extension type const U16(
     return U16(result);
   }
 
+  /// Subtracts [other] catching underflow.
   U16 subChecked(U16 other) {
     var result = value - other.value;
     if (result < 0) {
@@ -40,6 +44,7 @@ extension type const U16(
     return U16(result);
   }
 
+  /// Multiplies by [other] catching overflow.
   U16 mulChecked(U16 other) {
     var result = value * other.value;
     if (result > 65535) {

@@ -5,6 +5,7 @@ extension type const U64(
   value
 )
     implements int {
+  /// The minimum representable value.
   static const U64 min = U64(0);
 
   /// The maximum 64-bit unsigned integer (represents 18446744073709551615).
@@ -55,6 +56,7 @@ extension type const U64(
   bool operator >=(U64 other) =>
       (value ^ 0x8000000000000000) >= (other.value ^ 0x8000000000000000);
 
+  /// Adds [other] catching overflow.
   U64 addChecked(U64 other) {
     var result = (value + other.value).toUnsigned(64);
     if (result < value || result < other.value) {
@@ -63,6 +65,7 @@ extension type const U64(
     return U64(result);
   }
 
+  /// Subtracts [other] catching overflow.
   U64 subChecked(U64 other) {
     var result = (value - other.value).toUnsigned(64);
     if (this < other) {
@@ -71,6 +74,7 @@ extension type const U64(
     return U64(result);
   }
 
+  /// Multiplies by [other] catching overflow.
   U64 mulChecked(U64 other) {
     if (value == 0 || other.value == 0) return U64(0);
     // BigInt needed to strictly verify multiplication fits cleanly without wrapping bits incorrectly.
