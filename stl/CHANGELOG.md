@@ -1,3 +1,12 @@
+# 0.4.3
+- Implemented the Euclidean `geometry` module containing fundamental 2D shapes managed via strict `{required}` named parameters.
+- Features:
+    - `Point`: Exact 2D coordinate `(x, y)` computing Euclidean geometry intelligently.
+    - `Shape`: Abstract base component enforcing polymorphic `area` and `perimeter` properties.
+    - `Circle`: Evaluates pi-bound area and circumference.
+    - `Rectangle`: Standard rectangular dimensions logic.
+    - `Triangle`: Enforces Triangle Inequality Theorem natively preventing mathematically impossible geometries while solving area via Heron's Formula.
+
 # 0.4.2
 - Implemented C++ `<cmath>` inspired mathematical utilities via `cmath.dart`.
 - Features:

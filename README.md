@@ -121,6 +121,17 @@ The `stl` math modules provide robust implementations of C++ mathematical consta
 | 🔬 **`number_theory`** | Highly-optimized logic for `gcd()`, `lcm()`, `isPrime()`, `primeFactorization()`, and `midpoint()`. |
 | 🏛️ **`constant`** | 20+ strictly pure IEEE 754 constants separated logically according to ISO 80000-2 (e.g. `pi`, `tau`, `phi`, `catalan`). |
 
+### 📐 Geometry Module (2D Space)
+
+Euclidean geometry engine structured strictly via named parameters for explicit dimension management.
+
+| Entity | Description |
+| :--- | :--- |
+| 📍 **`Point`** | Represents an exact 2D coordinate `(x, y)` in space utilizing precise `hypot` distances. |
+| ⭕ **`Circle`** | Computes absolute Pi area boundaries via deeply guarded `{required radius}`. |
+| 🔲 **`Rectangle`** | Basic bounding box dimensions via explicitly tracked `{required width, height}`. |
+| 🔺 **`Triangle`** | Pre-calculates Herons theorem and enforces native bounds limits via `{required sideA, sideB, sideC}`. |
+
 
 <br/>
 

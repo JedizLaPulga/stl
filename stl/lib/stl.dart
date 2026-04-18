@@ -52,4 +52,8 @@ export 'src/math/numeric.dart';
 export 'src/math/complex.dart';
 export 'src/math/number_theory.dart';
 export 'src/math/cmath.dart';
-
+export 'src/geometry/point.dart';
+export 'src/geometry/shape.dart';
+export 'src/geometry/circle.dart';
+export 'src/geometry/rectangle.dart';
+export 'src/geometry/triangle.dart';
