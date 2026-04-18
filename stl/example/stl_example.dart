@@ -262,6 +262,15 @@ void main() {
   final cleanSet = HashSet<String>.from(logVector);
   print('• Extracted Unique Log Signatures instantly: ${cleanSet.toList()}');
 
+  // ========================================
+  // 6. C++ <cmath> MATHEMATICS 🧮
+  // ========================================
+  print('\n>>> 6. C++ <cmath> MATHEMATICS <<<\n');
+
+  print('• clamp(-5, 0, 10) safely bounds value to: ${clamp(-5, 0, 10)}');
+  print('• lerp(0, 100, 0.5) smoothly computes: ${lerp(0, 100, 0.5)}');
+  print('• hypot(3, 4) calculates 2D/3D Euclidean magnitude solidly: ${hypot(3, 4)}');
+
   print('\n====================================================');
   print(' 🎉 END OF MEGA SHOWCASE');
   print('====================================================\n');
