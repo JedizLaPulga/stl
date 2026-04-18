@@ -1,3 +1,10 @@
+# 0.4.2
+- Implemented C++ `<cmath>` inspired mathematical utilities via `cmath.dart`.
+- Features:
+    - `clamp`: Binds a value between a lower and upper limit (C++17).
+    - `lerp`: Linear interpolation between two values (C++20).
+    - `hypot`: Computes the hypotenuse robustly without overflow or underflow (C++17).
+
 # 0.4.1
 - Comprehensive documentation coverage: Added missing API doc comments to iterables, numbers, mathematical variants, and heavily used primitive structures. Library now yields zero `public_member_api_docs` analyzer warnings, over 100 issues resolved,  (98.0 %) have documentation comments
 

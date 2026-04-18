@@ -51,3 +51,5 @@ export 'src/math/constant/constant.dart';
 export 'src/math/numeric.dart';
 export 'src/math/complex.dart';
 export 'src/math/number_theory.dart';
+export 'src/math/cmath.dart';
+

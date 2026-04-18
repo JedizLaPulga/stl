@@ -109,6 +109,18 @@ Extremely lightweight `extension type` models scaling directly utilizing Dart Na
 | 🔢 **`Int8`**, **`Int16`**, **`Int32`**, **`Int64`** | Hardware-backed signed equivalents enforcing strict boundary overflow natively at the OS hardware/V8 buffer layout level. |
 | 🔢 **`Uint8`**, **`Uint16`**, **`Uint32`**, **`Uint64`** | Hardware-backed unsigned integers utilizing exact standard array memory to process mathematically clean unsigned rollovers securely. |
 
+### 🧮 Math Module
+
+The `stl` math modules provide robust implementations of C++ mathematical constants, number theory logic, `<numeric>` algorithms for sequences, and `<cmath>` algorithmic behaviors missing natively in Dart.
+
+| Module | Description |
+| :--- | :--- |
+| 🔢 **`numeric`** | Extensions for collections offering `accumulate()`, `innerProduct()`, `adjacentDifference()`, `partialSum()`, and `iota()`. |
+| 🧮 **`cmath`** | Missing mathematically safe operations including `clamp()`, `lerp()`, and overflow-safe robust `hypot()`. |
+| 🧲 **`complex`** | Full-scale complex numbers implementation `Complex` with operator overloading (`+`, `-`, `*`, `/`) and utility algorithms (`abs()`, `conj()`, `pow()`). |
+| 🔬 **`number_theory`** | Highly-optimized logic for `gcd()`, `lcm()`, `isPrime()`, `primeFactorization()`, and `midpoint()`. |
+| 🏛️ **`constant`** | 20+ strictly pure IEEE 754 constants separated logically according to ISO 80000-2 (e.g. `pi`, `tau`, `phi`, `catalan`). |
+
 
 <br/>
 
