@@ -11,7 +11,7 @@ void main() {
       map.insert('apple', 1);
       expect(map.empty, isFalse);
       expect(map.size, equals(1));
-      expect(map.contains('apple'), isTrue);
+      expect(map.containsKey('apple'), isTrue);
       expect(map['apple'], equals(1));
     });
 
@@ -31,7 +31,7 @@ void main() {
       map.insert('banana', 2);
 
       expect(map.erase('apple'), isTrue);
-      expect(map.contains('apple'), isFalse);
+      expect(map.containsKey('apple'), isFalse);
       expect(map.size, equals(1));
 
       expect(map.erase('apple'), isFalse); // Already removed
@@ -45,7 +45,7 @@ void main() {
 
       expect(map.empty, isTrue);
       expect(map.size, equals(0));
-      expect(map.contains('apple'), isFalse);
+      expect(map.containsKey('apple'), isFalse);
     });
 
     test('Iteration yields Pair<K, V>', () {
@@ -94,10 +94,10 @@ void main() {
 
       map1.swap(map2);
 
-      expect(map1.contains('banana'), isTrue);
-      expect(map1.contains('apple'), isFalse);
-      expect(map2.contains('apple'), isTrue);
-      expect(map2.contains('banana'), isFalse);
+      expect(map1.containsKey('banana'), isTrue);
+      expect(map1.containsKey('apple'), isFalse);
+      expect(map2.containsKey('apple'), isTrue);
+      expect(map2.containsKey('banana'), isFalse);
     });
   });
 }

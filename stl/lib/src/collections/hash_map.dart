@@ -39,7 +39,7 @@ class HashMap<K, V> with IterableMixin<Pair<K, V>> {
   }
 
   /// Returns `true` if the map contains the specified [key].
-  bool contains(K key) {
+  bool containsKey(K key) {
     return _container.containsKey(key);
   }
 
@@ -91,7 +91,7 @@ class HashMap<K, V> with IterableMixin<Pair<K, V>> {
     if (size != other.size) return false;
 
     for (var key in _container.keys) {
-      if (!other.contains(key) || other[key] != _container[key]) {
+      if (!other.containsKey(key) || other[key] != _container[key]) {
         return false;
       }
     }

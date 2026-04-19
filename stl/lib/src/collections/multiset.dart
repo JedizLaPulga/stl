@@ -34,7 +34,6 @@ class _MultiSetIterator<T> implements Iterator<T> {
 /// It utilizes a balanced tree structure under the hood to keep elements ordered.
 class MultiSet<T> with IterableMixin<T> {
   final collection.SplayTreeMap<T, int> _container;
-  final int Function(T, T)? _compare;
   int _size = 0;
 
   @override
@@ -43,12 +42,12 @@ class MultiSet<T> with IterableMixin<T> {
   /// Creates an empty MultiSet.
   ///
   /// Optionally inject a [compare] function. If null, it assumes elements are `Comparable`.
-  MultiSet([this._compare])
-      : _container = collection.SplayTreeMap<T, int>(_compare);
+  MultiSet([int Function(T, T)? compare])
+      : _container = collection.SplayTreeMap<T, int>(compare);
 
   /// Creates a MultiSet containing the elements of the given iterable.
-  MultiSet.from(Iterable<T> elements, [this._compare])
-      : _container = collection.SplayTreeMap<T, int>(_compare) {
+  MultiSet.from(Iterable<T> elements, [int Function(T, T)? compare])
+      : _container = collection.SplayTreeMap<T, int>(compare) {
     for (var element in elements) {
       insert(element);
     }
