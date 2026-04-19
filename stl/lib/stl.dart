@@ -11,6 +11,8 @@ export 'src/collections/priority_queue.dart';
 export 'src/collections/set.dart';
 export 'src/collections/hash_set.dart';
 export 'src/collections/sorted_set.dart';
+export 'src/collections/hash_map.dart';
+export 'src/collections/multiset.dart';
 export 'src/collections/forward_list.dart';
 export 'src/collections/array.dart';
 export 'src/ranges/numberline.dart';

@@ -7,7 +7,7 @@
 
   [![License: MIT](https://img.shields.io/badge/License-MIT-ff69b4.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
   [![Dart](https://img.shields.io/badge/Dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev/)
-  [![Pub Version](https://img.shields.io/badge/pub-0.4.1-blueviolet.svg?style=for-the-badge)](https://pub.dev/packages/stl)
+  [![Pub Version](https://img.shields.io/badge/pub-0.4.4-blueviolet.svg?style=for-the-badge)](https://pub.dev/packages/stl)
 
   > 🚀 **A highly-versatile, performance-driven bank of data collections, structures, and algorithmic ranges for the Dart and Flutter ecosystem.**
 
@@ -76,6 +76,8 @@ Here are the traditional core data structures currently fully supported and batt
 | :--- | :--- |
 | 🗃️ **`Set<T>`** | Unique element container ensuring no duplicates with generic equality support. |
 | 🌲 **`SortedSet<T>`** | Tree-based strictly sorted unique container mirroring C++ `std::set`. Keeps data autonomously ordered. |
+| 📚 **`MultiSet<T>`** | Sorted tree container allowing duplicate elements, similar to C++ `std::multiset`. |
+| 🗺️ **`HashMap<K, V>`** | Unordered key-value map utilizing a fast hash table under the hood, matching `std::unordered_map`. |
 | 🌭 **`Deque<T>`** | Double-ended queue allowing extremely fast front/back algorithmic insertions & removals without memory reallocation overhead. |
 
 ### 🛠️ Utility Structures
