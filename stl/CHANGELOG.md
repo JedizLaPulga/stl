@@ -1,3 +1,11 @@
+# 0.4.5
+- Implemented the `<algorithm>` module, bringing powerful C++ standard algorithms to Dart iterables.
+- Features:
+    - **Binary Search / Bounds:** `lowerBound`, `upperBound`, `binarySearch`, `equalRange`.
+    - **Permutations:** `nextPermutation`, `prevPermutation`.
+    - **Set Operations:** `setUnion`, `setIntersection`, `setDifference`.
+    - **Mutations:** `rotate`, `reverse`, `unique`, `partition`, `stablePartition`.
+
 # 0.4.4
 - Implemented `MultiSet` and `HashMap` in `collections` module.
 - `HashMap<K, V>`: An unordered collection of key-value pairs utilizing a fast hash table under the hood (equivalent to C++ `std::unordered_map`). Allows seamless iteration yielding `<utility>` `Pair<K, V>` instances.

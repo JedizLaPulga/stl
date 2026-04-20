@@ -7,7 +7,7 @@
 
   [![License: MIT](https://img.shields.io/badge/License-MIT-ff69b4.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
   [![Dart](https://img.shields.io/badge/Dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev/)
-  [![Pub Version](https://img.shields.io/badge/pub-0.4.4-blueviolet.svg?style=for-the-badge)](https://pub.dev/packages/stl)
+  [![Pub Version](https://img.shields.io/badge/pub-0.4.5-blueviolet.svg?style=for-the-badge)](https://pub.dev/packages/stl)
 
   > 🚀 **A highly-versatile, performance-driven bank of data collections, structures, and algorithmic ranges for the Dart and Flutter ecosystem.**
 
@@ -134,6 +134,16 @@ Euclidean geometry engine structured strictly via named parameters for explicit 
 | 🔲 **`Rectangle`** | Basic bounding box dimensions via explicitly tracked `{required width, height}`. |
 | 🔺 **`Triangle`** | Pre-calculates Herons theorem and enforces native bounds limits via `{required sideA, sideB, sideC}`. |
 
+### ⚙️ Algorithm Module (`<algorithm>`)
+
+The core algorithms library brings the power of C++'s `<algorithm>` header to Dart, allowing you to manipulate any `Iterable` or collection dynamically with highly optimized utility functions.
+
+| Category | Algorithms | Description |
+| :--- | :--- | :--- |
+| 🔍 **Search & Bounds** | `lowerBound()`, `upperBound()`, `binarySearch()`, `equalRange()` | Perform incredibly fast $O(\log n)$ searches on sorted sequences. |
+| 🔀 **Permutations** | `nextPermutation()`, `prevPermutation()` | Lexicographically permute sequences to generate standard orderings. |
+| 🗃️ **Set Operations** | `setUnion()`, `setIntersection()`, `setDifference()` | Mathematically compare and merge multiple sorted iterables efficiently. |
+| 🧬 **Mutations** | `rotate()`, `reverse()`, `unique()`, `partition()`, `stablePartition()` | Reorder, filter, and modify arrays conceptually in-place with predictable logic. |
 
 <br/>
 
