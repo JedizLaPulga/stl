@@ -17,6 +17,21 @@ class Point<T extends num> {
     return hypot(x - other.x, y - other.y);
   }
 
+  /// The magnitude (length) of the vector from the origin (0,0).
+  double get magnitude => hypot(x, y);
+
+  /// Adds another point (vector addition).
+  Point<num> operator +(Point<num> other) => Point(x: x + other.x, y: y + other.y);
+
+  /// Subtracts another point (vector subtraction).
+  Point<num> operator -(Point<num> other) => Point(x: x - other.x, y: y - other.y);
+
+  /// Multiplies the point by a scalar value.
+  Point<num> operator *(num scalar) => Point(x: x * scalar, y: y * scalar);
+
+  /// Computes the dot product with another point.
+  num dotProduct(Point<num> other) => (x * other.x) + (y * other.y);
+
   @override
   String toString() => 'Point($x, $y)';
 

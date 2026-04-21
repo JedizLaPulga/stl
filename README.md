@@ -7,7 +7,7 @@
 
   [![License: MIT](https://img.shields.io/badge/License-MIT-ff69b4.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
   [![Dart](https://img.shields.io/badge/Dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev/)
-  [![Pub Version](https://img.shields.io/badge/pub-0.4.4-blueviolet.svg?style=for-the-badge)](https://pub.dev/packages/stl)
+  [![Pub Version](https://img.shields.io/badge/pub-0.4.6-blueviolet.svg?style=for-the-badge)](https://pub.dev/packages/stl)
 
   > 🚀 **A highly-versatile, performance-driven bank of data collections, structures, and algorithmic ranges for the Dart and Flutter ecosystem.**
 
@@ -62,6 +62,7 @@ Here are the traditional core data structures currently fully supported and batt
 | :--- | :--- | :---: |
 | 🚂 **`Vector<T>`** | Dynamic array with contiguous memory behavior, strict bounds checking, and powerful modifiers. | $O(1)$ |
 | 🚅 **`ForwardList<T>`** | Singly linked list optimized for extremely fast forward traversal, insertions, and shifting. | $O(N)$ |
+| 🔗 **`SList<T>`** | Doubly linked list enabling $O(1)$ bidirectional manipulations mirroring C++ `std::list`. | $O(N)$ |
 | 🧊 **`Array<T>`** | Conceptually strict fixed-size contiguous array mirroring C++ `std::array`. | $O(1)$ |
 
 ### 🥞 Adapter Containers
@@ -78,6 +79,8 @@ Here are the traditional core data structures currently fully supported and batt
 | 🌲 **`SortedSet<T>`** | Tree-based strictly sorted unique container mirroring C++ `std::set`. Keeps data autonomously ordered. |
 | 📚 **`MultiSet<T>`** | Sorted tree container allowing duplicate elements, similar to C++ `std::multiset`. |
 | 🗺️ **`HashMap<K, V>`** | Unordered key-value map utilizing a fast hash table under the hood, matching `std::unordered_map`. |
+| 🗂️ **`SortedMap<K, V>`** | Tree-based strictly sorted associative container mapping keys to values, matching `std::map`. |
+| 📂 **`MultiMap<K, V>`** | Sorted tree container mapping keys to multiple values, matching `std::multimap`. |
 | 🌭 **`Deque<T>`** | Double-ended queue allowing extremely fast front/back algorithmic insertions & removals without memory reallocation overhead. |
 
 ### 🛠️ Utility Structures
@@ -89,6 +92,7 @@ Here are the traditional core data structures currently fully supported and batt
 | 📦 **`Box<T>` / `Ref<T>`** | Wrappers unlocking primitive pass-by-reference logic with dynamic mathematical operators. |
 | 🔢 **`BitSet`** | Hyper-efficient space-optimized boolean bit flags array mimicking `std::bitset`. $O(1)$ toggles. |
 | 👽 **`Any`** | Generic type-safe bounding box safely encapsulating abstract data with strictly enforced extraction boundaries. |
+| 📜 **`StringView`** | Zero-allocation string reference utility enabling high-performance substring manipulations, matching `std::string_view`. |
 
 ### 🧱 Primitives (Fixed-Width Integers)
 
@@ -134,6 +138,16 @@ Euclidean geometry engine structured strictly via named parameters for explicit 
 | 🔲 **`Rectangle`** | Basic bounding box dimensions via explicitly tracked `{required width, height}`. |
 | 🔺 **`Triangle`** | Pre-calculates Herons theorem and enforces native bounds limits via `{required sideA, sideB, sideC}`. |
 
+### ⚙️ Algorithm Module (`<algorithm>`)
+
+The core algorithms library brings the power of C++'s `<algorithm>` header to Dart, allowing you to manipulate any `Iterable` or collection dynamically with highly optimized utility functions.
+
+| Category | Algorithms | Description |
+| :--- | :--- | :--- |
+| 🔍 **Search & Bounds** | `lowerBound()`, `upperBound()`, `binarySearch()`, `equalRange()` | Perform incredibly fast $O(\log n)$ searches on sorted sequences. |
+| 🔀 **Permutations** | `nextPermutation()`, `prevPermutation()` | Lexicographically permute sequences to generate standard orderings. |
+| 🗃️ **Set Operations** | `setUnion()`, `setIntersection()`, `setDifference()` | Mathematically compare and merge multiple sorted iterables efficiently. |
+| 🧬 **Mutations** | `rotate()`, `reverse()`, `unique()`, `partition()`, `stablePartition()` | Reorder, filter, and modify arrays conceptually in-place with predictable logic. |
 
 <br/>
 

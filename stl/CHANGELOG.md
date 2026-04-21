@@ -1,3 +1,11 @@
+# 0.4.7
+- Expanded the `geometry` module with an advanced Curiously Recurring Template Pattern (CRTP) type system: `Shape<T extends Shape<T>>`.
+- Added beautiful affine transformations (`translate`, `scale`, `rotate`) to all geometric shapes natively via the type system.
+- Enhanced `Point` with core vector mathematics (`+`, `-`, `*`, `magnitude`, `dotProduct`).
+- Added new highly-mathematical structures: `Polygon` (Shoelace formula), `Ellipse` (Ramanujan perimeter approximation), and `LineSegment`.
+- Redesigned `Triangle` internally to be strictly coordinate-based via `Point` vertices to natively support translations and rotational space.
+- Fixed `pubspec.yaml` description length validation.
+
 # 0.4.6
 - Added `SortedMap<K, V>`: A strictly sorted associative container mapping keys to values (equivalent to C++ `std::map`).
 - Added `MultiMap<K, V>`: An associative container mapping keys to multiple values while maintaining sorted key order (equivalent to C++ `std::multimap`).
