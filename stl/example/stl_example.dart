@@ -43,6 +43,13 @@ void main() {
   list.unique();
   print('• List crushed duplicates instantly: $list\n');
 
+  // SList (Doubly-Linked List) natively allows O(1) ops on both ends without being contiguous
+  print('\n[SList (Doubly-Linked List)]');
+  final dList = SList<int>.from([10, 20, 30]);
+  dList.pushFront(5);
+  dList.pushBack(40);
+  print('• SList after O(1) front/back manipulation: $dList\n');
+
   // ========================================
   // 2. ADAPTERS (Deque, Queue, Stack)
   // ========================================
@@ -112,6 +119,30 @@ void main() {
   print('• Difference (Apples and Dates remain!): ${difference.toList()}\n');
 
   // ========================================
+  // 3.5. NEW ASSOCIATIVE CONTAINERS (0.4.6)
+  // ========================================
+  print('>>> 3.5. SORTED MAPS & MULTIMAPS <<<\n');
+
+  final sortedMap = SortedMap<int, String>();
+  sortedMap.insert(3, 'Charlie');
+  sortedMap.insert(1, 'Alpha');
+  sortedMap.insert(2, 'Bravo');
+  print('• SortedMap strictly ordered by key:');
+  for (final pair in sortedMap) {
+    print('  [${pair.first}] -> ${pair.second}');
+  }
+
+  final multiMap = MultiMap<String, String>();
+  multiMap.insert('Fruit', 'Apple');
+  multiMap.insert('Fruit', 'Banana');
+  multiMap.insert('Vegetable', 'Carrot');
+  print('\n• MultiMap allowing duplicate keys:');
+  for (final pair in multiMap) {
+    print('  [${pair.first}] -> ${pair.second}');
+  }
+  print('');
+
+  // ========================================
   // 4. UTILITIES (Pair & PriorityQueue)
   // ========================================
   print('>>> 4. UTILITIES & PRIORITY HEAPS <<<\n');
@@ -144,6 +175,12 @@ void main() {
     );
   }
   print('');
+
+  // StringView for zero-allocation substring passing
+  print('\n[StringView Memory Efficiency]');
+  final largeDocument = 'User: Administrator | Status: Active | Priority: High';
+  final statusView = StringView.substring(largeDocument, 30, 36);
+  print('• StringView parsed status "$statusView" directly from memory without allocations!\n');
 
   // ========================================
   // 5. C++23 RANGES & PIPELINING 🧬

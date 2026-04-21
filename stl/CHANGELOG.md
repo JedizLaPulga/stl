@@ -1,3 +1,10 @@
+# 0.4.6
+- Added `SortedMap<K, V>`: A strictly sorted associative container mapping keys to values (equivalent to C++ `std::map`).
+- Added `MultiMap<K, V>`: An associative container mapping keys to multiple values while maintaining sorted key order (equivalent to C++ `std::multimap`).
+- Added `SList<T>`: A high-performance doubly-linked list enabling $O(1)$ bidirectional manipulations (equivalent to C++ `std::list`).
+- Added `StringView`: A non-owning string reference utility for zero-allocation substring and text-processing operations (equivalent to C++ `std::string_view`).
+- Extensively expanded example coverage and full dartdoc api documentation.
+
 # 0.4.5
 - Implemented the `<algorithm>` module, bringing powerful C++ standard algorithms to Dart iterables.
 - Features:
