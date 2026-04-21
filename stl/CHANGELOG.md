@@ -1,3 +1,6 @@
+# 0.4.8
+- **Technical Documentation Update:** Completely redesigned the `README.md` to beautifully showcase the massive capabilities of `stl` in a unified, visually categorized layout utilizing intuitive colored badges.
+
 # 0.4.7
 - Expanded the `geometry` module with an advanced Curiously Recurring Template Pattern (CRTP) type system: `Shape<T extends Shape<T>>`.
 - Added beautiful affine transformations (`translate`, `scale`, `rotate`) to all geometric shapes natively via the type system.

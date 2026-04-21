@@ -29,6 +29,11 @@
 
   <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Star-Struck.png" alt="Star-Struck" width="55" height="55" />
 
+  <br/><br/>
+  
+  ### 💙 Support the Project
+  If you find `stl` heavily supercharging your Dart architecture, please consider leaving a **Like 👍 on [pub.dev](https://pub.dev/packages/stl)** and a **Star ⭐ on GitHub**. It massively fuels the continuous development of this library!
+
 </div>
 
 ## 🌈 The Vision
@@ -53,101 +58,37 @@ Originally inspired by the strict blueprints of the **C++ Standard Template Libr
   <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Open%20Book.png" alt="Book" width="50" height="50" />
 </div>
 
-## 📚 The Collection Bank 
+## 📚 The Standard Library Bank
 
-Here are the traditional core data structures currently fully supported and battle-tested:
+Instead of strictly separating containers, mathematics, and utilities, here is a taste of the massively diverse types available natively in `stl`. The library is heavily integrated, so these types interact with each other seamlessly!
 
-### 🚅 Linear Containers
-| Data Structure | Description | Time Complexity (Access) |
-| :--- | :--- | :---: |
-| 🚂 **`Vector<T>`** | Dynamic array with contiguous memory behavior, strict bounds checking, and powerful modifiers. | $O(1)$ |
-| 🚅 **`ForwardList<T>`** | Singly linked list optimized for extremely fast forward traversal, insertions, and shifting. | $O(N)$ |
-| 🔗 **`SList<T>`** | Doubly linked list enabling $O(1)$ bidirectional manipulations mirroring C++ `std::list`. | $O(N)$ |
-| 🧊 **`Array<T>`** | Conceptually strict fixed-size contiguous array mirroring C++ `std::array`. | $O(1)$ |
-
-### 🥞 Adapter Containers
-| Data Structure | Description | Behavior |
-| :--- | :--- | :---: |
-| 🥞 **`Stack<T>`** | Custom LIFO (Last-In, First-Out) adapter. Operates flawlessly over any given sequence. | LIFO |
-| 🚏 **`Queue<T>`** | Custom FIFO (First-In, First-Out) adapter for messaging and task processing. | FIFO |
-| ⏳ **`PriorityQueue<T>`** | Max/Min heap priority structure. Constantly dynamically sorts elements upon insertion. | $O(\log N)$ |
-
-### 🗃️ Associative Containers
-| Data Structure | Description |
-| :--- | :--- |
-| 🗃️ **`Set<T>`** | Unique element container ensuring no duplicates with generic equality support. |
-| 🌲 **`SortedSet<T>`** | Tree-based strictly sorted unique container mirroring C++ `std::set`. Keeps data autonomously ordered. |
-| 📚 **`MultiSet<T>`** | Sorted tree container allowing duplicate elements, similar to C++ `std::multiset`. |
-| 🗺️ **`HashMap<K, V>`** | Unordered key-value map utilizing a fast hash table under the hood, matching `std::unordered_map`. |
-| 🗂️ **`SortedMap<K, V>`** | Tree-based strictly sorted associative container mapping keys to values, matching `std::map`. |
-| 📂 **`MultiMap<K, V>`** | Sorted tree container mapping keys to multiple values, matching `std::multimap`. |
-| 🌭 **`Deque<T>`** | Double-ended queue allowing extremely fast front/back algorithmic insertions & removals without memory reallocation overhead. |
-
-### 🛠️ Utility Structures
-| Utility | Description |
-| :--- | :--- |
-| 👯 **`Pair<T1, T2>`** | Native C++ utility structure to hold heterogeneous objects. Features gorgeous Dart 3 Record translation. |
-| ✨ **`Optional<T>`** | A beautifully sealed functional wrapper representing possibly-absent values smoothly without relying on raw `null` checks. |
-| 🔀 **`Variant<T0, T1...>`** | Type-safe discriminated union handling distinct architectural alternatives elegantly via exhausted switch statements. |
-| 📦 **`Box<T>` / `Ref<T>`** | Wrappers unlocking primitive pass-by-reference logic with dynamic mathematical operators. |
-| 🔢 **`BitSet`** | Hyper-efficient space-optimized boolean bit flags array mimicking `std::bitset`. $O(1)$ toggles. |
-| 👽 **`Any`** | Generic type-safe bounding box safely encapsulating abstract data with strictly enforced extraction boundaries. |
-| 📜 **`StringView`** | Zero-allocation string reference utility enabling high-performance substring manipulations, matching `std::string_view`. |
-
-### 🧱 Primitives (Fixed-Width Integers)
-
-`stl` provides two distinctly different architectural branches for bounded hardware-level integers. 
-
-#### 1. Zero-Cost Primitives
-Extremely lightweight `extension type` models scaling directly utilizing Dart Native performance bounds without allocating dynamic memory on the heap. Ideal for tight, high-performance logic loops natively!
-
-| Type | Description |
-| :--- | :--- |
-| 🔢 **`I8`**, **`I16`**, **`I32`**, **`I64`** | Signed integer zero-cost wrappers. Provides automatic arithmetic wrap-around, checked methods (e.g. `addChecked`), and strict min/max boundaries. (`I64` deeply integrates two's complement constraints). |
-| 🔢 **`U8`**, **`U16`**, **`U32`**, **`U64`** | Unsigned integer variants mathematically bounding state within their respective non-negative bit frames seamlessly. |
-
-#### 2. TypedData Primitives (Hardware Backed)
-> [!WARNING]  
-> **Architectural Difference:** Unlike the zero-cost `I8`/`U8` variants above, these types dynamically allocate a `dart:typed_data` list sequentially behind the scenes (e.g., `Int8List(1)`). Memory allocations inside tight math loops inherently add garbage-collection pressure—however, these structures grant absolute native hardware limits precisely mimicking exact C++ data structures flawlessly. Furthermore, they retain perfectly strict exact 64-bit precision bounds across JavaScript/Web layout environments flawlessly!
-
-| Type | Description |
-| :--- | :--- |
-| 🔢 **`Int8`**, **`Int16`**, **`Int32`**, **`Int64`** | Hardware-backed signed equivalents enforcing strict boundary overflow natively at the OS hardware/V8 buffer layout level. |
-| 🔢 **`Uint8`**, **`Uint16`**, **`Uint32`**, **`Uint64`** | Hardware-backed unsigned integers utilizing exact standard array memory to process mathematically clean unsigned rollovers securely. |
-
-### 🧮 Math Module
-
-The `stl` math modules provide robust implementations of C++ mathematical constants, number theory logic, `<numeric>` algorithms for sequences, and `<cmath>` algorithmic behaviors missing natively in Dart.
-
-| Module | Description |
-| :--- | :--- |
-| 🔢 **`numeric`** | Extensions for collections offering `accumulate()`, `innerProduct()`, `adjacentDifference()`, `partialSum()`, and `iota()`. |
-| 🧮 **`cmath`** | Missing mathematically safe operations including `clamp()`, `lerp()`, and overflow-safe robust `hypot()`. |
-| 🧲 **`complex`** | Full-scale complex numbers implementation `Complex` with operator overloading (`+`, `-`, `*`, `/`) and utility algorithms (`abs()`, `conj()`, `pow()`). |
-| 🔬 **`number_theory`** | Highly-optimized logic for `gcd()`, `lcm()`, `isPrime()`, `primeFactorization()`, and `midpoint()`. |
-| 🏛️ **`constant`** | 20+ strictly pure IEEE 754 constants separated logically according to ISO 80000-2 (e.g. `pi`, `tau`, `phi`, `catalan`). |
-
-### 📐 Geometry Module (2D Space)
-
-Euclidean geometry engine structured strictly via named parameters for explicit dimension management.
-
-| Entity | Description |
-| :--- | :--- |
-| 📍 **`Point`** | Represents an exact 2D coordinate `(x, y)` in space utilizing precise `hypot` distances. |
-| ⭕ **`Circle`** | Computes absolute Pi area boundaries via deeply guarded `{required radius}`. |
-| 🔲 **`Rectangle`** | Basic bounding box dimensions via explicitly tracked `{required width, height}`. |
-| 🔺 **`Triangle`** | Pre-calculates Herons theorem and enforces native bounds limits via `{required sideA, sideB, sideC}`. |
-
-### ⚙️ Algorithm Module (`<algorithm>`)
-
-The core algorithms library brings the power of C++'s `<algorithm>` header to Dart, allowing you to manipulate any `Iterable` or collection dynamically with highly optimized utility functions.
-
-| Category | Algorithms | Description |
-| :--- | :--- | :--- |
-| 🔍 **Search & Bounds** | `lowerBound()`, `upperBound()`, `binarySearch()`, `equalRange()` | Perform incredibly fast $O(\log n)$ searches on sorted sequences. |
-| 🔀 **Permutations** | `nextPermutation()`, `prevPermutation()` | Lexicographically permute sequences to generate standard orderings. |
-| 🗃️ **Set Operations** | `setUnion()`, `setIntersection()`, `setDifference()` | Mathematically compare and merge multiple sorted iterables efficiently. |
-| 🧬 **Mutations** | `rotate()`, `reverse()`, `unique()`, `partition()`, `stablePartition()` | Reorder, filter, and modify arrays conceptually in-place with predictable logic. |
+| Type | Category | Description |
+| :--- | :---: | :--- |
+| 🚂 **`Vector<T>`** | ![](https://img.shields.io/badge/Container-purple) | Dynamic array with contiguous memory behavior, strict bounds checking, and powerful modifiers. |
+| 📍 **`Point`** | ![](https://img.shields.io/badge/Geometry-blue) | Represents an exact 2D coordinate `(x, y)` in Euclidean space utilizing precise vector math. |
+| 👯 **`Pair<T1, T2>`** | ![](https://img.shields.io/badge/Utility-green) | Native C++ utility structure to hold heterogeneous objects. Features gorgeous Dart 3 Record translation. |
+| 🔢 **`I8`** -> **`I64`** | ![](https://img.shields.io/badge/Primitive-red) | Zero-cost signed integer wrappers. Provides automatic arithmetic wrap-around and strict bounds. |
+| 🧮 **`cmath`** | ![](https://img.shields.io/badge/Math-orange) | Missing mathematically safe operations including `clamp()`, `lerp()`, and overflow-safe robust `hypot()`. |
+| 🗺️ **`HashMap<K, V>`** | ![](https://img.shields.io/badge/Container-purple) | Unordered key-value map utilizing a fast hash table under the hood, matching `std::unordered_map`. |
+| ⭕ **`Circle`** | ![](https://img.shields.io/badge/Geometry-blue) | Computes absolute Pi area boundaries natively supporting affine transformations via CRTP. |
+| 🔍 **`<algorithm>`** | ![](https://img.shields.io/badge/Algorithm-cyan) | Brings `lowerBound()`, `rotate()`, `nextPermutation()` and more to dynamically mutate any `Iterable`. |
+| 🌭 **`Deque<T>`** | ![](https://img.shields.io/badge/Container-purple) | Double-ended queue allowing extremely fast front/back algorithmic insertions without reallocation. |
+| ✨ **`Optional<T>`** | ![](https://img.shields.io/badge/Utility-green) | A beautifully sealed functional wrapper representing possibly-absent values without raw `null` checks. |
+| 🔢 **`U8`** -> **`U64`** | ![](https://img.shields.io/badge/Primitive-red) | Zero-cost unsigned integer variants mathematically bounding state within non-negative bit frames. |
+| 🔲 **`Rectangle`** | ![](https://img.shields.io/badge/Geometry-blue) | Basic bounding box dimensions implicitly supporting translations, scaling, and centroid physics. |
+| 🧲 **`Complex`** | ![](https://img.shields.io/badge/Math-orange) | Full-scale complex numbers implementation with operator overloading and utility algorithms. |
+| 🌲 **`SortedSet<T>`** | ![](https://img.shields.io/badge/Container-purple) | Tree-based strictly sorted unique container mirroring C++ `std::set`. Keeps data autonomously ordered. |
+| 🔀 **`Variant<T0...>`** | ![](https://img.shields.io/badge/Utility-green) | Type-safe discriminated union handling distinct architectural alternatives elegantly via switches. |
+| 🔺 **`Triangle`** | ![](https://img.shields.io/badge/Geometry-blue) | Evaluates Herons theorem natively from coordinates, dynamically supporting spatial rotation. |
+| 🥞 **`Stack<T>`** | ![](https://img.shields.io/badge/Container-purple) | Custom LIFO (Last-In, First-Out) adapter. Operates flawlessly over any given sequence. |
+| 🔢 **`Int8`** -> **`Int64`** | ![](https://img.shields.io/badge/Primitive-red) | Hardware-backed signed equivalents dynamically enforcing strict boundaries natively via OS/V8 buffers. |
+| 📜 **`StringView`** | ![](https://img.shields.io/badge/Utility-green) | Zero-allocation string reference utility enabling high-performance substring manipulations. |
+| 📂 **`MultiMap<K, V>`**| ![](https://img.shields.io/badge/Container-purple) | Sorted tree container mapping keys to multiple values natively matching `std::multimap`. |
+| 📐 **`Polygon`** | ![](https://img.shields.io/badge/Geometry-blue) | Exact polygon structure generating precise surface areas dynamically utilizing the Shoelace formula. |
+| 🔬 **`number_theory`** | ![](https://img.shields.io/badge/Math-orange) | Highly-optimized logic for `gcd()`, `lcm()`, `isPrime()`, `primeFactorization()`, and `midpoint()`. |
+| 🔗 **`SList<T>`** | ![](https://img.shields.io/badge/Container-purple) | Doubly linked list enabling $O(1)$ bidirectional manipulations mirroring C++ `std::list`. |
+| 👽 **`Any`** | ![](https://img.shields.io/badge/Utility-green) | Generic type-safe bounding box safely encapsulating abstract data with strictly enforced extraction. |
+| ☄️ **`Ellipse`** | ![](https://img.shields.io/badge/Geometry-blue) | Advanced shape beautifully approximating mathematical perimeters implicitly employing Ramanujan's formula. |
 
 <br/>
 
