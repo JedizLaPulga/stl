@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import '../lib/stl.dart';
+import 'package:stl/stl.dart';
 
 void main() {
   group('TypedData Primitives Tests', () {

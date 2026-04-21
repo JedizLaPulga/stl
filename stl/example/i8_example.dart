@@ -17,7 +17,7 @@ void main() {
   try {
     I8 checked = a.addChecked(b);
     print('Checked result: \$checked');
-  } on StateError catch (e) {
+  } on StateError {
     print('Caught expected overflow: \$e');
   }
 

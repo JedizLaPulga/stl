@@ -4,9 +4,12 @@ import '../math/cmath.dart';
 
 /// Represents a 2D coordinate in Euclidean space.
 class Point<T extends num> {
+  /// The x-coordinate.
   final T x;
+  /// The y-coordinate.
   final T y;
 
+  /// Creates a [Point] at the given [x] and [y] coordinates.
   const Point({required this.x, required this.y});
 
   /// Computes the exact Euclidean distance to another [Point].

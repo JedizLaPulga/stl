@@ -10,9 +10,9 @@ void main() {
   print('lcm($a, $b) = ${lcm(a, b)}\n');
 
   // Midpoint safely without overflow
-  final MAX_INT = 9223372036854775807; 
-  final nearlyMax = MAX_INT - 2;
-  print('midpoint($nearlyMax, $MAX_INT) = ${midpoint(nearlyMax, MAX_INT)}\n');
+  final maxInt = 9223372036854775807; 
+  final nearlyMax = maxInt - 2;
+  print('midpoint($nearlyMax, $maxInt) = ${midpoint(nearlyMax, maxInt)}\n');
 
   // Prime Checking
   final p1 = 997;

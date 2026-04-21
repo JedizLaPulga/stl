@@ -14,7 +14,7 @@ void main() {
   try {
     I16 checked = a.addChecked(b);
     print('Checked result: ${checked.value}');
-  } on StateError catch (e) {
+  } on StateError {
     print('Caught expected overflow: \$e');
   }
 }
