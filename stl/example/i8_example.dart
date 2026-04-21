@@ -1,3 +1,4 @@
+// ignore_for_file: unused_local_variable, unused_catch_clause
 import 'package:stl/src/primitives/i8.dart';
 
 void main() {

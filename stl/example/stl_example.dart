@@ -248,17 +248,17 @@ void main() {
   final droppedTens = DropRange(tens, 2);
   // Take the next 3 (60, 80, 100)
   final finalNodes = TakeRange(droppedTens, 3);
-  print('• Raw Nodes: \$rawDataNodes');
+  print('• Raw Nodes: $rawDataNodes');
   print(
-    '• After Pipeline (Filter evens -> x10 -> Drop 2 -> Take 3): \${finalNodes.toList()}',
+    '• After Pipeline (Filter evens -> x10 -> Drop 2 -> Take 3): ${finalNodes.toList()}',
   );
 
   // JoinRange Showcase: Flattening fragmented chunks
   final fragmentedData = ChunkRange(NumberLine(1, 10), 3);
   final joinedData = JoinRange(fragmentedData);
   print('\n• JoinRange reassembling chunks back into a contiguous flow:');
-  print('  Chunks: \${fragmentedData.toList()}');
-  print('  Joined: \${joinedData.toList()}');
+  print('  Chunks: ${fragmentedData.toList()}');
+  print('  Joined: ${joinedData.toList()}');
 
   // One final combination: PriorityQueue pushing Zipped Ranges!
   print('\n[ZipRange -> PriorityQueue Pipeline]');

@@ -9,7 +9,6 @@ import '../utility/pair.dart';
 /// Iteration yields elements in strictly mathematical or custom-comparator order of keys.
 class SortedMap<K, V> with IterableMixin<Pair<K, V>> {
   final collection.SplayTreeMap<K, V> _container;
-  final int Function(K, K)? _compare;
 
   @override
   Iterator<Pair<K, V>> get iterator =>
@@ -18,11 +17,11 @@ class SortedMap<K, V> with IterableMixin<Pair<K, V>> {
   /// Creates an empty SortedMap.
   ///
   /// Optionally inject a [compare] function. If null, it assumes keys are `Comparable`.
-  SortedMap([this._compare]) : _container = collection.SplayTreeMap<K, V>(_compare);
+  SortedMap([int Function(K, K)? compare]) : _container = collection.SplayTreeMap<K, V>(compare);
 
   /// Creates a SortedMap from an existing Dart [Map].
-  SortedMap.from(Map<K, V> other, [this._compare])
-      : _container = collection.SplayTreeMap<K, V>.from(other, _compare);
+  SortedMap.from(Map<K, V> other, [int Function(K, K)? compare])
+      : _container = collection.SplayTreeMap<K, V>.from(other, compare);
 
   /// Inserts a key-value pair.
   /// If the key already exists, its value is updated. Time complexity: O(log N).

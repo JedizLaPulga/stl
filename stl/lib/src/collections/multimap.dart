@@ -44,7 +44,6 @@ class _MultiMapIterator<K, V> implements Iterator<Pair<K, V>> {
 class MultiMap<K, V> with IterableMixin<Pair<K, V>> {
   final collection.SplayTreeMap<K, List<V>> _container;
   int _size = 0;
-  final int Function(K, K)? _compare;
 
   @override
   Iterator<Pair<K, V>> get iterator => _MultiMapIterator<K, V>(_container);
@@ -52,12 +51,12 @@ class MultiMap<K, V> with IterableMixin<Pair<K, V>> {
   /// Creates an empty MultiMap.
   ///
   /// Optionally inject a [compare] function. If null, it assumes keys are `Comparable`.
-  MultiMap([this._compare])
-      : _container = collection.SplayTreeMap<K, List<V>>(_compare);
+  MultiMap([int Function(K, K)? compare])
+      : _container = collection.SplayTreeMap<K, List<V>>(compare);
 
   /// Creates a MultiMap containing the key-value pairs of the given iterable.
-  MultiMap.from(Iterable<Pair<K, V>> elements, [this._compare])
-      : _container = collection.SplayTreeMap<K, List<V>>(_compare) {
+  MultiMap.from(Iterable<Pair<K, V>> elements, [int Function(K, K)? compare])
+      : _container = collection.SplayTreeMap<K, List<V>>(compare) {
     for (var element in elements) {
       insert(element.first, element.second);
     }
