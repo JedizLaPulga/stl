@@ -1,3 +1,7 @@
+# 0.4.9
+- **New Feature:** Implemented `Expected<T, E>` functional wrapper representing either an expected value `T` or an error `E`. Mimics C++23 `<expected>` for robust error handling without exceptions.
+- **Refactor:** Renamed `utility` module to `utilities` to better reflect standard naming conventions across the package ecosystem.
+
 # 0.4.8
 - **Technical Documentation Update:** Completely redesigned the `README.md` to beautifully showcase the massive capabilities of `stl` in a unified, visually categorized layout utilizing intuitive colored badges.
 

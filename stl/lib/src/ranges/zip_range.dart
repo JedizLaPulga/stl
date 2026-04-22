@@ -1,5 +1,5 @@
 import 'dart:collection';
-import '../utility/pair.dart';
+import '../utilities/pair.dart';
 
 /// A view that iterates over two iterables in parallel, yielding [Pair]s.
 /// Mimics C++ `std::views::zip`.

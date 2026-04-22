@@ -1,4 +1,4 @@
-import '../utility/pair.dart';
+import '../utilities/pair.dart';
 
 int _defaultCompare<T>(T a, T b) {
   if (a is Comparable && b is Comparable) {

@@ -1,5 +1,5 @@
 import 'dart:collection';
-import '../utility/pair.dart';
+import '../utilities/pair.dart';
 
 /// A view that generates the Cartesian product of two iterables.
 /// Mimics C++ `std::views::cartesian_product`.

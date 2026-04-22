@@ -1,6 +1,6 @@
 import 'dart:collection' as collection;
 import 'dart:collection' show IterableMixin;
-import '../utility/pair.dart';
+import '../utilities/pair.dart';
 
 class _MultiMapIterator<K, V> implements Iterator<Pair<K, V>> {
   final Iterator<MapEntry<K, List<V>>> _entryIterator;

@@ -1,6 +1,6 @@
 import 'dart:collection' as collection;
 import 'dart:collection' show IterableMixin;
-import '../utility/pair.dart';
+import '../utilities/pair.dart';
 
 /// An unordered collection of key-value pairs.
 ///

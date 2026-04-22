@@ -1,6 +1,6 @@
 import 'dart:collection' as collection;
 import 'dart:collection' show IterableMixin;
-import '../utility/pair.dart';
+import '../utilities/pair.dart';
 
 /// A collection that stores elements as key-value pairs, maintaining them in strictly sorted order by key.
 ///
