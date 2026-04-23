@@ -1,3 +1,8 @@
+# 0.5.0
+- **New Feature:** Expanded the `utilities` module with `Tuple`, a native adapter mimicking C++ `std::tuple`. Seamlessly bridges heterogeneous records and collections using Dart 3.
+- Added missing API docs
+
+
 # 0.4.9
 - **New Feature:** Implemented `Expected<T, E>` functional wrapper representing either an expected value `T` or an error `E`. Mimics C++23 `<expected>` for robust error handling without exceptions.
 - **Refactor:** Renamed `utility` module to `utilities` to better reflect standard naming conventions across the package ecosystem.

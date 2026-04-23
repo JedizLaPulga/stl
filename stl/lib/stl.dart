@@ -38,6 +38,7 @@ export 'src/utilities/box.dart';
 export 'src/utilities/any.dart';
 export 'src/utilities/string_view.dart';
 export 'src/utilities/expected.dart';
+export 'src/utilities/tuple.dart';
 export 'src/primitives/i8.dart';
 export 'src/primitives/i16.dart';
 export 'src/primitives/i32.dart';
