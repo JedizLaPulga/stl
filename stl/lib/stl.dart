@@ -69,3 +69,5 @@ export 'src/geometry/line_segment.dart';
 export 'src/geometry/polygon.dart';
 export 'src/geometry/ellipse.dart';
 export 'src/algorithm/algorithm.dart';
+export 'src/functional/functional.dart';
+export 'src/exceptions/exceptions.dart';

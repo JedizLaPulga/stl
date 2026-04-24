@@ -7,7 +7,7 @@
 
   [![License: MIT](https://img.shields.io/badge/License-MIT-ff69b4.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
   [![Dart](https://img.shields.io/badge/Dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev/)
-  [![Pub Version](https://img.shields.io/badge/pub-0.5.0-blueviolet.svg?style=for-the-badge)](https://pub.dev/packages/stl)
+  [![Pub Version](https://img.shields.io/badge/pub-0.5.1-blueviolet.svg?style=for-the-badge)](https://pub.dev/packages/stl)
 
   > 🚀 **A highly-versatile, performance-driven bank of data collections, structures, and algorithmic ranges for the Dart and Flutter ecosystem.**
 
@@ -91,6 +91,8 @@ Instead of strictly separating containers, mathematics, and utilities, here is a
 | ☄️ **`Ellipse`** | ![](https://img.shields.io/badge/Geometry-blue) | Advanced shape beautifully approximating mathematical perimeters implicitly employing Ramanujan's formula. |
 | 🛡️ **`Expected<T,E>`**| ![](https://img.shields.io/badge/Utility-green) | Functional wrapper representing either a value or an error. Mimics C++23 `<expected>` exception-free design. |
 | 🗃️ **`Tuple`** | ![](https://img.shields.io/badge/Utility-green) | Flexible C++ `std::tuple` adapter smoothly bridging heterogeneous collections and Dart 3 records natively. |
+| ⚡ **`<functional>`** | ![](https://img.shields.io/badge/Algorithm-cyan) | Standard function objects (`Plus`, `Less`, `LogicalAnd`, etc.) and `invoke` utility for algorithmic pipelines. |
+| ⚠️ **`<stdexcept>`** | ![](https://img.shields.io/badge/Utility-green) | Standard C++ exception hierarchy (`LogicError`, `RuntimeError`, `InvalidArgument`, etc.) natively in Dart. |
 
 <br/>
 

@@ -1,3 +1,7 @@
+# 0.5.1
+- **New Feature:** Implemented `<functional>` module containing C++ standard function objects (`Plus`, `Minus`, `EqualTo`, `LogicalAnd`, `BitAnd`, etc.) and `invoke` utility.
+- **New Feature:** Implemented `<stdexcept>` module providing native Dart mapping for C++ standard exceptions (`LogicError`, `RuntimeError`, `InvalidArgument`, `OutOfRange`, etc.).
+
 # 0.5.0
 - **New Feature:** Expanded the `utilities` module with `Tuple`, a native adapter mimicking C++ `std::tuple`. Seamlessly bridges heterogeneous records and collections using Dart 3.
 - Added missing API docs
