@@ -1,3 +1,9 @@
+# 0.5.3
+- **New Feature:** Implemented `<chrono>` module providing highly portable, C++-style `SystemClock` and `SteadyClock` APIs for time tracking and precise benchmarking across Native and Web platforms.
+- **New Feature:** Implemented `<ratio>` module via `Ratio` class providing exact rational arithmetic (`num`/`den`) and standard SI prefix constants (`milli`, `micro`, `nano`, etc.) for type-safe time duration computations.
+- **New Feature:** Implemented `<iterator>` module introducing C++-inspired iterator adapters: `ReverseIterator`, `InsertIterator`, `BackInsertIterator`, and `FrontInsertIterator` bridging seamlessly with `Vector` and `Deque`.
+- **Documentation:** Achieved perfect API documentation coverage for all newly implemented structures.
+
 # 0.5.2
 - **New Feature:** Implemented `<random>` module providing a native `StdRandom` class for C++-style random number generation. Features support for deterministic seeding (`seed()`), bounded integer ranges (`range()`), and state advancement (`flush()`).
 - **Documentation:** Achieved perfect 100.0% API documentation coverage (1184 out of 1184 API elements fully documented).

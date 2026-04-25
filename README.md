@@ -7,7 +7,7 @@
 
   [![License: MIT](https://img.shields.io/badge/License-MIT-ff69b4.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
   [![Dart](https://img.shields.io/badge/Dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev/)
-  [![Pub Version](https://img.shields.io/badge/pub-0.5.2-blueviolet.svg?style=for-the-badge)](https://pub.dev/packages/stl)
+  [![Pub Version](https://img.shields.io/badge/pub-0.5.3-blueviolet.svg?style=for-the-badge)](https://pub.dev/packages/stl)
 
   > 🚀 **A highly-versatile, performance-driven bank of data collections, structures, and algorithmic ranges for the Dart and Flutter ecosystem.**
 
@@ -94,6 +94,9 @@ Instead of strictly separating containers, mathematics, and utilities, here is a
 | ⚡ **`<functional>`** | ![](https://img.shields.io/badge/Algorithm-cyan) | Standard function objects (`Plus`, `Less`, `LogicalAnd`, etc.) and `invoke` utility for algorithmic pipelines. |
 | ⚠️ **`<stdexcept>`** | ![](https://img.shields.io/badge/Utility-green) | Standard C++ exception hierarchy (`LogicError`, `RuntimeError`, `InvalidArgument`, etc.) natively in Dart. |
 | 🎲 **`<random>`** | ![](https://img.shields.io/badge/Math-orange) | Predictable C++ style random number generation utilities featuring `StdRandom`, custom seeding, and bounded ranges. |
+| ⏱️ **`<chrono>`** | ![](https://img.shields.io/badge/Utility-green) | Highly portable C++ style `SystemClock` and `SteadyClock` for time tracking across Native and Web targets. |
+| 🧮 **`<ratio>`** | ![](https://img.shields.io/badge/Math-orange) | Compile-time friendly exact rational fractions (`Ratio`) and standard SI prefix multipliers (`milli`, `micro`). |
+| 🔄 **`<iterator>`**| ![](https://img.shields.io/badge/Algorithm-cyan) | Adapter hooks bridging iterables (`ReverseIterator`, `BackInsertIterator`) for fluent mutations. |
 
 <br/>
 

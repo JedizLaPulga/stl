@@ -115,6 +115,34 @@ void main() {
   print('• StdRandom after flushing 5 states: ${rand.next()}\n');
 
 
+  // ========================================
+  // 8. ITERATOR, CHRONO, & RATIO (v0.5.3)
+  // ========================================
+  print('>>> 8. ITERATOR, CHRONO & RATIO <<<\n');
+
+  // Chrono
+  final start = SteadyClock.now();
+  final delay = 10.milliseconds;
+  final futureTime = start + delay;
+  print('• Chrono: 10 milliseconds from now is $futureTime');
+
+  // Ratio
+  final half = Ratio(1, 2);
+  final quarter = Ratio(1, 4);
+  print('• Ratio: $half + $quarter = ${half + quarter}');
+  print('• Ratio Micro Prefix: ${Ratio.micro}');
+
+  // Iterator
+  final list = [1, 2, 3];
+  final reverseIt = ReverseIterator(list);
+  print('• ReverseIterator: ${reverseIt.toList()}');
+  
+  final vec2 = Vector<int>([]);
+  final inserter = BackInsertIterator(vec2);
+  inserter.add(99);
+  inserter.add(100);
+  print('• BackInsertIterator (Vector): $vec2\n');
+
   print('====================================================');
   print(' 🌟 Click example/ for more examples on GitHub! 🌟');
   print('====================================================\n');

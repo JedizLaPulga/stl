@@ -72,3 +72,6 @@ export 'src/geometry/ellipse.dart';
 export 'src/algorithm/algorithm.dart';
 export 'src/functional/functional.dart';
 export 'src/exceptions/exceptions.dart';
+export 'src/utilities/ratio.dart';
+export 'src/chrono/chrono.dart';
+export 'src/iterator/iterator.dart';
