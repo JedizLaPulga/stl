@@ -1,12 +1,10 @@
 /// An 8-bit unsigned integer primitive.
-extension type const U8
-/// Instantiates a new [U8] spanning a strictly bounded 8-bit unsigned value.
-(
-  /// The strictly bounded primitive underlying value.
+extension type const U8._(/// The strictly bounded primitive underlying value.
   int
-  value
-)
-    implements int {
+  value) implements int  {
+  /// Instantiates a new [U8] spanning a strictly bounded primitive value.
+  const U8(this.value);
+
   /// The minimum representable value.
   static const U8 min = U8(0);
   /// The maximum representable value.

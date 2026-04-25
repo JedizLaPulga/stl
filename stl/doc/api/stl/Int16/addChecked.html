@@ -72,7 +72,9 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Int16 addChecked(Int16 other) {
   final result = value + other.value;
-  if (result &gt; 32767 || result &lt; -32768) throw StateError(&#39;Int16 addition overflow&#39;);
+  if (result &gt; 32767 || result &lt; -32768){
+    throw StateError(&#39;Int16 addition overflow&#39;);
+  }
   return Int16.from(result);
 }</code></pre>
 </section>
@@ -102,7 +104,7 @@
 <footer>
   <span class="no-break">
     stl
-      0.3.6
+      0.5.2
   </span>
   
 </footer>

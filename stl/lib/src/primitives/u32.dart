@@ -1,12 +1,10 @@
 /// A 32-bit unsigned integer primitive.
-extension type const U32
-/// Instantiates a new [U32] spanning a strictly bounded 32-bit unsigned value.
-(
-  /// The strictly bounded primitive underlying value.
+extension type const U32._(/// The strictly bounded primitive underlying value.
   int
-  value
-)
-    implements int {
+  value) implements int  {
+  /// Instantiates a new [U32] spanning a strictly bounded primitive value.
+  const U32(this.value);
+
   /// The minimum representable value.
   static const U32 min = U32(0);
   /// The maximum representable value.

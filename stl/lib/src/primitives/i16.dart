@@ -2,14 +2,12 @@
 ///
 /// This provides a zero-cost abstraction for 16-bit signed math,
 /// automatically wrapping on overflow and providing C++-style boundaries.
-extension type const I16
-/// Instantiates a new [I16] spanning a strictly bounded 16-bit value.
-(
-  /// The strictly bounded primitive underlying value.
+extension type const I16._(/// The strictly bounded primitive underlying value.
   int
-  value
-)
-    implements int {
+  value) implements int  {
+  /// Instantiates a new [I16] spanning a strictly bounded primitive value.
+  const I16(this.value);
+
   /// The minimum value an `I16` can hold (-32768).
   static const I16 min = I16(-32768);
 

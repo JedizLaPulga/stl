@@ -49,7 +49,7 @@
 <p><a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&amp;weight=600&amp;size=20&amp;pause=1000&amp;color=00B4AB&amp;center=true&amp;vCenter=true&amp;width=500&amp;lines=Dart+Collections+Reimagined;C%2B%2B+STL+Inspired+Architecture;Lightning+Fast+Data+Structures;Now+featuring+C%2B%2B23+Ranges!" alt="Typing SVG"></a></p>
 <p><a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-ff69b4.svg?style=for-the-badge" alt="License: MIT"></a>
   <a href="https://dart.dev/"><img src="https://img.shields.io/badge/Dart-%230175C2.svg?style=for-the-badge&amp;logo=dart&amp;logoColor=white" alt="Dart"></a>
-  <a href="https://pub.dev/packages/stl"><img src="https://img.shields.io/badge/pub-0.3.6-blueviolet.svg?style=for-the-badge" alt="Pub Version"></a></p>
+  <a href="https://pub.dev/packages/stl"><img src="https://img.shields.io/badge/pub-0.5.2-blueviolet.svg?style=for-the-badge" alt="Pub Version"></a></p>
 <blockquote>
 <p>🚀 <strong>A highly-versatile, performance-driven bank of data collections, structures, and algorithmic ranges for the Dart and Flutter ecosystem.</strong></p>
 </blockquote>
@@ -63,6 +63,9 @@
 </code></pre>
   <br>
   <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Star-Struck.png" alt="Star-Struck" width="55" height="55">
+<p><br><br></p>
+<h3 id="-support-the-project">💙 Support the Project</h3>
+<p>If you find <code>stl</code> heavily supercharging your Dart architecture, please consider leaving a <strong>Like 👍 on <a href="https://pub.dev/packages/stl">pub.dev</a></strong> and a <strong>Star ⭐ on GitHub</strong>. It massively fuels the continuous development of this library!</p>
 </div>
 <h2 id="-the-vision">🌈 The Vision</h2>
 <p>Originally inspired by the strict blueprints of the <strong>C++ Standard Template Library (STL)</strong>, this package has heavily evolved into a comprehensive <strong>bank of diverse collections</strong> for all your data structure needs. Whether you require familiar sequential containers, complex associative maps, specialized utility adapters, or bleeding-edge C++23 functional ranges, <code>stl</code> drastically supercharges your Dart architecture! ✨</p>
@@ -80,162 +83,166 @@
 <div align="center">
   <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Open%20Book.png" alt="Book" width="50" height="50">
 </div>
-<h2 id="-the-collection-bank">📚 The Collection Bank</h2>
-<p>Here are the traditional core data structures currently fully supported and battle-tested:</p>
-<h3 id="-linear-containers">🚅 Linear Containers</h3>
+<h2 id="-the-standard-library-bank">📚 The Standard Library Bank</h2>
+<p>Instead of strictly separating containers, mathematics, and utilities, here is a taste of the massively diverse types available natively in <code>stl</code>. The library is heavily integrated, so these types interact with each other seamlessly!</p>
 <table>
 <thead>
 <tr>
-<th align="left">Data Structure</th>
+<th align="left">Type</th>
+<th align="center">Category</th>
 <th align="left">Description</th>
-<th align="center">Time Complexity (Access)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td align="left">🚂 <strong><code>Vector&lt;T&gt;</code></strong></td>
+<td align="center"><img src="https://img.shields.io/badge/Container-purple" alt=""></td>
 <td align="left">Dynamic array with contiguous memory behavior, strict bounds checking, and powerful modifiers.</td>
-<td align="center">$O(1)$</td>
 </tr>
 <tr>
-<td align="left">🚅 <strong><code>ForwardList&lt;T&gt;</code></strong></td>
-<td align="left">Singly linked list optimized for extremely fast forward traversal, insertions, and shifting.</td>
-<td align="center">$O(N)$</td>
+<td align="left">📍 <strong><code>Point</code></strong></td>
+<td align="center"><img src="https://img.shields.io/badge/Geometry-blue" alt=""></td>
+<td align="left">Represents an exact 2D coordinate <code>(x, y)</code> in Euclidean space utilizing precise vector math.</td>
 </tr>
-<tr>
-<td align="left">🧊 <strong><code>Array&lt;T&gt;</code></strong></td>
-<td align="left">Conceptually strict fixed-size contiguous array mirroring C++ <code>std::array</code>.</td>
-<td align="center">$O(1)$</td>
-</tr>
-</tbody>
-</table>
-<h3 id="-adapter-containers">🥞 Adapter Containers</h3>
-<table>
-<thead>
-<tr>
-<th align="left">Data Structure</th>
-<th align="left">Description</th>
-<th align="center">Behavior</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">🥞 <strong><code>Stack&lt;T&gt;</code></strong></td>
-<td align="left">Custom LIFO (Last-In, First-Out) adapter. Operates flawlessly over any given sequence.</td>
-<td align="center">LIFO</td>
-</tr>
-<tr>
-<td align="left">🚏 <strong><code>Queue&lt;T&gt;</code></strong></td>
-<td align="left">Custom FIFO (First-In, First-Out) adapter for messaging and task processing.</td>
-<td align="center">FIFO</td>
-</tr>
-<tr>
-<td align="left">⏳ <strong><code>PriorityQueue&lt;T&gt;</code></strong></td>
-<td align="left">Max/Min heap priority structure. Constantly dynamically sorts elements upon insertion.</td>
-<td align="center">$O(\log N)$</td>
-</tr>
-</tbody>
-</table>
-<h3 id="-associative-containers">🗃️ Associative Containers</h3>
-<table>
-<thead>
-<tr>
-<th align="left">Data Structure</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">🗃️ <strong><code>Set&lt;T&gt;</code></strong></td>
-<td align="left">Unique element container ensuring no duplicates with generic equality support.</td>
-</tr>
-<tr>
-<td align="left">🌲 <strong><code>SortedSet&lt;T&gt;</code></strong></td>
-<td align="left">Tree-based strictly sorted unique container mirroring C++ <code>std::set</code>. Keeps data autonomously ordered.</td>
-</tr>
-<tr>
-<td align="left">🌭 <strong><code>Deque&lt;T&gt;</code></strong></td>
-<td align="left">Double-ended queue allowing extremely fast front/back algorithmic insertions &amp; removals without memory reallocation overhead.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="-utility-structures">🛠️ Utility Structures</h3>
-<table>
-<thead>
-<tr>
-<th align="left">Utility</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-<tbody>
 <tr>
 <td align="left">👯 <strong><code>Pair&lt;T1, T2&gt;</code></strong></td>
+<td align="center"><img src="https://img.shields.io/badge/Utility-green" alt=""></td>
 <td align="left">Native C++ utility structure to hold heterogeneous objects. Features gorgeous Dart 3 Record translation.</td>
 </tr>
 <tr>
+<td align="left">🔢 <strong><code>I8</code></strong> -&gt; <strong><code>I64</code></strong></td>
+<td align="center"><img src="https://img.shields.io/badge/Primitive-red" alt=""></td>
+<td align="left">Zero-cost signed integer wrappers. Provides automatic arithmetic wrap-around and strict bounds.</td>
+</tr>
+<tr>
+<td align="left">🧮 <strong><code>cmath</code></strong></td>
+<td align="center"><img src="https://img.shields.io/badge/Math-orange" alt=""></td>
+<td align="left">Missing mathematically safe operations including <code>clamp()</code>, <code>lerp()</code>, and overflow-safe robust <code>hypot()</code>.</td>
+</tr>
+<tr>
+<td align="left">🗺️ <strong><code>HashMap&lt;K, V&gt;</code></strong></td>
+<td align="center"><img src="https://img.shields.io/badge/Container-purple" alt=""></td>
+<td align="left">Unordered key-value map utilizing a fast hash table under the hood, matching <code>std::unordered_map</code>.</td>
+</tr>
+<tr>
+<td align="left">⭕ <strong><code>Circle</code></strong></td>
+<td align="center"><img src="https://img.shields.io/badge/Geometry-blue" alt=""></td>
+<td align="left">Computes absolute Pi area boundaries natively supporting affine transformations via CRTP.</td>
+</tr>
+<tr>
+<td align="left">🔍 <strong><code>&lt;algorithm&gt;</code></strong></td>
+<td align="center"><img src="https://img.shields.io/badge/Algorithm-cyan" alt=""></td>
+<td align="left">Brings <code>lowerBound()</code>, <code>rotate()</code>, <code>nextPermutation()</code> and more to dynamically mutate any <code>Iterable</code>.</td>
+</tr>
+<tr>
+<td align="left">🌭 <strong><code>Deque&lt;T&gt;</code></strong></td>
+<td align="center"><img src="https://img.shields.io/badge/Container-purple" alt=""></td>
+<td align="left">Double-ended queue allowing extremely fast front/back algorithmic insertions without reallocation.</td>
+</tr>
+<tr>
 <td align="left">✨ <strong><code>Optional&lt;T&gt;</code></strong></td>
-<td align="left">A beautifully sealed functional wrapper representing possibly-absent values smoothly without relying on raw <code>null</code> checks.</td>
+<td align="center"><img src="https://img.shields.io/badge/Utility-green" alt=""></td>
+<td align="left">A beautifully sealed functional wrapper representing possibly-absent values without raw <code>null</code> checks.</td>
 </tr>
 <tr>
-<td align="left">🔀 <strong><code>Variant&lt;T0, T1...&gt;</code></strong></td>
-<td align="left">Type-safe discriminated union handling distinct architectural alternatives elegantly via exhausted switch statements.</td>
+<td align="left">🔢 <strong><code>U8</code></strong> -&gt; <strong><code>U64</code></strong></td>
+<td align="center"><img src="https://img.shields.io/badge/Primitive-red" alt=""></td>
+<td align="left">Zero-cost unsigned integer variants mathematically bounding state within non-negative bit frames.</td>
 </tr>
 <tr>
-<td align="left">📦 <strong><code>Box&lt;T&gt;</code> / <code>Ref&lt;T&gt;</code></strong></td>
-<td align="left">Wrappers unlocking primitive pass-by-reference logic with dynamic mathematical operators.</td>
+<td align="left">🔲 <strong><code>Rectangle</code></strong></td>
+<td align="center"><img src="https://img.shields.io/badge/Geometry-blue" alt=""></td>
+<td align="left">Basic bounding box dimensions implicitly supporting translations, scaling, and centroid physics.</td>
 </tr>
 <tr>
-<td align="left">🔢 <strong><code>BitSet</code></strong></td>
-<td align="left">Hyper-efficient space-optimized boolean bit flags array mimicking <code>std::bitset</code>. $O(1)$ toggles.</td>
+<td align="left">🧲 <strong><code>Complex</code></strong></td>
+<td align="center"><img src="https://img.shields.io/badge/Math-orange" alt=""></td>
+<td align="left">Full-scale complex numbers implementation with operator overloading and utility algorithms.</td>
+</tr>
+<tr>
+<td align="left">🌲 <strong><code>SortedSet&lt;T&gt;</code></strong></td>
+<td align="center"><img src="https://img.shields.io/badge/Container-purple" alt=""></td>
+<td align="left">Tree-based strictly sorted unique container mirroring C++ <code>std::set</code>. Keeps data autonomously ordered.</td>
+</tr>
+<tr>
+<td align="left">🔀 <strong><code>Variant&lt;T0...&gt;</code></strong></td>
+<td align="center"><img src="https://img.shields.io/badge/Utility-green" alt=""></td>
+<td align="left">Type-safe discriminated union handling distinct architectural alternatives elegantly via switches.</td>
+</tr>
+<tr>
+<td align="left">🔺 <strong><code>Triangle</code></strong></td>
+<td align="center"><img src="https://img.shields.io/badge/Geometry-blue" alt=""></td>
+<td align="left">Evaluates Herons theorem natively from coordinates, dynamically supporting spatial rotation.</td>
+</tr>
+<tr>
+<td align="left">🥞 <strong><code>Stack&lt;T&gt;</code></strong></td>
+<td align="center"><img src="https://img.shields.io/badge/Container-purple" alt=""></td>
+<td align="left">Custom LIFO (Last-In, First-Out) adapter. Operates flawlessly over any given sequence.</td>
+</tr>
+<tr>
+<td align="left">🔢 <strong><code>Int8</code></strong> -&gt; <strong><code>Int64</code></strong></td>
+<td align="center"><img src="https://img.shields.io/badge/Primitive-red" alt=""></td>
+<td align="left">Hardware-backed signed equivalents dynamically enforcing strict boundaries natively via OS/V8 buffers.</td>
+</tr>
+<tr>
+<td align="left">📜 <strong><code>StringView</code></strong></td>
+<td align="center"><img src="https://img.shields.io/badge/Utility-green" alt=""></td>
+<td align="left">Zero-allocation string reference utility enabling high-performance substring manipulations.</td>
+</tr>
+<tr>
+<td align="left">📂 <strong><code>MultiMap&lt;K, V&gt;</code></strong></td>
+<td align="center"><img src="https://img.shields.io/badge/Container-purple" alt=""></td>
+<td align="left">Sorted tree container mapping keys to multiple values natively matching <code>std::multimap</code>.</td>
+</tr>
+<tr>
+<td align="left">📐 <strong><code>Polygon</code></strong></td>
+<td align="center"><img src="https://img.shields.io/badge/Geometry-blue" alt=""></td>
+<td align="left">Exact polygon structure generating precise surface areas dynamically utilizing the Shoelace formula.</td>
+</tr>
+<tr>
+<td align="left">🔬 <strong><code>number_theory</code></strong></td>
+<td align="center"><img src="https://img.shields.io/badge/Math-orange" alt=""></td>
+<td align="left">Highly-optimized logic for <code>gcd()</code>, <code>lcm()</code>, <code>isPrime()</code>, <code>primeFactorization()</code>, and <code>midpoint()</code>.</td>
+</tr>
+<tr>
+<td align="left">🔗 <strong><code>SList&lt;T&gt;</code></strong></td>
+<td align="center"><img src="https://img.shields.io/badge/Container-purple" alt=""></td>
+<td align="left">Doubly linked list enabling $O(1)$ bidirectional manipulations mirroring C++ <code>std::list</code>.</td>
 </tr>
 <tr>
 <td align="left">👽 <strong><code>Any</code></strong></td>
-<td align="left">Generic type-safe bounding box safely encapsulating abstract data with strictly enforced extraction boundaries.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="-primitives-fixed-width-integers">🧱 Primitives (Fixed-Width Integers)</h3>
-<p><code>stl</code> provides two distinctly different architectural branches for bounded hardware-level integers.</p>
-<h4 id="1-zero-cost-primitives">1. Zero-Cost Primitives</h4>
-<p>Extremely lightweight <code>extension type</code> models scaling directly utilizing Dart Native performance bounds without allocating dynamic memory on the heap. Ideal for tight, high-performance logic loops natively!</p>
-<table>
-<thead>
-<tr>
-<th align="left">Type</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">🔢 <strong><code>I8</code></strong>, <strong><code>I16</code></strong>, <strong><code>I32</code></strong>, <strong><code>I64</code></strong></td>
-<td align="left">Signed integer zero-cost wrappers. Provides automatic arithmetic wrap-around, checked methods (e.g. <code>addChecked</code>), and strict min/max boundaries. (<code>I64</code> deeply integrates two's complement constraints).</td>
+<td align="center"><img src="https://img.shields.io/badge/Utility-green" alt=""></td>
+<td align="left">Generic type-safe bounding box safely encapsulating abstract data with strictly enforced extraction.</td>
 </tr>
 <tr>
-<td align="left">🔢 <strong><code>U8</code></strong>, <strong><code>U16</code></strong>, <strong><code>U32</code></strong>, <strong><code>U64</code></strong></td>
-<td align="left">Unsigned integer variants mathematically bounding state within their respective non-negative bit frames seamlessly.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="2-typeddata-primitives-hardware-backed">2. TypedData Primitives (Hardware Backed)</h4>
-<div class="markdown-alert markdown-alert-warning">
-<p class="markdown-alert-title">Warning</p>
-<p><strong>Architectural Difference:</strong> Unlike the zero-cost <code>I8</code>/<code>U8</code> variants above, these types dynamically allocate a <code>dart:typed_data</code> list sequentially behind the scenes (e.g., <code>Int8List(1)</code>). Memory allocations inside tight math loops inherently add garbage-collection pressure—however, these structures grant absolute native hardware limits precisely mimicking exact C++ data structures flawlessly. Furthermore, they retain perfectly strict exact 64-bit precision bounds across JavaScript/Web layout environments flawlessly!</p>
-</div>
-<table>
-<thead>
-<tr>
-<th align="left">Type</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">🔢 <strong><code>Int8</code></strong>, <strong><code>Int16</code></strong>, <strong><code>Int32</code></strong>, <strong><code>Int64</code></strong></td>
-<td align="left">Hardware-backed signed equivalents enforcing strict boundary overflow natively at the OS hardware/V8 buffer layout level.</td>
+<td align="left">☄️ <strong><code>Ellipse</code></strong></td>
+<td align="center"><img src="https://img.shields.io/badge/Geometry-blue" alt=""></td>
+<td align="left">Advanced shape beautifully approximating mathematical perimeters implicitly employing Ramanujan's formula.</td>
 </tr>
 <tr>
-<td align="left">🔢 <strong><code>Uint8</code></strong>, <strong><code>Uint16</code></strong>, <strong><code>Uint32</code></strong>, <strong><code>Uint64</code></strong></td>
-<td align="left">Hardware-backed unsigned integers utilizing exact standard array memory to process mathematically clean unsigned rollovers securely.</td>
+<td align="left">🛡️ <strong><code>Expected&lt;T,E&gt;</code></strong></td>
+<td align="center"><img src="https://img.shields.io/badge/Utility-green" alt=""></td>
+<td align="left">Functional wrapper representing either a value or an error. Mimics C++23 <code>&lt;expected&gt;</code> exception-free design.</td>
+</tr>
+<tr>
+<td align="left">🗃️ <strong><code>Tuple</code></strong></td>
+<td align="center"><img src="https://img.shields.io/badge/Utility-green" alt=""></td>
+<td align="left">Flexible C++ <code>std::tuple</code> adapter smoothly bridging heterogeneous collections and Dart 3 records natively.</td>
+</tr>
+<tr>
+<td align="left">⚡ <strong><code>&lt;functional&gt;</code></strong></td>
+<td align="center"><img src="https://img.shields.io/badge/Algorithm-cyan" alt=""></td>
+<td align="left">Standard function objects (<code>Plus</code>, <code>Less</code>, <code>LogicalAnd</code>, etc.) and <code>invoke</code> utility for algorithmic pipelines.</td>
+</tr>
+<tr>
+<td align="left">⚠️ <strong><code>&lt;stdexcept&gt;</code></strong></td>
+<td align="center"><img src="https://img.shields.io/badge/Utility-green" alt=""></td>
+<td align="left">Standard C++ exception hierarchy (<code>LogicError</code>, <code>RuntimeError</code>, <code>InvalidArgument</code>, etc.) natively in Dart.</td>
+</tr>
+<tr>
+<td align="left">🎲 <strong><code>&lt;random&gt;</code></strong></td>
+<td align="center"><img src="https://img.shields.io/badge/Math-orange" alt=""></td>
+<td align="left">Predictable C++ style random number generation utilities featuring <code>StdRandom</code>, custom seeding, and bounded ranges.</td>
 </tr>
 </tbody>
 </table>
@@ -421,7 +428,7 @@ print(sorted.toList());
 <footer>
   <span class="no-break">
     stl
-      0.3.6
+      0.5.2
   </span>
   
 </footer>

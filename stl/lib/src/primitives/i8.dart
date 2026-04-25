@@ -2,14 +2,12 @@
 ///
 /// This provides a zero-cost abstraction for 8-bit signed math,
 /// automatically wrapping on overflow and providing C++-style boundaries.
-extension type const I8
-/// Instantiates a new [I8] spanning a strictly bounded 8-bit value.
-(
-  /// The strictly bounded primitive underlying value.
+extension type const I8._(/// The strictly bounded primitive underlying value.
   int
-  value
-)
-    implements int {
+  value) implements int  {
+  /// Instantiates a new [I8] spanning a strictly bounded primitive value.
+  const I8(this.value);
+
   /// The minimum value an `I8` can hold (-128).
   static const I8 min = I8(-128);
 

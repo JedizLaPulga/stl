@@ -84,6 +84,7 @@ For a strictly sorted set, use <a href="../stl/SortedSet-class.html">SortedSet</
       <li><a href="https://api.flutter.dev/flutter/dart-core/FutureIterable.html">FutureIterable</a></li>
       <li><a href="https://api.flutter.dev/flutter/dart-core/IterableExtensions.html">IterableExtensions</a></li>
       <li><a href="https://api.flutter.dev/flutter/dart-core/NullableIterableExtensions.html">NullableIterableExtensions</a></li>
+      <li><a href="../stl/NumericIterableExtension.html">NumericIterableExtension</a></li>
   </ul></dd>
         
 
@@ -352,6 +353,40 @@ For a strictly sorted set, use <a href="../stl/SortedSet-class.html">SortedSet</
       id="instance-methods">
     <h2>Methods</h2>
     <dl class="callables">
+        <dt id="accumulate" class="callable">
+  <span class="name"><a href="../stl/NumericIterableExtension/accumulate.html">accumulate</a></span><span class="signature">(<wbr><span class="parameter" id="accumulate-param-init"><span class="type-annotation">T</span> <span class="parameter-name">init</span>, [</span><span class="parameter" id="accumulate-param-op"><span class="type-annotation">T</span> <span class="parameter-name">op</span>(<span class="parameter" id="param-"><span class="type-annotation">T</span>, </span><span class="parameter" id="param-"><span class="type-annotation">T</span></span>)?</span>])
+    <span class="returntype parameter">&#8594; T</span>
+  </span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span>,
+        provided by the <a href="../stl/NumericIterableExtension.html">NumericIterableExtension</a> extension</span>
+      </p>
+  Sums up or folds the elements in the range, starting with <code>init</code>.
+  
+
+</dd>
+
+        <dt id="adjacentDifference" class="callable">
+  <span class="name"><a href="../stl/NumericIterableExtension/adjacentDifference.html">adjacentDifference</a></span><span class="signature">(<wbr>[<span class="parameter" id="adjacentDifference-param-op"><span class="type-annotation">T</span> <span class="parameter-name">op</span>(<span class="parameter" id="param-"><span class="type-annotation">T</span>, </span><span class="parameter" id="param-"><span class="type-annotation">T</span></span>)?</span>])
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span>,
+        provided by the <a href="../stl/NumericIterableExtension.html">NumericIterableExtension</a> extension</span>
+      </p>
+  Computes the differences between adjacent elements.
+  
+
+</dd>
+
         <dt id="any" class="callable inherited">
   <span class="name"><a href="https://api.flutter.dev/flutter/dart-core/Iterable/any.html">any</a></span><span class="signature">(<wbr><span class="parameter" id="any-param-test"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">test</span>(<span class="parameter" id="param-element"><span class="type-annotation">T</span> <span class="parameter-name">element</span></span>)</span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
@@ -447,6 +482,23 @@ For a strictly sorted set, use <a href="../stl/SortedSet-class.html">SortedSet</
 </dt>
 <dd>
   Whether this set contains all the elements of <code>other</code>.
+  
+
+</dd>
+
+        <dt id="cppReduce" class="callable">
+  <span class="name"><a href="../stl/NumericIterableExtension/cppReduce.html">cppReduce</a></span><span class="signature">(<wbr>[<span class="parameter" id="cppReduce-param-op"><span class="type-annotation">T</span> <span class="parameter-name">op</span>(<span class="parameter" id="param-"><span class="type-annotation">T</span>, </span><span class="parameter" id="param-"><span class="type-annotation">T</span></span>)?</span>])
+    <span class="returntype parameter">&#8594; T</span>
+  </span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span>,
+        provided by the <a href="../stl/NumericIterableExtension.html">NumericIterableExtension</a> extension</span>
+      </p>
+  Computes a result using an operation over the elements.
   
 
 </dd>
@@ -586,6 +638,23 @@ element of the collection with an existing value
 
 </dd>
 
+        <dt id="innerProduct" class="callable">
+  <span class="name"><a href="../stl/NumericIterableExtension/innerProduct.html">innerProduct</a></span><span class="signature">(<wbr><span class="parameter" id="innerProduct-param-other"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">other</span>, </span><span class="parameter" id="innerProduct-param-init"><span class="type-annotation">T</span> <span class="parameter-name">init</span>, {</span><span class="parameter" id="innerProduct-param-op1"><span class="type-annotation">T</span> <span class="parameter-name">op1</span>(<span class="parameter" id="param-"><span class="type-annotation">T</span>, </span><span class="parameter" id="param-"><span class="type-annotation">T</span></span>)?, </span><span class="parameter" id="innerProduct-param-op2"><span class="type-annotation">T</span> <span class="parameter-name">op2</span>(<span class="parameter" id="param-"><span class="type-annotation">T</span>, </span><span class="parameter" id="param-"><span class="type-annotation">T</span></span>)?</span>})
+    <span class="returntype parameter">&#8594; T</span>
+  </span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span>,
+        provided by the <a href="../stl/NumericIterableExtension.html">NumericIterableExtension</a> extension</span>
+      </p>
+  Computes the inner product (dot product) of two ranges.
+  
+
+</dd>
+
         <dt id="insert" class="callable">
   <span class="name"><a href="../stl/HashSet/insert.html">insert</a></span><span class="signature">(<wbr><span class="parameter" id="insert-param-element"><span class="type-annotation">T</span> <span class="parameter-name">element</span></span>)
     <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
@@ -661,6 +730,23 @@ element of the collection with an existing value
 <dd class="inherited">
   Invoked when a nonexistent method or property is accessed.
   <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="partialSum" class="callable">
+  <span class="name"><a href="../stl/NumericIterableExtension/partialSum.html">partialSum</a></span><span class="signature">(<wbr>[<span class="parameter" id="partialSum-param-op"><span class="type-annotation">T</span> <span class="parameter-name">op</span>(<span class="parameter" id="param-"><span class="type-annotation">T</span>, </span><span class="parameter" id="param-"><span class="type-annotation">T</span></span>)?</span>])
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+      <p class="from-extension">
+        <span>Available on <a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span>,
+        provided by the <a href="../stl/NumericIterableExtension.html">NumericIterableExtension</a> extension</span>
+      </p>
+  Computes the prefix sums (partial sums).
+  
 
 </dd>
 
@@ -885,7 +971,7 @@ predicate <code>test</code>.
 <footer>
   <span class="no-break">
     stl
-      0.3.6
+      0.5.2
   </span>
   
 </footer>

@@ -81,7 +81,8 @@ print((-85 &gt;&gt; 3).toRadixString); // 111...10101011 -&gt; 111...11110101 ==
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">U64 operator &gt;&gt;(int shiftAmount) =&gt; U64((value &gt;&gt;&gt; shiftAmount).toUnsigned(64));</code></pre>
+  <pre class="language-dart"><code class="language-dart">U64 operator &gt;&gt;(int shiftAmount) =&gt;
+    U64((value &gt;&gt;&gt; shiftAmount).toUnsigned(64));</code></pre>
 </section>
 
 
@@ -109,7 +110,7 @@ print((-85 &gt;&gt; 3).toRadixString); // 111...10101011 -&gt; 111...11110101 ==
 <footer>
   <span class="no-break">
     stl
-      0.3.6
+      0.5.2
   </span>
   
 </footer>

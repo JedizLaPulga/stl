@@ -1,12 +1,10 @@
 /// A 16-bit unsigned integer primitive.
-extension type const U16
-/// Instantiates a new [U16] spanning a strictly bounded 16-bit unsigned value.
-(
-  /// The strictly bounded primitive underlying value.
+extension type const U16._(/// The strictly bounded primitive underlying value.
   int
-  value
-)
-    implements int {
+  value) implements int  {
+  /// Instantiates a new [U16] spanning a strictly bounded primitive value.
+  const U16(this.value);
+
   /// The minimum representable value.
   static const U16 min = U16(0);
   /// The maximum representable value.

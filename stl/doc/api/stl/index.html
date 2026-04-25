@@ -84,6 +84,30 @@
   A conceptually strict fixed-size contiguous sequence.
 </dd>
 
+          <dt id="BitAnd">
+  <span class="name "><a href="../stl/BitAnd-class.html">BitAnd</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A functor that computes the bitwise AND of two arguments.
+</dd>
+
+          <dt id="BitNot">
+  <span class="name "><a href="../stl/BitNot-class.html">BitNot</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A functor that computes the bitwise NOT of its argument.
+</dd>
+
+          <dt id="BitOr">
+  <span class="name "><a href="../stl/BitOr-class.html">BitOr</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A functor that computes the bitwise OR of two arguments.
+</dd>
+
           <dt id="BitSet">
   <span class="name "><a href="../stl/BitSet-class.html">BitSet</a></span> 
 
@@ -91,6 +115,14 @@
 <dd>
   A space-efficient set implementation for managing boolean flags.
 Mimics C++ <code>std::bitset</code> functionality.
+</dd>
+
+          <dt id="BitXor">
+  <span class="name "><a href="../stl/BitXor-class.html">BitXor</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A functor that computes the bitwise XOR of two arguments.
 </dd>
 
           <dt id="Box">
@@ -121,6 +153,22 @@ The last chunk may be smaller than the requested size if the total number
 of elements is not perfectly divisible by the chunk size.
 </dd>
 
+          <dt id="Circle">
+  <span class="name "><a href="../stl/Circle-class.html">Circle</a></span> 
+
+</dt>
+<dd>
+  Defines a mathematical circle strictly via a radius.
+</dd>
+
+          <dt id="Complex">
+  <span class="name "><a href="../stl/Complex-class.html">Complex</a></span> 
+
+</dt>
+<dd>
+  A high-performance equivalent to C++ <code>&lt;complex&gt;</code>.
+</dd>
+
           <dt id="Deque">
   <span class="name "><a href="../stl/Deque-class.html">Deque</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
 
@@ -130,6 +178,14 @@ of elements is not perfectly divisible by the chunk size.
 at both the front and the rear.
 </dd>
 
+          <dt id="Divides">
+  <span class="name "><a href="../stl/Divides-class.html">Divides</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A functor that returns the quotient of two arguments.
+</dd>
+
           <dt id="DropRange">
   <span class="name "><a href="../stl/DropRange-class.html">DropRange</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
 
@@ -137,6 +193,30 @@ at both the front and the rear.
 <dd>
   A view that drops the first <code>count</code> elements of an iterable.
 Mimics C++ <code>std::views::drop</code>.
+</dd>
+
+          <dt id="Ellipse">
+  <span class="name "><a href="../stl/Ellipse-class.html">Ellipse</a></span> 
+
+</dt>
+<dd>
+  Defines a mathematical ellipse strictly via its semi-axes.
+</dd>
+
+          <dt id="EqualTo">
+  <span class="name "><a href="../stl/EqualTo-class.html">EqualTo</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A functor that checks if two arguments are equal.
+</dd>
+
+          <dt id="Expected">
+  <span class="name "><a href="../stl/Expected-class.html">Expected</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>, <span class="type-parameter">E</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A type that contains either an expected value of type <code>T</code> or an error of type <code>E</code>.
 </dd>
 
           <dt id="FilterRange">
@@ -156,6 +236,30 @@ Mimics C++ <code>std::views::filter</code>.
   A singly-linked list.
 </dd>
 
+          <dt id="Greater">
+  <span class="name "><a href="../stl/Greater-class.html">Greater</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A functor that checks if the first argument is strictly greater than the second.
+</dd>
+
+          <dt id="GreaterEqual">
+  <span class="name "><a href="../stl/GreaterEqual-class.html">GreaterEqual</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A functor that checks if the first argument is greater than or equal to the second.
+</dd>
+
+          <dt id="HashMap">
+  <span class="name "><a href="../stl/HashMap-class.html">HashMap</a><span class="signature">&lt;<wbr><span class="type-parameter">K</span>, <span class="type-parameter">V</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  An unordered collection of key-value pairs.
+</dd>
+
           <dt id="HashSet">
   <span class="name "><a href="../stl/HashSet-class.html">HashSet</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
 
@@ -173,12 +277,117 @@ Mimics C++ <code>std::views::filter</code>.
 Mimics C++ <code>std::views::join</code>.
 </dd>
 
+          <dt id="Less">
+  <span class="name "><a href="../stl/Less-class.html">Less</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A functor that checks if the first argument is strictly less than the second.
+</dd>
+
+          <dt id="LessEqual">
+  <span class="name "><a href="../stl/LessEqual-class.html">LessEqual</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A functor that checks if the first argument is less than or equal to the second.
+</dd>
+
+          <dt id="LineSegment">
+  <span class="name "><a href="../stl/LineSegment-class.html">LineSegment</a></span> 
+
+</dt>
+<dd>
+  Defines a mathematical line segment strictly via 2 points in 2D space.
+</dd>
+
+          <dt id="LogicalAnd">
+  <span class="name "><a href="../stl/LogicalAnd-class.html">LogicalAnd</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A functor that computes the logical AND of two arguments.
+</dd>
+
+          <dt id="LogicalNot">
+  <span class="name "><a href="../stl/LogicalNot-class.html">LogicalNot</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A functor that computes the logical NOT of its argument.
+</dd>
+
+          <dt id="LogicalOr">
+  <span class="name "><a href="../stl/LogicalOr-class.html">LogicalOr</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A functor that computes the logical OR of two arguments.
+</dd>
+
+          <dt id="Minus">
+  <span class="name "><a href="../stl/Minus-class.html">Minus</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A functor that returns the difference of two arguments.
+</dd>
+
+          <dt id="Modulus">
+  <span class="name "><a href="../stl/Modulus-class.html">Modulus</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A functor that returns the remainder of two arguments.
+</dd>
+
+          <dt id="MultiMap">
+  <span class="name "><a href="../stl/MultiMap-class.html">MultiMap</a><span class="signature">&lt;<wbr><span class="type-parameter">K</span>, <span class="type-parameter">V</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  An associative collection that stores elements as key-value pairs,
+sorted by key, and allows multiple elements with the same key.
+</dd>
+
+          <dt id="Multiplies">
+  <span class="name "><a href="../stl/Multiplies-class.html">Multiplies</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A functor that returns the product of two arguments.
+</dd>
+
+          <dt id="MultiSet">
+  <span class="name "><a href="../stl/MultiSet-class.html">MultiSet</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A collection that contains elements in sorted order, allowing duplicates.
+</dd>
+
+          <dt id="Negate">
+  <span class="name "><a href="../stl/Negate-class.html">Negate</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A functor that returns the negation of its argument.
+</dd>
+
           <dt id="None">
   <span class="name "><a href="../stl/None-class.html">None</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
 
 </dt>
 <dd>
   Variant representing a missing value.
+</dd>
+
+          <dt id="NotEqualTo">
+  <span class="name "><a href="../stl/NotEqualTo-class.html">NotEqualTo</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A functor that checks if two arguments are not equal.
 </dd>
 
           <dt id="NumberLine">
@@ -207,6 +416,30 @@ Using a sealed class ensures exhaustive pattern matching.
   A class that stores a pair of values.
 </dd>
 
+          <dt id="Plus">
+  <span class="name "><a href="../stl/Plus-class.html">Plus</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A functor that returns the sum of two arguments.
+</dd>
+
+          <dt id="Point">
+  <span class="name "><a href="../stl/Point-class.html">Point</a><span class="signature">&lt;<wbr><span class="type-parameter">T extends <a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a></span>&gt;</span></span> 
+
+</dt>
+<dd>
+  Represents a 2D coordinate in Euclidean space.
+</dd>
+
+          <dt id="Polygon">
+  <span class="name "><a href="../stl/Polygon-class.html">Polygon</a></span> 
+
+</dt>
+<dd>
+  Defines a mathematical polygon via an ordered collection of vertices.
+</dd>
+
           <dt id="PriorityQueue">
   <span class="name "><a href="../stl/PriorityQueue-class.html">PriorityQueue</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
 
@@ -221,6 +454,14 @@ Using a sealed class ensures exhaustive pattern matching.
 </dt>
 <dd>
   An adapter class that provides a First-In, First-Out (FIFO) data structure.
+</dd>
+
+          <dt id="Rectangle">
+  <span class="name "><a href="../stl/Rectangle-class.html">Rectangle</a></span> 
+
+</dt>
+<dd>
+  Defines a standard rectangle strictly via dimensions.
 </dd>
 
           <dt id="Ref">
@@ -248,12 +489,36 @@ Mimics C++ <code>std::views::repeat</code>.
   A collection that contains no duplicate elements.
 </dd>
 
+          <dt id="Shape">
+  <span class="name "><a href="../stl/Shape-class.html">Shape</a><span class="signature">&lt;<wbr><span class="type-parameter">T extends <a href="../stl/Shape-class.html">Shape</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span>&gt;</span></span> 
+
+</dt>
+<dd>
+  The foundational contract for all 2D entities.
+</dd>
+
+          <dt id="SList">
+  <span class="name "><a href="../stl/SList-class.html">SList</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A doubly-linked list.
+</dd>
+
           <dt id="Some">
   <span class="name "><a href="../stl/Some-class.html">Some</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
 
 </dt>
 <dd>
   Variant representing an existing value.
+</dd>
+
+          <dt id="SortedMap">
+  <span class="name "><a href="../stl/SortedMap-class.html">SortedMap</a><span class="signature">&lt;<wbr><span class="type-parameter">K</span>, <span class="type-parameter">V</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A collection that stores elements as key-value pairs, maintaining them in strictly sorted order by key.
 </dd>
 
           <dt id="SortedSet">
@@ -272,6 +537,22 @@ Mimics C++ <code>std::views::repeat</code>.
   An adapter class that provides a Last-In, First-Out (LIFO) data structure.
 </dd>
 
+          <dt id="StdRandom">
+  <span class="name "><a href="../stl/StdRandom-class.html">StdRandom</a></span> 
+
+</dt>
+<dd>
+  A deterministic, predictable C++ style pseudo-random number generator.
+</dd>
+
+          <dt id="StringView">
+  <span class="name "><a href="../stl/StringView-class.html">StringView</a></span> 
+
+</dt>
+<dd>
+  A non-owning, zero-allocation reference to a string or a contiguous substring.
+</dd>
+
           <dt id="TakeRange">
   <span class="name "><a href="../stl/TakeRange-class.html">TakeRange</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
 
@@ -288,6 +569,54 @@ Mimics C++ <code>std::views::take</code>.
 <dd>
   A view that transforms elements from one type to another using a mapping function.
 Mimics C++ <code>std::views::transform</code>.
+</dd>
+
+          <dt id="Triangle">
+  <span class="name "><a href="../stl/Triangle-class.html">Triangle</a></span> 
+
+</dt>
+<dd>
+  Defines a mathematical triangle strictly via 3 points in 2D space.
+</dd>
+
+          <dt id="Tuple3">
+  <span class="name "><a href="../stl/Tuple3-class.html">Tuple3</a><span class="signature">&lt;<wbr><span class="type-parameter">T1</span>, <span class="type-parameter">T2</span>, <span class="type-parameter">T3</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A tuple of 3 elements.
+</dd>
+
+          <dt id="Tuple4">
+  <span class="name "><a href="../stl/Tuple4-class.html">Tuple4</a><span class="signature">&lt;<wbr><span class="type-parameter">T1</span>, <span class="type-parameter">T2</span>, <span class="type-parameter">T3</span>, <span class="type-parameter">T4</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A tuple of 4 elements.
+</dd>
+
+          <dt id="Tuple5">
+  <span class="name "><a href="../stl/Tuple5-class.html">Tuple5</a><span class="signature">&lt;<wbr><span class="type-parameter">T1</span>, <span class="type-parameter">T2</span>, <span class="type-parameter">T3</span>, <span class="type-parameter">T4</span>, <span class="type-parameter">T5</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A tuple of 5 elements.
+</dd>
+
+          <dt id="Tuple6">
+  <span class="name "><a href="../stl/Tuple6-class.html">Tuple6</a><span class="signature">&lt;<wbr><span class="type-parameter">T1</span>, <span class="type-parameter">T2</span>, <span class="type-parameter">T3</span>, <span class="type-parameter">T4</span>, <span class="type-parameter">T5</span>, <span class="type-parameter">T6</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A tuple of 6 elements.
+</dd>
+
+          <dt id="Tuple7">
+  <span class="name "><a href="../stl/Tuple7-class.html">Tuple7</a><span class="signature">&lt;<wbr><span class="type-parameter">T1</span>, <span class="type-parameter">T2</span>, <span class="type-parameter">T3</span>, <span class="type-parameter">T4</span>, <span class="type-parameter">T5</span>, <span class="type-parameter">T6</span>, <span class="type-parameter">T7</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A tuple of 7 elements.
 </dd>
 
           <dt id="Var">
@@ -311,7 +640,7 @@ Mimics C++ <code>std::views::transform</code>.
 
 </dt>
 <dd>
-  
+  Represents the first alternative of <a href="../stl/Variant2-class.html">Variant2</a>.
 </dd>
 
           <dt id="Variant2Item1">
@@ -319,7 +648,7 @@ Mimics C++ <code>std::views::transform</code>.
 
 </dt>
 <dd>
-  
+  Represents the second alternative of <a href="../stl/Variant2-class.html">Variant2</a>.
 </dd>
 
           <dt id="Variant3">
@@ -335,7 +664,7 @@ Mimics C++ <code>std::views::transform</code>.
 
 </dt>
 <dd>
-  
+  Represents the first alternative of <a href="../stl/Variant3-class.html">Variant3</a>.
 </dd>
 
           <dt id="Variant3Item1">
@@ -343,7 +672,7 @@ Mimics C++ <code>std::views::transform</code>.
 
 </dt>
 <dd>
-  
+  Represents the second alternative of <a href="../stl/Variant3-class.html">Variant3</a>.
 </dd>
 
           <dt id="Variant3Item2">
@@ -351,7 +680,7 @@ Mimics C++ <code>std::views::transform</code>.
 
 </dt>
 <dd>
-  
+  Represents the third alternative of <a href="../stl/Variant3-class.html">Variant3</a>.
 </dd>
 
           <dt id="Vector">
@@ -359,7 +688,7 @@ Mimics C++ <code>std::views::transform</code>.
 
 </dt>
 <dd>
-  
+  A C++ style Vector collection backed by a Dart List.
 </dd>
 
           <dt id="ZipRange">
@@ -526,14 +855,506 @@ These operators (<code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code
 when both <code>T1</code> and <code>T2</code> happen to extend <code>Comparable</code>.
 </dd>
 
+          <dt id="NumericIterableExtension">
+  <span class="name "><a href="../stl/NumericIterableExtension.html">NumericIterableExtension</a></span>
+  on <a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span>
+  
+
+</dt>
+<dd>
+  Extension providing numeric operations on Iterables.
+</dd>
+
+          <dt id="NumericListExtension">
+  <span class="name "><a href="../stl/NumericListExtension.html">NumericListExtension</a></span>
+  on <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span>
+  
+
+</dt>
+<dd>
+  Extension providing numeric operations on Lists.
+</dd>
+
       </dl>
     </section>
 
+    <section class="summary offset-anchor" id="constants">
+      <h2>Constants</h2>
+      <dl class="properties">
+          <dt id="apery" class="constant">
+    <span class="name "><a href="../stl/apery-constant.html">apery</a></span>
+  <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span>
+  
+
+</dt>
+<dd>
+  Apéry's constant ζ(3); value of the Riemann zeta function at 3.
+  
+
+</dd>
+
+          <dt id="catalan" class="constant">
+    <span class="name "><a href="../stl/catalan-constant.html">catalan</a></span>
+  <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span>
+  
+
+</dt>
+<dd>
+  Catalan's constant (G).
+  
+
+</dd>
+
+          <dt id="e" class="constant">
+    <span class="name "><a href="../stl/e-constant.html">e</a></span>
+  <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span>
+  
+
+</dt>
+<dd>
+  Euler's number; the base of the natural logarithm (e).
+  
+
+</dd>
+
+          <dt id="eulerMascheroni" class="constant">
+    <span class="name "><a href="../stl/eulerMascheroni-constant.html">eulerMascheroni</a></span>
+  <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span>
+  
+
+</dt>
+<dd>
+  The Euler–Mascheroni constant (γ).
+  
+
+</dd>
+
+          <dt id="infinity" class="constant">
+    <span class="name "><a href="../stl/infinity-constant.html">infinity</a></span>
+  <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span>
+  
+
+</dt>
+<dd>
+  Positive infinity (IEEE 754).
+  
+
+</dd>
+
+          <dt id="invPi" class="constant">
+    <span class="name "><a href="../stl/invPi-constant.html">invPi</a></span>
+  <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span>
+  
+
+</dt>
+<dd>
+  Reciprocal of π (1 / π).
+  
+
+</dd>
+
+          <dt id="khinchin" class="constant">
+    <span class="name "><a href="../stl/khinchin-constant.html">khinchin</a></span>
+  <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span>
+  
+
+</dt>
+<dd>
+  The Khinchin constant (K₀).
+  
+
+</dd>
+
+          <dt id="ln10" class="constant">
+    <span class="name "><a href="../stl/ln10-constant.html">ln10</a></span>
+  <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span>
+  
+
+</dt>
+<dd>
+  Natural logarithm of 10 (ln 10).
+  
+
+</dd>
+
+          <dt id="ln2" class="constant">
+    <span class="name "><a href="../stl/ln2-constant.html">ln2</a></span>
+  <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span>
+  
+
+</dt>
+<dd>
+  Natural logarithm of 2 (ln 2).
+  
+
+</dd>
+
+          <dt id="lnPhi" class="constant">
+    <span class="name "><a href="../stl/lnPhi-constant.html">lnPhi</a></span>
+  <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span>
+  
+
+</dt>
+<dd>
+  The natural logarithm of the golden ratio (ln φ).
+  
+
+</dd>
+
+          <dt id="log10_2" class="constant">
+    <span class="name "><a href="../stl/log10_2-constant.html">log10_2</a></span>
+  <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span>
+  
+
+</dt>
+<dd>
+  Base-10 logarithm of 2 (log₁₀ 2).
+  
+
+</dd>
+
+          <dt id="log10e" class="constant">
+    <span class="name "><a href="../stl/log10e-constant.html">log10e</a></span>
+  <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span>
+  
+
+</dt>
+<dd>
+  Base-10 logarithm of e (log₁₀ e).
+  
+
+</dd>
+
+          <dt id="log2_10" class="constant">
+    <span class="name "><a href="../stl/log2_10-constant.html">log2_10</a></span>
+  <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span>
+  
+
+</dt>
+<dd>
+  Base-2 logarithm of 10 (log₂ 10).
+  
+
+</dd>
+
+          <dt id="log2e" class="constant">
+    <span class="name "><a href="../stl/log2e-constant.html">log2e</a></span>
+  <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span>
+  
+
+</dt>
+<dd>
+  Base-2 logarithm of e (log₂ e).
+  
+
+</dd>
+
+          <dt id="maxFinite" class="constant">
+    <span class="name "><a href="../stl/maxFinite-constant.html">maxFinite</a></span>
+  <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span>
+  
+
+</dt>
+<dd>
+  The largest finite representable double (≈ 1.798 × 10³⁰⁸).
+  
+
+</dd>
+
+          <dt id="minPositive" class="constant">
+    <span class="name "><a href="../stl/minPositive-constant.html">minPositive</a></span>
+  <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span>
+  
+
+</dt>
+<dd>
+  The smallest positive non-zero double (≈ 5 × 10⁻³²⁴).
+  
+
+</dd>
+
+          <dt id="nan" class="constant">
+    <span class="name "><a href="../stl/nan-constant.html">nan</a></span>
+  <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span>
+  
+
+</dt>
+<dd>
+  Not-a-Number sentinel (IEEE 754).
+  
+
+</dd>
+
+          <dt id="negativeInfinity" class="constant">
+    <span class="name "><a href="../stl/negativeInfinity-constant.html">negativeInfinity</a></span>
+  <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span>
+  
+
+</dt>
+<dd>
+  Negative infinity (IEEE 754).
+  
+
+</dd>
+
+          <dt id="phi" class="constant">
+    <span class="name "><a href="../stl/phi-constant.html">phi</a></span>
+  <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span>
+  
+
+</dt>
+<dd>
+  The golden ratio (φ), positive root of x² − x − 1 = 0.
+  
+
+</dd>
+
+          <dt id="pi" class="constant">
+    <span class="name "><a href="../stl/pi-constant.html">pi</a></span>
+  <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span>
+  
+
+</dt>
+<dd>
+  The ratio of a circle's circumference to its diameter (π).
+  
+
+</dd>
+
+          <dt id="sqrt1Over2" class="constant">
+    <span class="name "><a href="../stl/sqrt1Over2-constant.html">sqrt1Over2</a></span>
+  <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span>
+  
+
+</dt>
+<dd>
+  Reciprocal of the square root of 2 (1 / √2 = √2 / 2).
+  
+
+</dd>
+
+          <dt id="sqrt2" class="constant">
+    <span class="name "><a href="../stl/sqrt2-constant.html">sqrt2</a></span>
+  <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span>
+  
+
+</dt>
+<dd>
+  Square root of 2 (√2).
+  
+
+</dd>
+
+          <dt id="sqrt3" class="constant">
+    <span class="name "><a href="../stl/sqrt3-constant.html">sqrt3</a></span>
+  <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span>
+  
+
+</dt>
+<dd>
+  Square root of 3 (√3).
+  
+
+</dd>
+
+          <dt id="sqrt5" class="constant">
+    <span class="name "><a href="../stl/sqrt5-constant.html">sqrt5</a></span>
+  <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span>
+  
+
+</dt>
+<dd>
+  Square root of 5 (√5).
+  
+
+</dd>
+
+          <dt id="sqrtPi" class="constant">
+    <span class="name "><a href="../stl/sqrtPi-constant.html">sqrtPi</a></span>
+  <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span>
+  
+
+</dt>
+<dd>
+  Square root of π (√π).
+  
+
+</dd>
+
+          <dt id="tau" class="constant">
+    <span class="name "><a href="../stl/tau-constant.html">tau</a></span>
+  <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span>
+  
+
+</dt>
+<dd>
+  The full-circle constant, equal to 2π (τ).
+  
+
+</dd>
+
+          <dt id="twoDivPi" class="constant">
+    <span class="name "><a href="../stl/twoDivPi-constant.html">twoDivPi</a></span>
+  <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span>
+  
+
+</dt>
+<dd>
+  Two divided by π (2 / π).
+  
+
+</dd>
+
+          <dt id="twoDivSqrtPi" class="constant">
+    <span class="name "><a href="../stl/twoDivSqrtPi-constant.html">twoDivSqrtPi</a></span>
+  <span class="signature">&#8594; const <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span>
+  
+
+</dt>
+<dd>
+  Two divided by the square root of π (2 / √π).
+  
+
+</dd>
+
+      </dl>
+    </section>
 
 
     <section class="summary offset-anchor" id="functions">
       <h2>Functions</h2>
       <dl class="callables">
+          <dt id="binarySearch" class="callable">
+  <span class="name"><a href="../stl/binarySearch.html">binarySearch</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="binarySearch-param-list"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">list</span>, </span><span class="parameter" id="binarySearch-param-value"><span class="type-annotation">T</span> <span class="parameter-name">value</span>, {</span><span class="parameter" id="binarySearch-param-compare"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">compare</span>(<span class="parameter" id="param-"><span class="type-annotation">T</span>, </span><span class="parameter" id="param-"><span class="type-annotation">T</span></span>)?</span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Checks if an element equivalent to <code>value</code> appears within the <code>list</code>.
+  
+
+</dd>
+
+          <dt id="clamp" class="callable">
+  <span class="name"><a href="../stl/clamp.html">clamp</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T extends <a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a></span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="clamp-param-v"><span class="type-annotation">T</span> <span class="parameter-name">v</span>, </span><span class="parameter" id="clamp-param-lo"><span class="type-annotation">T</span> <span class="parameter-name">lo</span>, </span><span class="parameter" id="clamp-param-hi"><span class="type-annotation">T</span> <span class="parameter-name">hi</span></span>)
+    <span class="returntype parameter">&#8594; T</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Clamps <code>v</code> between <code>lo</code> and <code>hi</code>.
+  
+
+</dd>
+
+          <dt id="equalRange" class="callable">
+  <span class="name"><a href="../stl/equalRange.html">equalRange</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="equalRange-param-list"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">list</span>, </span><span class="parameter" id="equalRange-param-value"><span class="type-annotation">T</span> <span class="parameter-name">value</span>, {</span><span class="parameter" id="equalRange-param-compare"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">compare</span>(<span class="parameter" id="param-"><span class="type-annotation">T</span>, </span><span class="parameter" id="param-"><span class="type-annotation">T</span></span>)?</span>})
+    <span class="returntype parameter">&#8594; <a href="../stl/Pair-class.html">Pair</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>, <span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns a <a href="../stl/Pair-class.html">Pair</a> containing the <a href="../stl/lowerBound.html">lowerBound</a> and <a href="../stl/upperBound.html">upperBound</a> of <code>value</code>.
+  
+
+</dd>
+
+          <dt id="gcd" class="callable">
+  <span class="name"><a href="../stl/gcd.html">gcd</a></span><span class="signature">(<wbr><span class="parameter" id="gcd-param-a"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">a</span>, </span><span class="parameter" id="gcd-param-b"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">b</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the greatest common divisor of <code>a</code> and <code>b</code>.
+Uses the highly optimized Euclidean algorithm.
+  
+
+</dd>
+
+          <dt id="hypot" class="callable">
+  <span class="name"><a href="../stl/hypot.html">hypot</a></span><span class="signature">(<wbr><span class="parameter" id="hypot-param-x"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a></span> <span class="parameter-name">x</span>, </span><span class="parameter" id="hypot-param-y"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a></span> <span class="parameter-name">y</span>, [</span><span class="parameter" id="hypot-param-z"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a>?</span> <span class="parameter-name">z</span></span>])
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Computes the length of the hypotenuse <code>sqrt(x^2 + y^2)</code>.
+  
+
+</dd>
+
+          <dt id="invoke" class="callable">
+  <span class="name"><a href="../stl/invoke.html">invoke</a></span><span class="signature">(<wbr><span class="parameter" id="invoke-param-callable"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Function-class.html">Function</a></span> <span class="parameter-name">callable</span>, {</span><span class="parameter" id="invoke-param-positional"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a></span> <span class="parameter-name">positional</span> = <span class="default-value">const []</span>, </span><span class="parameter" id="invoke-param-named"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/Symbol-class.html">Symbol</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span> <span class="parameter-name">named</span> = <span class="default-value">const {}</span></span>})
+    <span class="returntype parameter">&#8594; dynamic</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Invokes the <code>callable</code> with the provided <code>args</code>.
+  
+
+</dd>
+
+          <dt id="isPrime" class="callable">
+  <span class="name"><a href="../stl/isPrime.html">isPrime</a></span><span class="signature">(<wbr><span class="parameter" id="isPrime-param-n"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">n</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Checks if a given number <code>n</code> is prime.
+  
+
+</dd>
+
+          <dt id="lcm" class="callable">
+  <span class="name"><a href="../stl/lcm.html">lcm</a></span><span class="signature">(<wbr><span class="parameter" id="lcm-param-a"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">a</span>, </span><span class="parameter" id="lcm-param-b"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">b</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the least common multiple of <code>a</code> and <code>b</code>.
+  
+
+</dd>
+
+          <dt id="lerp" class="callable">
+  <span class="name"><a href="../stl/lerp.html">lerp</a></span><span class="signature">(<wbr><span class="parameter" id="lerp-param-a"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a></span> <span class="parameter-name">a</span>, </span><span class="parameter" id="lerp-param-b"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a></span> <span class="parameter-name">b</span>, </span><span class="parameter" id="lerp-param-t"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a></span> <span class="parameter-name">t</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/double-class.html">double</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Computes the linear interpolation between <code>a</code> and <code>b</code> for the parameter <code>t</code>.
+  
+
+</dd>
+
+          <dt id="lowerBound" class="callable">
+  <span class="name"><a href="../stl/lowerBound.html">lowerBound</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="lowerBound-param-list"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">list</span>, </span><span class="parameter" id="lowerBound-param-value"><span class="type-annotation">T</span> <span class="parameter-name">value</span>, {</span><span class="parameter" id="lowerBound-param-compare"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">compare</span>(<span class="parameter" id="param-"><span class="type-annotation">T</span>, </span><span class="parameter" id="param-"><span class="type-annotation">T</span></span>)?</span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the index of the first element in the <code>list</code> that is not less than (i.e. greater or equal to) <code>value</code>.
+  
+
+</dd>
+
           <dt id="makePair" class="callable">
   <span class="name"><a href="../stl/makePair.html">makePair</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T1</span>, <span class="type-parameter">T2</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="makePair-param-first"><span class="type-annotation">T1</span> <span class="parameter-name">first</span>, </span><span class="parameter" id="makePair-param-second"><span class="type-annotation">T2</span> <span class="parameter-name">second</span></span>)
     <span class="returntype parameter">&#8594; <a href="../stl/Pair-class.html">Pair</a><span class="signature">&lt;<wbr><span class="type-parameter">T1</span>, <span class="type-parameter">T2</span>&gt;</span></span>
@@ -547,10 +1368,335 @@ when both <code>T1</code> and <code>T2</code> happen to extend <code>Comparable<
 
 </dd>
 
+          <dt id="makeTuple3" class="callable">
+  <span class="name"><a href="../stl/makeTuple3.html">makeTuple3</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T1</span>, <span class="type-parameter">T2</span>, <span class="type-parameter">T3</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="makeTuple3-param-item1"><span class="type-annotation">T1</span> <span class="parameter-name">item1</span>, </span><span class="parameter" id="makeTuple3-param-item2"><span class="type-annotation">T2</span> <span class="parameter-name">item2</span>, </span><span class="parameter" id="makeTuple3-param-item3"><span class="type-annotation">T3</span> <span class="parameter-name">item3</span></span>)
+    <span class="returntype parameter">&#8594; <a href="../stl/Tuple3-class.html">Tuple3</a><span class="signature">&lt;<wbr><span class="type-parameter">T1</span>, <span class="type-parameter">T2</span>, <span class="type-parameter">T3</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  A convenience function to create a <a href="../stl/Tuple3-class.html">Tuple3</a>, mimicking C++ <code>std::make_tuple</code>.
+  
+
+</dd>
+
+          <dt id="makeTuple4" class="callable">
+  <span class="name"><a href="../stl/makeTuple4.html">makeTuple4</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T1</span>, <span class="type-parameter">T2</span>, <span class="type-parameter">T3</span>, <span class="type-parameter">T4</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="makeTuple4-param-item1"><span class="type-annotation">T1</span> <span class="parameter-name">item1</span>, </span><span class="parameter" id="makeTuple4-param-item2"><span class="type-annotation">T2</span> <span class="parameter-name">item2</span>, </span><span class="parameter" id="makeTuple4-param-item3"><span class="type-annotation">T3</span> <span class="parameter-name">item3</span>, </span><span class="parameter" id="makeTuple4-param-item4"><span class="type-annotation">T4</span> <span class="parameter-name">item4</span></span>)
+    <span class="returntype parameter">&#8594; <a href="../stl/Tuple4-class.html">Tuple4</a><span class="signature">&lt;<wbr><span class="type-parameter">T1</span>, <span class="type-parameter">T2</span>, <span class="type-parameter">T3</span>, <span class="type-parameter">T4</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  A convenience function to create a <a href="../stl/Tuple4-class.html">Tuple4</a>, mimicking C++ <code>std::make_tuple</code>.
+  
+
+</dd>
+
+          <dt id="makeTuple5" class="callable">
+  <span class="name"><a href="../stl/makeTuple5.html">makeTuple5</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T1</span>, <span class="type-parameter">T2</span>, <span class="type-parameter">T3</span>, <span class="type-parameter">T4</span>, <span class="type-parameter">T5</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="makeTuple5-param-item1"><span class="type-annotation">T1</span> <span class="parameter-name">item1</span>, </span><span class="parameter" id="makeTuple5-param-item2"><span class="type-annotation">T2</span> <span class="parameter-name">item2</span>, </span><span class="parameter" id="makeTuple5-param-item3"><span class="type-annotation">T3</span> <span class="parameter-name">item3</span>, </span><span class="parameter" id="makeTuple5-param-item4"><span class="type-annotation">T4</span> <span class="parameter-name">item4</span>, </span><span class="parameter" id="makeTuple5-param-item5"><span class="type-annotation">T5</span> <span class="parameter-name">item5</span></span>)
+    <span class="returntype parameter">&#8594; <a href="../stl/Tuple5-class.html">Tuple5</a><span class="signature">&lt;<wbr><span class="type-parameter">T1</span>, <span class="type-parameter">T2</span>, <span class="type-parameter">T3</span>, <span class="type-parameter">T4</span>, <span class="type-parameter">T5</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  A convenience function to create a <a href="../stl/Tuple5-class.html">Tuple5</a>, mimicking C++ <code>std::make_tuple</code>.
+  
+
+</dd>
+
+          <dt id="makeTuple6" class="callable">
+  <span class="name"><a href="../stl/makeTuple6.html">makeTuple6</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T1</span>, <span class="type-parameter">T2</span>, <span class="type-parameter">T3</span>, <span class="type-parameter">T4</span>, <span class="type-parameter">T5</span>, <span class="type-parameter">T6</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="makeTuple6-param-item1"><span class="type-annotation">T1</span> <span class="parameter-name">item1</span>, </span><span class="parameter" id="makeTuple6-param-item2"><span class="type-annotation">T2</span> <span class="parameter-name">item2</span>, </span><span class="parameter" id="makeTuple6-param-item3"><span class="type-annotation">T3</span> <span class="parameter-name">item3</span>, </span><span class="parameter" id="makeTuple6-param-item4"><span class="type-annotation">T4</span> <span class="parameter-name">item4</span>, </span><span class="parameter" id="makeTuple6-param-item5"><span class="type-annotation">T5</span> <span class="parameter-name">item5</span>, </span><span class="parameter" id="makeTuple6-param-item6"><span class="type-annotation">T6</span> <span class="parameter-name">item6</span></span>)
+    <span class="returntype parameter">&#8594; <a href="../stl/Tuple6-class.html">Tuple6</a><span class="signature">&lt;<wbr><span class="type-parameter">T1</span>, <span class="type-parameter">T2</span>, <span class="type-parameter">T3</span>, <span class="type-parameter">T4</span>, <span class="type-parameter">T5</span>, <span class="type-parameter">T6</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  A convenience function to create a <a href="../stl/Tuple6-class.html">Tuple6</a>, mimicking C++ <code>std::make_tuple</code>.
+  
+
+</dd>
+
+          <dt id="makeTuple7" class="callable">
+  <span class="name"><a href="../stl/makeTuple7.html">makeTuple7</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T1</span>, <span class="type-parameter">T2</span>, <span class="type-parameter">T3</span>, <span class="type-parameter">T4</span>, <span class="type-parameter">T5</span>, <span class="type-parameter">T6</span>, <span class="type-parameter">T7</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="makeTuple7-param-item1"><span class="type-annotation">T1</span> <span class="parameter-name">item1</span>, </span><span class="parameter" id="makeTuple7-param-item2"><span class="type-annotation">T2</span> <span class="parameter-name">item2</span>, </span><span class="parameter" id="makeTuple7-param-item3"><span class="type-annotation">T3</span> <span class="parameter-name">item3</span>, </span><span class="parameter" id="makeTuple7-param-item4"><span class="type-annotation">T4</span> <span class="parameter-name">item4</span>, </span><span class="parameter" id="makeTuple7-param-item5"><span class="type-annotation">T5</span> <span class="parameter-name">item5</span>, </span><span class="parameter" id="makeTuple7-param-item6"><span class="type-annotation">T6</span> <span class="parameter-name">item6</span>, </span><span class="parameter" id="makeTuple7-param-item7"><span class="type-annotation">T7</span> <span class="parameter-name">item7</span></span>)
+    <span class="returntype parameter">&#8594; <a href="../stl/Tuple7-class.html">Tuple7</a><span class="signature">&lt;<wbr><span class="type-parameter">T1</span>, <span class="type-parameter">T2</span>, <span class="type-parameter">T3</span>, <span class="type-parameter">T4</span>, <span class="type-parameter">T5</span>, <span class="type-parameter">T6</span>, <span class="type-parameter">T7</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  A convenience function to create a <a href="../stl/Tuple7-class.html">Tuple7</a>, mimicking C++ <code>std::make_tuple</code>.
+  
+
+</dd>
+
+          <dt id="midpoint" class="callable">
+  <span class="name"><a href="../stl/midpoint.html">midpoint</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T extends <a href="https://api.flutter.dev/flutter/dart-core/num-class.html">num</a></span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="midpoint-param-a"><span class="type-annotation">T</span> <span class="parameter-name">a</span>, </span><span class="parameter" id="midpoint-param-b"><span class="type-annotation">T</span> <span class="parameter-name">b</span></span>)
+    <span class="returntype parameter">&#8594; T</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Finds the midpoint of two numbers <code>(a + b) / 2</code> safely without overflow.
+  
+
+</dd>
+
+          <dt id="nextPermutation" class="callable">
+  <span class="name"><a href="../stl/nextPermutation.html">nextPermutation</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="nextPermutation-param-list"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">list</span>, {</span><span class="parameter" id="nextPermutation-param-compare"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">compare</span>(<span class="parameter" id="param-"><span class="type-annotation">T</span>, </span><span class="parameter" id="param-"><span class="type-annotation">T</span></span>)?</span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Transforms the <code>list</code> into the next permutation from the
+set of all permutations that are lexicographically ordered.
+  
+
+</dd>
+
+          <dt id="partition" class="callable">
+  <span class="name"><a href="../stl/partition.html">partition</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="partition-param-list"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">list</span>, </span><span class="parameter" id="partition-param-predicate"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">predicate</span>(<span class="parameter" id="param-"><span class="type-annotation">T</span></span>)</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Reorders the elements in the <code>list</code> in such a way that all elements for which
+the <code>predicate</code> returns <code>true</code> precede the elements for which it returns <code>false</code>.
+  
+
+</dd>
+
+          <dt id="prevPermutation" class="callable">
+  <span class="name"><a href="../stl/prevPermutation.html">prevPermutation</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="prevPermutation-param-list"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">list</span>, {</span><span class="parameter" id="prevPermutation-param-compare"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">compare</span>(<span class="parameter" id="param-"><span class="type-annotation">T</span>, </span><span class="parameter" id="param-"><span class="type-annotation">T</span></span>)?</span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Transforms the <code>list</code> into the previous permutation from the
+set of all permutations that are lexicographically ordered.
+  
+
+</dd>
+
+          <dt id="primeFactorization" class="callable">
+  <span class="name"><a href="../stl/primeFactorization.html">primeFactorization</a></span><span class="signature">(<wbr><span class="parameter" id="primeFactorization-param-n"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">n</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the prime factorization of <code>n</code> as a list of prime factors in ascending order.
+  
+
+</dd>
+
+          <dt id="reverse" class="callable">
+  <span class="name"><a href="../stl/reverse.html">reverse</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="reverse-param-list"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">list</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Reverses the order of the elements in the <code>list</code> in-place.
+  
+
+</dd>
+
+          <dt id="rotate" class="callable">
+  <span class="name"><a href="../stl/rotate.html">rotate</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="rotate-param-list"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">list</span>, </span><span class="parameter" id="rotate-param-n"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">n</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Rotates the order of the elements in the <code>list</code> in such a way
+that the element at index <code>n</code> becomes the new first element.
+  
+
+</dd>
+
+          <dt id="setDifference" class="callable">
+  <span class="name"><a href="../stl/setDifference.html">setDifference</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="setDifference-param-a"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">a</span>, </span><span class="parameter" id="setDifference-param-b"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">b</span>, {</span><span class="parameter" id="setDifference-param-compare"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">compare</span>(<span class="parameter" id="param-"><span class="type-annotation">T</span>, </span><span class="parameter" id="param-"><span class="type-annotation">T</span></span>)?</span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Constructs a sorted difference of elements from two sorted sequences <code>a</code> and <code>b</code>.
+  
+
+</dd>
+
+          <dt id="setIntersection" class="callable">
+  <span class="name"><a href="../stl/setIntersection.html">setIntersection</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="setIntersection-param-a"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">a</span>, </span><span class="parameter" id="setIntersection-param-b"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">b</span>, {</span><span class="parameter" id="setIntersection-param-compare"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">compare</span>(<span class="parameter" id="param-"><span class="type-annotation">T</span>, </span><span class="parameter" id="param-"><span class="type-annotation">T</span></span>)?</span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Constructs a sorted intersection of elements from two sorted sequences <code>a</code> and <code>b</code>.
+  
+
+</dd>
+
+          <dt id="setUnion" class="callable">
+  <span class="name"><a href="../stl/setUnion.html">setUnion</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="setUnion-param-a"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">a</span>, </span><span class="parameter" id="setUnion-param-b"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">b</span>, {</span><span class="parameter" id="setUnion-param-compare"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">compare</span>(<span class="parameter" id="param-"><span class="type-annotation">T</span>, </span><span class="parameter" id="param-"><span class="type-annotation">T</span></span>)?</span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Constructs a sorted union of elements from two sorted sequences <code>a</code> and <code>b</code>.
+  
+
+</dd>
+
+          <dt id="stablePartition" class="callable">
+  <span class="name"><a href="../stl/stablePartition.html">stablePartition</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="stablePartition-param-list"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">list</span>, </span><span class="parameter" id="stablePartition-param-predicate"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">predicate</span>(<span class="parameter" id="param-"><span class="type-annotation">T</span></span>)</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Reorders the elements in the <code>list</code> in such a way that all elements for which
+the <code>predicate</code> returns <code>true</code> precede the elements for which it returns <code>false</code>.
+  
+
+</dd>
+
+          <dt id="unique" class="callable">
+  <span class="name"><a href="../stl/unique.html">unique</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="unique-param-list"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">list</span>, {</span><span class="parameter" id="unique-param-equals"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">equals</span>(<span class="parameter" id="param-"><span class="type-annotation">T</span>, </span><span class="parameter" id="param-"><span class="type-annotation">T</span></span>)?</span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Eliminates all except the first element from every consecutive group of equivalent
+elements from the <code>list</code> and returns the new logical length of the collection.
+  
+
+</dd>
+
+          <dt id="upperBound" class="callable">
+  <span class="name"><a href="../stl/upperBound.html">upperBound</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="upperBound-param-list"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">list</span>, </span><span class="parameter" id="upperBound-param-value"><span class="type-annotation">T</span> <span class="parameter-name">value</span>, {</span><span class="parameter" id="upperBound-param-compare"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span> <span class="parameter-name">compare</span>(<span class="parameter" id="param-"><span class="type-annotation">T</span>, </span><span class="parameter" id="param-"><span class="type-annotation">T</span></span>)?</span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.flutter.dev/flutter/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Returns the index of the first element in the <code>list</code> that is strictly greater than <code>value</code>.
+  
+
+</dd>
+
       </dl>
     </section>
 
 
+    <section class="summary offset-anchor" id="exceptions">
+      <h2>Exceptions / Errors</h2>
+      <dl>
+          <dt id="DomainError">
+  <span class="name "><a href="../stl/DomainError-class.html">DomainError</a></span> 
+
+</dt>
+<dd>
+  Thrown when a mathematical function is evaluated outside its defined domain.
+</dd>
+
+          <dt id="InvalidArgument">
+  <span class="name "><a href="../stl/InvalidArgument-class.html">InvalidArgument</a></span> 
+
+</dt>
+<dd>
+  Thrown when an invalid argument is passed to a function.
+</dd>
+
+          <dt id="LengthError">
+  <span class="name "><a href="../stl/LengthError-class.html">LengthError</a></span> 
+
+</dt>
+<dd>
+  Thrown when an object would exceed its maximum permitted length.
+</dd>
+
+          <dt id="LogicError">
+  <span class="name "><a href="../stl/LogicError-class.html">LogicError</a></span> 
+
+</dt>
+<dd>
+  Base class for errors that can be detected before the program executes.
+</dd>
+
+          <dt id="OutOfRange">
+  <span class="name "><a href="../stl/OutOfRange-class.html">OutOfRange</a></span> 
+
+</dt>
+<dd>
+  Thrown when an index or value is out of the valid range.
+</dd>
+
+          <dt id="OverflowError">
+  <span class="name "><a href="../stl/OverflowError-class.html">OverflowError</a></span> 
+
+</dt>
+<dd>
+  Thrown when a mathematical computation causes an arithmetic overflow.
+</dd>
+
+          <dt id="RuntimeError">
+  <span class="name "><a href="../stl/RuntimeError-class.html">RuntimeError</a></span> 
+
+</dt>
+<dd>
+  Base class for errors that occur during program execution.
+</dd>
+
+          <dt id="StdException">
+  <span class="name "><a href="../stl/StdException-class.html">StdException</a></span> 
+
+</dt>
+<dd>
+  Base class for all STL standard exceptions.
+</dd>
+
+          <dt id="StdRangeError">
+  <span class="name "><a href="../stl/StdRangeError-class.html">StdRangeError</a></span> 
+
+</dt>
+<dd>
+  Thrown when a mathematical computation produces a result that exceeds the representable range.
+</dd>
+
+          <dt id="UnderflowError">
+  <span class="name "><a href="../stl/UnderflowError-class.html">UnderflowError</a></span> 
+
+</dt>
+<dd>
+  Thrown when a mathematical computation causes an arithmetic underflow.
+</dd>
+
+      </dl>
+    </section>
   </div> <!-- /.main-content -->
   <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
     <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
@@ -578,7 +1724,7 @@ when both <code>T1</code> and <code>T2</code> happen to extend <code>Comparable<
 <footer>
   <span class="no-break">
     stl
-      0.3.6
+      0.5.2
   </span>
   
 </footer>

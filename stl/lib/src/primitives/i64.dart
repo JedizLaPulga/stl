@@ -1,12 +1,10 @@
 /// A 64-bit signed integer primitive.
-extension type const I64
-/// Instantiates a new [I64] spanning a strictly bounded 64-bit value.
-(
-  /// The strictly bounded primitive underlying value.
+extension type const I64._(/// The strictly bounded primitive underlying value.
   int
-  value
-)
-    implements int {
+  value) implements int  {
+  /// Instantiates a new [I64] spanning a strictly bounded primitive value.
+  const I64(this.value);
+
   /// The minimum representable value.
   static const I64 min = I64(-9223372036854775808);
   /// The maximum representable value.

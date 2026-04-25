@@ -2,313 +2,120 @@ import 'package:stl/stl.dart';
 
 void main() {
   print('====================================================');
-  print('    💎 STL MEGA SHOWCASE & ARCHITECTURE ALBUM');
+  print('    💎 STL SHOWCASE & ARCHITECTURE');
   print('====================================================\n');
 
-  print(eulerMascheroni);
-  print(ln2);
-  print(sqrt2);
-  print(log2e);
-
   // ========================================
-  // 1. DYNAMIC ARRAYS & MEMORY
+  // 1. COLLECTIONS (2 Examples)
   // ========================================
-  print('>>> 1. CORE ARRAYS & SINGLY-LINKED LISTS <<<\n');
+  print('>>> 1. COLLECTIONS <<<\n');
+  
+  // Example 1: Vector (Dynamic Contiguous Array)
+  final vec = Vector<String>(['Alpha', 'Bravo', 'Charlie']);
+  vec.pushBack('Delta');
+  print('• Vector: $vec (Size: ${vec.size()})');
 
-  final vec = Vector<String>(['Alpha', 'Bravo', 'Charlie', 'Delta']);
-  print('• Vector initialized: ~vec evaluates to ${~vec}');
-
-  // Appending and checking limits
-  vec.pushBack('Echo');
-  print('• Memory bounds strictly managed. Vector size is ${vec.size()}');
-
-  // Vector advanced operations (assigning blocks of memory)
-  final secondaryVec = Vector<String>([]);
-  secondaryVec.assign(3, 'EmptySlot');
-  print('• Vectors support raw memory block assigns: $secondaryVec');
-
-  // ForwardList excels at fast shifting and removal algorithms
-  print('\n[Converting Vector into a ForwardList]');
-  final list = ForwardList<String>.from(vec);
-
-  // ForwardList allows ultra-fast manipulations without resizing arrays
-  list.insertAfter(1, 'Bravo-Two');
-  list.removeIf((val) => val.startsWith('C')); // Removes "Charlie" immediately
-  list.pushFront('Zulu');
-  print('• ForwardList after O(1) shifts: $list');
-
-  // ForwardList can inherently detect and crush contiguous duplicates
-  list.pushFront('Zulu');
-  list.pushFront('Zulu');
-  list.unique();
-  print('• List crushed duplicates instantly: $list\n');
-
-  // SList (Doubly-Linked List) natively allows O(1) ops on both ends without being contiguous
-  print('\n[SList (Doubly-Linked List)]');
-  final dList = SList<int>.from([10, 20, 30]);
-  dList.pushFront(5);
-  dList.pushBack(40);
-  print('• SList after O(1) front/back manipulation: $dList\n');
-
-  // ========================================
-  // 2. ADAPTERS (Deque, Queue, Stack)
-  // ========================================
-  print('>>> 2. CONTAINER ADAPTERS (LIFO/FIFO) <<<\n');
-
-  // Deque serves as the legendary backbone for stacks and queues
-  final deque = Deque<int>.from([10, 20, 30, 40]);
-  print('• Deque Backbone: $deque');
-
-  // Deque supports random access AND double-ended insertions
-  deque.pushFront(5);
-  deque.pushBack(50);
-  print('• Deque after O(1) double-ended operations: $deque\n');
-
-  // 🥞 Stack natively uses Deque logic to restrict access to LIFO (Last-In, First-Out)
-  final stack1 = Stack<int>.from(deque);
-  final stack2 = Stack<int>.from([999, 888]);
-  stack1.push(99);
-  print('• Stack 1 spawned from Deque. Pushed 99.');
-  print('  Top of Stack 1 is ${stack1.top} (Ready to pop: ${stack1.pop()})');
-
-  print('\n[Swapping entire Stacks instantly!]');
-  stack1.swap(stack2); // Swaps underlying structures immediately
-  print('  Stack 1 is now strictly processing: $stack1');
-  print('  Stack 2 inherited the massive chain: $stack2\n');
-
-  // 🚏 Queue restricts access to FIFO (First-In, First-Out)
-  final queue = Queue<int>.from(deque);
-  queue.push(100);
-  print('• Queue spawned from original Deque. Pushed 100.');
-  print(
-    '  Front of Queue is ${queue.front} (Ready to strictly FIFO pop: ${queue.pop()})\n',
-  );
-
-  // ========================================
-  // 3. MATHEMATICAL SETS (O(1) Lookups & Trees)
-  // ========================================
-  print('>>> 3. ASSOCIATIVE SETS & TREES <<<\n');
-
-  // Creating unique arrays
-  final rawData = ['Apple', 'Banana', 'Apple', 'Cherry', 'Banana', 'Date'];
-
-  // 1. Standard Set (Insertion Ordered)
-  final orderedSet = Set<String>.from(rawData);
-  print('• Standard Set (Preserves Insertion): $orderedSet'); // Duplicates gone
-
-  // 2. HashSet (Unordered, Hyper-Optimized O(1))
-  final hashSet = HashSet<String>.from(rawData);
-  print('• HashSet (No guaranteed order, raw speed): ${hashSet.toList()}');
-
-  // 3. SortedSet (Self-balancing Binary Search Tree)
-  // Let's sort them strictly by string length, descending!
-  final treeSet = SortedSet<String>.from(
-    rawData,
-    (a, b) => b.length.compareTo(a.length),
-  );
-  print('• SortedSet (Autonomous custom sorting): $treeSet');
-
-  // Set Algebra (Intersections across different sets)
-  final exoticFruits = Set<String>.from(['Cherry', 'Mango', 'Banana', 'Kiwi']);
-  final intersection = orderedSet.intersection(exoticFruits);
-  print(
-    '• Intersection of orderedSet and exoticFruits: ${intersection.toList()}',
-  );
-
-  final difference = orderedSet.difference(exoticFruits);
-  print('• Difference (Apples and Dates remain!): ${difference.toList()}\n');
-
-  // ========================================
-  // 3.5. NEW ASSOCIATIVE CONTAINERS (0.4.6)
-  // ========================================
-  print('>>> 3.5. SORTED MAPS & MULTIMAPS <<<\n');
-
+  // Example 2: SortedMap (Auto-balancing associative container)
   final sortedMap = SortedMap<int, String>();
   sortedMap.insert(3, 'Charlie');
   sortedMap.insert(1, 'Alpha');
   sortedMap.insert(2, 'Bravo');
-  print('• SortedMap strictly ordered by key:');
-  for (final pair in sortedMap) {
-    print('  [${pair.first}] -> ${pair.second}');
-  }
+  print('• SortedMap (Auto-sorted keys): $sortedMap\n');
 
-  final multiMap = MultiMap<String, String>();
-  multiMap.insert('Fruit', 'Apple');
-  multiMap.insert('Fruit', 'Banana');
-  multiMap.insert('Vegetable', 'Carrot');
-  print('\n• MultiMap allowing duplicate keys:');
-  for (final pair in multiMap) {
-    print('  [${pair.first}] -> ${pair.second}');
-  }
-  print('');
 
   // ========================================
-  // 4. UTILITIES (Pair & PriorityQueue)
+  // 2. RANGES (2 Examples)
   // ========================================
-  print('>>> 4. UTILITIES & PRIORITY HEAPS <<<\n');
+  print('>>> 2. C++23 FUNCTIONAL RANGES <<<\n');
 
-  // A Pair lets us strictly bind heterogeneous types (ID: String, Priority: int)
-  final task1 = makePair('Login System Task', 2);
-  final task2 = makePair('Update UI Colors Task', 5);
-  final task3 = makePair(
-    'Critical Database Migration',
-    1,
-  ); // 1 = highest priority
+  // Example 1: NumberLine (Iota / sequence generator)
+  final evens = NumberLine(0, 10, step: 2);
+  print('• NumberLine (Evens 0 to 10): ${evens.toList()}');
 
-  print('• Stored compound types smoothly: $task3');
+  // Example 2: ZipRange (Parallel Iteration)
+  final keys = ['ID', 'Status'];
+  final values = [99, 'Active'];
+  final zipped = ZipRange(keys, values);
+  print('• ZipRange merged outputs: ${zipped.toList()}\n');
 
-  // Let's create a custom PriorityQueue (Min-Heap) that reads the Pair's second value (the integer priority)
-  final pQueue = PriorityQueue<Pair<String, int>>((a, b) {
-    // Standard min-heap logic: b compared to a.
-    return b.second.compareTo(a.second);
-  });
-
-  pQueue.push(task1);
-  pQueue.push(task2);
-  pQueue.push(task3);
-
-  print('\n• Processing PriorityQueue via Heap Extraction:');
-  while (pQueue.isNotEmpty) {
-    final highestTarget = pQueue.pop();
-    print(
-      '  -> Processing (Priority ${highestTarget.second}): ${highestTarget.first}',
-    );
-  }
-  print('');
-
-  // StringView for zero-allocation substring passing
-  print('\n[StringView Memory Efficiency]');
-  final largeDocument = 'User: Administrator | Status: Active | Priority: High';
-  final statusView = StringView.substring(largeDocument, 30, 36);
-  print('• StringView parsed status "$statusView" directly from memory without allocations!\n');
 
   // ========================================
-  // 5. C++23 RANGES & PIPELINING 🧬
+  // 3. UTILITIES (2 Examples)
   // ========================================
-  print('>>> 5. C++23 FUNCTIONAL RANGES <<<\n');
+  print('>>> 3. UTILITIES <<<\n');
 
-  // NumberLine: Generate integers dynamically without loading memory arrays
-  final series = NumberLine(0, 100, step: 25);
-  print('• NumberLine (0 to 100, step 25): ${series.toList()}');
+  // Example 1: Pair (Heterogeneous Tuple)
+  final task = makePair('Critical Bug', 1);
+  print('• Pair: ${task.first} (Priority: ${task.second})');
 
-  // RepeatRange: Repeat a state machine value strictly
-  final defaultConfigs = RepeatRange('Config_v1');
-  final servers = defaultConfigs.take(3).toList();
-  print('• RepeatRange limits to 3 servers: $servers');
+  // Example 2: Optional (Safe null abstraction)
+  final opt = Optional<String>.of('Success');
+  print('• Optional value: ${opt.valueOr('Fallback')}\n');
 
-  // ZipRange: Bind two parallel arrays perfectly (Map creation)
-  final headers = Vector<String>(['id', 'status', 'token']);
-  final values = [9912, 'Active', 'xyz-888-abc'];
-
-  final zip = ZipRange(headers, values);
-  print('\n• ZipRange merging 2 vectors strictly:');
-  for (final pair in zip) {
-    print('  ${pair.first}: ${pair.second}');
-  }
-
-  // ChunkRange & Stack relationship pipeline!
-  // Let's chunk a large array of numbers into batches of 3,
-  // then push those fragmented packets into a Stack for LIFO processing!
-  print('\n[ChunkRange -> Stack Relationship Pipeline]');
-  final byteData = NumberLine(
-    1,
-    10,
-  ).toList(); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-  final chunks = ChunkRange(byteData, 3); // [[1,2,3], [4,5,6], [7,8,9], [10]]
-
-  final packetStack = Stack<List<int>>();
-  for (final packet in chunks) {
-    packetStack.push(packet);
-  }
-
-  // Read them back strictly in reverse!
-  print('• Stack processing downloaded chunks strictly backwards:');
-  while (packetStack.isNotEmpty) {
-    print('  -> Decompressing Packet: ${packetStack.pop()}');
-  }
-
-  // CartesianRange: Intersect two properties
-  final suits = ['♠️', '♥️', '♣️', '♦️'];
-  final royals = ['Jack', 'Queen', 'King', 'Ace'];
-  final deckSegment = CartesianRange(royals, suits);
-
-  print(
-    '\n• CartesianRange generates combinations (Showing 10 from 16 matrix tiles):',
-  );
-  print('  ${deckSegment.take(10).toList()}');
-
-  // New C++20/23 Functional Ranges Pipeline!
-  print('\n[Pipeline: Filter -> Transform -> Drop -> Take]');
-  final rawDataNodes = NumberLine(1, 20).toList();
-  // Filter even numbers
-  final evens = FilterRange(rawDataNodes, (int n) => n % 2 == 0);
-  // Transform them by multiplying by 10
-  final tens = TransformRange<int, int>(evens, (int n) => n * 10);
-  // Drop the first 2 (20, 40)
-  final droppedTens = DropRange(tens, 2);
-  // Take the next 3 (60, 80, 100)
-  final finalNodes = TakeRange(droppedTens, 3);
-  print('• Raw Nodes: $rawDataNodes');
-  print(
-    '• After Pipeline (Filter evens -> x10 -> Drop 2 -> Take 3): ${finalNodes.toList()}',
-  );
-
-  // JoinRange Showcase: Flattening fragmented chunks
-  final fragmentedData = ChunkRange(NumberLine(1, 10), 3);
-  final joinedData = JoinRange(fragmentedData);
-  print('\n• JoinRange reassembling chunks back into a contiguous flow:');
-  print('  Chunks: ${fragmentedData.toList()}');
-  print('  Joined: ${joinedData.toList()}');
-
-  // One final combination: PriorityQueue pushing Zipped Ranges!
-  print('\n[ZipRange -> PriorityQueue Pipeline]');
-  final userIds = [101, 105, 102];
-  final userLevels = [80, 99, 15]; // Level 99 is highest
-  final zippedUsers = ZipRange(userIds, userLevels);
-
-  // Custom Max-Heap
-  final levelHeap = PriorityQueue<Pair<int, int>>(
-    (a, b) => a.second.compareTo(b.second),
-  );
-
-  for (final userRecord in zippedUsers) {
-    levelHeap.push(userRecord);
-  }
-
-  print('• Highest level user gets processed first:');
-  while (levelHeap.isNotEmpty) {
-    var usr = levelHeap.pop();
-    print('  -> Processed User ${usr.first} (Level ${usr.second})');
-  }
-
-  // Final interaction: Deque -> Vector -> HashSet Unique Extractor
-  print('\n[Deque -> Vector -> HashSet Pipeline]');
-  final dirtyDeque = Deque<String>.from([
-    'Error',
-    'Warning',
-    'Log',
-    'Error',
-    'Error',
-    'Warning',
-  ]);
-  print('• Raw Server Logs in Deque: $dirtyDeque');
-
-  // Extract to Vector for processing
-  final logVector = Vector<String>(dirtyDeque.toList());
-  // Offload to HashSet to instantly destroy all duplicates with O(1) mathematical speed
-  final cleanSet = HashSet<String>.from(logVector);
-  print('• Extracted Unique Log Signatures instantly: ${cleanSet.toList()}');
 
   // ========================================
-  // 6. C++ <cmath> MATHEMATICS 🧮
+  // 4. MATH (4 Examples)
   // ========================================
-  print('\n>>> 6. C++ <cmath> MATHEMATICS <<<\n');
+  print('>>> 4. MATHEMATICS <<<\n');
 
-  print('• clamp(-5, 0, 10) safely bounds value to: ${clamp(-5, 0, 10)}');
-  print('• lerp(0, 100, 0.5) smoothly computes: ${lerp(0, 100, 0.5)}');
-  print('• hypot(3, 4) calculates 2D/3D Euclidean magnitude solidly: ${hypot(3, 4)}');
+  // Example 1: cmath clamp
+  print('• clamp(-5, 0, 10): ${clamp(-5, 0, 10)}');
 
-  print('\n====================================================');
-  print(' 🎉 END OF MEGA SHOWCASE');
+  // Example 2: cmath hypot
+  print('• hypot(3, 4): ${hypot(3, 4)}');
+
+  // Example 3: number_theory gcd
+  print('• gcd(48, 18): ${gcd(48, 18)}');
+
+  // Example 4: Complex numbers
+  final c1 = Complex(1, 2);
+  final c2 = Complex(3, 4);
+  print('• Complex Addition (1+2i) + (3+4i): ${c1 + c2}\n');
+
+
+  // ========================================
+  // 5. GEOMETRY (2 Examples)
+  // ========================================
+  print('>>> 5. GEOMETRY <<<\n');
+
+  // Example 1: Point
+  final pt1 = Point(x: 0, y: 0);
+  final pt2 = Point(x: 10, y: 10);
+  print('• Point Distance: ${pt1.distanceTo(pt2)}');
+
+  // Example 2: Rectangle (Shape Area)
+  final rect = Rectangle(center: pt1, width: 5, height: 4);
+  print('• Rectangle Area: ${rect.area}\n');
+
+
+  // ========================================
+  // 6. FUNCTIONAL (1 Example)
+  // ========================================
+  print('>>> 6. FUNCTIONAL <<<\n');
+
+  // Example 1: invoke and function objects
+  final mathOp = Plus<int>();
+  print('• Functional Plus operator (5 + 10): ${invoke(mathOp.call, positional: [5, 10])}\n');
+
+
+  // ========================================
+  // 7. RANDOM (New Feature)
+  // ========================================
+  print('>>> 7. RANDOM <<<\n');
+
+  // Custom Seeded Random Generator
+  final rand = StdRandom(42); 
+  print('• StdRandom Seeded Next(): ${rand.next()}');
+  
+  // Bounded Range
+  print('• StdRandom Bounded Range (10-50): ${rand.range(10, 50)}');
+  
+  // Flush (Discard next 5 states)
+  rand.flush(5);
+  print('• StdRandom after flushing 5 states: ${rand.next()}\n');
+
+
+  print('====================================================');
+  print(' 🌟 Click example/ for more examples on GitHub! 🌟');
   print('====================================================\n');
 }

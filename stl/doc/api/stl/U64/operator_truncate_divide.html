@@ -82,7 +82,9 @@ must be a finite integer (not an infinity or <a href="https://api.flutter.dev/fl
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">U64 operator ~&#47;(U64 other) {
-  if (other.value == 0) throw UnsupportedError(&#39;Division by zero&#39;);
+  if (other.value == 0) {
+    throw UnsupportedError(&#39;Division by zero&#39;);
+  }
   final bi1 = BigInt.from(value).toUnsigned(64);
   final bi2 = BigInt.from(other.value).toUnsigned(64);
   return U64((bi1 ~&#47; bi2).toInt().toUnsigned(64));
@@ -114,7 +116,7 @@ must be a finite integer (not an infinity or <a href="https://api.flutter.dev/fl
 <footer>
   <span class="no-break">
     stl
-      0.3.6
+      0.5.2
   </span>
   
 </footer>

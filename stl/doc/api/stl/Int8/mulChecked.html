@@ -72,7 +72,9 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Int8 mulChecked(Int8 other) {
   final result = value * other.value;
-  if (result &gt; 127 || result &lt; -128) throw StateError(&#39;Int8 multiplication overflow&#39;);
+  if (result &gt; 127 || result &lt; -128){
+    throw StateError(&#39;Int8 multiplication overflow&#39;);
+  }
   return Int8.from(result);
 }</code></pre>
 </section>
@@ -102,7 +104,7 @@
 <footer>
   <span class="no-break">
     stl
-      0.3.6
+      0.5.2
   </span>
   
 </footer>

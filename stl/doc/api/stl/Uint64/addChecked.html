@@ -62,17 +62,20 @@
 
     </section>
     
+<section class="desc markdown">
+  <p>Adds <code>other</code> catching overflow.</p>
+</section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Uint64 addChecked(Uint64 other) {
-   final res = value + other.value;
-   if ((res ^ 0x8000000000000000) &lt; (value ^ 0x8000000000000000)) {
-      throw StateError(&#39;Uint64 addition overflow&#39;);
-   }
-   return Uint64.from(res);
+  final res = value + other.value;
+  if ((res ^ 0x8000000000000000) &lt; (value ^ 0x8000000000000000)) {
+    throw StateError(&#39;Uint64 addition overflow&#39;);
+  }
+  return Uint64.from(res);
 }</code></pre>
 </section>
 
@@ -101,7 +104,7 @@
 <footer>
   <span class="no-break">
     stl
-      0.3.6
+      0.5.2
   </span>
   
 </footer>

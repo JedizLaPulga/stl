@@ -1,12 +1,10 @@
 /// A 32-bit signed integer primitive.
-extension type const I32
-/// Instantiates a new [I32] spanning a strictly bounded 32-bit value.
-(
-  /// The strictly bounded primitive underlying value.
+extension type const I32._(/// The strictly bounded primitive underlying value.
   int
-  value
-)
-    implements int {
+  value) implements int  {
+  /// Instantiates a new [I32] spanning a strictly bounded primitive value.
+  const I32(this.value);
+
   /// The minimum representable value.
   static const I32 min = I32(-2147483648);
   /// The maximum representable value.

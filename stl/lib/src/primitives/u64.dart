@@ -1,12 +1,10 @@
 /// A 64-bit unsigned integer primitive.
-extension type const U64
-/// Instantiates a new [U64] spanning a strictly bounded 64-bit unsigned value.
-(
-  /// The strictly bounded primitive underlying value.
+extension type const U64._(/// The strictly bounded primitive underlying value.
   int
-  value
-)
-    implements int {
+  value) implements int  {
+  /// Instantiates a new [U64] spanning a strictly bounded primitive value.
+  const U64(this.value);
+
   /// The minimum representable value.
   static const U64 min = U64(0);
 

@@ -79,7 +79,8 @@ print(((-9) &gt;&gt;&gt; 2).toRadixString(2)); // 111...1011 -&gt; 001...1110 (&
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">U16 operator &gt;&gt;&gt;(int shiftAmount) =&gt; U16((value &gt;&gt;&gt; shiftAmount).toUnsigned(16));</code></pre>
+  <pre class="language-dart"><code class="language-dart">U16 operator &gt;&gt;&gt;(int shiftAmount) =&gt;
+    U16((value &gt;&gt;&gt; shiftAmount).toUnsigned(16));</code></pre>
 </section>
 
 
@@ -107,7 +108,7 @@ print(((-9) &gt;&gt;&gt; 2).toRadixString(2)); // 111...1011 -&gt; 001...1110 (&
 <footer>
   <span class="no-break">
     stl
-      0.3.6
+      0.5.2
   </span>
   
 </footer>

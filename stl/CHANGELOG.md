@@ -1,3 +1,7 @@
+# 0.5.2
+- **New Feature:** Implemented `<random>` module providing a native `StdRandom` class for C++-style random number generation. Features support for deterministic seeding (`seed()`), bounded integer ranges (`range()`), and state advancement (`flush()`).
+- **Documentation:** Achieved perfect 100.0% API documentation coverage (1184 out of 1184 API elements fully documented).
+
 # 0.5.1
 - **New Feature:** Implemented `<functional>` module containing C++ standard function objects (`Plus`, `Minus`, `EqualTo`, `LogicalAnd`, `BitAnd`, etc.) and `invoke` utility.
 - **New Feature:** Implemented `<stdexcept>` module providing native Dart mapping for C++ standard exceptions (`LogicError`, `RuntimeError`, `InvalidArgument`, `OutOfRange`, etc.).

@@ -73,7 +73,8 @@ or if either value is a NaN value like <a href="https://api.flutter.dev/flutter/
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">bool operator &gt;=(U64 other) =&gt; (value ^ 0x8000000000000000) &gt;= (other.value ^ 0x8000000000000000);</code></pre>
+  <pre class="language-dart"><code class="language-dart">bool operator &gt;=(U64 other) =&gt;
+    (value ^ 0x8000000000000000) &gt;= (other.value ^ 0x8000000000000000);</code></pre>
 </section>
 
 
@@ -101,7 +102,7 @@ or if either value is a NaN value like <a href="https://api.flutter.dev/flutter/
 <footer>
   <span class="no-break">
     stl
-      0.3.6
+      0.5.2
   </span>
   
 </footer>
