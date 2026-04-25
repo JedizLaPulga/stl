@@ -10,6 +10,8 @@ library;
 /// Analogous to `std::chrono::steady_clock` in C++.
 /// This is specifically designed for measuring time intervals precisely.
 class SteadyClock {
+  SteadyClock._();
+
   // A globally running stopwatch to simulate monotonic time since program start.
   static final Stopwatch _stopwatch = Stopwatch()..start();
 
@@ -24,6 +26,8 @@ class SteadyClock {
 /// Analogous to `std::chrono::system_clock` in C++.
 /// This clock tracks the current date and time and can be affected by system clock changes.
 class SystemClock {
+  SystemClock._();
+
   /// Returns a [TimePoint] representing the current system time since Unix Epoch.
   static TimePoint now() {
     return TimePoint(Duration(microseconds: DateTime.now().microsecondsSinceEpoch));
