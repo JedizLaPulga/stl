@@ -1,3 +1,7 @@
+# 0.5.4
+- **New Feature:** Massively expanded `<cmath>` module with 20 new functions: `sign`, `degrees`, `radians`, `fma`, `smoothstep`, `remap`, `saturate`, `step`, `cbrt`, `log2`, `log10`, `trunc`, `fmod`, `fract`, `copySign`, `nearlyEqual`, `square`, `cube`, `isPowerOfTwo`, and `nextPowerOfTwo`. Full API documentation, test coverage, and example coverage for all additions.
+- **Documentation:** Achieved perfect API documentation coverage for all newly implemented functions.
+
 # 0.5.3
 - **New Feature:** Implemented `<chrono>` module providing highly portable, C++-style `SystemClock` and `SteadyClock` APIs for time tracking and precise benchmarking across Native and Web platforms.
 - **New Feature:** Implemented `<ratio>` module via `Ratio` class providing exact rational arithmetic (`num`/`den`) and standard SI prefix constants (`milli`, `micro`, `nano`, etc.) for type-safe time duration computations.
