@@ -1,6 +1,24 @@
+# 0.5.5
+- **New Feature:** Massively expanded `<cmath>` module from 20 to **100 functions**, covering the full C++23 `<cmath>` surface and ISO/IEC 29124 special mathematical functions. All function names and semantics follow ISO 80000-2 and IEC 60559. New additions:
+  - **Trigonometric (ISO 80000-2):** `sin`, `cos`, `tan`, `asin`, `acos`, `atan`, `atan2`
+  - **Hyperbolic (ISO 80000-2):** `sinh`, `cosh`, `tanh`, `asinh`, `acosh`, `atanh`
+  - **Exponential & Logarithmic:** `exp`, `exp2`, `expm1`, `log`, `log1p`
+  - **Power & Root:** `pow`, `sqrt`
+  - **Rounding (IEC 60559):** `floor`, `ceil`, `round`, `nearbyInt`
+  - **Arithmetic:** `abs`, `fdim`, `fmax`, `fmin`
+  - **Floating-Point Decomposition:** `remainder`, `scalbn`, `ldexp`, `frexp`, `modf`, `ilogb`, `logb`
+  - **Floating-Point Classification (IEC 60559):** `isNaN`, `isFinite`, `isInfinite`, `isNormal`, `signBit`
+  - **Error & Gamma Functions:** `erf`, `erfc`, `tgamma`, `lgamma`
+  - **Interpolation Extras:** `smootherstep`, `quinticStep`, `bilerp`, `pingpong`, `moveTowards`
+  - **Angle & Signal Utilities:** `wrapAngle`, `angleDiff`, `sinc`, `normalizedSinc`
+  - **Combinatorial & Integer Math:** `factorial`, `fallingFactorial`, `risingFactorial`, `binomial`
+  - **Special Mathematical Functions (ISO/IEC 29124 / C++17):** `beta`, `legendre`, `assocLegendre`, `hermite`, `laguerre`, `assocLaguerre`, `riemannZeta`, `sphBessel`, `sphNeumann`, `sphLegendre`, `cylBesselJ`, `cylBesselI`, `cylBesselK`, `cylNeumann`, `expInt`, `compEllint1`, `compEllint2`, `compEllint3`, `ellint1`, `ellint2`, `ellint3`
+- **Documentation:** Achieved perfect API documentation coverage for all 100 functions with ISO/C++ standard cross-references.
+
 # 0.5.4
 - **New Feature:** Massively expanded `<cmath>` module with 20 new functions: `sign`, `degrees`, `radians`, `fma`, `smoothstep`, `remap`, `saturate`, `step`, `cbrt`, `log2`, `log10`, `trunc`, `fmod`, `fract`, `copySign`, `nearlyEqual`, `square`, `cube`, `isPowerOfTwo`, and `nextPowerOfTwo`. Full API documentation, test coverage, and example coverage for all additions.
 - **Documentation:** Achieved perfect API documentation coverage for all newly implemented functions.
+
 
 # 0.5.3
 - **New Feature:** Implemented `<chrono>` module providing highly portable, C++-style `SystemClock` and `SteadyClock` APIs for time tracking and precise benchmarking across Native and Web platforms.

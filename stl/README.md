@@ -7,7 +7,7 @@
 
   [![License: MIT](https://img.shields.io/badge/License-MIT-ff69b4.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
   [![Dart](https://img.shields.io/badge/Dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev/)
-  [![Pub Version](https://img.shields.io/badge/pub-0.5.4-blueviolet.svg?style=for-the-badge)](https://pub.dev/packages/stl)
+  [![Pub Version](https://img.shields.io/badge/pub-0.5.5-blueviolet.svg?style=for-the-badge)](https://pub.dev/packages/stl)
 
   > 🚀 **A highly-versatile, performance-driven bank of data collections, structures, and algorithmic ranges for the Dart and Flutter ecosystem.**
 
@@ -68,7 +68,7 @@ Instead of strictly separating containers, mathematics, and utilities, here is a
 | 📍 **`Point`** | ![](https://img.shields.io/badge/Geometry-blue) | Represents an exact 2D coordinate `(x, y)` in Euclidean space utilizing precise vector math. |
 | 👯 **`Pair<T1, T2>`** | ![](https://img.shields.io/badge/Utility-green) | Native C++ utility structure to hold heterogeneous objects. Features gorgeous Dart 3 Record translation. |
 | 🔢 **`I8`** -> **`I64`** | ![](https://img.shields.io/badge/Primitive-red) | Zero-cost signed integer wrappers. Provides automatic arithmetic wrap-around and strict bounds. |
-| 🧮 **`cmath`** | ![](https://img.shields.io/badge/Math-orange) | Missing mathematically safe operations including `clamp()`, `lerp()`, and overflow-safe robust `hypot()` updated with over 20 new functions as part of the project target-200. |
+| 🧮 **`cmath`** | ![](https://img.shields.io/badge/Math-orange) | Missing mathematically safe operations including `clamp()`, `lerp()`, and overflow-safe robust `hypot()` updated with over 100 new functions as part of the project target-200. |
 | 🗺️ **`HashMap<K, V>`** | ![](https://img.shields.io/badge/Container-purple) | Unordered key-value map utilizing a fast hash table under the hood, matching `std::unordered_map`. |
 | ⭕ **`Circle`** | ![](https://img.shields.io/badge/Geometry-blue) | Computes absolute Pi area boundaries natively supporting affine transformations via CRTP. |
 | 🔍 **`<algorithm>`** | ![](https://img.shields.io/badge/Algorithm-cyan) | Brings `lowerBound()`, `rotate()`, `nextPermutation()` and more to dynamically mutate any `Iterable`. |
