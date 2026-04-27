@@ -1,3 +1,18 @@
+# 0.5.6
+- **New Feature:** Massively expanded `<algorithm>` module from 13 to **60+ functions**, implementing the near-complete C++23 `<algorithm>` standard surface. All function names and semantics follow ISO/IEC 14882:2023. New additions:
+  - **Non-modifying Sequence Operations:** `allOf`, `anyOf`, `noneOf` (universal/existential quantifiers); `forEach`, `forEachN` (element-wise application); `count`, `countIf` (element counting); `mismatch` (range divergence); `find`, `findIf`, `findIfNot` (element search); `findEnd` (last subsequence occurrence); `findFirstOf` (first element from a target set); `adjacentFind` (consecutive-duplicate search); `search`, `searchN` (subsequence and run-of-N search)
+  - **Modifying Sequence Operations:** `copy`, `copyIf`, `copyN`, `copyBackward` (copy variants); `fill`, `fillN` (range filling); `transform`, `transformBinary` (unary and binary element transformation); `generate`, `generateN` (generator-based filling); `replace`, `replaceIf`, `replaceCopy`, `replaceCopyIf` (replacement variants); `remove`, `removeIf`, `removeCopy`, `removeCopyIf` (removal and compaction); `shuffle` (Fisher-Yates in-place shuffle); `sample` (reservoir sampling — selects N random elements); `swapRanges` (swap two equal-length ranges)
+  - **Sorting Operations:** `isSorted`, `isSortedUntil` (sorted-order inspection); `stableSort` (order-preserving merge sort — $O(N \log^2 N)$); `nthElement` (quickselect — $O(N)$ average); `partialSort` (smallest-N in sorted order)
+  - **Min / Max Operations:** `minElement`, `maxElement`, `minMaxElement` (single-pass min, max, and both via `Pair`)
+  - **Comparison Operations:** `equal` (element-wise range equality); `isPermutation` (multiset equivalence check); `lexicographicalCompare` (three-way lexicographic ordering)
+  - **Heap Operations:** `makeHeap` (build max-heap in-place); `pushHeap` (sift-up insert); `popHeap` (swap-top-to-end + sift-down); `sortHeap` (heapsort); `isHeap`, `isHeapUntil` (heap property inspection)
+  - **Partition Utilities:** `isPartitioned` (partition predicate check); `partitionCopy` (split into two lists via `Pair`); `partitionPoint` (binary-search partition boundary — $O(\log N)$)
+  - **Additional Set Operations:** `setSymmetricDifference` (elements in either but not both sorted ranges)
+  - **Merge Operations:** `merge` (merge two sorted ranges keeping all duplicates); `inplaceMerge` (merge two consecutive sorted sub-ranges in-place)
+  - **Utility:** `clampRange` (clamps every element of a list into `[low, high]`)
+- **New Example:** `example/algo.dart` — end-to-end showcase of algorithm + collections interplay covering search, sort, heap, partition, set ops, transform, and merge.
+- **Documentation:** Achieved perfect API documentation coverage for all 60+ functions, with C++23 standard cross-references and $O$ complexity annotations on every algorithm.
+
 # 0.5.5
 - **New Feature:** Massively expanded `<cmath>` module from 20 to **100 functions**, covering the full C++23 `<cmath>` surface and ISO/IEC 29124 special mathematical functions. All function names and semantics follow ISO 80000-2 and IEC 60559. New additions:
   - **Trigonometric (ISO 80000-2):** `sin`, `cos`, `tan`, `asin`, `acos`, `atan`, `atan2`
