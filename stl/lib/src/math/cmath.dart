@@ -1,44 +1,139 @@
 /// C++ `<cmath>` inspired mathematical algorithms.
 ///
 /// Provides robust, overflow-safe mathematical utilities missing natively in
-/// standard `dart:math` or requiring C++ idiom parity. Includes:
+/// standard `dart:math` or requiring C++ idiom parity. Function names and
+/// semantics follow ISO 80000-2, IEC 60559, and the C++23 `<cmath>` standard.
 ///
 /// **Interpolation & Mapping**
-/// - [clamp] — bounds a value between limits
-/// - [lerp] — linear interpolation
-/// - [smoothstep] — cubic Hermite smooth interpolation
+/// - [clamp] — bounds a value between limits (C++17 `std::clamp`)
+/// - [lerp] — linear interpolation (C++20 `std::lerp`)
+/// - [smoothstep] — cubic Hermite smooth interpolation (GLSL / GLM)
+/// - [smootherstep] — quintic C² smooth interpolation (Perlin)
+/// - [quinticStep] — quintic polynomial step 6t⁵ − 15t⁴ + 10t³
 /// - [remap] — map a value from one numeric range to another
 /// - [saturate] — clamp to the unit interval `[0, 1]`
+/// - [bilerp] — bilinear interpolation over a unit square
+/// - [pingpong] — triangle-wave bounce in `[0, length]`
+/// - [moveTowards] — step a value toward a target without overshoot
+///
+/// **Trigonometric (ISO 80000-2)**
+/// - [sin] — sine
+/// - [cos] — cosine
+/// - [tan] — tangent
+/// - [asin] — arc-sine (principal value, range `[−π/2, π/2]`)
+/// - [acos] — arc-cosine (principal value, range `[0, π]`)
+/// - [atan] — arc-tangent (principal value, range `(−π/2, π/2)`)
+/// - [atan2] — two-argument arc-tangent (range `(−π, π]`)
+///
+/// **Hyperbolic (ISO 80000-2)**
+/// - [sinh] — hyperbolic sine
+/// - [cosh] — hyperbolic cosine
+/// - [tanh] — hyperbolic tangent
+/// - [asinh] — inverse hyperbolic sine
+/// - [acosh] — inverse hyperbolic cosine
+/// - [atanh] — inverse hyperbolic tangent
 ///
 /// **Geometry & Trigonometry Helpers**
-/// - [hypot] — overflow-safe 2D/3D Euclidean distance
+/// - [hypot] — overflow-safe Euclidean norm (C++17 2- and 3-arg)
 /// - [degrees] — convert radians to degrees
 /// - [radians] — convert degrees to radians
+/// - [wrapAngle] — wrap angle into `[−π, π)`
+/// - [angleDiff] — shortest signed angular difference
+/// - [sinc] — unnormalised sinc: sin(x)/x, sinc(0) = 1
+/// - [normalizedSinc] — normalised sinc: sin(πx)/(πx), sinc(0) = 1
 ///
-/// **Arithmetic**
-/// - [sign] — signum function (−1, 0, or 1)
-/// - [fma] — fused multiply-add `a × b + c`
-/// - [square] — `x²`
-/// - [cube] — `x³`
-/// - [cbrt] — cube root ∛x
-///
-/// **Logarithms**
+/// **Exponential & Logarithmic (ISO 80000-2)**
+/// - [exp] — eˣ
+/// - [exp2] — 2ˣ
+/// - [expm1] — eˣ − 1, accurate near zero
+/// - [log] — natural logarithm ln(x)
 /// - [log2] — base-2 logarithm
 /// - [log10] — base-10 logarithm
+/// - [log1p] — ln(1 + x), accurate near zero
 ///
-/// **Floating-Point Utilities**
+/// **Power & Root**
+/// - [pow] — general power xʸ
+/// - [sqrt] — square root √x
+/// - [cbrt] — cube root ∛x (handles negative x)
+/// - [square] — x²
+/// - [cube] — x³
+///
+/// **Rounding (IEC 60559)**
+/// - [floor] — largest integer ≤ x
+/// - [ceil] — smallest integer ≥ x
+/// - [round] — nearest integer, half away from zero
+/// - [nearbyInt] — nearest integer, ties to even (banker's rounding)
 /// - [trunc] — truncate toward zero
-/// - [fmod] — floating-point remainder (same sign as dividend)
-/// - [fract] — fractional part
-/// - [copySign] — apply the sign of one value to another
+///
+/// **Arithmetic**
+/// - [sign] — signum: −1, 0, or 1
+/// - [fma] — fused multiply-add a × b + c
+/// - [fdim] — positive difference max(x − y, 0)
+/// - [fmax] — floating-point maximum (NaN-propagating)
+/// - [fmin] — floating-point minimum (NaN-propagating)
+/// - [abs] — absolute value |x|
+///
+/// **Floating-Point Decomposition & Manipulation**
+/// - [fmod] — floating-point remainder, sign = sign(dividend)
+/// - [remainder] — IEC 60559 remainder (round-to-nearest quotient)
+/// - [fract] — fractional part (sign = sign(x))
+/// - [copySign] — magnitude of x with sign of y
+/// - [scalbn] — x × 2ⁿ (efficient binary scaling)
+/// - [ldexp] — alias for scalbn
+/// - [frexp] — split x into normalised fraction + exponent
+/// - [modf] — split x into integer and fractional parts
+/// - [ilogb] — unbiased base-2 exponent as int
+/// - [logb] — unbiased base-2 exponent as double
+///
+/// **Floating-Point Classification (IEC 60559)**
+/// - [isNaN] — test for NaN
+/// - [isFinite] — test for finite (not NaN or infinite)
+/// - [isInfinite] — test for ±∞
+/// - [isNormal] — test for normal (not zero, subnormal, NaN, or ∞)
+/// - [signBit] — true if the sign bit is set (includes −0.0)
 /// - [nearlyEqual] — epsilon-based approximate equality
 ///
+/// **Error & Gamma Functions (C++17 special functions)**
+/// - [erf] — error function erf(x)
+/// - [erfc] — complementary error function erfc(x) = 1 − erf(x)
+/// - [tgamma] — gamma function Γ(x)
+/// - [lgamma] — natural log of |Γ(x)|
+///
+/// **Combinatorial & Integer Math**
+/// - [factorial] — n! (exact for n ≤ 20, double for larger)
+/// - [fallingFactorial] — falling factorial x⁽ⁿ⁾ = x(x−1)…(x−n+1)
+/// - [risingFactorial] — rising factorial x⁽ⁿ⁾ (Pochhammer symbol)
+/// - [binomial] — binomial coefficient C(n, k)
+///
 /// **Step & Signals**
-/// - [step] — Heaviside step function
+/// - [step] — Heaviside unit step θ(x − edge)
 ///
 /// **Bit / Integer Utilities**
-/// - [isPowerOfTwo] — test whether an integer is a power of two
+/// - [isPowerOfTwo] — test whether a positive integer is a power of two
 /// - [nextPowerOfTwo] — smallest power of two ≥ n
+///
+/// **Special Mathematical Functions (ISO 80000-2 / C++17)**
+/// - [beta] — Euler beta function B(a, b) = Γ(a)Γ(b)/Γ(a+b)
+/// - [legendre] — Legendre polynomial Pₙ(x)
+/// - [assocLegendre] — associated Legendre polynomial Pₙᵐ(x)
+/// - [hermite] — (probabilist) Hermite polynomial Hₙ(x)
+/// - [laguerre] — Laguerre polynomial Lₙ(x)
+/// - [assocLaguerre] — associated Laguerre polynomial Lₙᵐ(x)
+/// - [riemannZeta] — Riemann zeta function ζ(s)
+/// - [sphBessel] — spherical Bessel function of the first kind jₙ(x)
+/// - [sphNeumann] — spherical Bessel function of the second kind yₙ(x)
+/// - [sphLegendre] — real spherical harmonic Yₙᵐ(θ, φ)
+/// - [cylBesselJ] — cylindrical Bessel J (first kind, Jν(x))
+/// - [cylBesselI] — modified cylindrical Bessel I (Iν(x))
+/// - [cylBesselK] — modified cylindrical Bessel K (Kν(x))
+/// - [cylNeumann] — cylindrical Neumann Yν(x) (second kind)
+/// - [expInt] — exponential integral Ei(x)
+/// - [compEllint1] — complete elliptic integral of the first kind K(k)
+/// - [compEllint2] — complete elliptic integral of the second kind E(k)
+/// - [compEllint3] — complete elliptic integral of the third kind Π(n, k)
+/// - [ellint1] — incomplete elliptic integral of the first kind F(φ, k)
+/// - [ellint2] — incomplete elliptic integral of the second kind E(φ, k)
+/// - [ellint3] — incomplete elliptic integral of the third kind Π(n, φ, k)
 library;
 
 import 'dart:math' as math;
