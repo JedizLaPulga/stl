@@ -1152,23 +1152,24 @@ double assocLaguerre(int n, int m, num x) {
 double riemannZeta(num s) {
   final d = s.toDouble();
   if (d == 1.0) return double.infinity;
+  if (d == 0.0) return -0.5; // ζ(0) = -1/2 exactly
   if (d >= 2.0) {
-    // Direct series with Euler-Maclaurin acceleration (n = 200 terms)
+    // Direct series + Euler-Maclaurin tail correction (N=200 terms).
+    // Without the correction the partial sum undershoots by ≈ 1/(N*(s-1)).
+    const n = 200;
     double sum = 0.0;
-    for (var n = 1; n <= 200; n++) {
-      sum += math.pow(n.toDouble(), -d).toDouble();
+    for (var k = 1; k <= n; k++) {
+      sum += math.pow(k.toDouble(), -d).toDouble();
     }
+    final nD = n.toDouble();
+    // EM tail: N^{1-s}/(s-1) + N^{-s}/2 + s/12 * N^{-s-1}
+    sum += math.pow(nD, 1.0 - d) / (d - 1.0);
+    sum += 0.5 * math.pow(nD, -d);
+    sum += (d / 12.0) * math.pow(nD, -d - 1.0);
     return sum;
   }
-  if (d < 0.0) {
-    // Reflection formula
-    return math.pow(2.0, d).toDouble() *
-        math.pow(math.pi, d - 1.0).toDouble() *
-        math.sin(math.pi * d / 2.0) *
-        tgamma(1.0 - d) *
-        riemannZeta(1.0 - d);
-  }
-  // 0 ≤ s < 1 and s ≠ 1: use reflection
+  // s < 1, s ≠ 0, s ≠ 1: use reflection formula
+  // ζ(s) = 2^s π^{s-1} sin(πs/2) Γ(1-s) ζ(1-s)
   return math.pow(2.0, d).toDouble() *
       math.pow(math.pi, d - 1.0).toDouble() *
       math.sin(math.pi * d / 2.0) *
