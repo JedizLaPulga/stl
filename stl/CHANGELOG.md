@@ -1,3 +1,13 @@
+# 0.5.7
+- **New Feature:** Expanded `<ranges>` module with **6 new C++20/23 range views**, completing the core `std::views` surface alongside the existing 10 range adapters. All view names and semantics follow ISO/IEC 14882:2023 and the `range-v3` reference implementation.
+  - **`EnumerateRange<T>`** — `std::views::enumerate`: yields index–element `Pair<int, T>` tuples (0-based) for any iterable, eliminating manual counter variables.
+  - **`StrideRange<T>`** — `std::views::stride`: yields every Nth element of an iterable. Throws `ArgumentError` on non-positive stride.
+  - **`SlideRange<T>`** — `std::views::slide`: yields overlapping windows of size N as `List<T>`. Produces no output when the source has fewer elements than the window size.
+  - **`PairwiseRange<T>`** — `std::views::pairwise` / `std::views::adjacent<2>`: yields consecutive element pairs as `Pair<T, T>`, the typed specialisation of `SlideRange` for N = 2.
+  - **`ReverseRange<T>`** — `std::views::reverse`: yields elements of any iterable in reverse order.
+  - **`CycleRange<T>`** — `std::views::cycle` (range-v3 / C++23 proposed): repeats an iterable indefinitely, or for an optional fixed number of full cycles. Throws `ArgumentError` on an empty source iterable.
+- **Documentation:** Perfect API documentation coverage for all 6 new views with C++23 standard cross-references.
+
 # 0.5.6
 - **New Feature:** Massively expanded `<algorithm>` module from 13 to **60+ functions**, implementing the near-complete C++23 `<algorithm>` standard surface. All function names and semantics follow ISO/IEC 14882:2023. New additions:
   - **Non-modifying Sequence Operations:** `allOf`, `anyOf`, `noneOf` (universal/existential quantifiers); `forEach`, `forEachN` (element-wise application); `count`, `countIf` (element counting); `mismatch` (range divergence); `find`, `findIf`, `findIfNot` (element search); `findEnd` (last subsequence occurrence); `findFirstOf` (first element from a target set); `adjacentFind` (consecutive-duplicate search); `search`, `searchN` (subsequence and run-of-N search)
