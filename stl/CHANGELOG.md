@@ -1,3 +1,13 @@
+# 0.5.8
+- **New Feature:** Expanded `<ranges>` module with **6 new C++20/23 range views**, completing the core `std::views` surface alongside the existing 16 range adapters. All view names and semantics follow ISO/IEC 14882:2023 and the `range-v3` reference implementation.
+  - **`IotaRange`** — `std::views::iota`: yields a lazy integer sequence `[start, end)`. When `end` is omitted the range is infinite. Throws `ArgumentError` if `end` is less than `start`.
+  - **`SingleRange<T>`** — `std::views::single`: wraps exactly one value as a one-element range. Composes cleanly with every other range adapter.
+  - **`SplitRange<T>`** — `std::views::split`: splits an iterable on a delimiter element, yielding each segment as a `List<T>`. Consecutive delimiters produce empty lists; a trailing delimiter produces a final empty list.
+  - **`ChunkByRange<T>`** — `std::views::chunk_by`: groups consecutive elements into `List<T>` chunks as long as a binary predicate `pred(prev, curr)` holds, breaking into a new chunk when it fails.
+  - **`KeysRange<K, V>`** — `std::views::keys`: extracts the key from each `Pair<K, V>` in an iterable, composing naturally with `HashMap`, `SortedMap`, and `MultiMap`.
+  - **`ValuesRange<K, V>`** — `std::views::values`: extracts the value from each `Pair<K, V>` in an iterable, the dual complement of `KeysRange`.
+- **Documentation:** Perfect API documentation coverage for all 6 new views with C++23 standard cross-references, covering every public member (class, constructor, fields, methods, and `iterator` getter).
+
 # 0.5.7
 - **New Feature:** Expanded `<ranges>` module with **6 new C++20/23 range views**, completing the core `std::views` surface alongside the existing 10 range adapters. All view names and semantics follow ISO/IEC 14882:2023 and the `range-v3` reference implementation.
   - **`EnumerateRange<T>`** — `std::views::enumerate`: yields index–element `Pair<int, T>` tuples (0-based) for any iterable, eliminating manual counter variables.
