@@ -7,7 +7,7 @@
 
   [![License: MIT](https://img.shields.io/badge/License-MIT-ff69b4.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
   [![Dart](https://img.shields.io/badge/Dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev/)
-  [![Pub Version](https://img.shields.io/badge/pub-0.5.8-blueviolet.svg?style=for-the-badge)](https://pub.dev/packages/stl)
+  [![Pub Version](https://img.shields.io/badge/pub-0.5.9-blueviolet.svg?style=for-the-badge)](https://pub.dev/packages/stl)
 
   > 🚀 **A highly-versatile, performance-driven bank of data collections, structures, and algorithmic ranges for the Dart and Flutter ecosystem.**
 
@@ -103,6 +103,144 @@ Instead of strictly separating containers, mathematics, and utilities, here is a
 | 🗂️ **`ChunkByRange<T>`** | ![](https://img.shields.io/badge/Range-teal) | Groups consecutive elements into chunks while a binary predicate holds. Mirrors `std::views::chunk_by`. |
 | 🔑 **`KeysRange<K,V>`** | ![](https://img.shields.io/badge/Range-teal) | Extracts keys from `Pair<K,V>` iterables. Composes with `HashMap`, `SortedMap`, `MultiMap`. Mirrors `std::views::keys`. |
 | 💎 **`ValuesRange<K,V>`** | ![](https://img.shields.io/badge/Range-teal) | Extracts values from `Pair<K,V>` iterables. Dual complement of `KeysRange`. Mirrors `std::views::values`. |
+
+<br/>
+
+---
+
+<br/>
+
+---
+
+<br/>
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Triangular%20Ruler.png" alt="Ruler" width="50" height="50" />
+</div>
+
+## 📐 Geometry Module — Computational Geometry & Linear Algebra
+
+The **flagship non-C++ feature** of `stl`. Going far beyond anything in the C++ standard, the geometry module is a complete computational geometry and linear algebra engine — inspired by **CGAL**, **GLM**, and game engine math libraries.
+
+### 🗺️ 2D Shapes & Primitives
+
+| Class | Description |
+| :--- | :--- |
+| **`Point<T>`** | 2D vector with `+`, `-`, `*`, `/`, `dot`, `cross`, `normalize()`, `lerp()`, `angleTo()`, `midpointTo()` |
+| **`Circle`** | Area, perimeter, `containsPoint()`, `intersectsCircle()`, `tangentLength()`, affine transforms |
+| **`Rectangle`** | Area, `containsPoint()`, `intersects()`, `corners` (4 vertices), affine transforms |
+| **`Triangle`** | Heron's formula, `circumcenter`, `incenter`, `circumradius`, `inradius`, `isAcute/Right/Obtuse/Equilateral/Isoceles` |
+| **`Polygon`** | Shoelace area, `isConvex`, `containsPoint()` (ray casting), area-weighted centroid |
+| **`Ellipse`** | Ramanujan perimeter, area, affine transforms |
+| **`LineSegment`** | Length, midpoint, intersection tests |
+| **`Ray2D`** | `origin`, `direction`, `at(t)`, `intersectSegment()`, `intersectCircle()` |
+| **`Capsule`** | Stadium shape via spine + radius, `area`, `perimeter`, `containsPoint()` |
+| **`Arc`** | Circular arc: `arcLength`, `chordLength`, `containsAngle()` |
+| **`QuadraticBezier`** | Degree-2 Bézier: `evaluate(t)`, `derivative(t)`, `arcLength()`, `splitAt(t)` |
+| **`CubicBezier`** | Degree-3 Bézier: `evaluate(t)`, `derivative(t)`, `arcLength()`, `splitAt(t)` |
+
+### 🌐 3D Primitives
+
+| Class | Description |
+| :--- | :--- |
+| **`Point3D`** | 3D vector with `+`, `-`, `*`, `/`, `dot()`, `cross()`, `normalize()`, `lerp()`, `distanceTo()` |
+| **`Sphere3D`** | Volume ($\frac{4}{3}\pi r^3$), surface area ($4\pi r^2$), `containsPoint()`, `intersectsSphere()` |
+| **`Plane3D`** | Normal + distance form, `distanceTo()`, `reflect()`, `project()`, `containsPoint()` |
+| **`Ray3D`** | `at(t)`, `intersectSphere()`, `intersectPlane()` |
+| **`Triangle3D`** | `normal`, `area`, `centroid`, `containsPoint()` (barycentric), `toTriangle()` |
+
+### 🔢 Linear Algebra
+
+| Class | Description |
+| :--- | :--- |
+| **`Matrix2x2`** | Determinant, inverse, transpose, `rotation(angle)`, full arithmetic |
+| **`Matrix3x3`** | Determinant, inverse (cofactor), `rotationX/Y/Z(angle)`, full arithmetic |
+| **`Matrix4x4`** | Homogeneous transforms: `translation()`, `scale()`, `perspective()`, `transform(Point3D)` |
+| **`Quaternion`** | Unit quaternion: `slerp()`, `fromAxisAngle()`, `toMatrix3x3()`, `toEulerAngles()`, `conjugate`, `inverse` |
+
+### ⚙️ Computational Geometry Algorithms
+
+| Function | Algorithm | Complexity |
+| :--- | :--- | :---: |
+| `convexHull(points)` | Graham scan | $O(n \log n)$ |
+| `closestPairOfPoints(points)` | Divide & conquer | $O(n \log n)$ |
+| `segmentIntersection(a, b)` | Parametric test | $O(1)$ |
+| `pointInPolygon(p, poly)` | Ray casting | $O(n)$ |
+| `triangulate(polygon)` | Ear clipping | $O(n^2)$ |
+
+### 🎓 Example — 3D Pipeline: Quaternion Rotation + Matrix Transform + Ray–Sphere Intersection
+
+```dart
+import 'package:stl/stl.dart';
+import 'dart:math' as math;
+
+void main() {
+  // ── 2D Bézier Curve ─────────────────────────────────────────────────────────
+  final bezier = CubicBezier(
+    p0: Point(x: 0.0, y: 0.0),
+    p1: Point(x: 1.0, y: 2.0),
+    p2: Point(x: 3.0, y: 3.0),
+    p3: Point(x: 4.0, y: 0.0),
+  );
+  final mid = bezier.evaluate(0.5);
+  print('Bézier midpoint: $mid');              // Point(2.0, 1.875)
+  print('Arc length ≈ ${bezier.arcLength(100).toStringAsFixed(3)}');
+
+  // ── 2D Convex Hull ───────────────────────────────────────────────────────────
+  final cloud = [
+    Point(x: 0.0, y: 0.0), Point(x: 1.0, y: 1.0),
+    Point(x: 2.0, y: 0.5), Point(x: 0.5, y: 2.0),
+    Point(x: 1.5, y: 1.5), Point(x: -1.0, y: 0.5),
+  ];
+  final hull = convexHull(cloud);
+  print('Convex hull: ${hull.length} vertices');
+
+  // ── 3D Quaternion Rotation ───────────────────────────────────────────────────
+  //  Rotate point P = (1, 0, 0) by 90° around the Y-axis.
+  //  Expected result: (0, 0, -1)
+  final q = Quaternion.fromAxisAngle(
+    axis: Point3D(x: 0, y: 1, z: 0),
+    angle: math.pi / 2,
+  );
+  final p = Point3D(x: 1, y: 0, z: 0);
+  final rotated = q.rotate(p);
+  print('Rotated: $rotated');                  // Point3D(≈0, 0, ≈-1)
+
+  // ── Matrix4x4 Transform Pipeline ────────────────────────────────────────────
+  //  Build a model matrix: translate(2,3,0) * rotateZ(45°) * scale(2)
+  final model = Matrix4x4.translation(tx: 2, ty: 3, tz: 0)
+      .multiply(Matrix4x4.rotationZ(math.pi / 4))
+      .multiply(Matrix4x4.scale(sx: 2, sy: 2, sz: 2));
+  final vertex = model.transform(Point3D(x: 1, y: 0, z: 0));
+  print('Transformed vertex: $vertex');
+
+  // ── Ray–Sphere Intersection ──────────────────────────────────────────────────
+  final ray = Ray3D(
+    origin: Point3D(x: -5, y: 0, z: 0),
+    direction: Point3D(x: 1, y: 0, z: 0),
+  );
+  final sphere = Sphere3D(center: Point3D(x: 0, y: 0, z: 0), radius: 1.0);
+  final hit = ray.intersectSphere(sphere);
+  print('Ray hits sphere at t=${hit?.toStringAsFixed(3)}'); // t=4.000
+
+  // ── Triangle Circumcenter ────────────────────────────────────────────────────
+  final tri = Triangle(
+    p1: Point(x: 0.0, y: 0.0),
+    p2: Point(x: 4.0, y: 0.0),
+    p3: Point(x: 0.0, y: 3.0),
+  );
+  print('Circumcenter: ${tri.circumcenter}');  // Point(2.0, 1.5)
+  print('Inradius: ${tri.inradius.toStringAsFixed(3)}');
+
+  // ── Polygon Convexity & Point-in-Polygon ─────────────────────────────────────
+  final square = Polygon([
+    Point(x: 0.0, y: 0.0), Point(x: 4.0, y: 0.0),
+    Point(x: 4.0, y: 4.0), Point(x: 0.0, y: 4.0),
+  ]);
+  print('Is convex: ${square.isConvex}');       // true
+  print('Contains (2,2): ${square.containsPoint(Point(x: 2.0, y: 2.0))}'); // true
+}
+```
 
 <br/>
 

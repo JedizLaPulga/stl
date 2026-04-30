@@ -1,3 +1,37 @@
+# 0.5.9
+- **New Feature:** Massively expanded `geometry` module into a **full-featured computational geometry and linear algebra library**, going far beyond the C++ standard to rival CGAL and GLM. The module now covers 2D shapes, 3D primitives, linear algebra, and computational geometry algorithms — the flagship non-C++ feature of the package.
+  - **Enriched 2D Primitives:**
+    - **`Point<T>`** — added `midpointTo()`, `angleTo()`, `normalize()`, `cross()` (2D scalar cross product $x_1 y_2 - y_1 x_2$), `lerp()`, `operator/`
+    - **`Triangle`** — added `circumcenter`, `incenter`, `circumradius`, `inradius`, `isAcute`, `isRight`, `isObtuse`, `isEquilateral`, `isIsoceles`, `isScalene`, `angleA`, `angleB`, `angleC`
+    - **`Circle`** — added `containsPoint()`, `intersectsCircle()`, `tangentLength()`, `circumference` alias
+    - **`Polygon`** — added `isConvex`, `containsPoint()` (ray-casting algorithm), area-weighted proper centroid
+    - **`Rectangle`** — added `containsPoint()`, `intersects()`, `corners` getter (all 4 vertices)
+  - **New 2D Structures:**
+    - **`Ray2D`** — semi-infinite ray with `origin`, `direction`, `at(t)`, `intersectSegment()`, `intersectCircle()`
+    - **`Capsule`** — stadium/discorectangle shape via a `LineSegment` spine + radius; `area`, `perimeter`, `containsPoint()`
+    - **`Arc`** — circular arc sector via `center`, `radius`, `startAngle`, `endAngle`; `arcLength`, `chordLength`, `containsAngle()`
+    - **`QuadraticBezier`** — degree-2 Bézier curve: `evaluate(t)`, `derivative(t)`, `arcLength(segments)`, `splitAt(t)`
+    - **`CubicBezier`** — degree-3 Bézier curve: `evaluate(t)`, `derivative(t)`, `arcLength(segments)`, `splitAt(t)`
+  - **New 3D Primitives:**
+    - **`Point3D`** — full 3D vector: `+`, `-`, `*`, `/`, `dot()`, `cross()`, `magnitude`, `normalize()`, `distanceTo()`, `lerp()`, `midpointTo()`, `angleTo()`
+    - **`Sphere3D`** — `center`, `radius`, `volume` ($\frac{4}{3}\pi r^3$), `surfaceArea` ($4\pi r^2$), `containsPoint()`, `intersectsSphere()`
+    - **`Plane3D`** — defined by `normal` + `distance`; `distanceTo(Point3D)`, `containsPoint()`, `reflect()`, `project()`
+    - **`Ray3D`** — 3D semi-infinite ray: `origin`, `direction`, `at(t)`, `intersectSphere()`, `intersectPlane()`
+    - **`Triangle3D`** — 3D triangle: `normal`, `area`, `centroid`, `containsPoint()` (barycentric test), `toTriangle()`
+  - **New Linear Algebra:**
+    - **`Matrix2x2`** — 2×2 matrix: `+`, `*` (matrix & scalar), `determinant`, `inverse`, `transpose`, `identity()`, `rotation(angle)`
+    - **`Matrix3x3`** — 3×3 matrix: full arithmetic, `determinant`, `inverse` (cofactor expansion), `transpose`, `identity()`, `rotationX/Y/Z(angle)`
+    - **`Matrix4x4`** — 4×4 homogeneous matrix: `identity()`, `translation()`, `scale()`, `rotationX/Y/Z()`, `perspective()`, `multiply()`, `transform(Point3D)`
+    - **`Quaternion`** — unit quaternion for 3D rotation: `*`, `conjugate`, `inverse`, `normalize`, `dot()`, `slerp()`, `fromAxisAngle()`, `toMatrix3x3()`, `toEulerAngles()`
+  - **New Computational Geometry Algorithms (`geometry_algorithms.dart`):**
+    - **`convexHull(List<Point>)`** — Graham scan — $O(n \log n)$
+    - **`closestPairOfPoints(List<Point>)`** — divide-and-conquer — $O(n \log n)$, returns `Pair<Point, Point>`
+    - **`segmentIntersection(LineSegment, LineSegment)`** — parametric intersection test, returns `Point?`
+    - **`pointInPolygon(Point, Polygon)`** — ray-casting algorithm — $O(n)$
+    - **`triangulate(Polygon)`** — ear-clipping triangulation — $O(n^2)$, returns `List<Triangle>`
+- **New Example:** `example/geometry_example.dart` — end-to-end showcase covering 2D/3D shapes, Bézier evaluation, quaternion rotation, convex hull, ray–sphere intersection, and a full 3D matrix transform pipeline.
+- **Documentation:** Perfect API documentation coverage for all new and enriched APIs, covering every public member across all 14 new files and 5 enriched files.
+
 # 0.5.8
 - **New Feature:** Expanded `<ranges>` module with **6 new C++20/23 range views**, completing the core `std::views` surface alongside the existing 16 range adapters. All view names and semantics follow ISO/IEC 14882:2023 and the `range-v3` reference implementation.
   - **`IotaRange`** — `std::views::iota`: yields a lazy integer sequence `[start, end)`. When `end` is omitted the range is infinite. Throws `ArgumentError` if `end` is less than `start`.

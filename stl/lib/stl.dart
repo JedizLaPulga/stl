@@ -81,6 +81,24 @@ export 'src/geometry/triangle.dart';
 export 'src/geometry/line_segment.dart';
 export 'src/geometry/polygon.dart';
 export 'src/geometry/ellipse.dart';
+// New 2D geometry
+export 'src/geometry/ray2d.dart';
+export 'src/geometry/capsule.dart';
+export 'src/geometry/arc.dart';
+export 'src/geometry/bezier.dart';
+// 3D geometry
+export 'src/geometry/point3d.dart';
+export 'src/geometry/sphere3d.dart';
+export 'src/geometry/plane3d.dart';
+export 'src/geometry/ray3d.dart';
+export 'src/geometry/triangle3d.dart';
+// Linear algebra
+export 'src/geometry/matrix2x2.dart';
+export 'src/geometry/matrix3x3.dart';
+export 'src/geometry/matrix4x4.dart';
+export 'src/geometry/quaternion.dart';
+// Computational geometry algorithms
+export 'src/geometry/geometry_algorithms.dart';
 export 'src/algorithm/algorithm.dart';
 export 'src/functional/functional.dart';
 export 'src/exceptions/exceptions.dart';

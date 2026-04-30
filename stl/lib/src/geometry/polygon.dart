@@ -46,34 +46,88 @@ class Polygon implements Shape<Polygon> {
     double maxX = minX;
     double minY = vertices.first.y.toDouble();
     double maxY = minY;
-    
+
     for (final p in vertices.skip(1)) {
       if (p.x < minX) minX = p.x.toDouble();
       if (p.x > maxX) maxX = p.x.toDouble();
       if (p.y < minY) minY = p.y.toDouble();
       if (p.y > maxY) maxY = p.y.toDouble();
     }
-    
+
     return Rectangle(
       width: maxX - minX,
       height: maxY - minY,
-      center: Point(x: (minX + maxX) / 2, y: (minY + maxY) / 2)
+      center: Point(x: (minX + maxX) / 2, y: (minY + maxY) / 2),
     );
   }
 
   @override
   Point<double> get centroid {
-    // For a simple polygon, calculating the geometric centroid requires area.
-    // To keep it computationally lightweight and robust, we calculate the arithmetic mean 
-    // of the vertices (center of mass of the vertices, not the solid).
-    double sumX = 0.0;
-    double sumY = 0.0;
-    for (final p in vertices) {
-      sumX += p.x;
-      sumY += p.y;
+    // Area-weighted centroid via the signed area decomposition (Shoelace variant).
+    final a = area;
+    if (a == 0) {
+      // Degenerate: fall back to vertex mean.
+      double sx = 0, sy = 0;
+      for (final p in vertices) {
+        sx += p.x;
+        sy += p.y;
+      }
+      return Point(x: sx / vertices.length, y: sy / vertices.length);
     }
+    double cx = 0.0, cy = 0.0;
     final n = vertices.length;
-    return Point(x: sumX / n, y: sumY / n);
+    for (int i = 0; i < n; i++) {
+      final j = (i + 1) % n;
+      final cross =
+          vertices[i].x * vertices[j].y - vertices[j].x * vertices[i].y;
+      cx += (vertices[i].x + vertices[j].x) * cross;
+      cy += (vertices[i].y + vertices[j].y) * cross;
+    }
+    final factor = 1.0 / (6.0 * a);
+    return Point(x: cx * factor, y: cy * factor);
+  }
+
+  /// Whether the polygon is convex (all cross products of consecutive edges have
+  /// the same sign).
+  bool get isConvex {
+    final n = vertices.length;
+    int sign = 0;
+    for (int i = 0; i < n; i++) {
+      final a = vertices[i];
+      final b = vertices[(i + 1) % n];
+      final c = vertices[(i + 2) % n];
+      final cross = (b.x - a.x) * (c.y - b.y) - (b.y - a.y) * (c.x - b.x);
+      if (cross != 0) {
+        final s = cross > 0 ? 1 : -1;
+        if (sign == 0) {
+          sign = s;
+        } else if (sign != s) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  /// Whether [point] lies inside or on the boundary of this polygon.
+  ///
+  /// Uses the ray-casting algorithm — $O(n)$.
+  bool containsPoint(Point<num> point) {
+    final px = point.x.toDouble();
+    final py = point.y.toDouble();
+    final n = vertices.length;
+    bool inside = false;
+    for (int i = 0, j = n - 1; i < n; j = i++) {
+      final xi = vertices[i].x.toDouble();
+      final yi = vertices[i].y.toDouble();
+      final xj = vertices[j].x.toDouble();
+      final yj = vertices[j].y.toDouble();
+      final intersect =
+          ((yi > py) != (yj > py)) &&
+          (px < (xj - xi) * (py - yi) / (yj - yi) + xi);
+      if (intersect) inside = !inside;
+    }
+    return inside;
   }
 
   @override
@@ -84,10 +138,16 @@ class Polygon implements Shape<Polygon> {
   @override
   Polygon scale(num factor) {
     final c = centroid;
-    return Polygon(vertices.map((p) => Point(
-      x: c.x + (p.x - c.x) * factor,
-      y: c.y + (p.y - c.y) * factor
-    )).toList(growable: false));
+    return Polygon(
+      vertices
+          .map(
+            (p) => Point(
+              x: c.x + (p.x - c.x) * factor,
+              y: c.y + (p.y - c.y) * factor,
+            ),
+          )
+          .toList(growable: false),
+    );
   }
 
   @override
