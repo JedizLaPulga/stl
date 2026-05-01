@@ -1,6 +1,4 @@
-import 'package:stl/src/primitives/i32.dart';
-import 'package:stl/src/primitives/u8.dart';
-import 'package:stl/src/primitives/u64.dart';
+import 'package:stl/stl.dart';
 
 void main() {
   print('--- Primitives Sweep Example ---');

@@ -1,5 +1,5 @@
 // ignore_for_file: unused_local_variable, unused_catch_clause
-import 'package:stl/src/primitives/i8.dart';
+import 'package:stl/stl.dart';
 
 void main() {
   print('--- I8 Primitive Example ---');

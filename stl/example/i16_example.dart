@@ -1,4 +1,4 @@
-import 'package:stl/src/primitives/i16.dart';
+import 'package:stl/stl.dart';
 
 void main() {
   print('--- I16 Primitive Example ---');

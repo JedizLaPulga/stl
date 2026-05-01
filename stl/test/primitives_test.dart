@@ -1,10 +1,5 @@
 import 'package:test/test.dart';
-import 'package:stl/src/primitives/i32.dart';
-import 'package:stl/src/primitives/i64.dart';
-import 'package:stl/src/primitives/u8.dart';
-import 'package:stl/src/primitives/u16.dart';
-import 'package:stl/src/primitives/u32.dart';
-import 'package:stl/src/primitives/u64.dart';
+import 'package:stl/stl.dart';
 
 void main() {
   group('Primitive Integer Wrappers', () {
