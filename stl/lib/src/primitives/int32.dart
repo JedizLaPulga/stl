@@ -234,4 +234,34 @@ extension type Int32._(Int32List _data) {
 
   /// Converts to [Uint64], reinterpreting as unsigned.
   Uint64 toUint64() => Uint64.from(value);
+
+  // ── BigInt interop ──────────────────────────────────────────────────────
+
+  /// Converts this value to a [BigInt].
+  BigInt toBigInt() => BigInt.from(value);
+
+  /// Constructs an [Int32] from a [BigInt], throwing a [RangeError] if [v] is
+  /// outside `[-2147483648, 2147483647]`.
+  static Int32 fromBigInt(BigInt v) {
+    if (v < BigInt.from(-2147483648) || v > BigInt.from(2147483647)) {
+      throw RangeError(
+        '$v is out of range for Int32. Must be in [-2147483648, 2147483647].',
+      );
+    }
+    return Int32.from(v.toInt());
+  }
+
+  // ── Checked negation ────────────────────────────────────────────────────
+
+  /// Returns the negated value, throwing a [StateError] if this is [Int32.min]
+  /// (the only value whose negation overflows).
+  Int32 negChecked() {
+    if (value == -2147483648) throw StateError('Int32 negation overflow');
+    return Int32.from(-value);
+  }
+
+  // ── Widening arithmetic ─────────────────────────────────────────────────
+
+  /// Multiplies this by [other], returning an [Int64] to prevent overflow.
+  Int64 wideningMul(Int32 other) => Int64.from(value * other.value);
 }

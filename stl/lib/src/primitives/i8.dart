@@ -219,4 +219,34 @@ extension type const I8._(
 
   /// Converts to [U64], reinterpreting as unsigned.
   U64 toU64() => U64(value.toUnsigned(64));
+
+  // ── BigInt interop ──────────────────────────────────────────────────────
+
+  /// Converts this value to a [BigInt].
+  BigInt toBigInt() => BigInt.from(value);
+
+  /// Constructs an [I8] from a [BigInt], throwing a [RangeError] if [v] is
+  /// outside `[-128, 127]`.
+  static I8 fromBigInt(BigInt v) {
+    if (v < BigInt.from(-128) || v > BigInt.from(127)) {
+      throw RangeError('$v is out of range for I8. Must be in [-128, 127].');
+    }
+    return I8(v.toInt());
+  }
+
+  // ── Checked negation ────────────────────────────────────────────────────
+
+  /// Returns the negated value, throwing a [StateError] if this is [I8.min]
+  /// (the only value whose negation overflows).
+  I8 negChecked() {
+    if (value == -128) {
+      throw StateError('I8 negation overflow');
+    }
+    return I8(-value);
+  }
+
+  // ── Widening arithmetic ─────────────────────────────────────────────────
+
+  /// Multiplies this by [other], returning an [I16] to prevent overflow.
+  I16 wideningMul(I8 other) => I16(value * other.value);
 }

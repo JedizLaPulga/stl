@@ -120,8 +120,13 @@ extension type Int64._(Int64List _data) {
   /// Integer-divides by [other], throwing a [StateError] on division by zero
   /// or the signed-overflow edge case (`Int64(min) ~/ Int64(-1)`).
   Int64 divChecked(Int64 other) {
-    if (other.value == 0) throw StateError('Int64 division by zero');
-    if (value == -9223372036854775808 && other.value == -1) throw StateError('Int64 division overflow');
+    if (other.value == 0) {
+      throw StateError('Int64 division by zero');
+    }
+    if (value == -9223372036854775808 && other.value == -1) {
+      throw StateError('Int64 division overflow');
+    }
+
     return Int64.from(value ~/ other.value);
   }
 
@@ -183,7 +188,10 @@ extension type Int64._(Int64List _data) {
     if (value == 0) return 64;
     var n = 0;
     var v = value;
-    while ((v & 1) == 0) { n++; v >>= 1; }
+    while ((v & 1) == 0) {
+      n++;
+      v >>= 1;
+    }
     return n;
   }
 
@@ -253,4 +261,37 @@ extension type Int64._(Int64List _data) {
 
   /// Converts to [Uint64], reinterpreting the bit pattern as unsigned.
   Uint64 toUint64() => Uint64.from(value);
+
+  // ── BigInt interop ──────────────────────────────────────────────────────
+
+  /// Converts this value to a [BigInt].
+  BigInt toBigInt() => BigInt.from(value);
+
+  /// Constructs an [Int64] from a [BigInt], throwing a [RangeError] if [v] is
+  /// outside the 64-bit signed range `[-2^63, 2^63-1]`.
+  static Int64 fromBigInt(BigInt v) {
+    if (v < -(BigInt.one << 63) || v > (BigInt.one << 63) - BigInt.one) {
+      throw RangeError(
+        '$v is out of range for Int64. Must be in [-2^63, 2^63-1].',
+      );
+    }
+    return Int64.from(v.toInt());
+  }
+
+  // ── Checked negation ────────────────────────────────────────────────────
+
+  /// Returns the negated value, throwing a [StateError] if this is [Int64.min]
+  /// (the only value whose negation overflows).
+  Int64 negChecked() {
+    if (value == -9223372036854775808) {
+      throw StateError('Int64 negation overflow');
+    }
+    return Int64.from(-value);
+  }
+
+  // ── Widening arithmetic ─────────────────────────────────────────────────
+
+  /// Multiplies this by [other], returning a [BigInt] to prevent overflow.
+  BigInt wideningMul(Int64 other) =>
+      BigInt.from(value) * BigInt.from(other.value);
 }

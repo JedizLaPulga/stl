@@ -55,4 +55,103 @@ void main() {
       expect(a > c, isTrue); // Unsigned comparison treats -1 as strictly > 0
     });
   });
+
+  group('BigInt interop (heap-allocated)', () {
+    test('Int8 toBigInt / fromBigInt', () {
+      expect(Int8.from(42).toBigInt(), equals(BigInt.from(42)));
+      expect(Int8.from(-128).toBigInt(), equals(BigInt.from(-128)));
+      expect(Int8.fromBigInt(BigInt.from(127)).value, equals(127));
+      expect(Int8.fromBigInt(BigInt.from(-128)).value, equals(-128));
+      expect(() => Int8.fromBigInt(BigInt.from(128)), throwsRangeError);
+      expect(() => Int8.fromBigInt(BigInt.from(-129)), throwsRangeError);
+    });
+
+    test('Uint8 toBigInt / fromBigInt', () {
+      expect(Uint8.from(255).toBigInt(), equals(BigInt.from(255)));
+      expect(Uint8.from(0).toBigInt(), equals(BigInt.zero));
+      expect(Uint8.fromBigInt(BigInt.from(200)).value, equals(200));
+      expect(() => Uint8.fromBigInt(BigInt.from(256)), throwsRangeError);
+      expect(() => Uint8.fromBigInt(BigInt.from(-1)), throwsRangeError);
+    });
+
+    test('Int64 toBigInt / fromBigInt', () {
+      expect(Int64.from(0).toBigInt(), equals(BigInt.zero));
+      expect(Int64.from(-1).toBigInt(), equals(BigInt.from(-1)));
+      expect(Int64.fromBigInt(BigInt.from(-1)).value, equals(-1));
+      expect(
+        () => Int64.fromBigInt(BigInt.parse('9223372036854775808')),
+        throwsRangeError,
+      );
+    });
+
+    test('Uint64 toBigInt / fromBigInt round-trip', () {
+      final maxU64 = BigInt.parse('18446744073709551615');
+      expect(Uint64.max.toBigInt(), equals(maxU64));
+      expect(Uint64.fromBigInt(maxU64).value, equals(-1));
+      expect(Uint64.fromBigInt(BigInt.zero).value, equals(0));
+      expect(() => Uint64.fromBigInt(BigInt.from(-1)), throwsRangeError);
+      expect(
+        () => Uint64.fromBigInt(BigInt.parse('18446744073709551616')),
+        throwsRangeError,
+      );
+    });
+  });
+
+  group('negChecked (heap-allocated signed)', () {
+    test('Int8 negChecked', () {
+      expect(Int8.from(0).negChecked().value, equals(0));
+      expect(Int8.from(1).negChecked().value, equals(-1));
+      expect(Int8.from(127).negChecked().value, equals(-127));
+      expect(Int8.from(-127).negChecked().value, equals(127));
+      expect(() => Int8.from(-128).negChecked(), throwsStateError);
+    });
+
+    test('Int64 negChecked', () {
+      expect(Int64.from(1).negChecked().value, equals(-1));
+      expect(Int64.from(-1).negChecked().value, equals(1));
+      expect(
+        Int64.from(9223372036854775807).negChecked().value,
+        equals(-9223372036854775807),
+      );
+      expect(() => Int64.min.negChecked(), throwsStateError);
+    });
+  });
+
+  group('wideningMul (heap-allocated)', () {
+    test('Int8 × Int8 → Int16', () {
+      final result = Int8.from(127).wideningMul(Int8.from(2));
+      expect(result, isA<Int16>());
+      expect(result.value, equals(254));
+    });
+
+    test('Uint8 × Uint8 → Uint16', () {
+      final result = Uint8.from(255).wideningMul(Uint8.from(255));
+      expect(result, isA<Uint16>());
+      expect(result.value, equals(65025));
+    });
+
+    test('Int32 × Int32 → Int64', () {
+      final result = Int32.from(2147483647).wideningMul(Int32.from(2));
+      expect(result, isA<Int64>());
+      expect(result.value, equals(4294967294));
+    });
+
+    test('Int64 × Int64 → BigInt', () {
+      final result = Int64.from(9223372036854775807).wideningMul(Int64.from(2));
+      expect(result, isA<BigInt>());
+      expect(result, equals(BigInt.parse('18446744073709551614')));
+    });
+
+    test('Uint32 × Uint32 → Uint64', () {
+      final result = Uint32.from(4294967295).wideningMul(Uint32.from(2));
+      expect(result, isA<Uint64>());
+      expect(result.toBigInt(), equals(BigInt.parse('8589934590')));
+    });
+
+    test('Uint64 × Uint64 → BigInt', () {
+      final result = Uint64.max.wideningMul(Uint64.from(2));
+      expect(result, isA<BigInt>());
+      expect(result, equals(BigInt.parse('36893488147419103230')));
+    });
+  });
 }

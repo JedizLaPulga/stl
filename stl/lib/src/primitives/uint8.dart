@@ -201,4 +201,23 @@ extension type Uint8._(Uint8List _data) {
 
   /// Converts to [Uint64], zero-extending.
   Uint64 toUint64() => Uint64.from(value);
+
+  // ── BigInt interop ──────────────────────────────────────────────────────
+
+  /// Converts this value to a [BigInt].
+  BigInt toBigInt() => BigInt.from(value);
+
+  /// Constructs a [Uint8] from a [BigInt], throwing a [RangeError] if [v] is
+  /// outside `[0, 255]`.
+  static Uint8 fromBigInt(BigInt v) {
+    if (v.isNegative || v > BigInt.from(255)) {
+      throw RangeError('$v is out of range for Uint8. Must be in [0, 255].');
+    }
+    return Uint8.from(v.toInt());
+  }
+
+  // ── Widening arithmetic ─────────────────────────────────────────────────
+
+  /// Multiplies this by [other], returning a [Uint16] to prevent overflow.
+  Uint16 wideningMul(Uint8 other) => Uint16.from(value * other.value);
 }

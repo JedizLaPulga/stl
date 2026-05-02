@@ -225,4 +225,32 @@ extension type Int8._(Int8List _data) {
 
   /// Converts to [Uint64], reinterpreting as unsigned.
   Uint64 toUint64() => Uint64.from(value);
+
+  // ── BigInt interop ──────────────────────────────────────────────────────
+
+  /// Converts this value to a [BigInt].
+  BigInt toBigInt() => BigInt.from(value);
+
+  /// Constructs an [Int8] from a [BigInt], throwing a [RangeError] if [v] is
+  /// outside `[-128, 127]`.
+  static Int8 fromBigInt(BigInt v) {
+    if (v < BigInt.from(-128) || v > BigInt.from(127)) {
+      throw RangeError('$v is out of range for Int8. Must be in [-128, 127].');
+    }
+    return Int8.from(v.toInt());
+  }
+
+  // ── Checked negation ────────────────────────────────────────────────────
+
+  /// Returns the negated value, throwing a [StateError] if this is [Int8.min]
+  /// (the only value whose negation overflows).
+  Int8 negChecked() {
+    if (value == -128) throw StateError('Int8 negation overflow');
+    return Int8.from(-value);
+  }
+
+  // ── Widening arithmetic ─────────────────────────────────────────────────
+
+  /// Multiplies this by [other], returning an [Int16] to prevent overflow.
+  Int16 wideningMul(Int8 other) => Int16.from(value * other.value);
 }

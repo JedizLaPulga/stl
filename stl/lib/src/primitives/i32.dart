@@ -231,4 +231,36 @@ extension type const I32._(
 
   /// Converts to [U64], reinterpreting as unsigned.
   U64 toU64() => U64(value.toUnsigned(64));
+
+  // ── BigInt interop ──────────────────────────────────────────────────────
+
+  /// Converts this value to a [BigInt].
+  BigInt toBigInt() => BigInt.from(value);
+
+  /// Constructs an [I32] from a [BigInt], throwing a [RangeError] if [v] is
+  /// outside `[-2147483648, 2147483647]`.
+  static I32 fromBigInt(BigInt v) {
+    if (v < BigInt.from(-2147483648) || v > BigInt.from(2147483647)) {
+      throw RangeError(
+        '$v is out of range for I32. Must be in [-2147483648, 2147483647].',
+      );
+    }
+    return I32(v.toInt());
+  }
+
+  // ── Checked negation ────────────────────────────────────────────────────
+
+  /// Returns the negated value, throwing a [StateError] if this is [I32.min]
+  /// (the only value whose negation overflows).
+  I32 negChecked() {
+    if (value == -2147483648) {
+      throw StateError('I32 negation overflow');
+    }
+    return I32(-value);
+  }
+
+  // ── Widening arithmetic ─────────────────────────────────────────────────
+
+  /// Multiplies this by [other], returning an [I64] to prevent overflow.
+  I64 wideningMul(I32 other) => I64(value * other.value);
 }

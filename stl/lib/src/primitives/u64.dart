@@ -262,4 +262,29 @@ extension type const U64._(
 
   /// Converts to [U64] (identity).
   U64 toU64() => this;
+
+  // ── BigInt interop ──────────────────────────────────────────────────────
+
+  /// Converts this value to a [BigInt] in the unsigned range `[0, 2^64)`.
+  ///
+  /// Uses `.toUnsigned(64)` to reinterpret the stored bit pattern correctly
+  /// (e.g. `U64(-1).toBigInt()` returns `18446744073709551615`).
+  BigInt toBigInt() => BigInt.from(value).toUnsigned(64);
+
+  /// Constructs a [U64] from a [BigInt], throwing a [RangeError] if [v] is
+  /// outside `[0, 2^64)`.
+  static U64 fromBigInt(BigInt v) {
+    if (v.isNegative || v >= BigInt.one << 64) {
+      throw RangeError('$v is out of range for U64. Must be in [0, 2^64).');
+    }
+    // Re-interpret as a signed 64-bit Dart int (two's complement).
+    return U64(
+      v >= BigInt.one << 63 ? (v - (BigInt.one << 64)).toInt() : v.toInt(),
+    );
+  }
+
+  // ── Widening arithmetic ─────────────────────────────────────────────────
+
+  /// Multiplies this by [other], returning a [BigInt] to prevent overflow.
+  BigInt wideningMul(U64 other) => toBigInt() * other.toBigInt();
 }

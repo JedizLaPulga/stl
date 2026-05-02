@@ -192,4 +192,23 @@ extension type const U8._(
 
   /// Converts to [U64], zero-extending.
   U64 toU64() => U64(value);
+
+  // ── BigInt interop ──────────────────────────────────────────────────────
+
+  /// Converts this value to a [BigInt].
+  BigInt toBigInt() => BigInt.from(value);
+
+  /// Constructs a [U8] from a [BigInt], throwing a [RangeError] if [v] is
+  /// outside `[0, 255]`.
+  static U8 fromBigInt(BigInt v) {
+    if (v.isNegative || v > BigInt.from(255)) {
+      throw RangeError('$v is out of range for U8. Must be in [0, 255].');
+    }
+    return U8(v.toInt());
+  }
+
+  // ── Widening arithmetic ─────────────────────────────────────────────────
+
+  /// Multiplies this by [other], returning a [U16] to prevent overflow.
+  U16 wideningMul(U8 other) => U16(value * other.value);
 }

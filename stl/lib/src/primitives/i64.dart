@@ -259,4 +259,37 @@ extension type const I64._(
 
   /// Converts to [U64], reinterpreting the bit pattern as unsigned.
   U64 toU64() => U64(value.toUnsigned(64));
+
+  // ── BigInt interop ──────────────────────────────────────────────────────
+
+  /// Converts this value to a [BigInt].
+  BigInt toBigInt() => BigInt.from(value);
+
+  /// Constructs an [I64] from a [BigInt], throwing a [RangeError] if [v] is
+  /// outside the 64-bit signed range `[-2^63, 2^63-1]`.
+  static I64 fromBigInt(BigInt v) {
+    if (v < -(BigInt.one << 63) || v > (BigInt.one << 63) - BigInt.one) {
+      throw RangeError(
+        '$v is out of range for I64. Must be in [-2^63, 2^63-1].',
+      );
+    }
+    return I64(v.toInt());
+  }
+
+  // ── Checked negation ────────────────────────────────────────────────────
+
+  /// Returns the negated value, throwing a [StateError] if this is [I64.min]
+  /// (the only value whose negation overflows).
+  I64 negChecked() {
+    if (value == -9223372036854775808) {
+      throw StateError('I64 negation overflow');
+    }
+    return I64(-value);
+  }
+
+  // ── Widening arithmetic ─────────────────────────────────────────────────
+
+  /// Multiplies this by [other], returning a [BigInt] to prevent overflow.
+  BigInt wideningMul(I64 other) =>
+      BigInt.from(value) * BigInt.from(other.value);
 }

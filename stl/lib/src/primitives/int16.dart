@@ -228,4 +228,34 @@ extension type Int16._(Int16List _data) {
 
   /// Converts to [Uint64], reinterpreting as unsigned.
   Uint64 toUint64() => Uint64.from(value);
+
+  // ── BigInt interop ──────────────────────────────────────────────────────
+
+  /// Converts this value to a [BigInt].
+  BigInt toBigInt() => BigInt.from(value);
+
+  /// Constructs an [Int16] from a [BigInt], throwing a [RangeError] if [v] is
+  /// outside `[-32768, 32767]`.
+  static Int16 fromBigInt(BigInt v) {
+    if (v < BigInt.from(-32768) || v > BigInt.from(32767)) {
+      throw RangeError(
+        '$v is out of range for Int16. Must be in [-32768, 32767].',
+      );
+    }
+    return Int16.from(v.toInt());
+  }
+
+  // ── Checked negation ────────────────────────────────────────────────────
+
+  /// Returns the negated value, throwing a [StateError] if this is [Int16.min]
+  /// (the only value whose negation overflows).
+  Int16 negChecked() {
+    if (value == -32768) throw StateError('Int16 negation overflow');
+    return Int16.from(-value);
+  }
+
+  // ── Widening arithmetic ─────────────────────────────────────────────────
+
+  /// Multiplies this by [other], returning an [Int32] to prevent overflow.
+  Int32 wideningMul(Int16 other) => Int32.from(value * other.value);
 }

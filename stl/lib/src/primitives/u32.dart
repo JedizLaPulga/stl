@@ -207,4 +207,31 @@ extension type const U32._(
 
   /// Converts to [U64], zero-extending.
   U64 toU64() => U64(value);
+
+  // ── BigInt interop ──────────────────────────────────────────────────────
+
+  /// Converts this value to a [BigInt].
+  BigInt toBigInt() => BigInt.from(value);
+
+  /// Constructs a [U32] from a [BigInt], throwing a [RangeError] if [v] is
+  /// outside `[0, 4294967295]`.
+  static U32 fromBigInt(BigInt v) {
+    if (v.isNegative || v > BigInt.from(4294967295)) {
+      throw RangeError(
+        '$v is out of range for U32. Must be in [0, 4294967295].',
+      );
+    }
+    return U32(v.toInt());
+  }
+
+  // ── Widening arithmetic ─────────────────────────────────────────────────
+
+  /// Multiplies this by [other], returning a [U64] to prevent overflow.
+  ///
+  /// Uses [BigInt] internally since the product may exceed the capacity of a
+  /// signed 64-bit Dart `int`.
+  U64 wideningMul(U32 other) {
+    final result = BigInt.from(value) * BigInt.from(other.value);
+    return U64.fromBigInt(result);
+  }
 }

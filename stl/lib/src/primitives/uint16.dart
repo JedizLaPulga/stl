@@ -201,4 +201,23 @@ extension type Uint16._(Uint16List _data) {
 
   /// Converts to [Uint64], zero-extending.
   Uint64 toUint64() => Uint64.from(value);
+
+  // ── BigInt interop ──────────────────────────────────────────────────────
+
+  /// Converts this value to a [BigInt].
+  BigInt toBigInt() => BigInt.from(value);
+
+  /// Constructs a [Uint16] from a [BigInt], throwing a [RangeError] if [v] is
+  /// outside `[0, 65535]`.
+  static Uint16 fromBigInt(BigInt v) {
+    if (v.isNegative || v > BigInt.from(65535)) {
+      throw RangeError('$v is out of range for Uint16. Must be in [0, 65535].');
+    }
+    return Uint16.from(v.toInt());
+  }
+
+  // ── Widening arithmetic ─────────────────────────────────────────────────
+
+  /// Multiplies this by [other], returning a [Uint32] to prevent overflow.
+  Uint32 wideningMul(Uint16 other) => Uint32.from(value * other.value);
 }

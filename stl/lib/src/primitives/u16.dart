@@ -195,4 +195,23 @@ extension type const U16._(
 
   /// Converts to [U64], zero-extending.
   U64 toU64() => U64(value);
+
+  // ── BigInt interop ──────────────────────────────────────────────────────
+
+  /// Converts this value to a [BigInt].
+  BigInt toBigInt() => BigInt.from(value);
+
+  /// Constructs a [U16] from a [BigInt], throwing a [RangeError] if [v] is
+  /// outside `[0, 65535]`.
+  static U16 fromBigInt(BigInt v) {
+    if (v.isNegative || v > BigInt.from(65535)) {
+      throw RangeError('$v is out of range for U16. Must be in [0, 65535].');
+    }
+    return U16(v.toInt());
+  }
+
+  // ── Widening arithmetic ─────────────────────────────────────────────────
+
+  /// Multiplies this by [other], returning a [U32] to prevent overflow.
+  U32 wideningMul(U16 other) => U32(value * other.value);
 }

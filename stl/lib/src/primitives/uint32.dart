@@ -207,4 +207,31 @@ extension type Uint32._(Uint32List _data) {
 
   /// Converts to [Uint64], zero-extending.
   Uint64 toUint64() => Uint64.from(value);
+
+  // ── BigInt interop ──────────────────────────────────────────────────────
+
+  /// Converts this value to a [BigInt].
+  BigInt toBigInt() => BigInt.from(value);
+
+  /// Constructs a [Uint32] from a [BigInt], throwing a [RangeError] if [v] is
+  /// outside `[0, 4294967295]`.
+  static Uint32 fromBigInt(BigInt v) {
+    if (v.isNegative || v > BigInt.from(4294967295)) {
+      throw RangeError(
+        '$v is out of range for Uint32. Must be in [0, 4294967295].',
+      );
+    }
+    return Uint32.from(v.toInt());
+  }
+
+  // ── Widening arithmetic ─────────────────────────────────────────────────
+
+  /// Multiplies this by [other], returning a [Uint64] to prevent overflow.
+  ///
+  /// Uses [BigInt] internally since the product may exceed the capacity of a
+  /// signed 64-bit Dart `int`.
+  Uint64 wideningMul(Uint32 other) {
+    final result = BigInt.from(value) * BigInt.from(other.value);
+    return Uint64.fromBigInt(result);
+  }
 }
