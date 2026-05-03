@@ -18,6 +18,10 @@ export 'src/collections/multimap.dart';
 export 'src/collections/slist.dart';
 export 'src/collections/forward_list.dart';
 export 'src/collections/array.dart';
+// Haskell-inspired collections
+export 'src/collections/non_empty_list.dart';
+export 'src/collections/non_empty_vector.dart';
+export 'src/collections/finger_tree.dart';
 export 'src/ranges/numberline.dart';
 export 'src/ranges/zip_range.dart';
 export 'src/ranges/chunk_range.dart';
@@ -51,6 +55,9 @@ export 'src/utilities/any.dart';
 export 'src/utilities/string_view.dart';
 export 'src/utilities/expected.dart';
 export 'src/utilities/tuple.dart';
+// Haskell-inspired utilities
+export 'src/utilities/validated.dart';
+export 'src/utilities/zipper.dart';
 export 'src/primitives/primitives.dart';
 export 'src/math/constant/constant.dart';
 export 'src/math/numeric.dart';
@@ -86,6 +93,8 @@ export 'src/geometry/quaternion.dart';
 export 'src/geometry/geometry_algorithms.dart';
 export 'src/algorithm/algorithm.dart';
 export 'src/functional/functional.dart';
+// Haskell-inspired functional
+export 'src/functional/state_monad.dart';
 export 'src/exceptions/exceptions.dart';
 export 'src/utilities/ratio.dart';
 export 'src/chrono/chrono.dart';

@@ -7,7 +7,7 @@
 
   [![License: MIT](https://img.shields.io/badge/License-MIT-ff69b4.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
   [![Dart](https://img.shields.io/badge/Dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev/)
-  [![Pub Version](https://img.shields.io/badge/pub-0.6.1-blueviolet.svg?style=for-the-badge)](https://pub.dev/packages/stl)
+  [![Pub Version](https://img.shields.io/badge/pub-0.6.2-blueviolet.svg?style=for-the-badge)](https://pub.dev/packages/stl)
 
   > 🚀 **A highly-versatile, performance-driven bank of data collections, structures, and algorithmic ranges for the Dart and Flutter ecosystem.**
 
@@ -97,6 +97,12 @@ Instead of strictly separating containers, mathematics, and utilities, here is a
 | ⏱️ **`<chrono>`** | ![](https://img.shields.io/badge/Utility-green) | Highly portable C++ style `SystemClock` and `SteadyClock` for time tracking across Native and Web targets. |
 | 🧮 **`<ratio>`** | ![](https://img.shields.io/badge/Math-orange) | Compile-time friendly exact rational fractions (`Ratio`) and standard SI prefix multipliers (`milli`, `micro`). |
 | 🔄 **`<iterator>`**| ![](https://img.shields.io/badge/Algorithm-cyan) | Adapter hooks bridging iterables (`ReverseIterator`, `BackInsertIterator`) for fluent mutations. |
+| 🫀 **`NonEmptyList<T>`** | ![](https://img.shields.io/badge/Haskell-pink) | Immutable singly-linked list guaranteed non-empty at the type level. Mirrors Haskell `NonEmpty a = a :| [a]`. |
+| 💪 **`NonEmptyVector<T>`** | ![](https://img.shields.io/badge/Haskell-pink) | Mutable non-empty wrapper over `Vector<T>`. Enforces non-empty invariant on every `removeAt` call. |
+| 🌲 **`FingerTree<T>`** | ![](https://img.shields.io/badge/Haskell-pink) | Persistent 2-3 finger tree with O(1) amortized `prepend`/`append`, O(log n) `concat` and `splitAt`. |
+| ✅ **`Validated<E, A>`** | ![](https://img.shields.io/badge/Haskell-pink) | Error-accumulating result type. `zip()` collects errors from both sides — ideal for form validation pipelines. |
+| 🤐 **`Zipper<T>`** | ![](https://img.shields.io/badge/Haskell-pink) | Immutable cursor-based sequence navigation inspired by Huet (1997). `moveLeft`/`moveRight`/`replace`/`delete`. |
+| 🎯 **`StateMonad<S, A>`** | ![](https://img.shields.io/badge/Haskell-pink) | Pure stateful computation `S → (A, S)`. Monadic `map`/`flatMap`, `get`/`put`/`modify`/`pure` constructors. |
 | 🔢 **`IotaRange`** | ![](https://img.shields.io/badge/Range-teal) | Lazy integer sequence `[start, end)` — infinite when `end` is omitted. Mirrors `std::views::iota`. |
 | 1️⃣ **`SingleRange<T>`** | ![](https://img.shields.io/badge/Range-teal) | Wraps exactly one value as a one-element range. Mirrors `std::views::single`. |
 | ✂️ **`SplitRange<T>`** | ![](https://img.shields.io/badge/Range-teal) | Splits an iterable on a delimiter, yielding `List<T>` segments. Mirrors `std::views::split`. |
@@ -251,6 +257,80 @@ void main() {
 <div align="center">
   <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Symbols/Fire.png" alt="Fire" width="50" height="50" />
 </div>
+
+---
+
+<br/>
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Crystal%20Ball.png" alt="Crystal Ball" width="50" height="50" />
+</div>
+
+## λ Haskell-Inspired Functional Module
+
+Expanding beyond C++ into the richness of **functional programming**, `stl` now includes 6 types directly inspired by Haskell and functional language idioms. These types prioritise **immutability**, **type-level guarantees**, and **composable error handling** — patterns that are extremely powerful in Dart 3.
+
+### 📦 Non-Empty Collections
+
+- **`NonEmptyList<T>`** — An immutable singly-linked structure mirroring Haskell's `NonEmpty a = a :| [a]`. The `head` and `last` getters are always non-nullable. Supports `map`, `flatMap`, `reduce`, `fold`, `prepend`, `append`, `concat`. Constructed via `NonEmptyList.of(head, [tail])` or `NonEmptyList.fromIterable(iterable)`.
+- **`NonEmptyVector<T>`** — A mutable non-empty wrapper over the existing `Vector<T>`. Enforces the non-empty invariant at every `removeAt` call — throws `InvalidArgument` if removal would empty the container. Mirrors `Vector`'s full API with non-nullable `first` and `last`.
+- **`FingerTree<T>`** — A full persistent 2-3 finger tree based on Hinze & Paterson (2006). Provides O(1) amortized `prepend` and `append`, O(log n) `concat` and `splitAt`, and O(1) `length`. All operations return new instances — the tree is entirely immutable.
+
+```dart
+var ft = FingerTree<int>.fromIterable([1, 2, 3, 4, 5]);
+print(ft.first);        // 1
+print(ft.last);         // 5
+final (left, right) = ft.splitAt(3);
+print(left.toList());   // [1, 2, 3]
+print(right.toList());  // [4, 5]
+print(left.concat(right).toList()); // [1, 2, 3, 4, 5]
+```
+
+### 🛡️ Error-Accumulating Results
+
+- **`Validated<E, A>`** — A sealed result type (`Valid<E,A>` / `Invalid<E,A>`) that **accumulates** all errors rather than short-circuiting on the first. The key operation `zip()` merges two `Validated` values, collecting errors from both sides simultaneously. Ideal for form and data validation pipelines.
+
+```dart
+Validated<String, int> age = Validated.valid(25);
+Validated<String, String> name = Validated.valid('Alice');
+final combined = age.zip(name); // Valid((25, 'Alice'))
+
+// Both errors are preserved:
+final bad1 = Validated<String, int>.invalid('Age must be positive');
+final bad2 = Validated<String, int>.invalid('Age out of range');
+print(bad1.zip(bad2)); // Invalid(['Age must be positive', 'Age out of range'])
+```
+
+### 🤐 Sequence Navigation
+
+- **`Zipper<T>`** — An immutable cursor over a sequence, inspired by Huet's Zipper (1997). Maintains `left` (reversed context), `focus`, and `right`. All navigation (`moveLeft`, `moveRight`, `replace`, `insert`, `delete`) returns a new `Zipper<T>`. `toList()` reconstructs the full sequence at any cursor position.
+
+```dart
+final z = Zipper.fromList([1, 2, 3, 4, 5]);
+final z2 = z.moveRight().moveRight(); // focus = 3
+final z3 = z2.replace(99);
+print(z3.toList()); // [1, 2, 99, 4, 5]
+print(z3.index);    // 2
+```
+
+### 🎯 Pure Stateful Computation
+
+- **`StateMonad<S, A>`** — Encapsulates a function `S → (A, S)` that threads state through a computation pipeline without any mutable variables. Uses Dart 3 records as the return type. Provides `map`, `flatMap` (monadic bind), and static constructors `pure`, `get`, `put`, `modify`.
+
+```dart
+// Count the number of times a value is accessed
+final readAndCount = StateMonad<int, String>((count) => ('hello', count + 1));
+final pipeline = readAndCount
+    .flatMap((v) => StateMonad<int, String>((count) => ('$v world', count + 1)));
+
+final (value, accessCount) = pipeline.run(0);
+print(value);       // hello world
+print(accessCount); // 2
+```
+
+---
+
+<br/>
 
 ## 🧬 Ranges Module (Inspired by C++23)
 

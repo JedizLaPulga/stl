@@ -1,6 +1,6 @@
 name: stl
 description: Supercharge Dart & Flutter with C++ STL architecture. Unlock zero-cost primitives, associative collections, memory views, and C++23 ranges.
-version: 0.6.1
+version: 0.6.2
 repository: https://github.com/jedizlapulga/stl
 
 environment:
