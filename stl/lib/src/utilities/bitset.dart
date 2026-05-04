@@ -99,6 +99,71 @@ class BitSet {
     return total;
   }
 
+  /// Returns a new [BitSet] that is the bitwise AND of this and [other].
+  ///
+  /// A bit is set in the result only if it is set in **both** operands.
+  /// Throws [ArgumentError] if the operands have different sizes.
+  BitSet operator &(BitSet other) {
+    if (_length != other._length) {
+      throw ArgumentError(
+        'BitSet sizes must match for AND: $_length vs ${other._length}.',
+      );
+    }
+    final result = BitSet(_length);
+    for (int i = 0; i < _words.length; i++) {
+      result._words[i] = _words[i] & other._words[i];
+    }
+    return result;
+  }
+
+  /// Returns a new [BitSet] that is the bitwise OR of this and [other].
+  ///
+  /// A bit is set in the result if it is set in **either** operand.
+  /// Throws [ArgumentError] if the operands have different sizes.
+  BitSet operator |(BitSet other) {
+    if (_length != other._length) {
+      throw ArgumentError(
+        'BitSet sizes must match for OR: $_length vs ${other._length}.',
+      );
+    }
+    final result = BitSet(_length);
+    for (int i = 0; i < _words.length; i++) {
+      result._words[i] = _words[i] | other._words[i];
+    }
+    return result;
+  }
+
+  /// Returns a new [BitSet] that is the bitwise XOR of this and [other].
+  ///
+  /// A bit is set in the result if it is set in **exactly one** operand.
+  /// Throws [ArgumentError] if the operands have different sizes.
+  BitSet operator ^(BitSet other) {
+    if (_length != other._length) {
+      throw ArgumentError(
+        'BitSet sizes must match for XOR: $_length vs ${other._length}.',
+      );
+    }
+    final result = BitSet(_length);
+    for (int i = 0; i < _words.length; i++) {
+      result._words[i] = _words[i] ^ other._words[i];
+    }
+    result._clearUnusedBits();
+    return result;
+  }
+
+  /// Returns a new [BitSet] that is the bitwise complement (NOT) of this one.
+  ///
+  /// Every set bit becomes clear and every clear bit becomes set. Unused high
+  /// bits in the final word are masked off so they never appear set.
+  BitSet operator ~() {
+    final result = BitSet(_length);
+    for (int i = 0; i < _words.length; i++) {
+      result._words[i] = ~_words[i];
+    }
+    result._clearUnusedBits();
+    return result;
+  }
+
   void _checkBounds(int index) {
     if (index < 0 || index >= _length) {
       throw RangeError.index(

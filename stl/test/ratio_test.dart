@@ -59,5 +59,45 @@ void main() {
       expect(Ratio.micro.num, equals(1));
       expect(Ratio.micro.den, equals(1000000));
     });
+
+    test('Zero denominator throws ArgumentError at runtime', () {
+      expect(() => Ratio(1, 0), throwsArgumentError);
+      expect(() => Ratio(0, 0), throwsArgumentError);
+    });
+
+    test('compareTo and relational operators', () {
+      final half = Ratio(1, 2);
+      final third = Ratio(1, 3);
+      final twoFourths = Ratio(2, 4); // equal to 1/2
+
+      expect(half.compareTo(twoFourths), equals(0));
+      expect(third.compareTo(half), isNegative);
+      expect(half.compareTo(third), isPositive);
+
+      expect(third < half, isTrue);
+      expect(third <= half, isTrue);
+      expect(half > third, isTrue);
+      expect(half >= twoFourths, isTrue);
+      expect(half <= twoFourths, isTrue);
+      expect(half < third, isFalse);
+    });
+
+    test('negate returns negated simplified Ratio', () {
+      expect(Ratio(3, 4).negate(), equals(Ratio(-3, 4)));
+      expect(Ratio(-1, 2).negate(), equals(Ratio(1, 2)));
+      expect(Ratio(0, 5).negate(), equals(Ratio(0, 1)));
+    });
+
+    test('reciprocal returns flipped simplified Ratio', () {
+      expect(Ratio(2, 3).reciprocal(), equals(Ratio(3, 2)));
+      expect(Ratio(1, 4).reciprocal(), equals(Ratio(4, 1)));
+      expect(() => Ratio(0, 1).reciprocal(), throwsArgumentError);
+    });
+
+    test('abs returns absolute value', () {
+      expect(Ratio(-3, 4).abs(), equals(Ratio(3, 4)));
+      expect(Ratio(3, 4).abs(), equals(Ratio(3, 4)));
+      expect(Ratio(0, 5).abs(), equals(Ratio(0, 1)));
+    });
   });
 }

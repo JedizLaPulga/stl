@@ -5,11 +5,11 @@ void main() {
   group('Any Core Features', () {
     test('Initialization and hasValue', () {
       final a = Any(42);
-      expect(a.hasValue(), isTrue);
+      expect(a.hasValue, isTrue);
       expect(a.empty(), isFalse);
 
       final b = Any.empty();
-      expect(b.hasValue(), isFalse);
+      expect(b.hasValue, isFalse);
       expect(b.empty(), isTrue);
     });
 
@@ -28,7 +28,7 @@ void main() {
       final a = Any.empty();
       a.set(100);
       expect(a.get(), 100);
-      expect(a.hasValue(), isTrue);
+      expect(a.hasValue, isTrue);
 
       a.reset();
       expect(a.empty(), isTrue);

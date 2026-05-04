@@ -184,5 +184,75 @@ void main() {
         expect(a, isNot(equals(b)));
       });
     });
+
+    // -------------------------------------------------------------------------
+    // moveTo
+    // -------------------------------------------------------------------------
+    group('moveTo', () {
+      test('moves to the specified absolute index', () {
+        final z = Zipper.fromList([10, 20, 30, 40, 50]);
+        final z2 = z.moveTo(3);
+        expect(z2.focus, equals(40));
+        expect(z2.index, equals(3));
+        expect(z2.toList(), equals([10, 20, 30, 40, 50]));
+      });
+
+      test('moveTo(0) positions at the beginning', () {
+        final z = Zipper.fromListAt([1, 2, 3], 2);
+        final z2 = z.moveTo(0);
+        expect(z2.focus, equals(1));
+        expect(z2.index, equals(0));
+      });
+
+      test('moveTo last index', () {
+        final z = Zipper.fromList([1, 2, 3]);
+        final z2 = z.moveTo(2);
+        expect(z2.focus, equals(3));
+        expect(z2.canMoveRight, isFalse);
+      });
+
+      test('moveTo throws RangeError on out-of-bounds index', () {
+        final z = Zipper.fromList([1, 2, 3]);
+        expect(() => z.moveTo(3), throwsRangeError);
+        expect(() => z.moveTo(-1), throwsRangeError);
+      });
+    });
+
+    // -------------------------------------------------------------------------
+    // find
+    // -------------------------------------------------------------------------
+    group('find', () {
+      test('finds the first matching element from the current focus', () {
+        final z = Zipper.fromList([1, 2, 3, 4, 5]);
+        final result = z.find((e) => e > 3);
+        expect(result, isNotNull);
+        expect(result!.focus, equals(4));
+        expect(result.index, equals(3));
+      });
+
+      test('find matches the current focus', () {
+        final z = Zipper.fromListAt([1, 2, 3], 1);
+        final result = z.find((e) => e == 2);
+        expect(result, isNotNull);
+        expect(result!.focus, equals(2));
+        expect(result.index, equals(1));
+      });
+
+      test('find returns null when no element matches', () {
+        final z = Zipper.fromList([1, 2, 3]);
+        final result = z.find((e) => e > 10);
+        expect(result, isNull);
+      });
+
+      test(
+        'find does not scan elements to the left of the current position',
+        () {
+          final z = Zipper.fromListAt([5, 1, 2, 3], 1);
+          // 5 is to the left; find should not see it
+          final result = z.find((e) => e == 5);
+          expect(result, isNull);
+        },
+      );
+    });
   });
 }

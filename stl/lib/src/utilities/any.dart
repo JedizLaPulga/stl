@@ -25,8 +25,11 @@ class Any {
     _hasValue = false;
   }
 
-  /// Determines whether the internal box state currently holds an active value natively.
-  bool hasValue() => _hasValue;
+  /// Returns `true` if this container currently holds a value.
+  ///
+  /// Consistent with the getter conventions used by [Optional], [Expected],
+  /// and [Validated].
+  bool get hasValue => _hasValue;
 
   /// Fetches exactly the strict runtime type of the dynamically wrapped inner memory state.
   /// Throws natively if empty.

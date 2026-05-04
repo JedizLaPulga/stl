@@ -3,15 +3,15 @@
 /// In the C++ STL, this matches the behavior of `std::string_view`.
 /// It provides high-performance read-only operations on text sequences
 /// without dynamically allocating new string memory under the hood.
-class StringView {
+/// [StringView] implements [Comparable] so instances may be ordered with
+/// `<`, `<=`, `>`, `>=`, and [compareTo].
+class StringView implements Comparable<StringView> {
   final String _string;
   final int _start;
   final int _end;
 
   /// Creates a StringView from an entire [String].
-  StringView(this._string)
-      : _start = 0,
-        _end = _string.length;
+  StringView(this._string) : _start = 0, _end = _string.length;
 
   /// Creates a StringView from a specific segment of a [String].
   ///
@@ -106,6 +106,97 @@ class StringView {
     }
     return StringView.substring(_string, newStart, newEnd);
   }
+
+  /// Compares this view with [other] lexicographically, matching the ordering
+  /// of `std::string_view::compare`.
+  ///
+  /// Returns a negative integer, zero, or a positive integer when this view
+  /// is lexicographically less than, equal to, or greater than [other].
+  @override
+  int compareTo(StringView other) {
+    final minLen = length < other.length ? length : other.length;
+    for (int i = 0; i < minLen; i++) {
+      final cmp = this[i].compareTo(other[i]);
+      if (cmp != 0) return cmp;
+    }
+    return length.compareTo(other.length);
+  }
+
+  /// Returns `true` if this view is lexicographically less than [other].
+  bool operator <(StringView other) => compareTo(other) < 0;
+
+  /// Returns `true` if this view is lexicographically less than or equal to [other].
+  bool operator <=(StringView other) => compareTo(other) <= 0;
+
+  /// Returns `true` if this view is lexicographically greater than [other].
+  bool operator >(StringView other) => compareTo(other) > 0;
+
+  /// Returns `true` if this view is lexicographically greater than or equal to [other].
+  bool operator >=(StringView other) => compareTo(other) >= 0;
+
+  /// Returns the position of the **last** match of [pattern] in this view,
+  /// scanning backwards from [start] (defaults to the end of the view).
+  ///
+  /// Returns `-1` if [pattern] is not found.
+  int lastIndexOf(String pattern, [int? start]) {
+    final searchEnd = (start ?? length - 1).clamp(0, length - 1);
+    if (pattern.isEmpty) return searchEnd;
+    if (pattern.length > length) return -1;
+    for (int i = searchEnd - pattern.length + 1; i >= 0; i--) {
+      bool match = true;
+      for (int j = 0; j < pattern.length; j++) {
+        if (_string[_start + i + j] != pattern[j]) {
+          match = false;
+          break;
+        }
+      }
+      if (match) return i;
+    }
+    return -1;
+  }
+
+  /// Splits this view on [delimiter] and returns a list of zero-allocation
+  /// [StringView] sub-views into the same backing string.
+  ///
+  /// Consecutive delimiters produce empty views. A trailing delimiter produces
+  /// a final empty view. Mirrors `std::views::split` semantics.
+  List<StringView> split(String delimiter) {
+    if (delimiter.isEmpty) {
+      return List.generate(
+        length,
+        (i) => StringView.substring(_string, _start + i, _start + i + 1),
+        growable: false,
+      );
+    }
+    final result = <StringView>[];
+    int segStart = 0;
+    while (segStart <= length) {
+      final idx = indexOf(delimiter, segStart);
+      if (idx == -1) {
+        result.add(StringView.substring(_string, _start + segStart, _end));
+        break;
+      }
+      result.add(
+        StringView.substring(_string, _start + segStart, _start + idx),
+      );
+      segStart = idx + delimiter.length;
+    }
+    return result;
+  }
+
+  /// Returns a new [String] with every character converted to upper case.
+  ///
+  /// Delegates to the Dart runtime for correct Unicode handling. Returns a
+  /// `String` rather than a `StringView` because Unicode case-folding can
+  /// change the number of code units.
+  String toUpperCase() => toString().toUpperCase();
+
+  /// Returns a new [String] with every character converted to lower case.
+  ///
+  /// Delegates to the Dart runtime for correct Unicode handling. Returns a
+  /// `String` rather than a `StringView` because Unicode case-folding can
+  /// change the number of code units.
+  String toLowerCase() => toString().toLowerCase();
 
   bool _isWhitespace(String c) {
     return c == ' ' || c == '\n' || c == '\r' || c == '\t';

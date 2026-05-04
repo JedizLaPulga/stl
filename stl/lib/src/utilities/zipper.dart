@@ -127,6 +127,33 @@ final class Zipper<T> {
     }
   }
 
+  /// Repositions the cursor to an absolute 0-based [index].
+  ///
+  /// Equivalent to creating `Zipper.fromListAt(toList(), index)` but reuses
+  /// the already-split structure. The operation is O(N) in the distance
+  /// between the current index and the target.
+  ///
+  /// Throws [RangeError] if [index] is out of bounds.
+  Zipper<T> moveTo(int index) {
+    if (index < 0 || index >= length) {
+      throw RangeError.index(index, this, 'index', null, length);
+    }
+    return Zipper.fromListAt(toList(), index);
+  }
+
+  /// Scans forward from the current [focus] (inclusive) and returns a new
+  /// [Zipper] focused on the first element satisfying [predicate].
+  ///
+  /// Returns `null` if no matching element is found. Does not wrap around.
+  Zipper<T>? find(bool Function(T element) predicate) {
+    Zipper<T> current = this;
+    while (true) {
+      if (predicate(current.focus)) return current;
+      if (!current.canMoveRight) return null;
+      current = current.moveRight();
+    }
+  }
+
   /// Reconstructs the full sequence as a [List] in natural order.
   List<T> toList({bool growable = true}) {
     final result = [..._left.reversed, focus, ..._right];

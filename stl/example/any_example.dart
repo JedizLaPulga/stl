@@ -5,7 +5,7 @@ void main() {
 
   // Let's create an Any box initialized empty.
   var mysteriousBox = Any.empty();
-  print('Does the system contain data? ${mysteriousBox.hasValue()}');
+  print('Does the system contain data? ${mysteriousBox.hasValue}');
 
   // Load a string into the Box dynamically
   mysteriousBox.set('System Configuration Vector');
@@ -33,5 +33,5 @@ void main() {
 
   // Wiping the Box entirely
   mysteriousBox.reset();
-  print('\nState wiped natively. Has value? ${mysteriousBox.hasValue()}');
+  print('\nState wiped natively. Has value? ${mysteriousBox.hasValue}');
 }

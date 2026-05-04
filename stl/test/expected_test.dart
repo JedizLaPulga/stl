@@ -53,14 +53,50 @@ void main() {
       final v3 = Expected<int, String>.value(43);
       final e1 = Expected<int, String>.error('err');
       final e2 = Expected<int, String>.error('err');
-      
+
       expect(v1 == v2, isTrue);
       expect(v1.hashCode == v2.hashCode, isTrue);
       expect(v1 == v3, isFalse);
-      
+
       expect(e1 == e2, isTrue);
       expect(e1.hashCode == e2.hashCode, isTrue);
       expect(e1 == v1, isFalse);
+    });
+
+    test('flatMap chains operations and short-circuits on error', () {
+      Expected<int, String> doubleIt(int n) => Expected.value(n * 2);
+      Expected<int, String> failAt10(int n) =>
+          n == 10 ? Expected.error('too big') : Expected.value(n);
+
+      // Happy path: chain succeeds end-to-end
+      final result = Expected<int, String>.value(3)
+          .flatMap(doubleIt) // 6
+          .flatMap(doubleIt); // 12
+      expect(result.hasValue, isTrue);
+      expect(result.value, equals(12));
+
+      // Short-circuit: doubling 5 → 10 then failAt10 errors out
+      final errResult = Expected<int, String>.value(5)
+          .flatMap(doubleIt) // 10
+          .flatMap(failAt10); // 10 == 10 → error
+      expect(errResult.hasValue, isFalse);
+      expect(errResult.error, equals('too big'));
+
+      // Starting from error: flatMap not called
+      final startErr = Expected<int, String>.error('initial').flatMap(doubleIt);
+      expect(startErr.hasValue, isFalse);
+      expect(startErr.error, equals('initial'));
+    });
+
+    test('fold reduces to a single value via the matching branch', () {
+      final value = Expected<int, String>.value(42);
+      final error = Expected<int, String>.error('oops');
+
+      expect(value.fold((v) => 'got $v', (e) => 'err: $e'), equals('got 42'));
+      expect(
+        error.fold((v) => 'got $v', (e) => 'err: $e'),
+        equals('err: oops'),
+      );
     });
   });
 }

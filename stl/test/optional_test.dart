@@ -71,4 +71,49 @@ void main() {
       expect(result, equals("Dart"));
     });
   });
+
+  group('fold, filter, zip', () {
+    test('fold calls onSome for Some and onNone for None', () {
+      final some = Optional.of(42);
+      final none = Optional<int>.none();
+
+      expect(some.fold((v) => 'got $v', () => 'nothing'), equals('got 42'));
+      expect(none.fold((v) => 'got $v', () => 'nothing'), equals('nothing'));
+    });
+
+    test('filter keeps Some when predicate holds', () {
+      final even = Optional.of(4).filter((n) => n.isEven);
+      expect(even, isA<Some<int>>());
+      expect(even.valueOr(0), equals(4));
+    });
+
+    test('filter returns None when predicate fails', () {
+      final result = Optional.of(3).filter((n) => n.isEven);
+      expect(result, isA<None<int>>());
+    });
+
+    test('filter on None returns None without calling predicate', () {
+      var called = false;
+      final result = Optional<int>.none().filter((n) {
+        called = true;
+        return true;
+      });
+      expect(result, isA<None<int>>());
+      expect(called, isFalse);
+    });
+
+    test('zip returns Some record when both are Some', () {
+      final result = Optional.of(1).zip(Optional.of('a'));
+      expect(result, isA<Some<(int, String)>>());
+      final (n, s) = (result as Some<(int, String)>).value;
+      expect(n, equals(1));
+      expect(s, equals('a'));
+    });
+
+    test('zip returns None when either operand is None', () {
+      expect(Optional.of(1).zip(Optional<String>.none()), isA<None>());
+      expect(Optional<int>.none().zip(Optional.of('a')), isA<None>());
+      expect(Optional<int>.none().zip(Optional<String>.none()), isA<None>());
+    });
+  });
 }

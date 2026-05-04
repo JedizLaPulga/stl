@@ -1,3 +1,29 @@
+# 0.6.3
+- **Bug Fix:** Replaced `assert(den != 0, ...)` in `Ratio`'s constructor with an explicit `if (den == 0) throw ArgumentError(...)`. The previous `assert` was silently stripped in production (AOT/release) builds, allowing `Ratio(1, 0)` to be created without error. The constructor is no longer `const`; all 16 SI prefix constants (`atto` … `exa`) are now `static final` instead of `static const`.
+- **Bug Fix:** Changed `Pair.swap()` from a mutating `void swap(Pair<T1,T2> other)` that exchanged contents in-place, to a pure `Pair<T2, T1> swap()` that returns a new pair with the types and values reversed. The old signature contradicted the immutable design shared by every other utility type. Existing call sites that expected mutation will need to be updated.
+- **New Method:** Added `Expected<U, E> flatMap<U>(Expected<U, E> Function(T value) mapper)` to `Expected<T, E>` — chains operations that themselves return `Expected`, short-circuiting on the first error exactly like `std::expected::and_then` (C++23). Without this, chaining required manual `hasValue` checks and nesting.
+- **New Method:** Added `R fold<R>(R Function(T value) onValue, R Function(E error) onError)` to `Expected<T, E>` — reduces an `Expected` to a single value by supplying handlers for both the value and error branches. Completes the standard functor/monad API alongside the existing `map` and the new `flatMap`.
+- **New Feature:** Added bitwise logical operators to `BitSet` — `operator &` (AND), `operator |` (OR), `operator ^` (XOR), and `operator ~` (NOT/complement). All binary operators require both operands to have the same `size()`; a mismatched length throws `ArgumentError`. `operator ~` returns a new `BitSet` with every bit flipped (unused high bits in the final word are masked off correctly). These were the primary missing operations for a bit-manipulation container.
+- **New Method:** Added three functional methods to `Optional<T>`:
+  - `R fold<R>(R Function(T) onSome, R Function() onNone)` — reduces an `Optional` to a single value using one of two supplied branches, the dual of `map` for unwrapping.
+  - `Optional<T> filter(bool Function(T) predicate)` — returns `None` when the predicate returns `false` for a `Some` value, leaving `None` unchanged. Equivalent to Haskell's `mfilter` / Java's `Optional.filter`.
+  - `Optional<(T, R)> zip<R>(Optional<R> other)` — combines two `Optional` values into an `Optional` of a Dart 3 record; returns `None` if either operand is `None`.
+- **New Method:** Added five methods to `Ratio`, completing its numeric API:
+  - `int compareTo(Ratio other)` + operators `<`, `<=`, `>`, `>=` — `Ratio` now implements `Comparable<Ratio>`. Comparison is performed on simplified canonical forms by cross-multiplying numerators to avoid floating-point error.
+  - `Ratio negate()` — returns `Ratio(-num, den)` in simplified form.
+  - `Ratio reciprocal()` — returns `Ratio(den, num)` in simplified form. Throws `ArgumentError` if `num` is zero.
+  - `Ratio abs()` — returns the absolute value in simplified form.
+- **New Method:** Added five methods to `StringView`, completing its read-only string API:
+  - `int compareTo(StringView other)` + operators `<`, `<=`, `>`, `>=` — `StringView` now implements `Comparable<StringView>`. Comparison uses the same lexicographic ordering as `std::string_view::compare`.
+  - `int lastIndexOf(String pattern, [int? start])` — reverse linear scan returning the last position of `pattern`; returns `-1` if not found. Mirrors the existing `indexOf`.
+  - `List<StringView> split(String delimiter)` — splits the view on `delimiter` and returns a list of zero-allocation `StringView` sub-views into the same backing string (no new `String` allocations).
+  - `String toUpperCase()` — returns a new `String` with all characters uppercased (delegates to the Dart runtime for correct Unicode handling).
+  - `String toLowerCase()` — returns a new `String` with all characters lowercased.
+- **New Method:** Added two navigation methods to `Zipper<T>`:
+  - `Zipper<T> moveTo(int index)` — repositions the cursor to an absolute 0-based index in O(N). Throws `RangeError` if `index` is out of bounds. More ergonomic than calling `moveLeft`/`moveRight` repeatedly when the target index is known.
+  - `Zipper<T>? find(bool Function(T) predicate)` — scans forward from the current `focus` (inclusive) and returns a new `Zipper` focused on the first matching element, or `null` if no match is found. Does not wrap around.
+- **API Fix:** Changed `Any.hasValue()` from a method to a getter (`bool get hasValue`). Every other utility with a presence check (`Optional.isPresent`, `Expected.hasValue`, `Validated.isValid`) exposes it as a getter; `Any` was the sole inconsistency. **Breaking change** — call sites must drop the `()`.
+
 # 0.6.2
 - **New Feature:** Added 6 Haskell-inspired functional types across three modules, expanding the library beyond C++ STL 
   - **`NonEmptyList<T>`** (`collections`) — Immutable singly-linked structure mirroring Haskell's `NonEmpty a = a :| [a]`. Guarantees at least one element at the type level, eliminating null-checks on `first`/`last`. Supports `map`, `flatMap`, `reduce`, `fold`, `prepend`, `append`, `concat`, and implements `Iterable<T>`.

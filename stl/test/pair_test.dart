@@ -28,17 +28,47 @@ void main() {
       expect(p1 == p4, isFalse);
     });
 
-    test('Swap', () {
-      final p1 = makePair(1, 'a');
-      final p2 = makePair(2, 'b');
+    test('Swap returns a new Pair with types reversed', () {
+      final p = makePair(1, 'a');
+      final swapped = p.swap();
 
-      p1.swap(p2);
+      // Swapped pair has reversed values and reversed type parameters
+      expect(swapped.first, equals('a'));
+      expect(swapped.second, equals(1));
 
-      expect(p1.first, equals(2));
-      expect(p1.second, equals('b'));
+      // Original is unchanged (swap is pure)
+      expect(p.first, equals(1));
+      expect(p.second, equals('a'));
+    });
 
-      expect(p2.first, equals(1));
-      expect(p2.second, equals('a'));
+    test('map transforms both elements', () {
+      final p = makePair(3, 'hello');
+      final mapped = p.map<int, int>((n) => n * 2, (s) => s.length);
+      expect(mapped.first, equals(6));
+      expect(mapped.second, equals(5));
+    });
+
+    test('mapFirst transforms only the first element', () {
+      final p = makePair(4, 'world');
+      final mapped = p.mapFirst((n) => n.toDouble());
+      expect(mapped.first, equals(4.0));
+      expect(mapped.second, equals('world'));
+    });
+
+    test('mapSecond transforms only the second element', () {
+      final p = makePair(7, 'dart');
+      final mapped = p.mapSecond((s) => s.toUpperCase());
+      expect(mapped.first, equals(7));
+      expect(mapped.second, equals('DART'));
+    });
+
+    test('fold reduces pair to a single value', () {
+      final p = makePair('hello', 5);
+      final result = p.fold((s, n) => s.substring(0, n));
+      expect(result, equals('hello'));
+
+      final sum = makePair(10, 32).fold((a, b) => a + b);
+      expect(sum, equals(42));
     });
 
     test('ToString', () {

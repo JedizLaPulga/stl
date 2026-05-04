@@ -82,5 +82,87 @@ void main() {
       expect(() => bits.set(-1), throwsRangeError);
       expect(() => bits.test(6), throwsRangeError);
     });
+
+    test('AND operator produces intersection of set bits', () {
+      final a = BitSet(4)
+        ..set(0)
+        ..set(1)
+        ..set(2);
+      final b = BitSet(4)
+        ..set(1)
+        ..set(2)
+        ..set(3);
+      final result = a & b;
+      expect(result[0], isFalse);
+      expect(result[1], isTrue);
+      expect(result[2], isTrue);
+      expect(result[3], isFalse);
+      expect(result.count(), equals(2));
+    });
+
+    test('OR operator produces union of set bits', () {
+      final a = BitSet(4)
+        ..set(0)
+        ..set(1);
+      final b = BitSet(4)
+        ..set(2)
+        ..set(3);
+      final result = a | b;
+      expect(result.count(), equals(4));
+      expect(result.all(), isTrue);
+    });
+
+    test('XOR operator produces symmetric difference', () {
+      final a = BitSet(4)
+        ..set(0)
+        ..set(1)
+        ..set(2);
+      final b = BitSet(4)
+        ..set(1)
+        ..set(2)
+        ..set(3);
+      final result = a ^ b;
+      expect(result[0], isTrue);
+      expect(result[1], isFalse);
+      expect(result[2], isFalse);
+      expect(result[3], isTrue);
+      expect(result.count(), equals(2));
+    });
+
+    test('NOT operator flips all bits and masks unused bits', () {
+      final a = BitSet(4)
+        ..set(0)
+        ..set(2);
+      final result = ~a;
+      expect(result[0], isFalse);
+      expect(result[1], isTrue);
+      expect(result[2], isFalse);
+      expect(result[3], isTrue);
+      expect(result.count(), equals(2));
+
+      // NOT of NOT is identity
+      expect(~~a, equals(a));
+    });
+
+    test('logical operators throw on size mismatch', () {
+      final a = BitSet(4);
+      final b = BitSet(5);
+      expect(() => a & b, throwsArgumentError);
+      expect(() => a | b, throwsArgumentError);
+      expect(() => a ^ b, throwsArgumentError);
+    });
+
+    test('logical operators on multi-word BitSet', () {
+      final a = BitSet(35)
+        ..set(0)
+        ..set(33);
+      final b = BitSet(35)
+        ..set(33)
+        ..set(34);
+      final andResult = a & b;
+      expect(andResult[33], isTrue);
+      expect(andResult[0], isFalse);
+      expect(andResult[34], isFalse);
+    });
   });
 }
