@@ -22,7 +22,7 @@ dynamic invoke(
 class Plus<T> {
   /// Creates a [Plus] functor.
   const Plus();
-  
+
   /// Computes `a + b`.
   T call(T a, T b) => ((a as dynamic) + (b as dynamic)) as T;
 }
@@ -33,7 +33,7 @@ class Plus<T> {
 class Minus<T> {
   /// Creates a [Minus] functor.
   const Minus();
-  
+
   /// Computes `a - b`.
   T call(T a, T b) => ((a as dynamic) - (b as dynamic)) as T;
 }
@@ -44,7 +44,7 @@ class Minus<T> {
 class Multiplies<T> {
   /// Creates a [Multiplies] functor.
   const Multiplies();
-  
+
   /// Computes `a * b`.
   T call(T a, T b) => ((a as dynamic) * (b as dynamic)) as T;
 }
@@ -55,9 +55,17 @@ class Multiplies<T> {
 class Divides<T> {
   /// Creates a [Divides] functor.
   const Divides();
-  
+
   /// Computes `a / b`.
-  T call(T a, T b) => ((a as dynamic) / (b as dynamic)) as T;
+  ///
+  /// For integer types uses truncating division (`~/`) so that the result
+  /// stays an `int` and does not throw a [TypeError] from a `double` cast.
+  T call(T a, T b) {
+    if (T == int) {
+      return ((a as dynamic) ~/ (b as dynamic)) as T;
+    }
+    return ((a as dynamic) / (b as dynamic)) as T;
+  }
 }
 
 /// A functor that returns the remainder of two arguments.
@@ -66,7 +74,7 @@ class Divides<T> {
 class Modulus<T> {
   /// Creates a [Modulus] functor.
   const Modulus();
-  
+
   /// Computes `a % b`.
   T call(T a, T b) => ((a as dynamic) % (b as dynamic)) as T;
 }
@@ -77,7 +85,7 @@ class Modulus<T> {
 class Negate<T> {
   /// Creates a [Negate] functor.
   const Negate();
-  
+
   /// Computes `-a`.
   T call(T a) => (-(a as dynamic)) as T;
 }
@@ -92,7 +100,7 @@ class Negate<T> {
 class EqualTo<T> {
   /// Creates an [EqualTo] functor.
   const EqualTo();
-  
+
   /// Checks if `a == b`.
   bool call(T a, T b) => a == b;
 }
@@ -103,7 +111,7 @@ class EqualTo<T> {
 class NotEqualTo<T> {
   /// Creates a [NotEqualTo] functor.
   const NotEqualTo();
-  
+
   /// Checks if `a != b`.
   bool call(T a, T b) => a != b;
 }
@@ -114,7 +122,7 @@ class NotEqualTo<T> {
 class Greater<T> {
   /// Creates a [Greater] functor.
   const Greater();
-  
+
   /// Checks if `a > b`.
   bool call(T a, T b) {
     if (a is Comparable && b is Comparable) {
@@ -130,7 +138,7 @@ class Greater<T> {
 class Less<T> {
   /// Creates a [Less] functor.
   const Less();
-  
+
   /// Checks if `a < b`.
   bool call(T a, T b) {
     if (a is Comparable && b is Comparable) {
@@ -146,7 +154,7 @@ class Less<T> {
 class GreaterEqual<T> {
   /// Creates a [GreaterEqual] functor.
   const GreaterEqual();
-  
+
   /// Checks if `a >= b`.
   bool call(T a, T b) {
     if (a is Comparable && b is Comparable) {
@@ -162,7 +170,7 @@ class GreaterEqual<T> {
 class LessEqual<T> {
   /// Creates a [LessEqual] functor.
   const LessEqual();
-  
+
   /// Checks if `a <= b`.
   bool call(T a, T b) {
     if (a is Comparable && b is Comparable) {
@@ -182,7 +190,7 @@ class LessEqual<T> {
 class LogicalAnd<T> {
   /// Creates a [LogicalAnd] functor.
   const LogicalAnd();
-  
+
   /// Computes `a && b`.
   bool call(T a, T b) => (a as dynamic) && (b as dynamic);
 }
@@ -193,7 +201,7 @@ class LogicalAnd<T> {
 class LogicalOr<T> {
   /// Creates a [LogicalOr] functor.
   const LogicalOr();
-  
+
   /// Computes `a || b`.
   bool call(T a, T b) => (a as dynamic) || (b as dynamic);
 }
@@ -204,7 +212,7 @@ class LogicalOr<T> {
 class LogicalNot<T> {
   /// Creates a [LogicalNot] functor.
   const LogicalNot();
-  
+
   /// Computes `!a`.
   bool call(T a) => !(a as dynamic);
 }
@@ -219,7 +227,7 @@ class LogicalNot<T> {
 class BitAnd<T> {
   /// Creates a [BitAnd] functor.
   const BitAnd();
-  
+
   /// Computes `a & b`.
   T call(T a, T b) => ((a as dynamic) & (b as dynamic)) as T;
 }
@@ -230,7 +238,7 @@ class BitAnd<T> {
 class BitOr<T> {
   /// Creates a [BitOr] functor.
   const BitOr();
-  
+
   /// Computes `a | b`.
   T call(T a, T b) => ((a as dynamic) | (b as dynamic)) as T;
 }
@@ -241,7 +249,7 @@ class BitOr<T> {
 class BitXor<T> {
   /// Creates a [BitXor] functor.
   const BitXor();
-  
+
   /// Computes `a ^ b`.
   T call(T a, T b) => ((a as dynamic) ^ (b as dynamic)) as T;
 }
@@ -252,7 +260,7 @@ class BitXor<T> {
 class BitNot<T> {
   /// Creates a [BitNot] functor.
   const BitNot();
-  
+
   /// Computes `~a`.
   T call(T a) => (~(a as dynamic)) as T;
 }

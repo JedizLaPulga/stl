@@ -139,6 +139,7 @@ class StringView implements Comparable<StringView> {
   ///
   /// Returns `-1` if [pattern] is not found.
   int lastIndexOf(String pattern, [int? start]) {
+    if (length == 0) return -1;
     final searchEnd = (start ?? length - 1).clamp(0, length - 1);
     if (pattern.isEmpty) return searchEnd;
     if (pattern.length > length) return -1;

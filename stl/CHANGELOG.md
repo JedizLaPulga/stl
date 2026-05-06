@@ -1,3 +1,27 @@
+# 0.6.4
+
+## Bug Fixes
+
+- **Bug Fix: `StringView.lastIndexOf` on empty view** — Calling `lastIndexOf` on a zero-length `StringView` previously threw `Invalid argument(s): 0` deep inside `int.clamp` because the expression `(start ?? length - 1)` evaluated to `-1` when `length == 0`, which is below `clamp`'s `min` argument. Fixed by adding an early-exit guard: `if (length == 0) return -1`. Now consistently returns `-1` for any pattern on an empty view, matching the documented contract.
+
+- **Bug Fix: `Divides<int>` throws `TypeError`** — `Divides<T>.call` used Dart's `/` operator (`(a as dynamic) / (b as dynamic)`) which always produces a `double`, even when `T` is `int`. The subsequent `as T` cast therefore threw a `TypeError` at runtime whenever `T == int`. Fixed by dispatching on the type parameter: integer types now use truncating division (`~/`) so the result stays an `int`; floating-point types continue to use `/`. Truncation toward zero matches the behaviour of C++ `std::divides<int>`.
+
+## Test Coverage (v0.6.4 — industrial-standard test suite)
+
+Added **337 new tests** across 9 new extended test files, raising the total suite from **1 191** to **1 528 passing tests** (0 failures, 0 skips):
+
+| File | What is covered |
+|---|---|
+| `test/algorithm_extended_test.dart` | All 45+ algorithm functions not previously tested (`allOf`, `anyOf`, `noneOf`, `forEach`, `forEachN`, `count`, `countIf`, `find*`, `search*`, `mismatch`, `fill`, `generate`, `replace`, `remove`, `swapRanges`, `isSorted`, `isSortedUntil`, `stableSort`, `nthElement`, `partialSort`, `minElement`, `maxElement`, `equal`, `isPermutation`, `lexicographicalCompare`, full heap suite, `isPartitioned`, `partitionPoint`, `merge`, `inplaceMerge`, `clampRange`, `setSymmetricDifference`); plus empty-list and custom-comparator edge cases for all previously-tested functions |
+| `test/string_view_extended_test.dart` | Bounds checking (`operator[]`, `substring`, constructor); empty-string behaviour; equality & `hashCode`; `split` edge cases (empty delimiter, consecutive delimiters, leading delimiter); `lastIndexOf` edge cases; `toUpperCase`/`toLowerCase`; `toString` on slices |
+| `test/exceptions_extended_test.dart` | `toString` format for all 8 concrete exception classes; empty-message contract; catchability by base type (`LogicError`, `RuntimeError`, `StdException`, `Exception`); `what()` mirrors `message` verbatim |
+| `test/chrono_extended_test.dart` | `TimePoint` equality, `hashCode`, negative-duration subtraction, zero subtraction, `compareTo`, `<=`/`>=` with equal values, `toString`; `ChronoIntExtension` zero/negative helpers; `SteadyClock` strict monotonicity invariant |
+| `test/ratio_extended_test.dart` | `toString`; mixed-sign arithmetic (crossing zero, negative×positive, divide-by-negative); comparison across signs; chain operations `(1/2 + 1/3) × 6 = 5`; reciprocal of reciprocal; double-negate; `abs` of negate |
+| `test/functional_extended_test.dart` | `Plus` identity law; `Multiplies` zero and identity; `Minus` identity and self-cancellation; `Divides` integer quotient, double result, divide-by-zero; `Modulus` edge cases; `Negate` consistency with `Minus(0,x)`; comparison complement relationships (`EqualTo`⟺`NotEqualTo`, `Greater`⟺`LessEqual`, `Less`⟺`GreaterEqual`); bitwise identities (`BitAnd(x,~x)==0`, `BitOr(x,~x)==-1`, `BitXor(x,x)==0`, `BitXor(x,0)==x`); De Morgan laws for `LogicalAnd`/`LogicalOr`/`LogicalNot`; `invoke` with named-only, mixed, and typed-result calls |
+| `test/iterator_extended_test.dart` | `ReverseIterator` on empty list, single element, re-iteration (two passes), non-mutation of source; `BackInsertIterator` on empty list, `close()` no-op, `Deque` path; `FrontInsertIterator` empty list, `close()` no-op, `SList` `pushFront` path; `InsertIterator` prepend at 0, middle insert, `close()` no-op |
+| `test/expected_extended_test.dart` | `toString`; monad laws (left identity, right identity, associativity — both value and error branches); same-type `T==E` value-vs-error inequality; `valueOr`; functor laws (identity, composition, error pass-through); `fold` branch exclusivity and return-type inference |
+| `test/optional_extended_test.dart` | Monad laws (left identity, right identity, associativity with None short-circuit); `flatMap` on None never calls mapper; `flatMap` returning None; functor laws (identity for Some and None, composition); `filter` (always-true, always-false, None branch); all four `zip` combinations; `ofNullable` with non-null and null; `toString` (`Some(x)`, `None`); `hashCode` for equal Some, all-None, Some-vs-None; `valueOr` on Some and None |
+
 # 0.6.3
 - **Bug Fix:** Replaced `assert(den != 0, ...)` in `Ratio`'s constructor with an explicit `if (den == 0) throw ArgumentError(...)`. The previous `assert` was silently stripped in production (AOT/release) builds, allowing `Ratio(1, 0)` to be created without error. The constructor is no longer `const`; all 16 SI prefix constants (`atto` … `exa`) are now `static final` instead of `static const`.
 - **Bug Fix:** Changed `Pair.swap()` from a mutating `void swap(Pair<T1,T2> other)` that exchanged contents in-place, to a pure `Pair<T2, T1> swap()` that returns a new pair with the types and values reversed. The old signature contradicted the immutable design shared by every other utility type. Existing call sites that expected mutation will need to be updated.
