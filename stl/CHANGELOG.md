@@ -2,11 +2,6 @@
 
 ## Chrono — Time Expansion
 
-The `chrono` module grows from a ~100-line stub to a full-featured time
-library. **Five new source files** are added; the existing `chrono.dart` gains
-`TimePoint` factory/conversion methods, `DurationExtension`, and two new
-duration literals.
-
 ---
 
 ### New File: `chrono/calendar.dart`
