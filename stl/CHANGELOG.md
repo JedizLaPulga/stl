@@ -1,3 +1,168 @@
+# 0.6.5
+
+## Chrono — Time Expansion
+
+The `chrono` module grows from a ~100-line stub to a full-featured time
+library. **Five new source files** are added; the existing `chrono.dart` gains
+`TimePoint` factory/conversion methods, `DurationExtension`, and two new
+duration literals.
+
+---
+
+### New File: `chrono/calendar.dart`
+
+Calendar types inspired by C++20 `<chrono>` and ISO 8601.
+
+- **`isLeapYear(int year) → bool`** — Proleptic Gregorian leap-year predicate
+  (divisible by 4 except centuries, unless divisible by 400).
+- **`daysInYear(int year) → int`** — Returns 365 or 366.
+- **`Month` enum** — `january … december` with ISO month number (`value`),
+  `daysIn(year)`, wrapping `operator +` / `operator -`, and a `fromValue(int)`
+  factory. Throws `RangeError` for values outside `[1, 12]`.
+- **`Weekday` enum** — `monday … sunday` with `isoValue` (1–7), `isWeekend`,
+  `isWeekday`, wrapping `operator +` / `operator -`, and `fromIso(int)` factory.
+- **`ChronoDate`** — Validated calendar date (year, `Month`, day). Throws
+  `RangeError` for invalid day-of-month (respects leap years in February).
+  Provides: `weekday`, `dayOfYear`, `isLeap`, `toDateTime()`,
+  `toUtcDateTime()`, `addDays`, `addMonths` (clamped), `addYears` (clamped),
+  `differenceInDays`, full `Comparable<ChronoDate>` with `<`/`>`/`<=`/`>=`,
+  `operator ==`, `hashCode`, and `toIso8601()` (`YYYY-MM-DD`).
+- **`ChronoTime`** — Validated time-of-day (hour, minute, second, microsecond).
+  Components are range-checked at construction. Provides: `midnight`/`noon`
+  static getters, `totalMicroseconds`, `toDuration()`, `fromDateTime`,
+  `Comparable<ChronoTime>`, `toIso8601()` (`HH:MM:SS[.uuuuuu]`).
+- **`ChronoDateTime`** — Combination of `ChronoDate` and `ChronoTime`.
+  `fromDateTime(DateTime)`, `now()`, `nowUtc()`, `toDateTime()`,
+  `toUtcDateTime()`, `toIso8601()` (`YYYY-MM-DDTHH:MM:SS[.uuuuuu]`),
+  `Comparable<ChronoDateTime>`, `operator ==`, `hashCode`.
+
+---
+
+### New File: `chrono/clocks.dart`
+
+Additional clocks beyond `SystemClock` and `SteadyClock`.
+
+- **`Clock` (abstract interface)** — Common interface with a single `now()`
+  method, enabling dependency injection of any clock implementation.
+- **`MockClock implements Clock`** — Manually-controlled clock for
+  deterministic testing. Time advances only through `advance(Duration)` (throws
+  `ArgumentError` for negative delta), `set(Duration)`, or `reset()`. Time
+  never jumps backward by accident. Analogous to the test-double pattern.
+- **`HiResClock`** — Highest-resolution monotonic clock available (microsecond
+  precision on native Dart). Analogous to
+  `std::chrono::high_resolution_clock`.
+- **`UtcClock implements Clock`** — Instantiable wall-clock that always returns
+  UTC time. Analogous to `std::chrono::utc_clock` (C++20).
+- **`TaiClock`** — International Atomic Time. TAI is ahead of UTC by a fixed
+  `taiUtcOffsetSeconds` (37 as of January 2017). Analogous to
+  `std::chrono::tai_clock` (C++20).
+- **`GpsClock`** — GPS time, measured from the GPS epoch (1980-01-06 UTC). GPS
+  = TAI − 19 s. Analogous to `std::chrono::gps_clock` (C++20).
+
+---
+
+### New File: `chrono/time_interval.dart`
+
+- **`TimeInterval`** — Half-open `[start, end)` range of `TimePoint`s.
+  - Construction: `TimeInterval(start, end)` (throws `ArgumentError` if
+    `end < start`) and `TimeInterval.fromDuration(start, duration)`.
+  - Properties: `duration`, `isEmpty`, `isNotEmpty`.
+  - Membership: `contains(TimePoint)` (half-open), `containsClosed(TimePoint)`.
+  - Set operations: `overlaps`, `intersection` (returns `null` when
+    non-overlapping), `hull` (convex span), `gap` (returns `null` when
+    touching/overlapping).
+  - `operator ==`, `hashCode`, `toString`.
+
+---
+
+### New File: `chrono/lap_stopwatch.dart`
+
+- **`LapRecord`** — Immutable record of a single lap: `number` (1-based),
+  `elapsed` (total time at lap), `lapTime` (split duration). Value-type
+  semantics via `const` constructor.
+- **`LapStopwatch`** — Enhanced stopwatch wrapping Dart's `Stopwatch`.
+  - Lifecycle: `start()`, `stop()`, `reset()`, `isRunning`, `elapsed`.
+  - Laps: `lap() → LapRecord`, `laps` (unmodifiable list),
+    `currentLapElapsed`.
+  - Statistics: `fastestLap`, `slowestLap`, `averageLap` — all return `null`
+    when no laps have been recorded.
+
+---
+
+### New File: `chrono/timer.dart`
+
+- **`CountdownTimer`** — Synchronous countdown tracker. Records the wall-clock
+  instant when `start()` is called and computes `remaining`, `elapsed`, and
+  `progress` on demand. No async required. Throws `ArgumentError` for
+  non-positive total duration.
+- **`Ticker`** — `Stream<Duration>`-based periodic tick source backed by
+  `Stream.periodic`. Each emitted value is `interval × tickNumber` (cumulative
+  elapsed). The stream is created lazily and reused. Throws `ArgumentError` for
+  non-positive intervals.
+
+---
+
+### Enhanced: `chrono/chrono.dart`
+
+- **`TimePoint.epoch`** — `static const TimePoint epoch = TimePoint(Duration.zero)`;
+  the Unix epoch as a `TimePoint`.
+- **`TimePoint.fromDateTime(DateTime)`** — Factory: creates a `TimePoint`
+  whose `timeSinceEpoch` equals `dt.microsecondsSinceEpoch`.
+- **`TimePoint.toDateTime()`** — Converts to a UTC `DateTime` (inverse of
+  `fromDateTime`).
+- **`TimePoint.toIso8601String()`** — Delegates to `toDateTime().toIso8601String()`,
+  always producing a UTC ISO 8601 string ending in `Z`.
+- **`ChronoIntExtension.days`** — `Duration(days: this)`.
+- **`ChronoIntExtension.weeks`** — `Duration(days: this * 7)`.
+- **`DurationExtension`** on `Duration` — six new methods:
+  - `humanReadable()` — omits zero components, formats as e.g. `"2h 30m 5s"`.
+  - `toIso8601()` — ISO 8601 duration string, e.g. `"PT2H30M5S"`,
+    `"P3D"`, `"-PT5S"`, `"PT1.5S"`.
+  - `floor(Duration period)` — floors toward negative infinity (matches
+    `std::chrono::floor`, C++17).
+  - `ceil(Duration period)` — ceils toward positive infinity (matches
+    `std::chrono::ceil`).
+  - `round(Duration period)` — rounds to nearest multiple, ties toward
+    positive infinity (matches `std::chrono::round`).
+  - `isPositive` (getter) — `true` iff `inMicroseconds > 0`.
+
+---
+
+### Exports
+
+Five new exports added to `stl.dart`:
+- `src/chrono/calendar.dart`
+- `src/chrono/clocks.dart`
+- `src/chrono/time_interval.dart`
+- `src/chrono/lap_stopwatch.dart`
+- `src/chrono/timer.dart`
+
+---
+
+### New Tests (v0.6.5 — 5 new test files)
+
+Added **~220 new tests** across 5 new test files, raising the total suite from
+**1 528** to **~1 748 passing tests** (0 failures, 0 skips):
+
+| File | What is covered |
+|---|---|
+| `test/chrono_calendar_test.dart` | `isLeapYear`, `daysInYear`; `Month` — all 12 months, arithmetic, `daysIn` leap/non-leap, error handling; `Weekday` — ISO values, weekend/weekday, arithmetic, error handling; `ChronoDate` — construction, validation, computed properties, `addDays`, `addMonths` (clamping), `addYears` (clamping), `differenceInDays`, comparison operators, equality, hashCode, ISO formatting; `ChronoTime` — construction, validation, static getters, `totalMicroseconds`, `toDuration`, `fromDateTime`, comparison, ISO formatting; `ChronoDateTime` — construction, `fromDateTime`, `toDateTime`, comparison, equality, ISO formatting |
+| `test/chrono_clocks_test.dart` | `MockClock` — initial state, `advance` (cumulative, zero, negative error), `set`, `reset`, `Clock` interface, determinism; `HiResClock` — monotonicity, elapsed growth; `UtcClock` — proximity to system time, `Clock` interface, monotonicity; `TaiClock` — TAI–UTC offset verification, constant value; `GpsClock` — GPS epoch sanity check, GPS < TAI ordering; `TimePoint.epoch`, `fromDateTime`/`toDateTime` round-trip, UTC marker |
+| `test/chrono_interval_test.dart` | `TimeInterval` construction (valid, empty, inverted error); `fromDuration`; `duration`, `isEmpty`, `isNotEmpty`; `contains` (start/interior/end/outside); `containsClosed`; `overlaps` (overlapping, adjacent, disjoint, contained, identical); `intersection` (overlap, null for non-overlapping/adjacent, contained, commutativity); `hull` (disjoint, overlapping, identical, commutativity); `gap` (disjoint, null for adjacent/overlapping, commutativity); equality, hashCode, toString |
+| `test/chrono_stopwatch_test.dart` | `LapRecord` field storage and `toString`; `LapStopwatch` lifecycle (`isRunning`, `start`, `stop`, `reset`, elapsed); lap recording (number sequencing, count, non-decreasing elapsed, sum of lap times, unmodifiable list, `currentLapElapsed` reset); statistics (`fastestLap`/`slowestLap`/`averageLap` null guard, single-lap identity, ordering, average in range); `toString` |
+| `test/chrono_timer_test.dart` | `CountdownTimer` construction errors; pre-start state; post-start (`isStarted`, `elapsed`, `remaining`, `progress` range, expiry, `remaining`→zero, `progress`→1.0); `reset`; `toString`; `Ticker` construction errors, `tick()` type, stream reuse, interval values for first and second emissions; `DurationExtension.humanReadable` (zero, seconds, compound, days, ms, negative); `toIso8601` (zero, compound, days, negative, fractional seconds, day+time); `floor`/`ceil`/`round` (exact, positive, negative, zero-period error); `isPositive`; `ChronoIntExtension.days` and `.weeks` |
+
+### New Example
+
+- **`example/chrono_example.dart`** — End-to-end demonstration covering all 15
+  topics: duration literals, formatting, rounding, clocks, `TimePoint`
+  conversions, `MockClock` with dependency injection, specialized clocks,
+  calendar enums, `ChronoDate`/`ChronoTime`/`ChronoDateTime`, `TimeInterval`
+  set operations, `LapStopwatch` with statistics, `CountdownTimer`, and
+  `Ticker`.
+
+---
+
 # 0.6.4
 
 ## Bug Fixes
