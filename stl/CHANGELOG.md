@@ -6,6 +6,10 @@
 - **New Feature**: Implemented a `math/algebra` module featuring `Polynomial`, `Rational`, and `Equation` classes. Supports exact arithmetic, equation solving, and polynomial operations.
 - **New Feature**: Implemented a `math/calculus` module providing both numeric and symbolic differentiation and integration tools. Includes beautiful APIs like `derivative()` and `integrate()`.
 - **New Constants**: Added advanced mathematical constants to `constant.dart` and aligned `Rational` representation.
+- **Methodology & Design Choices**:
+  - *Numerical Integration*: Implemented via **Simpson's 1/3 Rule**. Chosen for its superior O(h⁴) error convergence on smooth curves compared to standard Riemann or trapezoidal sums, achieving high precision with fewer iterations.
+  - *Numerical Differentiation*: Implemented via the **Central Difference Method**. Chosen because it provides a balanced O(h²) accuracy compared to the O(h) accuracy of simple forward/backward differences, minimizing floating-point cancellation errors.
+  - *Symbolic Mathematics*: Implemented using an **Abstract Syntax Tree (AST)** architecture. Chosen as it is the most robust way to process exact algebraic manipulations, recursive simplification, and symbolic derivatives without losing structural context.
 
 # 0.6.5
 
