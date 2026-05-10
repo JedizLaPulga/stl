@@ -152,6 +152,22 @@ const double khinchin = 2.685452001065306445309714835481795693820;
 /// Value: 0.481 211 825 059 603 447 49…
 const double lnPhi = 0.481211825059603447497758913424368423135;
 
+/// The Omega constant (Ω).
+///
+/// The unique real number that satisfies Ωe^Ω = 1.
+///
+/// Value: 0.567 143 290 409 783 872 99…
+const double omega = 0.567143290409783872999968662210355549753;
+
+/// The Glaisher–Kinkelin constant (A).
+///
+/// Related to the K-function and Riemann zeta function.
+///
+/// Value: 1.282 427 129 100 622 636 87…
+const double glaisherKinkelin = 1.282427129100622636875342568869791727731;
+
+
+
 // ─── IEEE 754 special values ──────────────────────────────────────────────────
 
 /// Positive infinity (IEEE 754).

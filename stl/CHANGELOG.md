@@ -1,3 +1,12 @@
+# 0.6.6
+
+## Math — Comprehensive Algebraic & Calculus Expansion
+
+- **New Feature**: Implemented a comprehensive `math/symbolic` module containing `Expression`, `Variable`, and `simplification` to build and evaluate symbolic math expressions, allowing modern intuitive usage for programmers and non-math experts.
+- **New Feature**: Implemented a `math/algebra` module featuring `Polynomial`, `Rational`, and `Equation` classes. Supports exact arithmetic, equation solving, and polynomial operations.
+- **New Feature**: Implemented a `math/calculus` module providing both numeric and symbolic differentiation and integration tools. Includes beautiful APIs like `derivative()` and `integrate()`.
+- **New Constants**: Added advanced mathematical constants to `constant.dart` and aligned `Rational` representation.
+
 # 0.6.5
 
 ## Chrono — Time Expansion
