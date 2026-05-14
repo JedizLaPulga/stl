@@ -7,7 +7,7 @@
 
   [![License: MIT](https://img.shields.io/badge/License-MIT-ff69b4.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
   [![Dart](https://img.shields.io/badge/Dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev/)
-  [![Pub Version](https://img.shields.io/badge/pub-0.6.5-blueviolet.svg?style=for-the-badge)](https://pub.dev/packages/stl)
+  [![Pub Version](https://img.shields.io/badge/pub-0.6.7-blueviolet.svg?style=for-the-badge)](https://pub.dev/packages/stl)
 
   > 🚀 **A highly-versatile, performance-driven bank of data collections, structures, and algorithmic ranges for the Dart and Flutter ecosystem.**
 
@@ -111,6 +111,8 @@ duration literals.
 | 1️⃣ **`SingleRange<T>`** | ![](https://img.shields.io/badge/Range-teal) | Wraps exactly one value as a one-element range. Mirrors `std::views::single`. |
 | ✂️ **`SplitRange<T>`** | ![](https://img.shields.io/badge/Range-teal) | Splits an iterable on a delimiter, yielding `List<T>` segments. Mirrors `std::views::split`. |
 | 🗂️ **`ChunkByRange<T>`** | ![](https://img.shields.io/badge/Range-teal) | Groups consecutive elements into chunks while a binary predicate holds. Mirrors `std::views::chunk_by`. |
+| ⏭️ **`TakeWhileRange<T>`** | ![](https://img.shields.io/badge/Range-teal) | Yields elements from the front while a predicate holds, halting at the first failure. Mirrors `std::views::take_while`. |
+| ⏩ **`DropWhileRange<T>`** | ![](https://img.shields.io/badge/Range-teal) | Skips elements from the front while a predicate holds, then yields all remaining elements. Mirrors `std::views::drop_while`. |
 | 🔑 **`KeysRange<K,V>`** | ![](https://img.shields.io/badge/Range-teal) | Extracts keys from `Pair<K,V>` iterables. Composes with `HashMap`, `SortedMap`, `MultiMap`. Mirrors `std::views::keys`. |
 | 💎 **`ValuesRange<K,V>`** | ![](https://img.shields.io/badge/Range-teal) | Extracts values from `Pair<K,V>` iterables. Dual complement of `KeysRange`. Mirrors `std::views::values`. |
 
@@ -518,6 +520,37 @@ print(groups.toList()); // [[1, 1], [2, 2, 2], [3], [1, 1]]
 // Group ascending runs
 final runs = ChunkByRange([1, 2, 3, 1, 2], (a, b) => b >= a);
 print(runs.toList()); // [[1, 2, 3], [1, 2]]
+```
+</details>
+
+<details>
+<summary><b>⏭️ TakeWhileRange & DropWhileRange (Predicate Slicing)</b></summary>
+<br>
+
+Mimics `std::views::take_while` and `std::views::drop_while`. Unlike count-based `TakeRange`/`DropRange`, these stop or skip based on a **predicate**, enabling expressive data trimming without knowing element counts in advance. Safe on infinite sources.
+
+```dart
+final data = [2, 4, 6, 7, 8, 10];
+
+// Take while even — stops at 7, never checks 8 or 10
+final evens = TakeWhileRange(data, (n) => n.isEven);
+print(evens.toList()); // [2, 4, 6]
+
+// Drop while even — skips 2, 4, 6; yields everything from 7 onward
+final fromOdd = DropWhileRange(data, (n) => n.isEven);
+print(fromOdd.toList()); // [7, 8, 10]
+
+// Safe on infinite IotaRange — take numbers below 5
+final below5 = TakeWhileRange(IotaRange(0), (n) => n < 5);
+print(below5.toList()); // [0, 1, 2, 3, 4]
+
+// Compose: extract the inner non-zero span
+final signal = [0, 0, 1, 3, 5, 0, 0];
+final inner = TakeWhileRange(
+  DropWhileRange(signal, (n) => n == 0),
+  (n) => n != 0,
+);
+print(inner.toList()); // [1, 3, 5]
 ```
 </details>
 

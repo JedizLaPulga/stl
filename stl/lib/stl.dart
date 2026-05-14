@@ -29,6 +29,8 @@ export 'src/ranges/repeat_range.dart';
 export 'src/ranges/cartesian_range.dart';
 export 'src/ranges/take_range.dart';
 export 'src/ranges/drop_range.dart';
+export 'src/ranges/take_while_range.dart';
+export 'src/ranges/drop_while_range.dart';
 export 'src/ranges/filter_range.dart';
 export 'src/ranges/transform_range.dart';
 export 'src/ranges/join_range.dart';

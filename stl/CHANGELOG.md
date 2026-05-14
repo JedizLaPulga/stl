@@ -1,3 +1,36 @@
+# 0.6.7
+
+## Ranges — Predicate-Based Slicing
+
+### New File: `ranges/take_while_range.dart`
+
+- **`TakeWhileRange<T>`** — A lazy view that yields elements from the front of an iterable *as long as* a predicate holds, stopping permanently at the first failing element. Mirrors C++20 `std::views::take_while`.
+  - Constructor: `TakeWhileRange(Iterable<T> source, bool Function(T) predicate)`.
+  - Semantics: once `predicate(element)` returns `false`, iteration halts regardless of subsequent elements — fundamentally different from `FilterRange` which skips non-matching elements and continues.
+  - Works on infinite sources (e.g. `IotaRange`, `CycleRange`, `RepeatRange`) safely.
+
+### New File: `ranges/drop_while_range.dart`
+
+- **`DropWhileRange<T>`** — A lazy view that skips elements from the front of an iterable *while* a predicate holds, then yields all remaining elements unchanged. Mirrors C++20 `std::views::drop_while`.
+  - Constructor: `DropWhileRange(Iterable<T> source, bool Function(T) predicate)`.
+  - Semantics: once the predicate first fails the skip phase ends and *every* subsequent element is emitted — including those that would again satisfy the predicate.
+  - The skip phase runs exactly once per iterator, making repeated iteration correct.
+
+### New Tests (`test/take_while_range_test.dart`, `test/drop_while_range_test.dart`)
+
+Added **~60 new tests** across 2 new test files:
+
+| File | What is covered |
+|---|---|
+| `test/take_while_range_test.dart` | Basic predicate halt; empty source; all-match (full yield); none-match (empty yield); stop at first failure mid-sequence; reusability (two passes over same view); composition with `TakeRange` and `FilterRange`; works on infinite `IotaRange`; `length`, `first`, `last`, `isEmpty`, `isNotEmpty` |
+| `test/drop_while_range_test.dart` | Basic prefix skip; empty source; all-match (empty yield); none-match (full yield); resumes all including re-matching elements; reusability (two passes); composition with `TakeRange`; works after `TakeWhileRange`; `length`, `first`, `last`, `isEmpty`, `isNotEmpty` |
+
+### New Example (`example/take_while_drop_while_example.dart`)
+
+End-to-end demonstration: predicate-stop on sorted data, trimming leading zeros, word prefix extraction, composing `TakeWhileRange` + `DropWhileRange` to extract an inner span, and operating on an infinite `IotaRange`.
+
+---
+
 # 0.6.6
 
 ## Math — Comprehensive Algebraic & Calculus Expansion
