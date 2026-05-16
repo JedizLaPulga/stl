@@ -1,3 +1,39 @@
+# 0.6.8
+
+## Documentation — API Coverage Completion for Symbolic Math Module
+
+### Problem
+
+The Dart analyser enforces the `public_member_api_docs` lint rule (declared in `analysis_options.yaml`), which requires every public API member — including fields and constructors — to carry a `///` dartdoc comment. When the symbolic math module was introduced in v0.6.6 the class-level documentation was written, but the **individual fields and constructors** of the AST node classes were left undocumented, producing **33 `info`-level warnings** across three files.
+
+### Root Cause
+
+Three newly introduced files were missing `///` doc comments on their public members:
+
+| File | Members missing docs |
+|---|---|
+| `lib/src/math/symbolic/expression.dart` | `const Expression()` (base constructor) + `value`/constructor in `ConstantExpr`; `left`, `right`, constructor in `Add`, `Sub`, `Mul`, `Div`; `expr`/constructor in `Neg`, `Sin`, `Cos`, `Log`, `Exp`; `baseExpr`, `exponentExpr`, constructor in `Pow` — **28 warnings** |
+| `lib/src/math/algebra/equation.dart` | `left`, `right`, `const Equation(…)` — **3 warnings** |
+| `lib/src/math/symbolic/variable.dart` | `name`, `const Variable(…)` — **2 warnings** |
+
+### Solution
+
+Added concise, accurate `///` dartdoc comments to every flagged public member:
+
+- **`Expression`** — documented the protected default constructor.
+- **`ConstantExpr`** — `value` field and its constructor.
+- **Binary node classes (`Add`, `Sub`, `Mul`, `Div`)** — `left`/`right` fields named semantically (`minuend`/`subtrahend` for `Sub`, `numerator`/`denominator` for `Div`) and their constructors.
+- **Unary node classes (`Neg`, `Sin`, `Cos`, `Log`, `Exp`)** — `expr` field and constructor, each describing the mathematical role.
+- **`Pow`** — `baseExpr` and `exponentExpr` fields and the constructor.
+- **`Variable`** — `name` field (with backtick examples `'x'`, `'y'`) and the constructor.
+- **`Equation`** — `left` (LHS) and `right` (RHS) fields and the constructor.
+
+### Result
+
+`dart analyze` now reports **0 issues** (was 33). The full public API surface of the symbolic/algebra module is now consistently documented in line with every other module in the library.
+
+---
+
 # 0.6.7
 
 ## Ranges — Predicate-Based Slicing
