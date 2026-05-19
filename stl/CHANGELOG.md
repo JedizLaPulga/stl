@@ -1,5 +1,33 @@
-# 0.6.8
+# 0.6.9
 
+## Advanced String Algorithms (`<string>` / `<regex>`)
+
+### New Feature: `string` module
+Introduced a powerful C++-inspired text processing module to complement Dart's native string capabilities.
+
+#### `regex.dart`
+- **`Regex`**: A powerful, object-oriented wrapper around Dart's `RegExp`, inspired by C++ `std::regex`.
+- **`regexMatch`**: Mirrors `std::regex_match` (determines if the entire string strictly matches the pattern).
+- **`regexSearch`**: Mirrors `std::regex_search` (finds the first sub-sequence matching the pattern).
+- **`regexReplace`**: Mirrors `std::regex_replace`.
+- **`RegexIterator`**: A lazy iterator mirroring `std::sregex_iterator` to sequentially extract all non-overlapping matches without allocating a single block of memory upfront.
+
+#### `search.dart`
+- **`knuthMorrisPrattSearch`**: $O(N+M)$ Knuth-Morris-Pratt (KMP) text search algorithm.
+- **`boyerMooreSearch`**: Boyer-Moore text search algorithm utilizing the bad-character heuristic for highly efficient, sublinear average-case text searching.
+
+#### `format.dart`
+- **`format`**: A type-safe string formatting utility inspired by C++20 `<format>`. Uses a `List<dynamic>` to pass variadic arguments while safely type-guarding before injection. Supports automatic indexing `{}`, positional indexing `{1}`, and type-specific formatters (e.g. `{:.2f}`, `{:x}`, `{:04d}`).
+- **`printFormat`**: Utility to immediately print formatted strings.
+
+### Other Improvements
+- **Documentation**: Added missing doc comment to `LapStopwatch.new` (default constructor).
+- **Tests**: Added comprehensive test suites for regex operations, text search algorithms, and the format utility.
+- **Example**: Added `example/string_example.dart` end-to-end demonstration.
+
+---
+
+# 0.6.8
 ## Documentation — API Coverage Completion for Symbolic Math Module
 
 ### Problem

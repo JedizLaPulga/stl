@@ -115,3 +115,7 @@ export 'src/chrono/time_interval.dart';
 export 'src/chrono/lap_stopwatch.dart';
 export 'src/chrono/timer.dart';
 export 'src/iterator/iterator.dart';
+// Advanced string & regex
+export 'src/string/regex.dart';
+export 'src/string/search.dart';
+export 'src/string/format.dart';

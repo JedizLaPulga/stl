@@ -68,6 +68,7 @@ Instead of strictly separating containers, mathematics, and utilities, here is a
 | 📍 **`Point`** | ![](https://img.shields.io/badge/Geometry-blue) | Represents an exact 2D coordinate `(x, y)` in Euclidean space utilizing precise vector math. |
 | 👯 **`Pair<T1, T2>`** | ![](https://img.shields.io/badge/Utility-green) | Native C++ utility structure to hold heterogeneous objects. Features gorgeous Dart 3 Record translation. |
 | 🔢 **`I8`** -> **`I64`** | ![](https://img.shields.io/badge/Primitive-red) | Zero-cost signed integer wrappers. Provides automatic arithmetic wrap-around and strict bounds. |
+| 🧵 **`<string>`** | ![](https://img.shields.io/badge/Utility-green) | Advanced text processing, `Regex` wrapper, $O(N+M)$ search algorithms (KMP, Boyer-Moore), and `std::format` string templating. |
 | 🧮 **`cmath`** | ![](https://img.shields.io/badge/Math-orange) | Missing mathematically safe operations including `clamp()`, `lerp()`, and overflow-safe robust `hypot()` updated with over 100 new functions as part of the project target-200. |
 | 🗺️ **`HashMap<K, V>`** | ![](https://img.shields.io/badge/Container-purple) | Unordered key-value map utilizing a fast hash table under the hood, matching `std::unordered_map`. |
 | ⭕ **`Circle`** | ![](https://img.shields.io/badge/Geometry-blue) | Computes absolute Pi area boundaries natively supporting affine transformations via CRTP. |

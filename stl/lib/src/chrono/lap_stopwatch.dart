@@ -44,6 +44,9 @@ class LapRecord {
 /// print(sw.fastestLap);
 /// ```
 class LapStopwatch {
+  /// Creates a new [LapStopwatch] in an unstarted, zero-elapsed state.
+  LapStopwatch();
+
   final Stopwatch _sw = Stopwatch();
   final List<LapRecord> _laps = [];
   Duration _lastLapElapsed = Duration.zero;
