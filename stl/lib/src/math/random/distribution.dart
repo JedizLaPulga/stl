@@ -14,7 +14,9 @@ abstract class RandomDistribution<T> {
 /// A distribution producing uniform integers in a closed interval `[a, b]`.
 /// Mimics C++'s `std::uniform_int_distribution`.
 class UniformIntDistribution implements RandomDistribution<int> {
+  /// The lower bound (inclusive).
   final int a;
+  /// The upper bound (inclusive).
   final int b;
 
   /// Constructs a distribution yielding values `a <= x <= b`.
@@ -71,7 +73,9 @@ class UniformIntDistribution implements RandomDistribution<int> {
 /// A distribution producing uniform floating-point numbers in a half-open interval `[a, b)`.
 /// Mimics C++'s `std::uniform_real_distribution`.
 class UniformRealDistribution implements RandomDistribution<double> {
+  /// The lower bound (inclusive).
   final double a;
+  /// The upper bound (inclusive).
   final double b;
 
   /// Constructs a distribution yielding values `a <= x < b`.
@@ -92,6 +96,7 @@ class UniformRealDistribution implements RandomDistribution<double> {
 /// A distribution producing boolean values where `true` occurs with probability `p`.
 /// Mimics C++'s `std::bernoulli_distribution`.
 class BernoulliDistribution implements RandomDistribution<bool> {
+  /// The probability of success (returning true).
   final double p;
 
   /// Constructs a Bernoulli distribution with probability [p] of yielding true.
@@ -116,7 +121,9 @@ class BernoulliDistribution implements RandomDistribution<bool> {
 /// Yields the number of successes in [t] trials, each with probability [p].
 /// Mimics C++'s `std::binomial_distribution`.
 class BinomialDistribution implements RandomDistribution<int> {
+  /// The number of trials.
   final int t;
+  /// The probability of success in each trial.
   final double p;
 
   /// Constructs a Binomial distribution.
@@ -140,7 +147,9 @@ class BinomialDistribution implements RandomDistribution<int> {
 /// Uses the Box-Muller transform algorithm.
 /// Mimics C++'s `std::normal_distribution`.
 class NormalDistribution implements RandomDistribution<double> {
+  /// The mean (mu) of the distribution.
   final double mean;
+  /// The standard deviation (sigma) of the distribution.
   final double stddev;
   double? _cachedValue;
 
@@ -180,6 +189,7 @@ class NormalDistribution implements RandomDistribution<double> {
 /// A distribution producing exponentially distributed continuous numbers.
 /// Mimics C++'s `std::exponential_distribution`.
 class ExponentialDistribution implements RandomDistribution<double> {
+  /// The rate parameter.
   final double lambda;
 
   /// Constructs an Exponential distribution with rate parameter [lambda].
@@ -205,6 +215,7 @@ class ExponentialDistribution implements RandomDistribution<double> {
 /// Uses Knuth's algorithm (for small means) and limits at large means.
 /// Mimics C++'s `std::poisson_distribution`.
 class PoissonDistribution implements RandomDistribution<int> {
+  /// The average number of occurrences.
   final double mean;
 
   /// Constructs a Poisson distribution.
@@ -237,8 +248,10 @@ class PoissonDistribution implements RandomDistribution<int> {
 /// Uses the Marsaglia and Tsang method.
 /// Mimics C++'s `std::gamma_distribution`.
 class GammaDistribution implements RandomDistribution<double> {
-  final double alpha; // Shape
-  final double beta;  // Scale
+  /// The shape parameter.
+  final double alpha;
+  /// The scale parameter.
+  final double beta;
 
   /// Constructs a Gamma distribution.
   GammaDistribution([this.alpha = 1.0, this.beta = 1.0]) {
@@ -298,6 +311,7 @@ class GammaDistribution implements RandomDistribution<double> {
 /// A distribution producing Chi-squared distributed continuous numbers.
 /// Mimics C++'s `std::chi_squared_distribution`.
 class ChiSquaredDistribution implements RandomDistribution<double> {
+  /// The number of degrees of freedom.
   final double degreesOfFreedom;
   late final GammaDistribution _gamma;
 

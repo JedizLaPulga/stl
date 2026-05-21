@@ -34,8 +34,11 @@ abstract class RandomEngine {
 /// Implements the formula: `x = (multiplier * x + increment) % modulus`.
 /// By default, provides the parameters for C++'s `std::minstd_rand`.
 class LinearCongruentialEngine extends RandomEngine {
+  /// The multiplication constant used to generate the next state.
   final int multiplier;
+  /// The increment constant added to the state.
   final int increment;
+  /// The modulus constant defining the maximum range limit.
   final int modulus;
   int _state;
 
@@ -144,16 +147,16 @@ class MersenneTwisterEngine extends RandomEngine {
         seed(5489);
       }
 
-      for (kk = 0; kk < _n - _mti; kk++) {
+      for (kk = 0; kk < _n - _m; kk++) {
         y = (_mt[kk] & _upperMask) | (_mt[kk + 1] & _lowerMask);
-        _mt[kk] = _mt[kk + _m] ^ (y >> 1) ^ mag01[y & 0x1];
+        _mt[kk] = _mt[kk + _m] ^ (y >>> 1) ^ mag01[y & 0x1];
       }
       for (; kk < _n - 1; kk++) {
         y = (_mt[kk] & _upperMask) | (_mt[kk + 1] & _lowerMask);
-        _mt[kk] = _mt[kk + (_m - _n)] ^ (y >> 1) ^ mag01[y & 0x1];
+        _mt[kk] = _mt[kk + (_m - _n)] ^ (y >>> 1) ^ mag01[y & 0x1];
       }
       y = (_mt[_n - 1] & _upperMask) | (_mt[0] & _lowerMask);
-      _mt[_n - 1] = _mt[_m - 1] ^ (y >> 1) ^ mag01[y & 0x1];
+      _mt[_n - 1] = _mt[_m - 1] ^ (y >>> 1) ^ mag01[y & 0x1];
 
       _mti = 0;
     }
