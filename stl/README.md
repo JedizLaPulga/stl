@@ -7,7 +7,7 @@
 
   [![License: MIT](https://img.shields.io/badge/License-MIT-ff69b4.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
   [![Dart](https://img.shields.io/badge/Dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev/)
-  [![Pub Version](https://img.shields.io/badge/pub-0.6.8-blueviolet.svg?style=for-the-badge)](https://pub.dev/packages/stl)
+  [![Pub Version](https://img.shields.io/badge/pub-0.7.0-blueviolet.svg?style=for-the-badge)](https://pub.dev/packages/stl)
 
   > 🚀 **A highly-versatile, performance-driven bank of data collections, structures, and algorithmic ranges for the Dart and Flutter ecosystem.**
 
@@ -94,7 +94,7 @@ Instead of strictly separating containers, mathematics, and utilities, here is a
 | 🗃️ **`Tuple`** | ![](https://img.shields.io/badge/Utility-green) | Flexible C++ `std::tuple` adapter smoothly bridging heterogeneous collections and Dart 3 records natively. |
 | ⚡ **`<functional>`** | ![](https://img.shields.io/badge/Algorithm-cyan) | Standard function objects (`Plus`, `Less`, `LogicalAnd`, etc.) and `invoke` utility for algorithmic pipelines. |
 | ⚠️ **`<stdexcept>`** | ![](https://img.shields.io/badge/Utility-green) | Standard C++ exception hierarchy (`LogicError`, `RuntimeError`, `InvalidArgument`, etc.) natively in Dart. |
-| 🎲 **`<random>`** | ![](https://img.shields.io/badge/Math-orange) | Predictable C++ style random number generation utilities featuring `StdRandom`, custom seeding, and bounded ranges. |
+| 🎲 **`<random>`** | ![](https://img.shields.io/badge/Math-orange) | Predictable C++11 statistical random utilities featuring `mt19937` engines, `NormalDistribution`, and more! |
 | ⏱️ **`<chrono>`** | ![](https://img.shields.io/badge/Utility-green) | Highly portable C++ style `SystemClock` and `SteadyClock` for time tracking across Native and Web targets, with new expansion, ull-featured time
 library. **Five new source files** are added; the existing `chrono.dart` gains
 `TimePoint` factory/conversion methods, `DurationExtension`, and two new

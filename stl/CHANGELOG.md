@@ -1,3 +1,29 @@
+# 0.7.0
+
+## Advanced Statistical Random Module (`<random>`)
+
+### New Feature: `math/random` module
+Introduced a powerful C++11-inspired statistical random number generation module to upgrade Dart's native pseudo-random capabilities.
+
+#### `engine.dart`
+- **`RandomEngine`**: A core interface for deterministic random number engines generating uniformly distributed integers.
+- **`MersenneTwisterEngine`**: Implements the legendary `std::mt19937` algorithm natively in Dart, guaranteeing an enormous period of $2^{19937}-1$.
+- **`LinearCongruentialEngine`**: Implements the classic LCG algorithm, perfectly matching `std::minstd_rand` and `std::minstd_rand0`.
+- **`DartNativeEngine`**: A fallback engine wrapping `dart:math`'s `Random` for maximum performance when system-level seeding is sufficient.
+
+#### `distribution.dart`
+- **`RandomDistribution<T>`**: Interface for mapping uniform bits into mathematical shapes.
+- **`UniformIntDistribution` & `UniformRealDistribution`**: Flat probabilities bounded within strict numeric intervals.
+- **`BernoulliDistribution` & `BinomialDistribution`**: Rigged coin flips and multi-trial success probabilities.
+- **`NormalDistribution`**: Bell curve continuous distributions using the Box-Muller transform.
+- **`ExponentialDistribution` & `PoissonDistribution`**: Wait times and event occurrence rates.
+- **`GammaDistribution` & `ChiSquaredDistribution`**: Advanced continuous distributions leveraging the Marsaglia and Tsang method.
+
+#### Upgraded: `StdRandom`
+- The `StdRandom` wrapper class is now completely retrofitted to wrap a core `RandomEngine` directly. It supports interchangeable backends and cleanly mimics standard `rand()` execution behavior natively.
+
+---
+
 # 0.6.9
 
 ## Advanced String Algorithms (`<string>` / `<regex>`)
