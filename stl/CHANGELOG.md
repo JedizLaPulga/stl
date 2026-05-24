@@ -39,6 +39,8 @@ Introduced a full-featured weighted graph container mirroring C++26 `<graph>` an
 - `test/graph_test.dart` — comprehensive test suite covering all public API.
 - `example/graph_example.dart` — runnable end-to-end demonstration.
 
+- All 1896 tests pass
+
 ---
 
 # 0.7.0
