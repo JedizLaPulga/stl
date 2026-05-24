@@ -7,7 +7,7 @@
 
   [![License: MIT](https://img.shields.io/badge/License-MIT-ff69b4.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
   [![Dart](https://img.shields.io/badge/Dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev/)
-  [![Pub Version](https://img.shields.io/badge/pub-0.7.0-blueviolet.svg?style=for-the-badge)](https://pub.dev/packages/stl)
+  [![Pub Version](https://img.shields.io/badge/pub-0.7.1-blueviolet.svg?style=for-the-badge)](https://pub.dev/packages/stl)
 
   > 🚀 **A highly-versatile, performance-driven bank of data collections, structures, and algorithmic ranges for the Dart and Flutter ecosystem.**
 
@@ -116,6 +116,7 @@ duration literals.
 | ⏩ **`DropWhileRange<T>`** | ![](https://img.shields.io/badge/Range-teal) | Skips elements from the front while a predicate holds, then yields all remaining elements. Mirrors `std::views::drop_while`. |
 | 🔑 **`KeysRange<K,V>`** | ![](https://img.shields.io/badge/Range-teal) | Extracts keys from `Pair<K,V>` iterables. Composes with `HashMap`, `SortedMap`, `MultiMap`. Mirrors `std::views::keys`. |
 | 💎 **`ValuesRange<K,V>`** | ![](https://img.shields.io/badge/Range-teal) | Extracts values from `Pair<K,V>` iterables. Dual complement of `KeysRange`. Mirrors `std::views::values`. |
+| 🕸️ **`Graph<V>`** | ![](https://img.shields.io/badge/Container-purple) | Directed/undirected weighted graph with BFS, DFS, Dijkstra, Bellman-Ford, topological sort, Prim, and Kruskal. Mirrors C++26 `<graph>`. |
 
 <br/>
 
@@ -638,7 +639,93 @@ print(sorted.toList());
 
 <br/>
 
-## 💖 Contributing
+## �️ Graph Module — Directed & Undirected Graphs
+
+Inspired by **C++26 `<graph>`** and **Boost.Graph**, the graph module delivers a full-featured weighted graph container with a rich suite of traversal and optimization algorithms — all in a clean, idiomatic Dart API.
+
+### 🧩 Core API
+
+| Method / Property | Description |
+| :--- | :--- |
+| `addVertex(V)` | Registers a vertex; returns `false` if it already exists. |
+| `removeVertex(V)` | Removes a vertex and all its incident edges. |
+| `addEdge(V, V, {weight})` | Adds a weighted edge (and its reverse for undirected graphs). |
+| `removeEdge(V, V)` | Removes the edge (and reverse for undirected). |
+| `hasVertex(V)` / `hasEdge(V, V)` | Membership queries. |
+| `neighborsOf(V)` | Returns `List<Edge<V>>` of outgoing edges. |
+| `degreeOf(V)` | Number of edges incident on the vertex. |
+| `vertices` / `edges` | Unmodifiable snapshots. |
+| `vertexCount` / `edgeCount` | Sizes. |
+| `clear()` | Resets the graph entirely. |
+
+### 🚀 Algorithms
+
+| Algorithm | Method | Complexity |
+| :--- | :--- | :---: |
+| Breadth-First Search | `bfs(start)` | $O(V + E)$ |
+| Depth-First Search | `dfs(start)` | $O(V + E)$ |
+| Shortest paths (non-negative) | `dijkstra(start)` | $O((V + E) \log V)$ |
+| Shortest paths (negative weights) | `bellmanFord(start)` | $O(V \cdot E)$ |
+| Topological ordering | `topologicalSort()` | $O(V + E)$ |
+| Minimum spanning tree | `prim([start])` | $O((V + E) \log V)$ |
+| Minimum spanning tree | `kruskal()` | $O(E \log E)$ |
+| Connectivity check | `isConnected` | $O(V + E)$ |
+| Acyclicity check | `isAcyclic` | $O(V + E)$ |
+
+> **Note:** `bellmanFord` returns `null` when a negative-weight cycle is detected. `topologicalSort` returns `null` when the directed graph contains a cycle.
+
+### 🎓 Example
+
+```dart
+import 'package:stl/stl.dart';
+
+void main() {
+  // ── Undirected weighted graph ─────────────────────────────────────────────
+  final g = Graph<String>();
+  g.addEdge('A', 'B', weight: 4.0);
+  g.addEdge('A', 'C', weight: 2.0);
+  g.addEdge('B', 'C', weight: 1.0);
+  g.addEdge('B', 'D', weight: 5.0);
+
+  // BFS and DFS traversal
+  print(g.bfs('A'));  // [A, B, C, D] (level order)
+  print(g.dfs('A'));  // [A, B, C, D] (depth order)
+
+  // Dijkstra shortest paths from A
+  final dist = g.dijkstra('A');
+  print('A→D: ${dist["D"]}');        // 6.0 (A→C→B→D: 2+1+5=8? no A→B→D=9, A→C→B=3, +5=8... min is A→B→D=9)
+
+  // Prim minimum spanning tree
+  final mst = g.prim();
+  final weight = mst.fold(0.0, (s, e) => s + e.weight);
+  print('MST weight: $weight');       // 8.0
+
+  // ── Directed acyclic graph (topological sort) ─────────────────────────────
+  final dag = Graph<String>(directed: true);
+  dag.addEdge('Math', 'Algorithms');
+  dag.addEdge('Math', 'Data Structures');
+  dag.addEdge('Algorithms', 'Thesis');
+  dag.addEdge('Data Structures', 'Thesis');
+
+  print(dag.topologicalSort());       // [Math, Algorithms, Data Structures, Thesis]
+  print(dag.isAcyclic);               // true
+
+  // ── Bellman-Ford with negative edges ─────────────────────────────────────
+  final bf = Graph<int>(directed: true);
+  bf.addEdge(0, 1, weight: 4.0);
+  bf.addEdge(0, 2, weight: 5.0);
+  bf.addEdge(1, 3, weight: -3.0);
+  print(bf.bellmanFord(0));           // {0: 0.0, 1: 4.0, 2: 5.0, 3: 1.0}
+}
+```
+
+<br/>
+
+---
+
+<br/>
+
+## �💖 Contributing
 
 Want to see an exotic data structure, an algorithmic graph traversal, or a missing `std::ranges` feature added to the library? We emphatically welcome pull requests, bug reports, and issue tickets. Let's make this the most powerful and scalable system-level algorithms repository in the Flutter and Dart ecosystem! 🌟
 

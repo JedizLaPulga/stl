@@ -1,4 +1,48 @@
+# 0.7.1
+
+## Graph Module (`<graph>`)
+
+### New Feature: `collections/graph.dart`
+Introduced a full-featured weighted graph container mirroring C++26 `<graph>` and the Boost.Graph library. Supports both directed and undirected graphs with a rich set of traversal and optimization algorithms.
+
+#### `Edge<V>`
+- **`Edge(source, destination, {weight = 1.0})`**: Immutable, value-typed edge connecting two vertices with an optional floating-point weight.
+- Full `==`, `hashCode`, and `toString` support.
+
+#### `Graph<V>` — container
+- **Vertex operations**: `addVertex`, `removeVertex`, `hasVertex`, `vertices`, `vertexCount`.
+- **Edge operations**: `addEdge`, `removeEdge`, `hasEdge`, `edges`, `neighborsOf`, `degreeOf`, `edgeCount`.
+- **Utilities**: `empty`, `clear`, `directed`, `iterator` (via `IterableMixin<V>`), `toString`.
+- Undirected graphs automatically maintain symmetric adjacency and deduplicate edges in `edges`.
+
+#### Traversal algorithms
+- **`bfs(V start)`** — Breadth-first search returning a level-order `List<V>`. $O(V + E)$.
+- **`dfs(V start)`** — Depth-first search using an explicit stack returning a `List<V>`. $O(V + E)$.
+
+#### Shortest-path algorithms
+- **`dijkstra(V start)`** — Single-source shortest paths for non-negative weights via an inline binary min-heap. Returns `Map<V, double>`. $O((V + E) \log V)$.
+- **`bellmanFord(V start)`** — Handles negative edge weights via edge relaxation. Returns `null` on detection of a negative-weight cycle. $O(V \cdot E)$.
+
+#### Topological ordering
+- **`topologicalSort()`** — Kahn's algorithm (in-degree BFS) for directed acyclic graphs. Returns `null` if the graph contains a cycle. $O(V + E)$.
+
+#### Minimum spanning tree
+- **`prim([V? start])`** — Greedy MST via inline binary min-heap. Returns `List<Edge<V>>`. $O((V + E) \log V)$.
+- **`kruskal()`** — Greedy MST via Union-Find with path compression and union-by-rank. Returns `List<Edge<V>>`. $O(E \log E)$.
+
+#### Graph property queries
+- **`isConnected`** — Undirected: BFS reachability; directed: double-BFS strong connectivity check using graph transpose. $O(V + E)$.
+- **`isAcyclic`** — Directed: DFS white/grey/black colouring; undirected: parent-tracking DFS. $O(V + E)$.
+
+### New files
+- `lib/src/collections/graph.dart` — full implementation with complete dartdoc coverage.
+- `test/graph_test.dart` — comprehensive test suite covering all public API.
+- `example/graph_example.dart` — runnable end-to-end demonstration.
+
+---
+
 # 0.7.0
+
 
 ## Advanced Statistical Random Module (`<random>`)
 

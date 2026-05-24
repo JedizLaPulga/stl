@@ -22,6 +22,7 @@ export 'src/collections/array.dart';
 export 'src/collections/non_empty_list.dart';
 export 'src/collections/non_empty_vector.dart';
 export 'src/collections/finger_tree.dart';
+export 'src/collections/graph.dart';
 export 'src/ranges/numberline.dart';
 export 'src/ranges/zip_range.dart';
 export 'src/ranges/chunk_range.dart';
