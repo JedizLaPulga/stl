@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: non_constant_identifier_names, avoid_print
 
 import 'package:stl/stl.dart';
 

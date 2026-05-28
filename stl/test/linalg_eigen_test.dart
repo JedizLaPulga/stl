@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'dart:math' as math;
 
 import 'package:stl/stl.dart';
@@ -9,6 +11,7 @@ void main() {
   // ── EigenResult ──────────────────────────────────────────────────────────────
   group('EigenResult', () {
     test('stores eigenvalues and eigenvectors', () {
+      // ignore: unused_local_variable
       final ev = Vec([1.0, 0.0, 0.0]);
       final evecs = Mat.identity(3);
       final result = EigenResult(
@@ -60,7 +63,9 @@ void main() {
       final Av = Vec(
         List.generate(3, (i) {
           var s = 0.0;
-          for (var j = 0; j < 3; j++) s += A.at(i, j) * v[j];
+          for (var j = 0; j < 3; j++) {
+            s += A.at(i, j) * v[j];
+          }
           return s;
         }),
       );
@@ -161,7 +166,9 @@ void main() {
         final Av = Vec(
           List.generate(2, (i) {
             var s = 0.0;
-            for (var j = 0; j < 2; j++) s += A.at(i, j) * v[j];
+            for (var j = 0; j < 2; j++) {
+              s += A.at(i, j) * v[j];
+            }
             return s;
           }),
         );
