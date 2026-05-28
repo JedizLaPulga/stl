@@ -7,7 +7,7 @@
 
   [![License: MIT](https://img.shields.io/badge/License-MIT-ff69b4.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
   [![Dart](https://img.shields.io/badge/Dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev/)
-  [![Pub Version](https://img.shields.io/badge/pub-0.7.1-blueviolet.svg?style=for-the-badge)](https://pub.dev/packages/stl)
+  [![Pub Version](https://img.shields.io/badge/pub-0.7.2-blueviolet.svg?style=for-the-badge)](https://pub.dev/packages/stl)
 
   > 🚀 **A highly-versatile, performance-driven bank of data collections, structures, and algorithmic ranges for the Dart and Flutter ecosystem.**
 
@@ -117,6 +117,7 @@ duration literals.
 | 🔑 **`KeysRange<K,V>`** | ![](https://img.shields.io/badge/Range-teal) | Extracts keys from `Pair<K,V>` iterables. Composes with `HashMap`, `SortedMap`, `MultiMap`. Mirrors `std::views::keys`. |
 | 💎 **`ValuesRange<K,V>`** | ![](https://img.shields.io/badge/Range-teal) | Extracts values from `Pair<K,V>` iterables. Dual complement of `KeysRange`. Mirrors `std::views::values`. |
 | 🕸️ **`Graph<V>`** | ![](https://img.shields.io/badge/Container-purple) | Directed/undirected weighted graph with BFS, DFS, Dijkstra, Bellman-Ford, topological sort, Prim, and Kruskal. Mirrors C++26 `<graph>`. |
+| 📐 **`<linalg>`** | ![](https://img.shields.io/badge/Math-orange) | General M×N linear algebra: `Vec`, `Mat`, LU/QR/Cholesky decompositions, BLAS Level 1/2/3 kernels, and eigenvalue solvers. Mirrors C++26 `<linalg>`. |
 
 <br/>
 
@@ -171,6 +172,65 @@ The **flagship non-C++ feature** of `stl`. Going far beyond anything in the C++ 
 | **`Matrix3x3`** | Determinant, inverse (cofactor), `rotationX/Y/Z(angle)`, full arithmetic |
 | **`Matrix4x4`** | Homogeneous transforms: `translation()`, `scale()`, `perspective()`, `transform(Point3D)` |
 | **`Quaternion`** | Unit quaternion: `slerp()`, `fromAxisAngle()`, `toMatrix3x3()`, `toEulerAngles()`, `conjugate`, `inverse` |
+
+---
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Abacus.png" alt="Abacus" width="50" height="50" />
+</div>
+
+## 🧮 Linear Algebra Module — `<linalg>` (C++26)
+
+A full general-purpose linear algebra engine inspired by C++26 `std::linalg` (P1673) and BLAS. Operates on arbitrary M×N real matrices — complementing the fixed-size geometry matrices above.
+
+### `Vec` — Mathematical Vector
+
+| Member | Description |
+| :--- | :--- |
+| `Vec(List<double>)`, `Vec.zeros(n)`, `Vec.ones(n)`, `Vec.filled(n,v)`, `Vec.basis(n,i)` | Constructors |
+| `dot(Vec)` | Inner product $\mathbf{x} \cdot \mathbf{y}$ |
+| `cross(Vec)` | Cross product $\mathbf{x} \times \mathbf{y}$ ($\mathbb{R}^3$ only) |
+| `outer(Vec) → Mat` | Outer product $\mathbf{x}\mathbf{y}^\top$ |
+| `norm([p])` | $L^1$, $L^2$, $L^\infty$ norms |
+| `normalize()` | Unit vector |
+| `+`, `-`, `*`, `/`, unary `-` | Element-wise and scalar arithmetic |
+
+### `Mat` — General M×N Matrix
+
+| Member | Description |
+| :--- | :--- |
+| `Mat(List<List<double>>)`, `Mat.zeros`, `Mat.identity`, `Mat.diagonal`, `Mat.fromColumns`, `Mat.fromRows` | Constructors |
+| `transpose()` | $A^\top$ |
+| `trace()` | $\sum_i a_{ii}$ |
+| `frobenius()` | $\|A\|_F$ |
+| `determinant()` | Via LU factorisation |
+| `inverse()` | Via LU factorisation |
+| `submatrix(r,c,rows,cols)` | Block extraction |
+| `+`, `-`, `*`, `scaled`, `divided` | Arithmetic |
+
+### Decompositions
+
+| Class | Factorisation | `solve` |
+| :--- | :--- | :--- |
+| **`LUDecomposition`** | $A = P \cdot L \cdot U$ (partial pivot) | $Ax = b$ via forward/back substitution |
+| **`QRDecomposition`** | $A = Q \cdot R$ (Householder) | Least-squares $\min \|Ax - b\|$ |
+| **`CholeskyDecomposition`** | $A = L \cdot L^\top$ (SPD only) | $Ax = b$ via $L$ / $L^\top$ substitution |
+
+### BLAS Kernels
+
+| Level | Functions |
+| :---: | :--- |
+| **1** | `dot`, `nrm2`, `asum`, `iamax`, `axpy`, `scal` |
+| **2** | `gemv` ($\alpha A\mathbf{x} + \beta\mathbf{y}$), `ger` (rank-1 update) |
+| **3** | `gemm` ($\alpha AB + \beta C$), `trmm` (triangular multiply) |
+
+### Eigenvalue Solvers
+
+| Function | Method | Use Case |
+| :--- | :--- | :--- |
+| `powerIteration(Mat)` | Power method | Dominant eigenvalue |
+| `symmetricEigen(Mat)` | Jacobi iteration | All eigenpairs, symmetric $A$ |
+| `qrEigen(Mat)` | QR + Wilkinson shifts | All eigenvalues, general real $A$ |
 
 ### ⚙️ Computational Geometry Algorithms
 

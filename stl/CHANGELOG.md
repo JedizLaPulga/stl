@@ -1,3 +1,104 @@
+# 0.7.2
+
+## Linear Algebra Module (`<linalg>`)
+
+### New Feature: `math/linalg/` module
+Introduced a comprehensive C++26 `<linalg>`-inspired general linear algebra module, extending the fixed-size geometry matrices into a full M×N linear algebra engine with BLAS-level operations, matrix decompositions, and eigenvalue solvers.
+
+#### `Vec` — mathematical vector (`math/linalg/vec.dart`)
+A general-purpose, immutable $n$-dimensional real vector, distinct from the collection `Vector<T>`.
+
+- **Constructors:** `Vec(List<double>)`, `Vec.zeros(n)`, `Vec.ones(n)`, `Vec.filled(n, v)`, `Vec.basis(n, i)` (standard basis $e_i$).
+- **Properties:** `length` (dimension), `[]` element access, `isEmpty`.
+- **Arithmetic:** `+`, `-`, unary `-`, `*` (scalar), `/` (scalar). All return new `Vec` instances (immutable).
+- **Products:** `dot(Vec)` — inner product $\mathbf{x} \cdot \mathbf{y}$; `cross(Vec)` — $\mathbb{R}^3$ cross product $\mathbf{x} \times \mathbf{y}$ (throws `ArgumentError` for non-3D inputs); `outer(Vec)` → `Mat` — rank-1 outer product $\mathbf{x}\mathbf{y}^\top$.
+- **Norms:** `norm([int p = 2])` — $L^1$, $L^2$, $L^\infty$ norms; `normalize()` — unit vector (throws `StateError` for zero vector).
+- **Utilities:** `toList()`, `==`, `hashCode`, `toString`.
+
+#### `Mat` — general M×N matrix (`math/linalg/matrix.dart`)
+A row-major, immutable real matrix of arbitrary dimensions.
+
+- **Constructors:** `Mat(List<List<double>>)`, `Mat.zeros(r,c)`, `Mat.identity(n)`, `Mat.filled(r,c,v)`, `Mat.diagonal(List<double>)`, `Mat.fromColumns(List<Vec>)`, `Mat.fromRows(List<Vec>)`.
+- **Properties:** `rows`, `cols`, `isSquare`, `isSymmetric`, `isDiagonal`.
+- **Access:** `[]` (row as `List<double>`), `at(r,c)`, `row(i) → Vec`, `col(j) → Vec`.
+- **Arithmetic:** `+`, `-`, unary `-`, `*` (Mat×Mat — validated dimensions), `scaled(double)` (scalar multiply), `divided(double)` (scalar divide).
+- **Transformations:** `transpose()`, `submatrix(r,c,rows,cols)`.
+- **Reductions:** `trace()` — $\sum_i a_{ii}$; `frobenius()` — $\|A\|_F = \sqrt{\sum_{ij} a_{ij}^2}$.
+- **Derived:** `determinant()` — via LU factorisation; `inverse()` — via LU factorisation (throws `StateError` for singular matrices).
+- **Utilities:** `toList()`, `==`, `hashCode`, `toString`.
+
+#### Decompositions (`math/linalg/decomposition.dart`)
+Three standard matrix factorisations for solving linear systems and computing matrix properties.
+
+- **`LUDecomposition(Mat a)`** — Crout's algorithm with partial pivoting. Decomposes $A = P \cdot L \cdot U$.
+  - Getters: `l` (unit lower triangular), `u` (upper triangular), `p` (permutation matrix), `pivots` (`List<int>`).
+  - `solve(Vec b) → Vec` — solves $Ax = b$ via forward and back substitution. $O(n^2)$.
+  - `determinant() → double` — $\det(A) = \text{sign}(P) \cdot \prod_i u_{ii}$.
+  - `inverse() → Mat` — solves $A X = I$ column by column.
+  - Throws `StateError` when the matrix is singular (a diagonal entry of $U$ is zero within tolerance).
+
+- **`QRDecomposition(Mat a)`** — Householder reflections for full rectangular M×N matrices ($M \geq N$). Decomposes $A = Q \cdot R$.
+  - Getters: `q` (orthogonal $M \times M$), `r` (upper trapezoidal $M \times N$).
+  - `solve(Vec b) → Vec` — least-squares solution via $R x = Q^\top b$. $O(n^2)$ for square systems.
+
+- **`CholeskyDecomposition(Mat a)`** — Cholesky–Banachiewicz algorithm for symmetric positive-definite matrices. Decomposes $A = L \cdot L^\top$.
+  - Getter: `l` (lower triangular with positive diagonal).
+  - `solve(Vec b) → Vec` — solves $Ax = b$ via forward/back substitution through $L$ and $L^\top$.
+  - Throws `ArgumentError` if the input matrix is not square or symmetric (within tolerance), and `StateError` if a diagonal entry becomes non-positive during factorisation (matrix not positive-definite).
+
+#### BLAS-level free functions (`math/linalg/blas.dart`)
+Stateless, allocation-minimal kernels mirroring the BLAS interface and `std::linalg` (C++26 P1673).
+
+**Level 1 — vector/vector operations:**
+
+| Function | Semantics |
+|---|---|
+| `dot(Vec x, Vec y) → double` | Inner product $\mathbf{x} \cdot \mathbf{y}$ |
+| `nrm2(Vec x) → double` | Euclidean norm $\|\mathbf{x}\|_2$ |
+| `asum(Vec x) → double` | Absolute sum $\|\mathbf{x}\|_1$ |
+| `iamax(Vec x) → int` | Index of $\arg\max_i \|x_i\|$ |
+| `axpy(double α, Vec x, Vec y) → Vec` | $\mathbf{y} + \alpha\mathbf{x}$ |
+| `scal(double α, Vec x) → Vec` | $\alpha \mathbf{x}$ |
+
+**Level 2 — matrix/vector operations:**
+
+| Function | Semantics |
+|---|---|
+| `gemv(Mat A, Vec x, {double alpha, double beta, Vec? y}) → Vec` | $\alpha A\mathbf{x} + \beta\mathbf{y}$ |
+| `ger(Vec x, Vec y, {double alpha}) → Mat` | Rank-1 update $\alpha \mathbf{x}\mathbf{y}^\top$ |
+
+**Level 3 — matrix/matrix operations:**
+
+| Function | Semantics |
+|---|---|
+| `gemm(Mat A, Mat B, {double alpha, double beta, Mat? C}) → Mat` | $\alpha AB + \beta C$ |
+| `trmm(Mat A, Mat B, {bool upper, double alpha}) → Mat` | Triangular matrix multiply |
+
+#### Eigenvalue solvers (`math/linalg/eigen.dart`)
+
+- **`EigenResult`** — Value type holding `eigenvalues (List<double>)` and `eigenvectors (Mat)` (columns).
+- **`powerIteration(Mat a, {int maxIter, double tol}) → (double, Vec)`** — Finds the dominant eigenvalue and corresponding eigenvector. $O(k \cdot n^2)$ where $k$ is the number of iterations.
+- **`symmetricEigen(Mat a, {int maxIter, double tol}) → EigenResult`** — Classical Jacobi method for all eigenvalues/eigenvectors of a real symmetric matrix. $O(k \cdot n^2)$. Throws `ArgumentError` for non-symmetric input.
+- **`qrEigen(Mat a, {int maxIter, double tol}) → EigenResult`** — QR algorithm with Wilkinson shifts for all eigenvalues of a general real matrix. $O(k \cdot n^3)$.
+
+### New files
+- `lib/src/math/linalg/vec.dart` — `Vec` implementation with full dartdoc coverage.
+- `lib/src/math/linalg/matrix.dart` — `Mat` implementation with full dartdoc coverage.
+- `lib/src/math/linalg/decomposition.dart` — `LUDecomposition`, `QRDecomposition`, `CholeskyDecomposition`.
+- `lib/src/math/linalg/blas.dart` — BLAS Level 1/2/3 free functions.
+- `lib/src/math/linalg/eigen.dart` — `EigenResult`, `powerIteration`, `symmetricEigen`, `qrEigen`.
+- `lib/src/math/linalg/linalg.dart` — Barrel re-export.
+- `test/linalg_vec_test.dart` — ~70 tests covering all `Vec` API.
+- `test/linalg_matrix_test.dart` — ~80 tests covering all `Mat` API.
+- `test/linalg_decomposition_test.dart` — ~60 tests covering reconstruction and `solve` correctness.
+- `test/linalg_blas_test.dart` — ~50 tests covering every BLAS kernel.
+- `test/linalg_eigen_test.dart` — ~40 tests covering convergence and known eigenvalue results.
+- `example/linalg_example.dart` — End-to-end demonstration.
+
+- All 2094 tests pass
+
+---
+
 # 0.7.1
 
 ## Graph Module (`<graph>`)

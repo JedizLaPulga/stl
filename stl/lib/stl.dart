@@ -108,6 +108,8 @@ export 'src/functional/functional.dart';
 // Haskell-inspired functional
 export 'src/functional/state_monad.dart';
 export 'src/exceptions/exceptions.dart';
+// Linear algebra
+export 'src/math/linalg/linalg.dart';
 export 'src/utilities/ratio.dart';
 export 'src/chrono/chrono.dart';
 export 'src/chrono/calendar.dart';
