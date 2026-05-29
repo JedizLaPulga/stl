@@ -7,7 +7,7 @@
 
   [![License: MIT](https://img.shields.io/badge/License-MIT-ff69b4.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
   [![Dart](https://img.shields.io/badge/Dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev/)
-  [![Pub Version](https://img.shields.io/badge/pub-0.7.2-blueviolet.svg?style=for-the-badge)](https://pub.dev/packages/stl)
+  [![Pub Version](https://img.shields.io/badge/pub-0.7.3-blueviolet.svg?style=for-the-badge)](https://pub.dev/packages/stl)
 
   > 🚀 **A highly-versatile, performance-driven bank of data collections, structures, and algorithmic ranges for the Dart and Flutter ecosystem.**
 
@@ -84,6 +84,7 @@ Instead of strictly separating containers, mathematics, and utilities, here is a
 | 🥞 **`Stack<T>`** | ![](https://img.shields.io/badge/Container-purple) | Custom LIFO (Last-In, First-Out) adapter. Operates flawlessly over any given sequence. |
 | 🔢 **`Int8`** -> **`Int64`** | ![](https://img.shields.io/badge/Primitive-red) | Hardware-backed signed equivalents dynamically enforcing strict boundaries natively via OS/V8 buffers. |
 | 📜 **`StringView`** | ![](https://img.shields.io/badge/Utility-green) | Zero-allocation string reference utility enabling high-performance substring manipulations. |
+| 🪟 **`Span<T>`** | ![](https://img.shields.io/badge/Utility-green) | Non-owning, zero-allocation view over any `List<T>`. Bounds-checked access, $O(1)$ slicing, full `Iterable<T>` support. Mirrors C++20 `std::span`. |
 | 📂 **`MultiMap<K, V>`**| ![](https://img.shields.io/badge/Container-purple) | Sorted tree container mapping keys to multiple values natively matching `std::multimap`. |
 | 📐 **`Polygon`** | ![](https://img.shields.io/badge/Geometry-blue) | Exact polygon structure generating precise surface areas dynamically utilizing the Shoelace formula. |
 | 🔬 **`number_theory`** | ![](https://img.shields.io/badge/Math-orange) | Highly-optimized logic for `gcd()`, `lcm()`, `isPrime()`, `primeFactorization()`, and `midpoint()`. |
@@ -784,7 +785,72 @@ void main() {
 ---
 
 <br/>
+## 🪟 `Span<T>` — Non-Owning Contiguous View (`<span>` C++20)
 
+`Span<T>` is a zero-allocation view over a contiguous `List<T>`. It holds no data of its own — it simply points into a window of an existing list. Every slicing operation is $O(1)$ and returns a new `Span<T>` that shares the same backing source without copying. `Span<T>` implements `Iterable<T>` and composes naturally with every range adapter in the library.
+
+> The general-element complement to `StringView` — same zero-copy philosophy, any element type.
+
+### API
+
+| Member | C++ equivalent | Description |
+| :--- | :--- | :--- |
+| `Span(List<T>)` | `std::span(ptr, size)` | Full-list view |
+| `Span.subspan(List<T>, offset, count)` | (named constructor) | Windowed view |
+| `length`, `isEmpty`, `isNotEmpty` | `size()`, `empty()` | Size queries |
+| `operator[](int)` | `operator[]` | Bounds-checked element access |
+| `first`, `last` | `front()`, `back()` | First / last element |
+| `firstSpan(int n) → Span<T>` | `first(n)` | First *n* elements, $O(1)$ |
+| `lastSpan(int n) → Span<T>` | `last(n)` | Last *n* elements, $O(1)$ |
+| `subspan(int offset, [int? count]) → Span<T>` | `subspan(offset[,n])` | General slice, $O(1)$ |
+| `contains(element)` | — | $O(n)$ membership test |
+| `indexOf(element, [start])` | — | $O(n)$ index search |
+| `toList()` | — | Copies elements into a new independent list |
+| `Iterable<T>` | — | `map`, `where`, `reduce`, `for`-`in`, etc. |
+
+### 🎓 Example
+
+```dart
+import 'package:stl/stl.dart';
+
+void main() {
+  final data = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+  final view = Span(data);
+
+  // Element access — O(1), bounds-checked
+  print(view[3]);             // 40
+  print(view.first);          // 10
+  print(view.last);           // 100
+
+  // Zero-copy slicing — all O(1)
+  print(view.firstSpan(3));   // Span[10, 20, 30]
+  print(view.lastSpan(2));    // Span[90, 100]
+  print(view.subspan(2, 5));  // Span[30, 40, 50, 60, 70]
+
+  // Chaining — still zero-copy
+  final chain = view.subspan(1).firstSpan(6).subspan(1, 4);
+  print(chain.toList());      // [30, 40, 50, 60]
+
+  // Search
+  final mid = view.subspan(2, 5);
+  print(mid.contains(50));    // true
+  print(mid.indexOf(60));     // 3
+
+  // Iterable integration
+  final evens = Span([1, 2, 3, 4, 5, 6]).where((e) => e.isEven).toList();
+  print(evens);               // [2, 4, 6]
+
+  // Zero-copy guarantee: mutating the source is visible through the span
+  data[0] = 999;
+  print(view.first);          // 999
+}
+```
+
+<br/>
+
+---
+
+<br/>
 ## �💖 Contributing
 
 Want to see an exotic data structure, an algorithmic graph traversal, or a missing `std::ranges` feature added to the library? We emphatically welcome pull requests, bug reports, and issue tickets. Let's make this the most powerful and scalable system-level algorithms repository in the Flutter and Dart ecosystem! 🌟

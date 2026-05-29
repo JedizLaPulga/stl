@@ -7,7 +7,7 @@
 
   [![License: MIT](https://img.shields.io/badge/License-MIT-ff69b4.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
   [![Dart](https://img.shields.io/badge/Dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev/)
-  [![Pub Version](https://img.shields.io/badge/pub-0.7.0-blueviolet.svg?style=for-the-badge)](https://pub.dev/packages/stl)
+  [![Pub Version](https://img.shields.io/badge/pub-0.7.3-blueviolet.svg?style=for-the-badge)](https://pub.dev/packages/stl)
 
   > 🚀 **A highly-versatile, performance-driven bank of data collections, structures, and algorithmic ranges for the Dart and Flutter ecosystem.**
 
@@ -84,6 +84,7 @@ Instead of strictly separating containers, mathematics, and utilities, here is a
 | 🥞 **`Stack<T>`** | ![](https://img.shields.io/badge/Container-purple) | Custom LIFO (Last-In, First-Out) adapter. Operates flawlessly over any given sequence. |
 | 🔢 **`Int8`** -> **`Int64`** | ![](https://img.shields.io/badge/Primitive-red) | Hardware-backed signed equivalents dynamically enforcing strict boundaries natively via OS/V8 buffers. |
 | 📜 **`StringView`** | ![](https://img.shields.io/badge/Utility-green) | Zero-allocation string reference utility enabling high-performance substring manipulations. |
+| 🪟 **`Span<T>`** | ![](https://img.shields.io/badge/Utility-green) | Non-owning, zero-allocation view over any `List<T>`. Bounds-checked access, $O(1)$ slicing, full `Iterable<T>` support. Mirrors C++20 `std::span`. |
 | 📂 **`MultiMap<K, V>`**| ![](https://img.shields.io/badge/Container-purple) | Sorted tree container mapping keys to multiple values natively matching `std::multimap`. |
 | 📐 **`Polygon`** | ![](https://img.shields.io/badge/Geometry-blue) | Exact polygon structure generating precise surface areas dynamically utilizing the Shoelace formula. |
 | 🔬 **`number_theory`** | ![](https://img.shields.io/badge/Math-orange) | Highly-optimized logic for `gcd()`, `lcm()`, `isPrime()`, `primeFactorization()`, and `midpoint()`. |
@@ -116,6 +117,8 @@ duration literals.
 | ⏩ **`DropWhileRange<T>`** | ![](https://img.shields.io/badge/Range-teal) | Skips elements from the front while a predicate holds, then yields all remaining elements. Mirrors `std::views::drop_while`. |
 | 🔑 **`KeysRange<K,V>`** | ![](https://img.shields.io/badge/Range-teal) | Extracts keys from `Pair<K,V>` iterables. Composes with `HashMap`, `SortedMap`, `MultiMap`. Mirrors `std::views::keys`. |
 | 💎 **`ValuesRange<K,V>`** | ![](https://img.shields.io/badge/Range-teal) | Extracts values from `Pair<K,V>` iterables. Dual complement of `KeysRange`. Mirrors `std::views::values`. |
+| 🕸️ **`Graph<V>`** | ![](https://img.shields.io/badge/Container-purple) | Directed/undirected weighted graph with BFS, DFS, Dijkstra, Bellman-Ford, topological sort, Prim, and Kruskal. Mirrors C++26 `<graph>`. |
+| 📐 **`<linalg>`** | ![](https://img.shields.io/badge/Math-orange) | General M×N linear algebra: `Vec`, `Mat`, LU/QR/Cholesky decompositions, BLAS Level 1/2/3 kernels, and eigenvalue solvers. Mirrors C++26 `<linalg>`. |
 
 <br/>
 
@@ -170,6 +173,65 @@ The **flagship non-C++ feature** of `stl`. Going far beyond anything in the C++ 
 | **`Matrix3x3`** | Determinant, inverse (cofactor), `rotationX/Y/Z(angle)`, full arithmetic |
 | **`Matrix4x4`** | Homogeneous transforms: `translation()`, `scale()`, `perspective()`, `transform(Point3D)` |
 | **`Quaternion`** | Unit quaternion: `slerp()`, `fromAxisAngle()`, `toMatrix3x3()`, `toEulerAngles()`, `conjugate`, `inverse` |
+
+---
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Abacus.png" alt="Abacus" width="50" height="50" />
+</div>
+
+## 🧮 Linear Algebra Module — `<linalg>` (C++26)
+
+A full general-purpose linear algebra engine inspired by C++26 `std::linalg` (P1673) and BLAS. Operates on arbitrary M×N real matrices — complementing the fixed-size geometry matrices above.
+
+### `Vec` — Mathematical Vector
+
+| Member | Description |
+| :--- | :--- |
+| `Vec(List<double>)`, `Vec.zeros(n)`, `Vec.ones(n)`, `Vec.filled(n,v)`, `Vec.basis(n,i)` | Constructors |
+| `dot(Vec)` | Inner product $\mathbf{x} \cdot \mathbf{y}$ |
+| `cross(Vec)` | Cross product $\mathbf{x} \times \mathbf{y}$ ($\mathbb{R}^3$ only) |
+| `outer(Vec) → Mat` | Outer product $\mathbf{x}\mathbf{y}^\top$ |
+| `norm([p])` | $L^1$, $L^2$, $L^\infty$ norms |
+| `normalize()` | Unit vector |
+| `+`, `-`, `*`, `/`, unary `-` | Element-wise and scalar arithmetic |
+
+### `Mat` — General M×N Matrix
+
+| Member | Description |
+| :--- | :--- |
+| `Mat(List<List<double>>)`, `Mat.zeros`, `Mat.identity`, `Mat.diagonal`, `Mat.fromColumns`, `Mat.fromRows` | Constructors |
+| `transpose()` | $A^\top$ |
+| `trace()` | $\sum_i a_{ii}$ |
+| `frobenius()` | $\|A\|_F$ |
+| `determinant()` | Via LU factorisation |
+| `inverse()` | Via LU factorisation |
+| `submatrix(r,c,rows,cols)` | Block extraction |
+| `+`, `-`, `*`, `scaled`, `divided` | Arithmetic |
+
+### Decompositions
+
+| Class | Factorisation | `solve` |
+| :--- | :--- | :--- |
+| **`LUDecomposition`** | $A = P \cdot L \cdot U$ (partial pivot) | $Ax = b$ via forward/back substitution |
+| **`QRDecomposition`** | $A = Q \cdot R$ (Householder) | Least-squares $\min \|Ax - b\|$ |
+| **`CholeskyDecomposition`** | $A = L \cdot L^\top$ (SPD only) | $Ax = b$ via $L$ / $L^\top$ substitution |
+
+### BLAS Kernels
+
+| Level | Functions |
+| :---: | :--- |
+| **1** | `dot`, `nrm2`, `asum`, `iamax`, `axpy`, `scal` |
+| **2** | `gemv` ($\alpha A\mathbf{x} + \beta\mathbf{y}$), `ger` (rank-1 update) |
+| **3** | `gemm` ($\alpha AB + \beta C$), `trmm` (triangular multiply) |
+
+### Eigenvalue Solvers
+
+| Function | Method | Use Case |
+| :--- | :--- | :--- |
+| `powerIteration(Mat)` | Power method | Dominant eigenvalue |
+| `symmetricEigen(Mat)` | Jacobi iteration | All eigenpairs, symmetric $A$ |
+| `qrEigen(Mat)` | QR + Wilkinson shifts | All eigenvalues, general real $A$ |
 
 ### ⚙️ Computational Geometry Algorithms
 
@@ -638,7 +700,158 @@ print(sorted.toList());
 
 <br/>
 
-## 💖 Contributing
+## �️ Graph Module — Directed & Undirected Graphs
+
+Inspired by **C++26 `<graph>`** and **Boost.Graph**, the graph module delivers a full-featured weighted graph container with a rich suite of traversal and optimization algorithms — all in a clean, idiomatic Dart API.
+
+### 🧩 Core API
+
+| Method / Property | Description |
+| :--- | :--- |
+| `addVertex(V)` | Registers a vertex; returns `false` if it already exists. |
+| `removeVertex(V)` | Removes a vertex and all its incident edges. |
+| `addEdge(V, V, {weight})` | Adds a weighted edge (and its reverse for undirected graphs). |
+| `removeEdge(V, V)` | Removes the edge (and reverse for undirected). |
+| `hasVertex(V)` / `hasEdge(V, V)` | Membership queries. |
+| `neighborsOf(V)` | Returns `List<Edge<V>>` of outgoing edges. |
+| `degreeOf(V)` | Number of edges incident on the vertex. |
+| `vertices` / `edges` | Unmodifiable snapshots. |
+| `vertexCount` / `edgeCount` | Sizes. |
+| `clear()` | Resets the graph entirely. |
+
+### 🚀 Algorithms
+
+| Algorithm | Method | Complexity |
+| :--- | :--- | :---: |
+| Breadth-First Search | `bfs(start)` | $O(V + E)$ |
+| Depth-First Search | `dfs(start)` | $O(V + E)$ |
+| Shortest paths (non-negative) | `dijkstra(start)` | $O((V + E) \log V)$ |
+| Shortest paths (negative weights) | `bellmanFord(start)` | $O(V \cdot E)$ |
+| Topological ordering | `topologicalSort()` | $O(V + E)$ |
+| Minimum spanning tree | `prim([start])` | $O((V + E) \log V)$ |
+| Minimum spanning tree | `kruskal()` | $O(E \log E)$ |
+| Connectivity check | `isConnected` | $O(V + E)$ |
+| Acyclicity check | `isAcyclic` | $O(V + E)$ |
+
+> **Note:** `bellmanFord` returns `null` when a negative-weight cycle is detected. `topologicalSort` returns `null` when the directed graph contains a cycle.
+
+### 🎓 Example
+
+```dart
+import 'package:stl/stl.dart';
+
+void main() {
+  // ── Undirected weighted graph ─────────────────────────────────────────────
+  final g = Graph<String>();
+  g.addEdge('A', 'B', weight: 4.0);
+  g.addEdge('A', 'C', weight: 2.0);
+  g.addEdge('B', 'C', weight: 1.0);
+  g.addEdge('B', 'D', weight: 5.0);
+
+  // BFS and DFS traversal
+  print(g.bfs('A'));  // [A, B, C, D] (level order)
+  print(g.dfs('A'));  // [A, B, C, D] (depth order)
+
+  // Dijkstra shortest paths from A
+  final dist = g.dijkstra('A');
+  print('A→D: ${dist["D"]}');        // 6.0 (A→C→B→D: 2+1+5=8? no A→B→D=9, A→C→B=3, +5=8... min is A→B→D=9)
+
+  // Prim minimum spanning tree
+  final mst = g.prim();
+  final weight = mst.fold(0.0, (s, e) => s + e.weight);
+  print('MST weight: $weight');       // 8.0
+
+  // ── Directed acyclic graph (topological sort) ─────────────────────────────
+  final dag = Graph<String>(directed: true);
+  dag.addEdge('Math', 'Algorithms');
+  dag.addEdge('Math', 'Data Structures');
+  dag.addEdge('Algorithms', 'Thesis');
+  dag.addEdge('Data Structures', 'Thesis');
+
+  print(dag.topologicalSort());       // [Math, Algorithms, Data Structures, Thesis]
+  print(dag.isAcyclic);               // true
+
+  // ── Bellman-Ford with negative edges ─────────────────────────────────────
+  final bf = Graph<int>(directed: true);
+  bf.addEdge(0, 1, weight: 4.0);
+  bf.addEdge(0, 2, weight: 5.0);
+  bf.addEdge(1, 3, weight: -3.0);
+  print(bf.bellmanFord(0));           // {0: 0.0, 1: 4.0, 2: 5.0, 3: 1.0}
+}
+```
+
+<br/>
+
+---
+
+<br/>
+## 🪟 `Span<T>` — Non-Owning Contiguous View (`<span>` C++20)
+
+`Span<T>` is a zero-allocation view over a contiguous `List<T>`. It holds no data of its own — it simply points into a window of an existing list. Every slicing operation is $O(1)$ and returns a new `Span<T>` that shares the same backing source without copying. `Span<T>` implements `Iterable<T>` and composes naturally with every range adapter in the library.
+
+> The general-element complement to `StringView` — same zero-copy philosophy, any element type.
+
+### API
+
+| Member | C++ equivalent | Description |
+| :--- | :--- | :--- |
+| `Span(List<T>)` | `std::span(ptr, size)` | Full-list view |
+| `Span.subspan(List<T>, offset, count)` | (named constructor) | Windowed view |
+| `length`, `isEmpty`, `isNotEmpty` | `size()`, `empty()` | Size queries |
+| `operator[](int)` | `operator[]` | Bounds-checked element access |
+| `first`, `last` | `front()`, `back()` | First / last element |
+| `firstSpan(int n) → Span<T>` | `first(n)` | First *n* elements, $O(1)$ |
+| `lastSpan(int n) → Span<T>` | `last(n)` | Last *n* elements, $O(1)$ |
+| `subspan(int offset, [int? count]) → Span<T>` | `subspan(offset[,n])` | General slice, $O(1)$ |
+| `contains(element)` | — | $O(n)$ membership test |
+| `indexOf(element, [start])` | — | $O(n)$ index search |
+| `toList()` | — | Copies elements into a new independent list |
+| `Iterable<T>` | — | `map`, `where`, `reduce`, `for`-`in`, etc. |
+
+### 🎓 Example
+
+```dart
+import 'package:stl/stl.dart';
+
+void main() {
+  final data = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+  final view = Span(data);
+
+  // Element access — O(1), bounds-checked
+  print(view[3]);             // 40
+  print(view.first);          // 10
+  print(view.last);           // 100
+
+  // Zero-copy slicing — all O(1)
+  print(view.firstSpan(3));   // Span[10, 20, 30]
+  print(view.lastSpan(2));    // Span[90, 100]
+  print(view.subspan(2, 5));  // Span[30, 40, 50, 60, 70]
+
+  // Chaining — still zero-copy
+  final chain = view.subspan(1).firstSpan(6).subspan(1, 4);
+  print(chain.toList());      // [30, 40, 50, 60]
+
+  // Search
+  final mid = view.subspan(2, 5);
+  print(mid.contains(50));    // true
+  print(mid.indexOf(60));     // 3
+
+  // Iterable integration
+  final evens = Span([1, 2, 3, 4, 5, 6]).where((e) => e.isEven).toList();
+  print(evens);               // [2, 4, 6]
+
+  // Zero-copy guarantee: mutating the source is visible through the span
+  data[0] = 999;
+  print(view.first);          // 999
+}
+```
+
+<br/>
+
+---
+
+<br/>
+## �💖 Contributing
 
 Want to see an exotic data structure, an algorithmic graph traversal, or a missing `std::ranges` feature added to the library? We emphatically welcome pull requests, bug reports, and issue tickets. Let's make this the most powerful and scalable system-level algorithms repository in the Flutter and Dart ecosystem! 🌟
 

@@ -56,6 +56,7 @@ export 'src/utilities/ref.dart';
 export 'src/utilities/box.dart';
 export 'src/utilities/any.dart';
 export 'src/utilities/string_view.dart';
+export 'src/utilities/span.dart';
 export 'src/utilities/expected.dart';
 export 'src/utilities/tuple.dart';
 // Haskell-inspired utilities

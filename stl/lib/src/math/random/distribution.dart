@@ -6,6 +6,9 @@ import 'engine.dart';
 /// Distributions map the uniform bits provided by a [RandomEngine] into
 /// mathematically rigorous shapes (e.g., Bell curves, Poisson models, etc.).
 abstract class RandomDistribution<T> {
+  /// Creates a [RandomDistribution].
+  const RandomDistribution();
+
   /// Generates the next random value sampled from this distribution
   /// using the provided [engine] as the source of entropy.
   T call(RandomEngine engine);
@@ -16,6 +19,7 @@ abstract class RandomDistribution<T> {
 class UniformIntDistribution implements RandomDistribution<int> {
   /// The lower bound (inclusive).
   final int a;
+
   /// The upper bound (inclusive).
   final int b;
 
@@ -29,7 +33,7 @@ class UniformIntDistribution implements RandomDistribution<int> {
   @override
   int call(RandomEngine engine) {
     if (a == b) return a;
-    
+
     // We map the engine's [min, max] uniformly to [a, b].
     // Since engines output 32-bit values typically, we must avoid modulo bias.
     final engineRange = engine.max - engine.min;
@@ -51,12 +55,12 @@ class UniformIntDistribution implements RandomDistribution<int> {
     if (engineRange > distRange) {
       final int scale = (engineRange + 1) ~/ (distRange + 1);
       final int limit = scale * (distRange + 1);
-      
+
       int val;
       do {
         val = engine.next() - engine.min;
       } while (val >= limit);
-      
+
       return a + (val ~/ scale);
     } else {
       // If the engine range is smaller than the requested range,
@@ -75,6 +79,7 @@ class UniformIntDistribution implements RandomDistribution<int> {
 class UniformRealDistribution implements RandomDistribution<double> {
   /// The lower bound (inclusive).
   final double a;
+
   /// The upper bound (inclusive).
   final double b;
 
@@ -123,13 +128,16 @@ class BernoulliDistribution implements RandomDistribution<bool> {
 class BinomialDistribution implements RandomDistribution<int> {
   /// The number of trials.
   final int t;
+
   /// The probability of success in each trial.
   final double p;
 
   /// Constructs a Binomial distribution.
   BinomialDistribution(this.t, [this.p = 0.5]) {
     if (t < 0) throw ArgumentError('Trials t must be non-negative.');
-    if (p < 0.0 || p > 1.0) throw ArgumentError('Probability p must be in [0.0, 1.0].');
+    if (p < 0.0 || p > 1.0) {
+      throw ArgumentError('Probability p must be in [0.0, 1.0].');
+    }
   }
 
   @override
@@ -149,6 +157,7 @@ class BinomialDistribution implements RandomDistribution<int> {
 class NormalDistribution implements RandomDistribution<double> {
   /// The mean (mu) of the distribution.
   final double mean;
+
   /// The standard deviation (sigma) of the distribution.
   final double stddev;
   double? _cachedValue;
@@ -169,12 +178,12 @@ class NormalDistribution implements RandomDistribution<double> {
     }
 
     final range = engine.max - engine.min;
-    
+
     double u1, u2;
     do {
       u1 = (engine.next() - engine.min) / range;
     } while (u1 <= 1e-7); // Prevent log(0)
-    
+
     u2 = (engine.next() - engine.min) / range;
 
     final double mag = math.sqrt(-2.0 * math.log(u1));
@@ -228,12 +237,12 @@ class PoissonDistribution implements RandomDistribution<int> {
   @override
   int call(RandomEngine engine) {
     final range = engine.max - engine.min;
-    
+
     // Knuth's algorithm (good for lambda < 30)
     final double l = math.exp(-mean);
     int k = 0;
     double p = 1.0;
-    
+
     do {
       k++;
       final double u = (engine.next() - engine.min) / range;
@@ -250,13 +259,16 @@ class PoissonDistribution implements RandomDistribution<int> {
 class GammaDistribution implements RandomDistribution<double> {
   /// The shape parameter.
   final double alpha;
+
   /// The scale parameter.
   final double beta;
 
   /// Constructs a Gamma distribution.
   GammaDistribution([this.alpha = 1.0, this.beta = 1.0]) {
     if (alpha <= 0.0 || beta <= 0.0) {
-      throw ArgumentError('Alpha (shape) and Beta (scale) must be strictly positive.');
+      throw ArgumentError(
+        'Alpha (shape) and Beta (scale) must be strictly positive.',
+      );
     }
   }
 
@@ -265,10 +277,10 @@ class GammaDistribution implements RandomDistribution<double> {
     if (alpha == 1.0) {
       return ExponentialDistribution(1.0 / beta).call(engine);
     }
-    
+
     double d, c, x, v, u;
     final double a = alpha < 1.0 ? alpha + 1.0 : alpha;
-    
+
     d = a - 1.0 / 3.0;
     c = 1.0 / math.sqrt(9.0 * d);
     final normal = NormalDistribution();
@@ -287,14 +299,14 @@ class GammaDistribution implements RandomDistribution<double> {
       if (u < 1.0 - 0.0331 * xSq * xSq) {
         break;
       }
-      
+
       if (math.log(u) < 0.5 * xSq + d * (1.0 - v + math.log(v))) {
         break;
       }
     }
 
     double result = d * v;
-    
+
     // Correction for alpha < 1
     if (alpha < 1.0) {
       double u2;

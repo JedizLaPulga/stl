@@ -1,3 +1,109 @@
+# 0.7.3
+
+## `Span<T>` — Non-Owning Contiguous View (`<span>`)
+
+### New Feature: `utilities/span.dart`
+Introduced `Span<T>`, a non-owning, zero-allocation view over a contiguous `List<T>`. Directly mirrors C++20 `std::span` and serves as the general-element companion to the existing `StringView`. A `Span` holds no data of its own — it references a window `[offset, offset + length)` into a backing `List<T>`. All slicing operations are $O(1)$ and return new `Span` instances that point into the same backing list without copying.
+
+`Span<T>` implements `Iterable<T>`, making it a first-class citizen of the library's range pipeline — it composes directly with `FilterRange`, `TransformRange`, `ZipRange`, and every other range adapter.
+
+#### Constructors
+
+| Constructor | Description |
+|---|---|
+| `Span(List<T> source)` | View over the entire list. |
+| `Span.subspan(List<T> source, int offset, int count)` | View over a `[offset, offset + count)` window. Throws `RangeError` on invalid bounds. |
+
+#### Properties
+
+| Member | C++ equivalent | Complexity |
+|---|---|:---:|
+| `int length` | `size()` | $O(1)$ |
+| `bool isEmpty` | `empty()` | $O(1)$ |
+| `bool isNotEmpty` | `!empty()` | $O(1)$ |
+
+#### Element Access
+
+| Member | C++ equivalent | Complexity |
+|---|---|:---:|
+| `T operator[](int index)` | `operator[]` | $O(1)$ |
+| `T get first` | `front()` | $O(1)$ |
+| `T get last` | `back()` | $O(1)$ |
+
+`operator[]`, `first`, and `last` all throw on out-of-bounds or empty access.
+
+#### Slicing
+
+| Method | C++ equivalent | Complexity |
+|---|---|:---:|
+| `Span<T> firstSpan(int count)` | `first(n)` | $O(1)$ |
+| `Span<T> lastSpan(int count)` | `last(n)` | $O(1)$ |
+| `Span<T> subspan(int offset, [int? count])` | `subspan(offset[, count])` | $O(1)$ |
+
+All three slicing methods return a new `Span<T>` pointing into the same backing list — no elements are copied. Omitting `count` in `subspan` extends the view to the end of the current span.
+
+#### Search
+
+| Method | Complexity |
+|---|:---:|
+| `bool contains(Object? element)` | $O(n)$ |
+| `int indexOf(T element, [int start = 0])` | $O(n)$ |
+
+`indexOf` returns `-1` when the element is not found. All indices are relative to the start of the span, not the backing list.
+
+#### Conversion & Iteration
+
+| Member | Description |
+|---|---|
+| `List<T> toList({bool growable})` | Copies elements into a new independent list. |
+| `Iterator<T> get iterator` | Forward iterator over the span window. |
+| `==`, `hashCode` | Element-wise value equality. |
+| `toString()` | `Span[e0, e1, ...]` format. |
+
+#### Zero-copy guarantee
+
+Mutations to the backing `List<T>` after the span is created are immediately visible through the span. `subspan`, `firstSpan`, and `lastSpan` always share the same backing source — chaining multiple slices never allocates intermediate storage.
+
+```dart
+final data = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+final view = Span(data);
+
+// Element access
+print(view[3]);             // 40
+print(view.first);          // 10
+print(view.last);           // 100
+
+// Slicing — all O(1), zero-copy
+final head  = view.firstSpan(3);       // Span[10, 20, 30]
+final tail  = view.lastSpan(2);        // Span[90, 100]
+final mid   = view.subspan(2, 5);      // Span[30, 40, 50, 60, 70]
+
+// Chained slicing — still zero-copy
+final chain = view.subspan(1).firstSpan(6).subspan(1, 4);
+print(chain.toList());      // [30, 40, 50, 60]
+
+// Search
+print(mid.contains(50));    // true
+print(mid.indexOf(60));     // 3
+
+// Iterable integration
+final evens = Span([1, 2, 3, 4, 5, 6]).where((e) => e.isEven).toList();
+print(evens);               // [2, 4, 6]
+
+// Zero-copy: mutating the source is visible through the span
+data[0] = 999;
+print(view.first);          // 999
+```
+
+### New files
+- `lib/src/utilities/span.dart` — `Span<T>` and `_SpanIterator<T>` with full dartdoc coverage.
+- `test/span_test.dart` — 63 tests covering all constructors, accessors, slicing, search, iteration, equality, zero-copy semantics, and error paths.
+- `example/span_example.dart` — End-to-end demonstration of all major features.
+
+- All 2157 tests pass
+
+---
+
 # 0.7.2
 
 ## Linear Algebra Module (`<linalg>`)
