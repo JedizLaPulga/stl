@@ -37,6 +37,8 @@
 /// | [AsyncRange.fromFutures] | Emits the resolved values of an [Iterable<Future<T>>] in order. |
 library;
 
+import 'dart:async';
+
 /// A lazy, composable async range backed by a Dart [Stream<T>].
 ///
 /// See the library doc for a full overview and examples.
@@ -131,8 +133,7 @@ final class AsyncRange<T> {
   /// ```dart
   /// final doubled = range.map((x) => x * 2);
   /// ```
-  AsyncRange<U> map<U>(U Function(T element) f) =>
-      AsyncRange._(_stream.map(f));
+  AsyncRange<U> map<U>(U Function(T element) f) => AsyncRange._(_stream.map(f));
 
   /// Returns a new [AsyncRange] with each element asynchronously transformed
   /// by [f].
@@ -199,7 +200,12 @@ final class AsyncRange<T> {
   /// Returns a new [AsyncRange] with all elements of this range followed by
   /// all elements of [other].
   AsyncRange<T> followedBy(AsyncRange<T> other) =>
-      AsyncRange._(_stream.followedBy(other._stream));
+      AsyncRange._(_concatStreams(_stream, other._stream));
+
+  static Stream<T> _concatStreams<T>(Stream<T> a, Stream<T> b) async* {
+    yield* a;
+    yield* b;
+  }
 
   /// Returns a new [AsyncRange] that debounces elements: only emits a value
   /// if no further values arrive within [wait].
@@ -274,8 +280,7 @@ final class AsyncRange<T> {
   Future<S> fold<S>(
     S initialValue,
     S Function(S previous, T element) combine,
-  ) =>
-      _stream.fold(initialValue, combine);
+  ) => _stream.fold(initialValue, combine);
 
   // ---------------------------------------------------------------------------
   // Private helpers

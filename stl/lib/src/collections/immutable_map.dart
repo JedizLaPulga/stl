@@ -209,8 +209,9 @@ final class ImmutableMap<K, V> with IterableMixin<Pair<K, V>> {
   /// `true`.
   ///
   /// ```dart
-  /// final positive = m.where((k, v) => v > 0);
+  /// final positive = m.filter((k, v) => v > 0);
   /// ```
+  @override
   ImmutableMap<K, V> where(bool Function(K key, V value) test) {
     final copy = <K, V>{};
     for (final e in _data.entries) {
@@ -222,12 +223,12 @@ final class ImmutableMap<K, V> with IterableMixin<Pair<K, V>> {
   /// Returns a new [ImmutableMap] containing only entries whose keys satisfy
   /// [test].
   ImmutableMap<K, V> whereKey(bool Function(K key) test) =>
-      where((k, _) => test(k));
+      filter((k, _) => test(k));
 
   /// Returns a new [ImmutableMap] containing only entries whose values satisfy
   /// [test].
   ImmutableMap<K, V> whereValue(bool Function(V value) test) =>
-      where((_, v) => test(v));
+      filter((_, v) => test(v));
 
   /// Returns a new [ImmutableMap] that is the result of merging this map with
   /// [other].

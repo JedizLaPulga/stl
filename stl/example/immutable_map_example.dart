@@ -41,9 +41,11 @@ void main() {
   final doubled = a.mapValues((v) => v * 2);
   final positiveKeys = a.whereKey((k) => k != 'z');
   final bigValues = a.whereValue((v) => v >= 2);
+  final filteredByEntry = a.filter((k, v) => k != 'z' && v >= 1);
   print('\nmapValues(×2):        $doubled');
   print('whereKey(!= "z"):     $positiveKeys');
   print('whereValue(>= 2):     $bigValues');
+  print('filter(k!="z"&&v>=1): $filteredByEntry');
 
   // -----------------------------------------------------------------------
   // merge

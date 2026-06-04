@@ -87,7 +87,6 @@ void main() {
   // -----------------------------------------------------------------------
   // Range pipeline interop
   // -----------------------------------------------------------------------
-  final filtered =
-      FilterRange(a, (x) => x > 2).map((x) => x * 3).toList();
+  final filtered = FilterRange(a, (x) => x > 2).map((x) => x * 3).toList();
   print('\nFilterRange > 2, × 3: $filtered');
 }

@@ -1,4 +1,108 @@
+# 0.7.4
+
+## `ImmutableList<T>` & `ImmutableMap<K, V>` — Persistent Immutable Collections
+
+### New Features: `collections/immutable_list.dart`, `collections/immutable_map.dart`
+
+Introduced two persistent, copy-on-write collection types that complement the existing mutable containers. Every operation that would normally mutate state returns a **new** instance — the original is never modified. Both types implement `Iterable`, making them first-class citizens of the range pipeline.
+
+#### `ImmutableList<T>`
+
+A persistent random-access list. Backed by `List.unmodifiable`; all index-based reads are $O(1)$ and structural write operations are $O(n)$ (copy-on-write).
+
+| Constructor | Description |
+|---|---|
+| `ImmutableList.empty()` | Returns an empty list. |
+| `ImmutableList.of(Iterable<T>)` | Copies elements from any iterable. |
+| `ImmutableList.filled(int, T)` | Fills `n` slots with a constant value. |
+| `ImmutableList.generate(int, T Function(int))` | Builds elements from an index function. |
+
+| Method | Returns | Complexity |
+|---|---|:---:|
+| `add(T)` | `ImmutableList<T>` | $O(n)$ |
+| `addAll(Iterable<T>)` | `ImmutableList<T>` | $O(n)$ |
+| `insert(int, T)` | `ImmutableList<T>` | $O(n)$ |
+| `set(int, T)` | `ImmutableList<T>` | $O(n)$ |
+| `removeAt(int)` | `ImmutableList<T>` | $O(n)$ |
+| `remove(T)` | `ImmutableList<T>` | $O(n)$ |
+| `clear()` | `ImmutableList<T>` | $O(1)$ |
+| `sorted([Comparator])` | `ImmutableList<T>` | $O(n \log n)$ |
+| `reversed()` | `ImmutableList<T>` | $O(n)$ |
+| `take(int)` | `ImmutableList<T>` | $O(n)$ |
+| `drop(int)` | `ImmutableList<T>` | $O(n)$ |
+| `sublist(int, [int?])` | `ImmutableList<T>` | $O(n)$ |
+| `concat(ImmutableList<T>)` | `ImmutableList<T>` | $O(n)$ |
+| `map<U>(U Function(T))` | `ImmutableList<U>` | $O(n)$ |
+| `where(bool Function(T))` | `ImmutableList<T>` | $O(n)$ |
+| `expand<U>(Iterable<U> Function(T))` | `ImmutableList<U>` | $O(n)$ |
+
+#### `ImmutableMap<K, V>`
+
+A persistent associative container with insertion-order iteration (backed by `LinkedHashMap`). All single-key operations are amortised $O(1)$; structural bulk operations are $O(n)$.
+
+| Constructor | Description |
+|---|---|
+| `ImmutableMap.empty()` | Returns an empty map. |
+| `ImmutableMap.of(Map<K,V>)` | Copies entries from a Dart `Map`. |
+| `ImmutableMap.fromPairs(Iterable<Pair<K,V>>)` | Builds from `Pair` entries. |
+| `ImmutableMap.fromEntries(Iterable<MapEntry<K,V>>)` | Builds from `MapEntry` entries. |
+
+| Method | Returns | Description |
+|---|---|---|
+| `put(K, V)` | `ImmutableMap<K,V>` | Add / replace entry. |
+| `putAll(Map<K,V>)` | `ImmutableMap<K,V>` | Merge a Dart map. |
+| `remove(K)` | `ImmutableMap<K,V>` | Drop entry by key. |
+| `update(K, V Function(V))` | `ImmutableMap<K,V>` | Transform existing value; throws if absent. |
+| `updateOrInsert(K, V Function(V), V Function())` | `ImmutableMap<K,V>` | Transform or insert. |
+| `clear()` | `ImmutableMap<K,V>` | Return empty map. |
+| `mapValues<W>(W Function(V))` | `ImmutableMap<K,W>` | Transform all values. |
+| `mapEntries<K2,V2>(…)` | `ImmutableMap<K2,V2>` | Transform keys and values. |
+| `where(bool Function(K,V))` | `ImmutableMap<K,V>` | Filter by key+value predicate. |
+| `whereKey / whereValue` | `ImmutableMap<K,V>` | Filter by key or value alone. |
+| `merge(ImmutableMap, {resolve?})` | `ImmutableMap<K,V>` | Union with optional conflict resolver. |
+
+---
+
+## `AsyncRange<T>` — Lazy Composable Async Range (`ranges/async_range.dart`)
+
+Introduced `AsyncRange<T>`, the async counterpart to the library's synchronous range views. It wraps a `Stream<T>` and exposes a fluent, composable API for transforming and consuming asynchronous sequences — inspired by C++23 async generators while remaining idiomatic Dart.
+
+All transformation methods are **lazy**: they return a new `AsyncRange<T>` backed by a transformed stream. No work is performed until a terminal operation is called.
+
+#### Constructors
+
+| Constructor | Description |
+|---|---|
+| `AsyncRange.fromStream(Stream<T>)` | Wraps an existing stream. |
+| `AsyncRange.fromIterable(Iterable<T>)` | Lifts a synchronous iterable into an async range. |
+| `AsyncRange.generate(int, Future<T> Function(int))` | Sequentially awaits an async producer. |
+| `AsyncRange.periodic(Duration, T Function(int), {int? count})` | Emits on a timer; optional element cap. |
+| `AsyncRange.fromFutures(Iterable<Future<T>>)` | Awaits each future in order. |
+
+#### Lazy transformations
+
+| Method | Description |
+|---|---|
+| `map<U>(U Function(T))` | Synchronous per-element transform. |
+| `asyncMap<U>(Future<U> Function(T))` | Async per-element transform. |
+| `where(bool Function(T))` / `filter(…)` | Keep elements satisfying predicate. |
+| `expand<U>(Iterable<U> Function(T))` | One-to-many flattening. |
+| `take(int)` | Emit at most `n` elements. |
+| `drop(int)` | Skip first `n` elements. |
+| `takeWhile(bool Function(T))` | Emit while predicate holds. |
+| `dropWhile(bool Function(T))` | Skip while predicate holds. |
+| `distinct()` | Suppress consecutive duplicates. |
+| `followedBy(AsyncRange<T>)` | Sequential concatenation. |
+| `debounce(Duration)` | Emit only after a quiet period. |
+
+#### Terminal operations (return `Future<…>` or `Stream<T>`)
+
+`toList()`, `toStream()`, `forEach()`, `first`, `last`, `single`, `elementAt()`, `any()`, `every()`, `isEmpty`, `length`, `reduce()`, `fold()`
+
+---
+
 # 0.7.3
+
 
 ## `Span<T>` — Non-Owning Contiguous View (`<span>`)
 
