@@ -211,8 +211,7 @@ final class ImmutableMap<K, V> with IterableMixin<Pair<K, V>> {
   /// ```dart
   /// final positive = m.filter((k, v) => v > 0);
   /// ```
-  @override
-  ImmutableMap<K, V> where(bool Function(K key, V value) test) {
+  ImmutableMap<K, V> filter(bool Function(K key, V value) test) {
     final copy = <K, V>{};
     for (final e in _data.entries) {
       if (test(e.key, e.value)) copy[e.key] = e.value;
