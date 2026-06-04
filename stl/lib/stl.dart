@@ -23,6 +23,9 @@ export 'src/collections/non_empty_list.dart';
 export 'src/collections/non_empty_vector.dart';
 export 'src/collections/finger_tree.dart';
 export 'src/collections/graph.dart';
+// Immutable collections
+export 'src/collections/immutable_list.dart';
+export 'src/collections/immutable_map.dart';
 export 'src/ranges/numberline.dart';
 export 'src/ranges/zip_range.dart';
 export 'src/ranges/chunk_range.dart';
@@ -47,6 +50,8 @@ export 'src/ranges/split_range.dart';
 export 'src/ranges/chunk_by_range.dart';
 export 'src/ranges/keys_range.dart';
 export 'src/ranges/values_range.dart';
+// Async range
+export 'src/ranges/async_range.dart';
 export 'src/utilities/pair.dart';
 export 'src/utilities/optional.dart';
 export 'src/utilities/variant.dart';
