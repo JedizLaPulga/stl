@@ -26,6 +26,9 @@ export 'src/collections/graph.dart';
 // Immutable collections
 export 'src/collections/immutable_list.dart';
 export 'src/collections/immutable_map.dart';
+export 'src/collections/immutable_set.dart';
+// Flat (array-backed sorted) collections — C++23
+export 'src/collections/flat_collections.dart';
 export 'src/ranges/numberline.dart';
 export 'src/ranges/zip_range.dart';
 export 'src/ranges/chunk_range.dart';

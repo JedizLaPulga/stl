@@ -7,7 +7,7 @@
 
   [![License: MIT](https://img.shields.io/badge/License-MIT-ff69b4.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
   [![Dart](https://img.shields.io/badge/Dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev/)
-  [![Pub Version](https://img.shields.io/badge/pub-0.7.3-blueviolet.svg?style=for-the-badge)](https://pub.dev/packages/stl)
+  [![Pub Version](https://img.shields.io/badge/pub-0.7.5-blueviolet.svg?style=for-the-badge)](https://pub.dev/packages/stl)
 
   > 🚀 **A highly-versatile, performance-driven bank of data collections, structures, and algorithmic ranges for the Dart and Flutter ecosystem.**
 
@@ -72,7 +72,7 @@ Instead of strictly separating containers, mathematics, and utilities, here is a
 | 🧮 **`cmath`** | ![](https://img.shields.io/badge/Math-orange) | Missing mathematically safe operations including `clamp()`, `lerp()`, and overflow-safe robust `hypot()` updated with over 100 new functions as part of the project target-200. |
 | 🗺️ **`HashMap<K, V>`** | ![](https://img.shields.io/badge/Container-purple) | Unordered key-value map utilizing a fast hash table under the hood, matching `std::unordered_map`. |
 | ⭕ **`Circle`** | ![](https://img.shields.io/badge/Geometry-blue) | Computes absolute Pi area boundaries natively supporting affine transformations via CRTP. |
-| 🔍 **`<algorithm>`** | ![](https://img.shields.io/badge/Algorithm-cyan) | Brings `lowerBound()`, `rotate()`, `nextPermutation()` and more to dynamically mutate any `Iterable`. |
+| 🔍 **`<algorithm>`** | ![](https://img.shields.io/badge/Algorithm-cyan) | Brings `lowerBound()`, `rotate()`, `nextPermutation()`, `foldLeft()`, `foldRight()`, `findLast()`, `startsWith()`, `endsWith()`, `contains()` and more. Now 70+ functions. |
 | 🌭 **`Deque<T>`** | ![](https://img.shields.io/badge/Container-purple) | Double-ended queue allowing extremely fast front/back algorithmic insertions without reallocation. |
 | ✨ **`Optional<T>`** | ![](https://img.shields.io/badge/Utility-green) | A beautifully sealed functional wrapper representing possibly-absent values without raw `null` checks. |
 | 🔢 **`U8`** -> **`U64`** | ![](https://img.shields.io/badge/Primitive-red) | Zero-cost unsigned integer variants mathematically bounding state within non-negative bit frames. |
@@ -117,6 +117,9 @@ duration literals.
 | ⏩ **`DropWhileRange<T>`** | ![](https://img.shields.io/badge/Range-teal) | Skips elements from the front while a predicate holds, then yields all remaining elements. Mirrors `std::views::drop_while`. |
 | 🔑 **`KeysRange<K,V>`** | ![](https://img.shields.io/badge/Range-teal) | Extracts keys from `Pair<K,V>` iterables. Composes with `HashMap`, `SortedMap`, `MultiMap`. Mirrors `std::views::keys`. |
 | 💎 **`ValuesRange<K,V>`** | ![](https://img.shields.io/badge/Range-teal) | Extracts values from `Pair<K,V>` iterables. Dual complement of `KeysRange`. Mirrors `std::views::values`. |
+| 🧊 **`ImmutableSet<T>`** | ![](https://img.shields.io/badge/Immutable-indigo) | Persistent copy-on-write set. Full set algebra (`union`, `intersection`, `difference`, `symmetricDifference`). New in **0.7.5**. |
+| 🗂️ **`FlatSet<T>`** | ![](https://img.shields.io/badge/Container-purple) | C++23 `std::flat_set` — array-backed sorted set. Cache-friendly $O(\log n)$ binary-search lookups. New in **0.7.5**. |
+| 🗺️ **`FlatMap<K,V>`** | ![](https://img.shields.io/badge/Container-purple) | C++23 `std::flat_map` — array-backed sorted map. Parallel sorted `keys`/`values` lists, $O(\log n)$ access. New in **0.7.5**. |
 | 🕸️ **`Graph<V>`** | ![](https://img.shields.io/badge/Container-purple) | Directed/undirected weighted graph with BFS, DFS, Dijkstra, Bellman-Ford, topological sort, Prim, and Kruskal. Mirrors C++26 `<graph>`. |
 | 📐 **`<linalg>`** | ![](https://img.shields.io/badge/Math-orange) | General M×N linear algebra: `Vec`, `Mat`, LU/QR/Cholesky decompositions, BLAS Level 1/2/3 kernels, and eigenvalue solvers. Mirrors C++26 `<linalg>`. |
 

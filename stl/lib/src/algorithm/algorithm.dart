@@ -1784,3 +1784,204 @@ void clampRange<T>(List<T> list, T low, T high, {int Function(T, T)? compare}) {
     }
   }
 }
+
+// ==============================================
+// C++23 Range Algorithms
+// ==============================================
+
+/// Left-fold over [iterable] using [f] starting with [init].
+///
+/// Equivalent to C++23 `std::ranges::fold_left`. Applies [f] left-to-right:
+/// `f(f(f(init, e0), e1), e2) ...`. Returns [init] for an empty range.
+///
+/// Example:
+/// ```dart
+/// foldLeft([1, 2, 3, 4], 0, (acc, x) => acc + x); // 10
+/// ```
+R foldLeft<T, R>(Iterable<T> iterable, R init, R Function(R, T) f) {
+  var result = init;
+  for (final element in iterable) {
+    result = f(result, element);
+  }
+  return result;
+}
+
+/// Right-fold over [iterable] using [f] starting with [init].
+///
+/// Equivalent to C++23 `std::ranges::fold_right`. Applies [f] right-to-left:
+/// `f(e0, f(e1, f(e2, init))) ...`. Returns [init] for an empty range.
+///
+/// Example:
+/// ```dart
+/// foldRight([1, 2, 3, 4], 0, (x, acc) => x + acc); // 10
+/// foldRight([1, 2, 3], '', (x, acc) => '$x$acc');   // '123'
+/// ```
+R foldRight<T, R>(Iterable<T> iterable, R init, R Function(T, R) f) {
+  final list = iterable.toList();
+  var result = init;
+  for (var i = list.length - 1; i >= 0; i--) {
+    result = f(list[i], result);
+  }
+  return result;
+}
+
+/// Left-fold using the first element as the initial value.
+///
+/// Equivalent to C++23 `std::ranges::fold_left_first`. Throws [StateError] if
+/// [iterable] is empty.
+///
+/// ```dart
+/// foldLeftFirst([1, 2, 3, 4], (acc, x) => acc + x); // 10
+/// ```
+T foldLeftFirst<T>(Iterable<T> iterable, T Function(T, T) f) {
+  final it = iterable.iterator;
+  if (!it.moveNext()) {
+    throw StateError('foldLeftFirst: iterable must not be empty.');
+  }
+  var result = it.current;
+  while (it.moveNext()) {
+    result = f(result, it.current);
+  }
+  return result;
+}
+
+/// Returns `true` if [iterable] contains an element equal to [value]. $O(N)$.
+///
+/// Equivalent to C++23 `std::ranges::contains`. Uses `==` for equality.
+///
+/// Example:
+/// ```dart
+/// rangeContains([1, 2, 3], 2);  // true
+/// rangeContains([1, 2, 3], 99); // false
+/// ```
+bool rangeContains<T>(Iterable<T> iterable, T value) {
+  for (final element in iterable) {
+    if (element == value) return true;
+  }
+  return false;
+}
+
+/// Returns `true` if [sub] appears as a contiguous subsequence within [list]. $O(N \cdot K)$.
+///
+/// Equivalent to C++23 `std::ranges::contains_subrange`. Returns `true` if [sub] is empty.
+/// Uses [equals] if provided, otherwise uses `==`.
+///
+/// Example:
+/// ```dart
+/// rangeContainsSubrange([1, 2, 3, 4], [2, 3]); // true
+/// rangeContainsSubrange([1, 2, 3, 4], [2, 4]); // false
+/// ```
+bool rangeContainsSubrange<T>(
+  List<T> list,
+  List<T> sub, {
+  bool Function(T, T)? equals,
+}) {
+  equals ??= (a, b) => a == b;
+  if (sub.isEmpty) return true;
+  if (sub.length > list.length) return false;
+  for (var i = 0; i <= list.length - sub.length; i++) {
+    var match = true;
+    for (var j = 0; j < sub.length; j++) {
+      if (!equals(list[i + j], sub[j])) {
+        match = false;
+        break;
+      }
+    }
+    if (match) return true;
+  }
+  return false;
+}
+
+/// Returns `true` if [list] begins with the elements of [prefix]. $O(K)$.
+///
+/// Equivalent to C++23 `std::ranges::starts_with`. Returns `true` if [prefix] is empty.
+/// Uses [equals] if provided, otherwise uses `==`.
+///
+/// Example:
+/// ```dart
+/// rangeStartsWith([1, 2, 3, 4], [1, 2]); // true
+/// rangeStartsWith([1, 2, 3, 4], [2, 3]); // false
+/// ```
+bool rangeStartsWith<T>(
+  List<T> list,
+  List<T> prefix, {
+  bool Function(T, T)? equals,
+}) {
+  equals ??= (a, b) => a == b;
+  if (prefix.isEmpty) return true;
+  if (prefix.length > list.length) return false;
+  for (var i = 0; i < prefix.length; i++) {
+    if (!equals(list[i], prefix[i])) return false;
+  }
+  return true;
+}
+
+/// Returns `true` if [list] ends with the elements of [suffix]. $O(K)$.
+///
+/// Equivalent to C++23 `std::ranges::ends_with`. Returns `true` if [suffix] is empty.
+/// Uses [equals] if provided, otherwise uses `==`.
+///
+/// Example:
+/// ```dart
+/// rangeEndsWith([1, 2, 3, 4], [3, 4]); // true
+/// rangeEndsWith([1, 2, 3, 4], [2, 3]); // false
+/// ```
+bool rangeEndsWith<T>(
+  List<T> list,
+  List<T> suffix, {
+  bool Function(T, T)? equals,
+}) {
+  equals ??= (a, b) => a == b;
+  if (suffix.isEmpty) return true;
+  if (suffix.length > list.length) return false;
+  final offset = list.length - suffix.length;
+  for (var i = 0; i < suffix.length; i++) {
+    if (!equals(list[offset + i], suffix[i])) return false;
+  }
+  return true;
+}
+
+/// Returns the index of the **last** element in [list] that equals [value]. $O(N)$.
+///
+/// Equivalent to C++23 `std::ranges::find_last`. Returns `-1` if not found.
+///
+/// Example:
+/// ```dart
+/// findLast([1, 2, 3, 2, 1], 2); // 3
+/// ```
+int findLast<T>(List<T> list, T value) {
+  for (var i = list.length - 1; i >= 0; i--) {
+    if (list[i] == value) return i;
+  }
+  return -1;
+}
+
+/// Returns the index of the **last** element in [list] for which [predicate] returns `true`. $O(N)$.
+///
+/// Equivalent to C++23 `std::ranges::find_last_if`. Returns `-1` if not found.
+///
+/// Example:
+/// ```dart
+/// findLastIf([1, 2, 3, 4, 5], (n) => n % 2 == 0); // 3
+/// ```
+int findLastIf<T>(List<T> list, bool Function(T) predicate) {
+  for (var i = list.length - 1; i >= 0; i--) {
+    if (predicate(list[i])) return i;
+  }
+  return -1;
+}
+
+/// Returns the index of the **last** element in [list] for which [predicate] returns `false`. $O(N)$.
+///
+/// Equivalent to C++23 `std::ranges::find_last_if_not`. Returns `-1` if all elements satisfy [predicate].
+///
+/// Example:
+/// ```dart
+/// findLastIfNot([1, 2, 3, 4, 5], (n) => n % 2 == 0); // 4
+/// ```
+int findLastIfNot<T>(List<T> list, bool Function(T) predicate) {
+  for (var i = list.length - 1; i >= 0; i--) {
+    if (!predicate(list[i])) return i;
+  }
+  return -1;
+}

@@ -1,3 +1,105 @@
+# 0.7.5
+
+## `ImmutableSet<T>` — Persistent Immutable Set
+
+### New Feature: `collections/immutable_set.dart`
+
+Completes the persistent-collection trilogy alongside `ImmutableList` and `ImmutableMap`. Every operation returns a **new** `ImmutableSet` — the original is never modified. Backed by `LinkedHashSet` (insertion-order iteration, $O(1)$ amortised membership). Implements `Iterable<T>` and integrates seamlessly with the range pipeline.
+
+| Constructor | Description |
+|---|---|
+| `ImmutableSet.empty()` | Returns an empty set. |
+| `ImmutableSet.of(Iterable<T>)` | Copies elements, discarding duplicates. |
+| `ImmutableSet.generate(int, T Function(int))` | Builds elements from an index function. |
+
+| Method | Returns | Description |
+|---|---|---|
+| `add(T)` | `ImmutableSet<T>` | Add element (no-op if already present). |
+| `addAll(Iterable<T>)` | `ImmutableSet<T>` | Add multiple elements. |
+| `remove(T)` | `ImmutableSet<T>` | Remove element (no-op if absent). |
+| `clear()` | `ImmutableSet<T>` | Return empty set. |
+| `union(ImmutableSet<T>)` | `ImmutableSet<T>` | $A \cup B$ |
+| `intersection(ImmutableSet<T>)` | `ImmutableSet<T>` | $A \cap B$ |
+| `difference(ImmutableSet<T>)` | `ImmutableSet<T>` | $A \setminus B$ |
+| `symmetricDifference(ImmutableSet<T>)` | `ImmutableSet<T>` | $A \triangle B$ |
+| `isSubsetOf / isSupersetOf` | `bool` | Subset / superset test. |
+| `isDisjointFrom` | `bool` | No common elements. |
+| `map<U>(U Function(T))` | `ImmutableSet<U>` | Transform all elements. |
+| `where(bool Function(T))` | `ImmutableSet<T>` | Filter elements. |
+
+---
+
+## `FlatSet<T>` & `FlatMap<K,V>` — C++23 Array-Backed Sorted Containers
+
+### New Feature: `collections/flat_collections.dart`
+
+Ports C++23 `std::flat_set` and `std::flat_map`. Both store their data in contiguous sorted `List`s, giving **cache-friendly $O(\log n)$ binary-search lookups** at the cost of $O(n)$ insertions and erasures. Prefer these over tree-based containers for small-to-medium read-heavy workloads.
+
+#### `FlatSet<T>`
+
+| Operation | Complexity | Notes |
+|---|:---:|---|
+| `contains(T)` | $O(\log n)$ | Binary search. |
+| `lowerBound(T)` | $O(\log n)$ | First index `>= value`. |
+| `upperBound(T)` | $O(\log n)$ | First index `> value`. |
+| `insert(T)` | $O(n)$ | Binary search + shift. |
+| `erase(T)` | $O(n)$ | Binary search + shift. |
+| `union / intersection / difference` | $O(n + k)$ | Merge-style set algebra. |
+
+#### `FlatMap<K, V>`
+
+| Operation | Complexity | Notes |
+|---|:---:|---|
+| `operator [](K)` | $O(\log n)$ | Returns `null` if absent. |
+| `at(K)` | $O(\log n)$ | Throws `OutOfRange` if absent. |
+| `containsKey(K)` | $O(\log n)$ | |
+| `lowerBound / upperBound(K)` | $O(\log n)$ | Key-space navigation. |
+| `insert(K, V)` | $O(n)$ | Returns `true` if new key inserted. |
+| `operator []=(K, V)` | $O(n)$ | Alias for `insert`. |
+| `erase(K)` | $O(n)$ | Returns `true` if removed. |
+
+Iteration over `FlatMap` yields `FlatMapEntry<K, V>` objects in sorted-key order.
+
+---
+
+## C++23 Range Algorithm Extensions
+
+### New functions in `algorithm/algorithm.dart`
+
+Nine new top-level functions porting the remaining C++23 `std::ranges` algorithms.
+
+#### Fold Operations
+
+| Function | Signature | Description |
+|---|---|---|
+| `foldLeft` | `foldLeft<T,R>(Iterable<T>, R, R Function(R,T))` | Left-fold with initial value. Equivalent to `std::ranges::fold_left`. |
+| `foldRight` | `foldRight<T,R>(Iterable<T>, R, R Function(T,R))` | Right-fold with initial value. Equivalent to `std::ranges::fold_right`. |
+| `foldLeftFirst` | `foldLeftFirst<T>(Iterable<T>, T Function(T,T))` | Left-fold using first element as init; throws on empty. Equivalent to `std::ranges::fold_left_first`. |
+
+#### Membership
+
+| Function | Description |
+|---|---|
+| `contains<T>(Iterable<T>, T)` | `true` if any element equals value. $O(N)$. Equivalent to `std::ranges::contains`. |
+| `containsSubrange<T>(List<T>, List<T>)` | `true` if sub appears contiguously. $O(N \cdot K)$. Equivalent to `std::ranges::contains_subrange`. |
+
+#### Prefix / Suffix Matching
+
+| Function | Description |
+|---|---|
+| `startsWith<T>(List<T>, List<T>)` | `true` if list begins with prefix. $O(K)$. Equivalent to `std::ranges::starts_with`. |
+| `endsWith<T>(List<T>, List<T>)` | `true` if list ends with suffix. $O(K)$. Equivalent to `std::ranges::ends_with`. |
+
+#### Reverse Search
+
+| Function | Description |
+|---|---|
+| `findLast<T>(List<T>, T)` | Index of last equal element; `-1` if absent. $O(N)$. Equivalent to `std::ranges::find_last`. |
+| `findLastIf<T>(List<T>, bool Function(T))` | Index of last element satisfying predicate. $O(N)$. Equivalent to `std::ranges::find_last_if`. |
+| `findLastIfNot<T>(List<T>, bool Function(T))` | Index of last element not satisfying predicate. $O(N)$. Equivalent to `std::ranges::find_last_if_not`. |
+
+---
+
 # 0.7.4
 
 ## `ImmutableList<T>` & `ImmutableMap<K, V>` — Persistent Immutable Collections

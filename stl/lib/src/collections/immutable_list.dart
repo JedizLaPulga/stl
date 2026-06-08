@@ -216,6 +216,7 @@ final class ImmutableList<T> with IterableMixin<T> {
   /// Returns a new [ImmutableList] of the first [count] elements. $O(n)$.
   ///
   /// If [count] >= [length], returns an equal copy.
+  @override
   ImmutableList<T> take(int count) {
     if (count < 0) throw InvalidArgument('count must be >= 0');
     return ImmutableList._(_data.take(count).toList(growable: false));
