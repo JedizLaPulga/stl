@@ -1,46 +1,49 @@
-import 'dart:collection' as collection;
 import 'dart:collection' show IterableMixin;
+import 'red_black_tree.dart';
 
 /// A collection that contains no duplicate elements, ensuring strict sorting order.
 ///
 /// In the C++ STL, this matches exactly the behavior, complexity, and contract of `std::set`.
-/// It utilizes a balanced tree structure (Splay tree) under the hood.
+/// It utilizes a balanced tree structure (Red-Black tree) under the hood.
 /// Iteration yields elements in strictly mathematical or custom-comparator order.
 class SortedSet<T> with IterableMixin<T> {
-  final collection.SplayTreeSet<T> _container;
+  final RedBlackTree<T, bool> _container;
   final int Function(T, T)? _compare;
 
   @override
-  Iterator<T> get iterator => _container.iterator;
+  Iterator<T> get iterator => _container.nodes.map((node) => node.key).iterator;
 
   /// Creates an empty SortedSet.
   ///
   /// Optionally inject a [compare] function. If null, it assumes elements are `Comparable`.
-  SortedSet([this._compare])
-    : _container = collection.SplayTreeSet<T>(_compare);
+  SortedSet([this._compare]) : _container = RedBlackTree<T, bool>(_compare);
 
   /// Creates a SortedSet containing the elements of the given iterable.
   SortedSet.from(Iterable<T> elements, [this._compare])
-    : _container = collection.SplayTreeSet<T>.from(elements, _compare);
+      : _container = RedBlackTree<T, bool>(_compare) {
+    for (var element in elements) {
+      _container.insert(element, true);
+    }
+  }
 
   /// Inserts a new [element] into the set. Time complexity: O(log N).
   ///
   /// Returns `true` if the element was added, or `false` if it was already present.
   bool insert(T element) {
-    return _container.add(element);
+    return _container.insert(element, true);
   }
 
   /// Removes [element] from the set. Time complexity: O(log N).
   ///
   /// Returns `true` if the element was removed, or `false` if it was not found.
   bool erase(T element) {
-    return _container.remove(element);
+    return _container.erase(element);
   }
 
   /// Returns `true` if the set contains the exact [element]. Time complexity: O(log N).
   @override
   bool contains(covariant T element) {
-    return _container.contains(element);
+    return _container.findNode(element) != null;
   }
 
   /// Removes all elements from the set.
@@ -60,34 +63,49 @@ class SortedSet<T> with IterableMixin<T> {
 
   /// Exchanges the contents of this set with those of [other].
   void swap(SortedSet<T> other) {
-    final temp = _container.toSet();
-    _container.clear();
-    _container.addAll(other._container);
-    other._container.clear();
-    other._container.addAll(temp);
+    _container.swap(other._container);
   }
 
   /// Returns a new SortedSet with the elements of this that are not in [other].
   SortedSet<T> difference(SortedSet<T> other) {
-    return SortedSet<T>.from(_container.difference(other._container), _compare);
+    final result = SortedSet<T>(_compare);
+    for (var element in this) {
+      if (!other.contains(element)) {
+        result.insert(element);
+      }
+    }
+    return result;
   }
 
   /// Returns a new SortedSet which contains all the elements of this set and [other].
   SortedSet<T> union(SortedSet<T> other) {
-    return SortedSet<T>.from(_container.union(other._container), _compare);
+    final result = SortedSet<T>(_compare);
+    for (var element in this) {
+      result.insert(element);
+    }
+    for (var element in other) {
+      result.insert(element);
+    }
+    return result;
   }
 
   /// Returns a new SortedSet which is the intersection between this set and [other].
   SortedSet<T> intersection(SortedSet<T> other) {
-    return SortedSet<T>.from(
-      _container.intersection(other._container),
-      _compare,
-    );
+    final result = SortedSet<T>(_compare);
+    for (var element in this) {
+      if (other.contains(element)) {
+        result.insert(element);
+      }
+    }
+    return result;
   }
 
   /// Whether this set contains all the elements of [other].
   bool containsAll(Iterable<T> other) {
-    return _container.containsAll(other);
+    for (var element in other) {
+      if (!contains(element)) return false;
+    }
+    return true;
   }
 
   @override

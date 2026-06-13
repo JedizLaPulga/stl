@@ -14,6 +14,7 @@ export 'src/collections/sorted_set.dart';
 export 'src/collections/hash_map.dart';
 export 'src/collections/multiset.dart';
 export 'src/collections/sorted_map.dart';
+export 'src/collections/red_black_tree.dart';
 export 'src/collections/multimap.dart';
 export 'src/collections/slist.dart';
 export 'src/collections/forward_list.dart';

@@ -1,3 +1,23 @@
+# 0.7.6
+
+## `RedBlackTree<K, V>` & True $O(\log n)$ Sorted Containers
+
+### Backend Replacement: `collections/red_black_tree.dart`
+
+Introduced a strictly balanced, memory-efficient **Red-Black Tree** to power the library's sorted containers. 
+
+Previously, `SortedMap` and `SortedSet` were backed by `dart:collection`'s `SplayTreeMap` and `SplayTreeSet`. While Splay trees provide amortised $O(\log n)$ performance, they mutate their structure on every read access to move the queried node to the root. This read-mutation breaks cache-friendliness and makes read-heavy operations unnecessarily unstable.
+
+By replacing the backend with a pure `RedBlackTree`, `SortedMap` and `SortedSet` now perfectly match the algorithmic complexity and performance contract of C++'s `std::map` and `std::set` — providing guaranteed strict worst-case $O(\log n)$ bounds for `insert`, `erase`, and `find` without modifying the tree during lookups. 
+
+#### Changes:
+- **`RedBlackTree<K, V>`**: A core implementation of the Cormen/Tarjan Red-Black Tree algorithms.
+- **`SortedMap<K, V>`**: Backend replaced with `RedBlackTree`. Exact same public API, structurally stable reads.
+- **`SortedSet<T>`**: Backend replaced with `RedBlackTree`. Exact same public API, structurally stable reads.
+- **Tests**: Added comprehensive verification of mathematical red-black invariants alongside 100% backwards compatibility for existing collection tests.
+
+---
+
 # 0.7.5
 
 ## `ImmutableSet<T>` — Persistent Immutable Set

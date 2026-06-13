@@ -78,7 +78,9 @@ Instead of strictly separating containers, mathematics, and utilities, here is a
 | 🔢 **`U8`** -> **`U64`** | ![](https://img.shields.io/badge/Primitive-red) | Zero-cost unsigned integer variants mathematically bounding state within non-negative bit frames. |
 | 🔲 **`Rectangle`** | ![](https://img.shields.io/badge/Geometry-blue) | Basic bounding box dimensions implicitly supporting translations, scaling, and centroid physics. |
 | 🧲 **`Complex`** | ![](https://img.shields.io/badge/Math-orange) | Full-scale complex numbers implementation with operator overloading and utility algorithms. |
-| 🌲 **`SortedSet<T>`** | ![](https://img.shields.io/badge/Container-purple) | Tree-based strictly sorted unique container mirroring C++ `std::set`. Keeps data autonomously ordered. |
+| 🌲 **`SortedSet<T>`** | ![](https://img.shields.io/badge/Container-purple) | Red-Black Tree backed strictly sorted unique container mirroring C++ `std::set`. Guaranteed $O(\log n)$ performance. |
+| 🗺️ **`SortedMap<K, V>`** | ![](https://img.shields.io/badge/Container-purple) | Red-Black Tree backed strictly sorted key-value map mirroring C++ `std::map`. Guaranteed $O(\log n)$ performance. |
+| 🔴 **`RedBlackTree<K, V>`** | ![](https://img.shields.io/badge/Container-purple) | Core strict self-balancing tree providing guaranteed non-mutating $O(\log n)$ lookups and modifications. |
 | 🔀 **`Variant<T0...>`** | ![](https://img.shields.io/badge/Utility-green) | Type-safe discriminated union handling distinct architectural alternatives elegantly via switches. |
 | 🔺 **`Triangle`** | ![](https://img.shields.io/badge/Geometry-blue) | Evaluates Herons theorem natively from coordinates, dynamically supporting spatial rotation. |
 | 🥞 **`Stack<T>`** | ![](https://img.shields.io/badge/Container-purple) | Custom LIFO (Last-In, First-Out) adapter. Operates flawlessly over any given sequence. |
@@ -686,7 +688,7 @@ for (var item in stack) {
 }
 ```
 
-### 🌲 **Autonomous Self-Balancing Sets (`SortedSet`)**
+### 🌲 **Autonomous Red-Black Trees (`SortedSet` & `SortedMap`)**
 ```dart
 final sorted = SortedSet<String>((a, b) => b.length.compareTo(a.length));
 sorted.insert("Strawberry");
@@ -694,7 +696,7 @@ sorted.insert("Apple");
 sorted.insert("A");
 
 print(sorted.toList()); 
-// ["Strawberry", "Apple", "A"] (Sorting strictly maintained on insert!)
+// ["Strawberry", "Apple", "A"] (Strictly maintained via non-mutating O(log n) tree operations!)
 ```
 
 <br/>
